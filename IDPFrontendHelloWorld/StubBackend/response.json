@@ -1,0 +1,21 @@
+[{
+	"key": "username",
+	"type": "input",
+	"templateOptions": {
+		"label": "Username",
+		"placeholder": "johndoe",
+		"required": true,
+		"description": "Descriptive text"
+	}
+}, {
+	"key": "password",
+	"type": "input",
+	"templateOptions": {
+		"type": "password",
+		"label": "Password",
+		"required": true
+	},
+	"expressionProperties": {
+		"templateOptions.disabled": "!model.username"
+	}
+}]

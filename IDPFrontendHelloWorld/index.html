@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+		<script src="dependencies/api-check/dist/api-check.js"></script> <!-- must appear before formly.js dist/-->
+		<script src="dependencies/angular/angular.js"></script>
+		<script src="dependencies/angular-formly/dist/formly.js"></script>
+		<script src="dependencies/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
+
+		<script src="js/formulareditor.js" ></script>
+		<script src="js/backendconnector.js" /></script>
+		<script src="js/renderer.js"></script>
+
+
+		<title>Hello Angular Formly</title>
+
+	</head>
+
+	<body ng-app="formularEditor">
+
+		<div ng-controller="renderer">
+				<form ng-submit="onSubmit()">
+  					<formly-form model="user" fields="userFields">
+    					<button type="submit">Submit</button>
+  					</formly-form>
+				</form>
+			</div>
+
+	</body>
+</html>
