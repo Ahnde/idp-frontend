@@ -1,1 +1,0 @@
-var formularEditor = angular.module('formularEditor', ["formly","formlyBootstrap"]);

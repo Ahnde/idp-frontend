@@ -1,7 +1,4 @@
-// var BC = BC || {};
-
-formularEditor.factory("backendConnector", ["$http", function ($http) {
-
+formularGenerator.factory("backendConnector", ["$http", function ($http) {
 
 	var BC = {};
 
@@ -12,10 +9,12 @@ formularEditor.factory("backendConnector", ["$http", function ($http) {
 		}).then(function (response, status) {
 			console.log("Data from backend successfully fechted: ");
 			console.log(response.data);
+			console.log("");
 			callback(response.data);
 		},function (error){
 			console.log("Error in backendConnector: ");
 			console.log(error);
+			console.log("");
 			callback(error);
 		});
 	}
@@ -29,5 +28,6 @@ formularEditor.factory("backendConnector", ["$http", function ($http) {
 		//TODO
 		callback();
 	}
+	
 	return BC;
 }]);

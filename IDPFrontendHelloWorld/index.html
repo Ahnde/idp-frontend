@@ -9,20 +9,21 @@
 		<script src="dependencies/angular-formly/dist/formly.js"></script>
 		<script src="dependencies/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
 
-		<script src="js/formulareditor.js" ></script>
+		<script src="js/formulargenerator.js" ></script>
 		<script src="js/backendconnector.js" /></script>
-		<script src="js/renderer.js"></script>
+		<script src="js/jsontransformer.js" ></script>
+		<script src="js/renderercontroller.js"></script>
 
 
 		<title>Hello Angular Formly</title>
 
 	</head>
 
-	<body ng-app="formularEditor">
+	<body ng-app="formularGenerator">
 
-		<div ng-controller="renderer">
+		<div ng-controller="rendererController">
 				<form ng-submit="onSubmit()">
-  					<formly-form model="user" fields="userFields">
+  					<formly-form model="formular" fields="formularFields">
     					<button type="submit">Submit</button>
   					</formly-form>
 				</form>

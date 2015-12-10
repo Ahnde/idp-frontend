@@ -1,21 +1,81 @@
-[{
-	"key": "username",
-	"type": "input",
-	"templateOptions": {
-		"label": "Username",
-		"placeholder": "johndoe",
-		"required": true,
-		"description": "Descriptive text"
-	}
-}, {
-	"key": "password",
-	"type": "input",
-	"templateOptions": {
-		"type": "password",
-		"label": "Password",
-		"required": true
+
+{
+	"id":"1234567890",
+	"metadata":[],
+	"description":[],
+	"type":"form",
+	"children":[
+	{
+		"group": {
+			"description": {
+				"content": "This is the description of the group.",
+				"type": "text"
+			},
+			"type":"group",
+			"children":[
+			{
+				"question": {
+					"type": "question",
+					"id":"1234567891",
+					"description":[
+					{
+						"content": "This is the description of the question.",
+						"type": "text"
+					}],
+					"interactive":[
+					{
+						"interactive": {
+							"type":"textfield",
+							"mapping-key":"myKey",
+							"validators":[],
+							"textfield": {
+								"length":256,
+								"textfieldtype":"trolololol",
+								"placeholder":"placeholder text trololol"
+							}
+						}
+					}]
+				}
+			}],
+			"repeatable":false
+		}
+	}, 
+	{
+		"test":"testing"
 	},
-	"expressionProperties": {
-		"templateOptions.disabled": "!model.username"
-	}
-}]
+	{
+		"group": {
+			"description": {
+				"content": "This is the description of the group 2.",
+				"type": "text"
+			},
+			"type":"group",
+			"children":[
+			{
+				"question": {
+					"type": "question",
+					"id":"1234567892",
+					"description":[
+					{
+						"content": "This is the description of the question 2.",
+						"type": "text"
+					}],
+					"interactive":[
+					{
+						"interactive": {
+							"type":"textfield",
+							"mapping-key":"myKey 2",
+							"validators":[],
+							"textfield": {
+								"length":256,
+								"textfieldtype":"text",
+								"placeholder":"placeholder text 2"
+							}
+						}
+					}]
+				}
+			}],
+			"repeatable":false
+		}
+	}]
+}

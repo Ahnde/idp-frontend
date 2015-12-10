@@ -1,0 +1,1 @@
+var formularGenerator = angular.module('formularGenerator', ["formly","formlyBootstrap"]);
