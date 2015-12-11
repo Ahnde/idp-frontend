@@ -11,7 +11,7 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
 
         for (var objectNumber in formularSpecification['children']) {
             var currentJSONObject = formularSpecification['children'][objectNumber];
-            // console.log("The current transform shit:");
+            // console.log("The current transform:");
             // console.log(currentJSONObject);
             var angularFormlyJSON = jsonTransformer.transformFormularSpecificationToAngularFormlyJSON(currentJSONObject);
             arrayWithJSONs.push(angularFormlyJSON);
@@ -20,7 +20,7 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
         // console.log("FormularSpecification filled in formularFields: ");
         // console.log(arrayWithJSONs);
 
-        RE.formularFields = arrayWithJSONs;	
+        RE.formularFields = arrayWithJSONs[0];	
     });
 
 	backendConnector.getFormularData(0,0,function(response){

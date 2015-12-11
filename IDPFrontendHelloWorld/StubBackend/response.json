@@ -8,7 +8,7 @@
 	{
 		"group": {
 			"description": {
-				"content": "This is the description of the group.",
+				"content": "This part of the form is about the name of the patient.",
 				"type": "text"
 			},
 			"type":"group",
@@ -16,10 +16,10 @@
 			{
 				"question": {
 					"type": "question",
-					"id":"1234567891",
+					"id":"12345678910",
 					"description":[
 					{
-						"content": "This is the description of the question.",
+						"content": "What is your first name?",
 						"type": "text"
 					}],
 					"interactive":[
@@ -30,8 +30,9 @@
 							"validators":[],
 							"textfield": {
 								"length":256,
-								"textfieldtype":"trolololol",
-								"placeholder":"placeholder text trololol"
+								"textfieldtype":"text",
+								"label":"First Name",
+								"placeholder":"John"
 							}
 						}
 					}]
@@ -39,14 +40,11 @@
 			}],
 			"repeatable":false
 		}
-	}, 
-	{
-		"test":"testing"
 	},
 	{
 		"group": {
 			"description": {
-				"content": "This is the description of the group 2.",
+				"content": "This part of the form is about the name of the patient 2.",
 				"type": "text"
 			},
 			"type":"group",
@@ -54,22 +52,23 @@
 			{
 				"question": {
 					"type": "question",
-					"id":"1234567892",
+					"id":"12345678911",
 					"description":[
 					{
-						"content": "This is the description of the question 2.",
+						"content": "What is your last name?",
 						"type": "text"
 					}],
 					"interactive":[
 					{
 						"interactive": {
 							"type":"textfield",
-							"mapping-key":"myKey 2",
+							"mapping-key":"myKey1",
 							"validators":[],
 							"textfield": {
 								"length":256,
 								"textfieldtype":"text",
-								"placeholder":"placeholder text 2"
+								"label":"Last Name",
+								"placeholder":"Doe"
 							}
 						}
 					}]

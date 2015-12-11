@@ -3,59 +3,71 @@ formularGenerator.factory("jsonTransformer", [function () {
     var JT = {};
 
     var angularFormlyJSONArray = [];
-    
+
     JT.transformFormularSpecificationToAngularFormlyJSON = function(formularSpecification) {
         console.log("Transforming JSON:");
         console.log(formularSpecification);
         console.log("");
         
         console.log("--------");
-        // angularFormlyJSONArray.push("Start");
-        generateAngularFormlyJSON(formularSpecification);
-        // angularFormlyJSONArray.push("End");
-        var angularFormlyJSON = angularFormlyJSONArray;
+        var angularFormlyJSON = {};
+        angularFormlyJSON = generateAngularFormlyJSON(formularSpecification);
         console.log("--------");
 
-        var staticAngularFormlyJSON = new Object();
-        staticAngularFormlyJSON.key = "username";
-        staticAngularFormlyJSON.type = "input";
-        staticAngularFormlyJSON.templateOptions = {};
-        staticAngularFormlyJSON.templateOptions.label = "Username";
-        staticAngularFormlyJSON.templateOptions.placeholder = "John Doe";
-        staticAngularFormlyJSON.templateOptions.required = true;
-        staticAngularFormlyJSON.templateOptions.description = "The description";
+        // var staticAngularFormlyJSON = new Object();
+        // staticAngularFormlyJSON.key = "username";
+        // staticAngularFormlyJSON.type = "input";
+        // staticAngularFormlyJSON.templateOptions = {};
+        // staticAngularFormlyJSON.templateOptions.label = "Username";
+        // staticAngularFormlyJSON.templateOptions.placeholder = "John Doe";
+        // staticAngularFormlyJSON.templateOptions.required = true;
+        // staticAngularFormlyJSON.templateOptions.description = "The description";
+
+        // var staticAngularFormlyJSON2 = new Object();
+        // staticAngularFormlyJSON2.key = "username2";
+        // staticAngularFormlyJSON2.type = "input";
+        // staticAngularFormlyJSON2.templateOptions = {};
+        // staticAngularFormlyJSON2.templateOptions.label = "Username2";
+        // staticAngularFormlyJSON2.templateOptions.placeholder = "John Doe2";
+        // staticAngularFormlyJSON2.templateOptions.required = true;
+        // staticAngularFormlyJSON2.templateOptions.description = "The description2";
+
+        // var myArray = [staticAngularFormlyJSON, staticAngularFormlyJSON2]
+        // var myArray2 = [{"key": "text","type": "input","templateOptions": {"label": "Text","placeholder": "Type here to see the other field become enabled..."}},{"key": "text2","type": "input","templateOptions": {"label": "Hey!","placeholder": "This one is disabled if there is no text in the other input"},"expressionProperties": {"templateOptions.disabled": "!model.text"}}];
+        // var myArray3 =[{"key": "username","type": "input","templateOptions": {"label": "Username","placeholder": "johndoe","required": true,"description": "Descriptive text"}}, {"key": "password","type": "input","templateOptions": {"type": "password","label": "Password","required": true},"expressionProperties": {"templateOptions.disabled": "!model.username"}}]
 
         console.log("");
         console.log("The transformed JSON:");
         // console.log(staticAngularFormlyJSON);
-        console.log(angularFormlyJSON);
+        // console.log(angularFormlyJSON);
+        console.log(angularFormlyJSONArray);
         console.log("");
+
+        // return myArray3;
         // return staticAngularFormlyJSON;
 
-
-        return angularFormlyJSON['0'];
+        // return angularFormlyJSONArray['0'];
+        return angularFormlyJSONArray;
+        return angularFormlyJSON;
     }
-    
 
-    // var generateAngularFormlyJSON = function(originalJSON) {
-    //     for(var i in originalJSON) {
-    //         if ((i === "interactive") && (Object.prototype.toString.call(originalJSON[i]) != "[object Array]")) {
-    //             console.log("Found an interactive element.");
-    //             console.log(originalJSON[i]);
-    //             var angularFormlyJSONInteractiveElement = transformInput(originalJSON[i]);
-    //             angularFormlyJSONArray.push(angularFormlyJSONInteractiveElement);
-    //         } else if ((i === "somethingElse") && (Object.prototype.toString.call(originalJSON[i]) != "[object Array]")) {
-    //             //TODO
-    //         } else 
-    //         if ( (typeof originalJSON[i] === "object") && (originalJSON[i] !== null) ) {
-    //             // console.log("This part of the JSON is an object. Therefore, generate the formly JSON for this part.");
-    //             var found = generateAngularFormlyJSON(originalJSON[i]);
-    //         } 
-    //         else {
-    //             // console.log("No match for generating JSON found.")
-    //         }
-    //     }
-    // };
+/*
+
+parseGroup(json)
+{
+    var ret = {};
+    var children = json['children'];
+    ret.fields = [];
+    for(c in children)
+    {
+        ret.fields.append(parseChild(c));
+    }
+
+    ret.xy = json['asdas'];
+    return ret;
+}
+*/
+
 
     var generateAngularFormlyJSON = function(originalJSON) {
         console.log("Generate angular formly JSON for JSON:");
@@ -68,7 +80,7 @@ formularGenerator.factory("jsonTransformer", [function () {
                 console.log("found question");
                 generateAngularFormlyJSONForQuestion(originalJSON.question);
             } else {
-                console.log("No match for generating JSON found.")
+                console.log("No match for generating JSON found.");
             }
         }
     };
@@ -96,9 +108,12 @@ formularGenerator.factory("jsonTransformer", [function () {
         if (originalQuestionJSON['interactive']) {
             console.log("The question contains an interactive element:");
             console.log(originalQuestionJSON['interactive']);
-            generateAngularFormlyJSONForInteractiveArray(originalQuestionJSON['interactive']);
+            returnJSON = generateAngularFormlyJSONForInteractiveArray(originalQuestionJSON['interactive']);
         };
 
+        returnJSON.templateOptions.description = originalQuestionJSON.description[0]['content'];
+        
+        angularFormlyJSONArray.push(returnJSON);
         return returnJSON;
     };
 
@@ -110,39 +125,39 @@ formularGenerator.factory("jsonTransformer", [function () {
         for (var i in originalInteractiveJSONArray) {
             console.log("Checking for the type of the interactive element:");
             console.log(originalInteractiveJSONArray[i]);
-            console.log(originalInteractiveJSONArray[i]['type']);
-            console.log(originalInteractiveJSONArray[i].type);
-            console.log(originalInteractiveJSONArray.i['type']);
-            console.log(originalInteractiveJSONArray.i.type);
+            console.log(originalInteractiveJSONArray[i].interactive['type']);
             
-            if ((originalInteractiveJSONArray[i]['type'] === "textfield") && (Object.prototype.toString.call(originalJSON[i]) != "[object Array]")) {
+            if (originalInteractiveJSONArray[i].interactive['type'] === "textfield") {
                 console.log("The interactive element is a textfield:");
-                transformInput(originalInteractiveJSONArray[i]);
+                console.log(originalInteractiveJSONArray[i].interactive);
+                returnJSON = transformInput(originalInteractiveJSONArray[i].interactive);
             };
         };
+
         return returnJSON;
     };
 
     var transformLabel = function(originalLabelJSON) {
         var returnJSON = {};
-        console.log("LABEL");
+        console.log("Transform LABEL-JSON");
         return returnJSON;
     };
 
     var transformInput = function(originalInputJSON) {
         var returnJSON = {};
-        console.log("INPUT");
 
-        returnJSON.key = originalJSON['mapping-key'];
+        returnJSON.key = originalInputJSON['mapping-key'];
         returnJSON.type = "input";
         returnJSON.templateOptions = {};
-        returnJSON.templateOptions.label = originalJSON.textfield['textfieldtype'];
-        returnJSON.templateOptions.placeholder = originalJSON.textfield['placeholder'];
-        returnJSON.templateOptions.required = (originalJSON.validators['required'] === true)?true:false;
-        returnJSON.templateOptions.description = originalJSON.textfield['textfieldtype'];
+        returnJSON.templateOptions.label = originalInputJSON.textfield['label'];
+        returnJSON.templateOptions.placeholder = originalInputJSON.textfield['placeholder'];
+        returnJSON.templateOptions.required = (originalInputJSON.validators['required'] === true)?true:false;
+        // returnJSON.templateOptions.description = originalInputJSON.textfield['textfieldtype'];
 
         console.log("The transformed input JSON:");
         console.log(returnJSON);
+
+        // angularFormlyJSONArray.push(returnJSON);
 
         return returnJSON;
     };
