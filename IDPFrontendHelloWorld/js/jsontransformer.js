@@ -105,6 +105,8 @@ parseGroup(json)
         console.log("Generate angular formly JSON for QUESTION:");
         console.log(originalQuestionJSON);
         //TODO add questionspecific attributes to angularFormlyJSONArray
+        
+
         if (originalQuestionJSON['interactive']) {
             console.log("The question contains an interactive element:");
             console.log(originalQuestionJSON['interactive']);
@@ -112,7 +114,6 @@ parseGroup(json)
         };
 
         returnJSON.templateOptions.description = originalQuestionJSON.description[0]['content'];
-        
         angularFormlyJSONArray.push(returnJSON);
         return returnJSON;
     };

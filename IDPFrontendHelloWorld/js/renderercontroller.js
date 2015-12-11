@@ -21,12 +21,16 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
         // console.log(arrayWithJSONs);
 
         RE.formularFields = arrayWithJSONs[0];	
-    });
 
-	backendConnector.getFormularData(0,0,function(response){
-		// console.log("FormularData filled in formular: ");
-        // console.log(response);
-    });    
+        backendConnector.getFormularData(1,0,function(response){
+            console.log("here");
+            console.log(response);
+            for(var key in response)
+            {
+                RE.formular[key] = response[key];
+            }
+        });
+    });   
 
 
     RE.onSubmit = onSubmit;

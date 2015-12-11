@@ -19,14 +19,14 @@
 					"id":"12345678910",
 					"description":[
 					{
-						"content": "What is your first name?",
+						"content": "Please enter your first name above.",
 						"type": "text"
 					}],
 					"interactive":[
 					{
 						"interactive": {
 							"type":"textfield",
-							"mapping-key":"myKey",
+							"mapping-key":"k_firstname",
 							"validators":[],
 							"textfield": {
 								"length":256,
@@ -55,14 +55,14 @@
 					"id":"12345678911",
 					"description":[
 					{
-						"content": "What is your last name?",
+						"content": "Please enter your last name above.",
 						"type": "text"
 					}],
 					"interactive":[
 					{
 						"interactive": {
 							"type":"textfield",
-							"mapping-key":"myKey1",
+							"mapping-key":"k_lastname",
 							"validators":[],
 							"textfield": {
 								"length":256,
