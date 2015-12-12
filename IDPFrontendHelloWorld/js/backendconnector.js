@@ -6,15 +6,14 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 		$http({
 		 	method: 'GET',
 		 	url: 'http://localhost:8080/IDPBackend/rest/form/2'
-			//url: 'http://localhost:8000/response.json'
-			//url: 'http://localhost:8080'
+			// url: 'http://localhost:8000/response.json'
 		}).then(function (response, status) {
-			console.log("Data from backend successfully fechted: ");
+			console.log("Formular-Specification from backend successfully fechted: ");
 			console.log(response.data);
 			console.log("");
 			callback(response.data);
 		},function (error){
-			console.log("Error in backendConnector: ");
+			console.log("Error fetching Formular-Specification in backendConnector: ");
 			console.log(error);
 			console.log("");
 			callback(error);
@@ -24,14 +23,14 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 	BC.getFormularData = function (id,userid,callback) {
 	$http({
 		 	method: 'GET',
-		 	url: 'http://localhost:8080/IDPBackend/rest/data/1'
-			//url: 'http://localhost:8080'
+		 	url: 'http://localhost:8080/IDPBackend/rest/data/'+userid
 		}).then(function (response, status) {
+			console.log("Formular-Data from backend successfully fechted: ");
 			console.log(response.data);
 			console.log("");
 			callback(response.data);
 		},function (error){
-			console.log("Error in backendConnector: ");
+			console.log("Error fetching Formular-Data in backendConnector: ");
 			console.log(error);
 			console.log("");
 			callback(error);
@@ -42,6 +41,6 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 		//TODO
 		callback();
 	}
-	
+
 	return BC;
 }]);

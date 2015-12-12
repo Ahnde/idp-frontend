@@ -13,7 +13,7 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
             var currentJSONObject = formularSpecification['children'][objectNumber];
             // console.log("The current transform:");
             // console.log(currentJSONObject);
-            var angularFormlyJSON = jsonTransformer.transformFormularSpecificationToAngularFormlyJSON(currentJSONObject);
+            var angularFormlyJSON = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(currentJSONObject);
             arrayWithJSONs.push(angularFormlyJSON);
         };
 
@@ -22,9 +22,7 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
 
         RE.formularFields = arrayWithJSONs[0];	
 
-        backendConnector.getFormularData(1,0,function(response){
-            console.log("here");
-            console.log(response);
+        backendConnector.getFormularData(1,1,function(response){
             for(var key in response)
             {
                 RE.formular[key] = response[key];
