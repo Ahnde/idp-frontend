@@ -74,21 +74,39 @@ formularGenerator.factory("jsonTransformer", [function () {
         return afJsonArray;
     };
 
-    var angularFormlyJsonArrayForInteractive = function(originalInteractiveJsonArray) {
+    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJsonArray) {
         var afJsonArray = [];
 
         console.log("Generate angular formly Json for INTERACTIVE:");
-        console.log(originalInteractiveJsonArray);
+        console.log(fsInteractiveJsonArray);
         
         //TODO add interactivespecific attributes to angularFormlyJsonArray
         
-        for (var i in originalInteractiveJsonArray) {
+        for (var i in fsInteractiveJsonArray) {
+            var fsInteractiveJson = fsInteractiveJsonArray[i].interactive;
+
             console.log("Checking for the type of the interactive element:");
-            console.log(originalInteractiveJsonArray[i].interactive['type']);
-            
-            if (originalInteractiveJsonArray[i].interactive['type'] === "textfield") {
-                afJsonArray.push(angularFormlyJsonForInputfield(originalInteractiveJsonArray[i].interactive));
-            };
+            console.log(fsInteractiveJson['type']);
+
+            switch (fsInteractiveJson['type']) {
+                case "textfield":
+                    afJsonArray.push(angularFormlyJsonForInputfield(fsInteractiveJson));
+                    break;
+                case "checkbox":
+                    afJsonArray.push(angularFormlyJsonForCheckbox(fsInteractiveJson));
+                    break;
+                case "radio":
+                    afJsonArray.push(angularFormlyJsonForRadio(fsInteractiveJson));
+                    break;
+                case "dropdown":
+                    afJsonArray.push(angularFormlyJsonForDropdown(fsInteractiveJson));
+                    break;
+                case "date":
+                    afJsonArray.push(angularFormlyJsonForDate(fsInteractiveJson));
+                    break;
+                default:
+                    break;
+            }
         };
 
         return afJsonArray;
@@ -102,6 +120,8 @@ formularGenerator.factory("jsonTransformer", [function () {
 
     var angularFormlyJsonForInputfield = function(fsInputJson) {
         var afJson = {};
+
+        console.log("Transform INPUT-Json");
 
         afJson.key = fsInputJson['mapping-key'];
         afJson.type = "input";
@@ -133,11 +153,29 @@ formularGenerator.factory("jsonTransformer", [function () {
 
     var angularFormlyJsonForCheckbox = function(fsCheckboxJson) {
         var afJson = {};
+        console.log("Transform CHECKBOX-Json");
+
+        return afJson;
+    };
+
+    var angularFormlyJsonForRadio = function(fsRadioJson) {
+        var afJson = {};
+        console.log("Transform RADIO-Json");
+
         return afJson;
     };
 
     var angularFormlyJsonForDropdown = function(fsDropdownJson) {
         var afJson = {};
+        console.log("Transform DROPDOWN-Json");
+        
+        return afJson;
+    };
+
+    var angularFormlyJsonForDate = function(fsDateJson) {
+        var afJson = {};
+        console.log("Transform DATE-Json");
+
         return afJson;
     };
 
