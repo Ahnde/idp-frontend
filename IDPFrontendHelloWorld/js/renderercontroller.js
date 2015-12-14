@@ -9,18 +9,13 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
 		
         var arrayWithJSONs = [];
 
-        for (var objectNumber in formularSpecification['children']) {
-            var currentJSONObject = formularSpecification['children'][objectNumber];
-            // console.log("The current transform:");
-            // console.log(currentJSONObject);
-            var angularFormlyJSON = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(currentJSONObject);
-            arrayWithJSONs.push(angularFormlyJSON);
-        };
+        arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification['children']);
 
-        // console.log("FormularSpecification filled in formularFields: ");
-        // console.log(arrayWithJSONs);
+        console.log("FormularSpecification filled in formularFields: ");
+        console.log(arrayWithJSONs);
+        console.log("");
 
-        RE.formularFields = arrayWithJSONs[0];	
+        RE.formularFields = arrayWithJSONs;	
 
         backendConnector.getFormularData(1,1,function(response){
             for(var key in response)

@@ -1,15 +1,20 @@
 formularGenerator.factory("jsonTransformer", [function () {
 
+    "use strict";
     var JT = {};
 
-    JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecification) {
+    JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecificationArray) {
         console.log("Transforming Json:");
-        console.log(formularSpecification);
+        console.log(formularSpecificationArray);
         console.log("");
-        
-        console.log("--------");
-        var angularFormlyJsonArray = angularFormlyJsonArrayForFsJson(formularSpecification);
-        console.log("--------");
+
+        var angularFormlyJsonArray = [];
+
+        for (var objectNumber in formularSpecificationArray) {
+            var currentJsJson = formularSpecificationArray[objectNumber];
+            var currentAfArray = angularFormlyJsonArrayForFsJson(currentJsJson);
+            angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
+        };
 
         console.log("");
         console.log("The array with the transformed Json:");
@@ -17,7 +22,7 @@ formularGenerator.factory("jsonTransformer", [function () {
         console.log("");
 
         return angularFormlyJsonArray;
-    }
+    };
 
     var angularFormlyJsonArrayForFsJson = function(fsJson) {
         console.log("Generate angular formly Json for Json:");
@@ -25,6 +30,7 @@ formularGenerator.factory("jsonTransformer", [function () {
 
         var afJsonArray = [];
         var afJson = {};
+
         for(var i in fsJson) {
             if ((i === "group") && (Object.prototype.toString.call(fsJson[i]) != "[object Array]")) {
                 console.log("Found GROUP in Json");
@@ -35,6 +41,7 @@ formularGenerator.factory("jsonTransformer", [function () {
             } else {
                 console.log("No match for generating Json found.");
             }
+        
         }
 
         return afJsonArray;
@@ -96,13 +103,13 @@ formularGenerator.factory("jsonTransformer", [function () {
                     afJsonArray.push(angularFormlyJsonForCheckbox(fsInteractiveJson));
                     break;
                 case "radio":
-                    afJsonArray.push(angularFormlyJsonForRadio(fsInteractiveJson));
+                    // afJsonArray.push(angularFormlyJsonForRadio(fsInteractiveJson));
                     break;
                 case "dropdown":
-                    afJsonArray.push(angularFormlyJsonForDropdown(fsInteractiveJson));
+                    // afJsonArray.push(angularFormlyJsonForDropdown(fsInteractiveJson));
                     break;
                 case "date":
-                    afJsonArray.push(angularFormlyJsonForDate(fsInteractiveJson));
+                    // afJsonArray.push(angularFormlyJsonForDate(fsInteractiveJson));
                     break;
                 default:
                     break;
@@ -139,24 +146,61 @@ formularGenerator.factory("jsonTransformer", [function () {
         templateOptions.label = fsInputJson.textfield['label'];
         templateOptions.placeholder = fsInputJson.textfield['placeholder'];
 
-        var validators = fsInputJson.validators;
-        for (var validatorIndex in validators) {
-            var validator = validators[validatorIndex];
-            if (validator === 'required') {
-                templateOptions.required = (validators[validatorIndex] === true)?true:false;
-            };
-        };
+        // var validators = fsInputJson.validators;
+        // for (var validatorIndex in validators) {
+        //     var validator = validators[validatorIndex];
+        //     if (validator === 'required') {
+        //         templateOptions.required = (validators[validatorIndex] === true)?true:false;
+        //     };
+        // };
         
         // templateOptions.description = fsInputJson.textfield['description'];
         return templateOptions;
-    }
+    };
 
     var angularFormlyJsonForCheckbox = function(fsCheckboxJson) {
         var afJson = {};
         console.log("Transform CHECKBOX-Json");
+        
+        afJson.key = fsCheckboxJson['mapping-key'];
+        afJson.type = "checkbox";
+        afJson.templateOptions = templateOptionsForCheckboxJson(fsCheckboxJson);
+
+        console.log("The transformed checkbox Json:");
+        console.log(afJson);
 
         return afJson;
     };
+
+    var templateOptionsForCheckboxJson = function(fsCheckboxJson) {
+        var templateOptions = {}
+
+        templateOptions.label = fsCheckboxJson.checkbox['label'];
+        templateOptions.placeholder = fsCheckboxJson.checkbox['placeholder'];
+        
+        // templateOptions.description = fsInputJson.textfield['description'];
+        return templateOptions;
+    };
+
+    // {
+    //     "key": "default-checkbox-4084",
+    //     "templateOptions": {
+    //         "label": "Checkbox",
+    //         "placeholder": "placeholder",
+    //         "options": [
+    //             "value one",
+    //             "value two"
+    //         ]
+    //     },
+    //     "className": "",
+    //     "type": "checkBoxList",
+    //     "data": {},
+    //     "validation": {
+    //         "messages": {}
+    //     },
+    //     "id": "formly_2_checkBoxList_default-checkbox-4084_0",
+    //     "initialValue": []
+    // }
 
     var angularFormlyJsonForRadio = function(fsRadioJson) {
         var afJson = {};
@@ -179,6 +223,19 @@ formularGenerator.factory("jsonTransformer", [function () {
         return afJson;
     };
 
+    var angularFormlyArrayForOptions = function(fsOptionsArray){
+        var afOptionsArray = [];
+        console.log("Transform OPTIONS");
+
+        for (var optionIndex in fsOptionsArray) {
+            var option = fsOptionsArray[optionIndex].option;
+            console.log(option.label);
+            afOptionsArray.push(option.label);
+        };
+
+        console.log(afOptionsArray);
+        return afOptionsArray;  
+    };
 
     return JT;
 }]);
