@@ -240,13 +240,11 @@ formularGenerator.factory("jsonTransformer", [function () {
             console.log(option.label);
 
             var afOptionJson = {};
-            afOptionJson.label = option.label;
+            afOptionJson.name = option.label;
             afOptionJson.value = option.id;
             afOptionsArray.push(afOptionJson);
         };
 
-        console.log("Here");
-        console.log(afOptionsArray);
         return afOptionsArray;  
     };
 
