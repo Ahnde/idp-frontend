@@ -103,10 +103,10 @@ formularGenerator.factory("jsonTransformer", [function () {
                     afJsonArray.push(angularFormlyJsonForCheckbox(fsInteractiveJson));
                     break;
                 case "radio":
-                    // afJsonArray.push(angularFormlyJsonForRadio(fsInteractiveJson));
+                    afJsonArray.push(angularFormlyJsonForRadio(fsInteractiveJson));
                     break;
                 case "dropdown":
-                    // afJsonArray.push(angularFormlyJsonForDropdown(fsInteractiveJson));
+                    afJsonArray.push(angularFormlyJsonForDropdown(fsInteractiveJson));
                     break;
                 case "date":
                     // afJsonArray.push(angularFormlyJsonForDate(fsInteractiveJson));
@@ -145,14 +145,6 @@ formularGenerator.factory("jsonTransformer", [function () {
 
         templateOptions.label = fsInputJson.textfield['label'];
         templateOptions.placeholder = fsInputJson.textfield['placeholder'];
-
-        // var validators = fsInputJson.validators;
-        // for (var validatorIndex in validators) {
-        //     var validator = validators[validatorIndex];
-        //     if (validator === 'required') {
-        //         templateOptions.required = (validators[validatorIndex] === true)?true:false;
-        //     };
-        // };
         
         // templateOptions.description = fsInputJson.textfield['description'];
         return templateOptions;
@@ -178,42 +170,58 @@ formularGenerator.factory("jsonTransformer", [function () {
         templateOptions.label = fsCheckboxJson.checkbox['label'];
         templateOptions.placeholder = fsCheckboxJson.checkbox['placeholder'];
         
-        // templateOptions.description = fsInputJson.textfield['description'];
+        // templateOptions.description = fsCheckboxJson.checkbox['description'];
         return templateOptions;
     };
-
-    // {
-    //     "key": "default-checkbox-4084",
-    //     "templateOptions": {
-    //         "label": "Checkbox",
-    //         "placeholder": "placeholder",
-    //         "options": [
-    //             "value one",
-    //             "value two"
-    //         ]
-    //     },
-    //     "className": "",
-    //     "type": "checkBoxList",
-    //     "data": {},
-    //     "validation": {
-    //         "messages": {}
-    //     },
-    //     "id": "formly_2_checkBoxList_default-checkbox-4084_0",
-    //     "initialValue": []
-    // }
 
     var angularFormlyJsonForRadio = function(fsRadioJson) {
         var afJson = {};
         console.log("Transform RADIO-Json");
 
+        afJson.key = fsRadioJson['mapping-key'];
+        afJson.type = "radio";
+        afJson.templateOptions = templateOptionsForRadioJson(fsRadioJson);
+
+        console.log("The transformed radio Json:");
+        console.log(afJson);
+
         return afJson;
+    };
+
+     var templateOptionsForRadioJson = function(fsRadioJson) {
+        var templateOptions = {}
+
+        templateOptions.label = fsRadioJson.radio['label'];
+        templateOptions.placeholder = fsRadioJson.radio['placeholder'];
+        templateOptions.options = angularFormlyArrayForOptions(fsRadioJson.radio['options']);
+
+        // templateOptions.description = fsRadioJson.radio['description'];
+        return templateOptions;
     };
 
     var angularFormlyJsonForDropdown = function(fsDropdownJson) {
         var afJson = {};
         console.log("Transform DROPDOWN-Json");
         
+        afJson.key = fsDropdownJson['mapping-key'];
+        afJson.type = "select";
+        afJson.templateOptions = templateOptionsForDropdownJson(fsDropdownJson);
+
+        console.log("The transformed dropdown Json:");
+        console.log(afJson);
+
         return afJson;
+    };
+
+    var templateOptionsForDropdownJson = function(fsDropdownJson) {
+        var templateOptions = {}
+
+        templateOptions.label = fsDropdownJson.dropdown['label'];
+        templateOptions.placeholder = fsDropdownJson.dropdown['placeholder'];
+        templateOptions.options = angularFormlyArrayForOptions(fsDropdownJson.dropdown['options']);
+
+        // templateOptions.description = fsRadioJson.radio['description'];
+        return templateOptions;
     };
 
     var angularFormlyJsonForDate = function(fsDateJson) {
@@ -230,9 +238,14 @@ formularGenerator.factory("jsonTransformer", [function () {
         for (var optionIndex in fsOptionsArray) {
             var option = fsOptionsArray[optionIndex].option;
             console.log(option.label);
-            afOptionsArray.push(option.label);
+
+            var afOptionJson = {};
+            afOptionJson.label = option.label;
+            afOptionJson.value = option.id;
+            afOptionsArray.push(afOptionJson);
         };
 
+        console.log("Here");
         console.log(afOptionsArray);
         return afOptionsArray;  
     };
