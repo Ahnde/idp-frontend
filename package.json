@@ -1,0 +1,34 @@
+{
+  "name": "idp-frontend",
+  "version": "1.0.0",
+  "description": "IDP Master Project",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahnde/idp-frontend.git"
+  },
+  "author": "Andi and Michi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahnde/idp-frontend/issues"
+  },
+  "homepage": "https://github.com/Ahnde/idp-frontend#readme",
+  "devDependencies": {
+    "angular": "^1.4.8",
+    "angular-formly": "^7.3.9",
+    "angular-formly-templates-bootstrap": "^6.2.0",
+    "api-check": "^7.5.5",
+    "bootstrap": "^3.3.6",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.16",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.6"
+  }
+}
