@@ -1,0 +1,223 @@
+
+{
+	"id":"1",
+	"type":"form",
+	"metadata":[],
+	"description":[],
+	"children":[
+	{
+		"group": {
+			"id":"11",
+			"type":"group",
+			"description": {
+				"id":"110",
+				"content": "This part of the form is about the title of the patient.",
+				"type": "text"
+			},
+			"children":[
+			{
+				"question": {
+					"id":"111",
+					"type": "question",
+					"description":[
+					{
+						"id":"1110",
+						"content": "Please enter your title if you have one.",
+						"type": "text"
+					}],
+					"interactive":[
+					{
+						"interactive": {
+							"id":"1111",
+							"type":"textfield",
+							"mapping-key":"k_title",
+							"validators":[],
+							"textfield": {
+								"length":256,
+								"textfieldtype":"text",
+								"label":"Title",
+								"placeholder":"Dr."
+							}
+						}
+					}]
+				}
+			},
+			{
+				"group": {
+					"id":"112",
+					"type":"group",
+					"description": {
+						"id":"1120",
+						"content": "This part of the form is about the name of the patient.",
+						"type": "text"
+					},
+					"children":[
+					{
+						"question": {
+							"type": "question",
+							"id":"1121",
+							"description":[
+							{
+								"id":"11210",
+								"content": "Please enter your first name above.",
+								"type": "text"
+							}],
+							"interactive":[
+							{
+								"interactive": {
+									"id":"11211",
+									"type":"textfield",
+									"mapping-key":"k_firstname",
+									"validators":[],
+									"textfield": {
+										"length":256,
+										"textfieldtype":"text",
+										"label":"First Name",
+										"placeholder":"John"
+									}
+								}
+							}]
+						}
+					},
+					{
+						"question": {
+							"type": "question",
+							"id":"1122",
+							"description":[
+							{
+								"id":"11220",
+								"content": "Please enter your last name above.",
+								"type": "text"
+							}],
+							"interactive":[
+							{
+								"interactive": {
+									"id":"11221",
+									"type":"textfield",
+									"mapping-key":"k_lastname",
+									"validators":[],
+									"textfield": {
+										"length":256,
+										"textfieldtype":"text",
+										"label":"Last Name",
+										"placeholder":"Doe"
+									}
+								}
+							}]
+						}
+					}],
+					"repeatable":false
+				}
+			}],
+			"repeatable":false
+		}
+	},
+	{
+		"question": {
+			"id":"12",
+			"type": "question",
+			"description":[
+			{
+				"id":"120",
+				"content": "This question demonstrates various HTML-Testelements.",
+				"type": "text"
+			},
+			{
+				"id":"1200",
+				"content": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg",
+				"type": "image"
+			}],
+			"interactive":[
+			{
+				"interactive": {
+					"id":"121",
+					"type":"textfield",
+					"mapping-key":"k_textfield",
+					"validators":[],
+					"textfield": {
+						"length":256,
+						"textfieldtype":"text",
+						"label":"Input Test",
+						"placeholder":"Placeholder"
+					}
+				}
+			},
+			{
+				"interactive": {
+					"id":"122",
+					"type":"checkbox",
+					"mapping-key":"k_checkbox",
+					"validators":[],
+					"checkbox": {
+						"label":"Checkbox Test"
+					}
+				}
+			},
+			{
+				"interactive": {
+					"id":"123",
+					"type":"radio",
+					"mapping-key":"k_radio",
+					"validators":[],
+					"radio": {
+						"label":"Radio Test",
+						"options":[
+						{
+							"option":{
+								"id":"1230",
+								"label":"Option one"
+							}
+						},
+						{
+                			"option":{
+                				"id":"1231",
+								"label":"Option two"
+							}
+						}]
+					}
+				}
+			},
+			{
+				"interactive": {
+					"id":"124",
+					"type":"dropdown",
+					"mapping-key":"k_dropdown",
+					"validators":[],
+					"dropdown": {
+						"label":"Dropdown Test",
+						"options":[
+						{
+							"option":{
+								"id":"1240",
+								"label":"First option"	
+							}
+						},
+						{
+							"option":{
+								"id":"1241",
+								"label":"Second option"	
+							}
+						},
+						{
+							"option":{
+								"id":"1242",
+								"label":"Third option"	
+							}
+						}]
+					}
+				}
+			},
+			{
+				"interactive": {
+					"id":"125",
+					"type":"date",
+					"mapping-key":"k_date",
+					"validators":[],
+					"date": {
+						"date":"07.08.1989"
+					}
+				}
+			}]
+		}
+	}]
+}
