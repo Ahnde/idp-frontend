@@ -1,106 +1,52 @@
 "use strict";
 
-describe("true", function() {
-	it("Should be true", function() {
-		var myBool = true;
-		dump(myBool);
-		expect(true).toBeTruthy();
-	});
+describe("true", function () {
+    it("Should be true", function () {
+       var myBool = true;
+       dump(myBool);
+       expect(true).toBeTruthy();
+    });
 });
 
-describe("true", function() {
-	it("Should be true", function() {
-		expect(true).toBe(false);
-	});
+describe("true", function () {
+    it("Should be true", function () {
+        expect(true).toBe(false);
+    });
 });
 
-describe('something', function() {
-	var $httpBackend, scope;
+describe('jsonTransformer', function () {
 
-	beforeEach(inject(function ($injector, $rootScope, $controller) {
+    beforeEach(module('formularGenerator'));
 
-    	$httpBackend = $injector.get('$httpBackend');
-    	jasmine.getJSONFixtures().fixturesPath='base/test/mock';
+    var $controller, inputJson, outputJson, expectedOutputJson;
 
-    	$httpBackend.whenGET('http://localhost:8080/IDPBackend/rest/form/2').respond(
-        	getJSONFixture('mock_formularSpecification.json')
-    	);
+    beforeEach(inject(function (_$controller_) {
+        // The injector unwraps the underscores (_) from around the parameter names when matching
+        $controller = _$controller_;
 
-    	scope = $rootScope.$new();
-    	$controller('something', {'$scope': scope});
+        jasmine.getJSONFixtures().fixturesPath='base/test/mock';
 
-	}));
+        $httpBackend = $injector.get('$httpBackend');
+        $httpBackend.whenGET('http://localhost:8080/IDPBackend/rest/form/2').respond(
+            inputJson = getJSONFixture('mock_formularSpecification.json')
+        );
 
+        expectedOutputJson = getJSONFixture('mock_angularFormly.json'); 
 
-	it('should have some resultsets', function() {
-    	$httpBackend.flush();
-    	expect(scope.result_sets.length).toBe(59);
-	});
+    }));
 
+    describe('Complete transformation', function () {
+        beforeEach(inject(function () {
+
+            it('should have transformed the FS-JSON to the correct AF-JSON', function () {
+                // $httpBackend.flush();
+                outputJson = getJSONFixture('mock_angularFormly.json'); //todo: transform
+
+                var $scope = {};
+                var controller = $controller('jsonTransformer', {$scope: $scope});
+
+                expect(outputJson).toBe(expectedOutputJson);
+            });
+        }));
+    });
 });
-
-
-describe("json transformer factory", function () {
-	var jsonTransformer;
-
-  	beforeEach(module("jsonTransformer"));
-
-  	beforeEach(inject(function (_jsonTransformer_) {
-    	jsonTransformer = _jsonTransformer_;
-  	}));
-
-  	it("should do something", function () {
-  		var afArray = jsonTransformer.angularFormlyArrayForOptions(stubFsOptionsArray);
-
-
-
-    	redditService.getSubredditsSubmittedToBy("yoitsnate").then(function(subreddits) {
-      		expect(subreddits).toEqual(["golang", "javascript"]);
-    	});
-    	httpBackend.flush();
-  	});
-});
-
-// describe("reddit api service", function () {
-// 	var redditService, httpBackend;
-
-//   	beforeEach(module("reddit"));
-
-//   	beforeEach(inject(function (_redditService_, $httpBackend) {
-//     	redditService = _redditService_;
-//     	httpBackend = $httpBackend;
-//   	}));
-
-//   	it("should do something", function () {
-//     	httpBackend.whenGET("http://api.reddit.com/user/yoitsnate/submitted.json").respond({
-//         	data: {
-//           		children: [
-//             	{
-//               		data: {
-//                 		subreddit: "golang"
-//               		}
-//             	},
-//            		{
-//            			data: {
-//                 		subreddit: "javascript"
-//             		}
-//             	},
-//             	{
-//               		data: {
-//                 		subreddit: "golang"
-//               		}
-//             	},
-//             	{
-//               		data: {
-//                 		subreddit: "javascript"
-//               		}
-//             	}]
-//         	}
-//     	});
-
-//     	redditService.getSubredditsSubmittedToBy("yoitsnate").then(function(subreddits) {
-//       		expect(subreddits).toEqual(["golang", "javascript"]);
-//     	});
-//     	httpBackend.flush();
-//   	});
-// });

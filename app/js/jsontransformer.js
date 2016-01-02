@@ -21,6 +21,12 @@ formularGenerator.factory("jsonTransformer", [function () {
         console.log(angularFormlyJsonArray);
         console.log("");
 
+        // var json = JSON.stringify(angularFormlyJsonArray);
+        // console.log(json);
+        // var url = 'data:text/json;charset=utf8,' + encodeURIComponent(json);
+        // window.open(url, '_blank');
+        // window.focus();
+
         return angularFormlyJsonArray;
     };
 
@@ -37,7 +43,7 @@ formularGenerator.factory("jsonTransformer", [function () {
                 afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForGroup(fsJson.group));
             } else if ((i === "question") && (Object.prototype.toString.call(fsJson[i]) != "[object Array]")) {
                 console.log("found question");
-                afJsonArray = afJsonArray.concat(angularFormlyJsonForQuestion(fsJson.question));
+                afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForQuestion(fsJson.question));
             } else {
                 console.log("No match for generating Json found.");
             }
@@ -64,7 +70,7 @@ formularGenerator.factory("jsonTransformer", [function () {
         return afJsonArray;
     };
 
-    var angularFormlyJsonForQuestion = function(originalQuestionJson) {
+    var angularFormlyJsonArrayForQuestion = function(originalQuestionJson) {
         var afJsonArray = [];
 
         console.log("Generate angular formly Json for QUESTION:");
@@ -104,6 +110,10 @@ formularGenerator.factory("jsonTransformer", [function () {
             if (afJson.type === 'date') {
                 break; //no af-template for the calendar-picker implemented yet
             };
+
+            // var url = 'data:text/json;charset=utf8,' + encodeURIComponent(afJson);
+            // window.open(url, '_blank');
+            // window.focus();
 
             afJsonArray.push(afJson);
         };
