@@ -9,7 +9,7 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
 		
         var arrayWithJSONs = [];
 
-        arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification['children']);
+        arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
 
         console.log("FormularSpecification filled in formularFields: ");
         console.log(arrayWithJSONs);

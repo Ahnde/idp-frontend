@@ -3,11 +3,12 @@ formularGenerator.factory("jsonTransformer", [function () {
     "use strict";
     var JT = {};
 
-    JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecificationArray) {
+    JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecification) {
         console.log("Transforming Json:");
-        console.log(formularSpecificationArray);
+        console.log(formularSpecification);
         console.log("");
 
+        var formularSpecificationArray = formularSpecification.properties['children'].items;
         var angularFormlyJsonArray = [];
 
         for (var objectNumber in formularSpecificationArray) {
@@ -21,8 +22,8 @@ formularGenerator.factory("jsonTransformer", [function () {
         console.log(angularFormlyJsonArray);
         console.log("");
 
-        // var json = JSON.stringify(angularFormlyJsonArray);
-        // console.log(json);
+        var json = JSON.stringify(angularFormlyJsonArray);
+        console.log(json);
         // var url = 'data:text/json;charset=utf8,' + encodeURIComponent(json);
         // window.open(url, '_blank');
         // window.focus();
@@ -35,20 +36,16 @@ formularGenerator.factory("jsonTransformer", [function () {
         console.log(fsJson);
 
         var afJsonArray = [];
-        var afJson = {};
-
-        for(var i in fsJson) {
-            if ((i === "group") && (Object.prototype.toString.call(fsJson[i]) != "[object Array]")) {
-                console.log("Found GROUP in Json");
-                afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForGroup(fsJson.group));
-            } else if ((i === "question") && (Object.prototype.toString.call(fsJson[i]) != "[object Array]")) {
-                console.log("found question");
-                afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForQuestion(fsJson.question));
-            } else {
-                console.log("No match for generating Json found.");
-            }
         
-        }
+        if (fsJson.properties.hasOwnProperty("group")) {
+            console.log("Found GROUP");
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForGroup(fsJson.properties.group));
+        } else if(fsJson.properties.hasOwnProperty("question")) {
+            console.log("found QUESTION");
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForQuestion(fsJson.properties.question));
+        } else {
+            console.log("No match for generating Json found.");
+        };
 
         return afJsonArray;
     };
@@ -60,60 +57,66 @@ formularGenerator.factory("jsonTransformer", [function () {
         console.log(fsGroupJson);
 
         //TODO add groupspecific attributes to angularFormlyJsonArray
+        var fsGroupJsonArray = fsGroupJson.properties['children'].items;
 
-        for (var i in fsGroupJson.children) {
+        for (var i in fsGroupJsonArray) {
             console.log("Call again angularFormlyJsonArrayForFsJson with groups child element:");
-            console.log(fsGroupJson.children[i]);
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForFsJson(fsGroupJson.children[i]));
+            console.log(fsGroupJsonArray[i]);
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForFsJson(fsGroupJsonArray[i]));
         };
         
         return afJsonArray;
     };
 
-    var angularFormlyJsonArrayForQuestion = function(originalQuestionJson) {
+    var angularFormlyJsonArrayForQuestion = function(fsQuestionJson) {
         var afJsonArray = [];
 
         console.log("Generate angular formly Json for QUESTION:");
-        console.log(originalQuestionJson);
+        console.log(fsQuestionJson);
 
         //TODO add questionspecific attributes to angularFormlyJsonArray
 
-        if (originalQuestionJson['interactive']) {
+        if (fsQuestionJson.properties['interactive']) {
             console.log("The question contains an interactive element:");
-            console.log(originalQuestionJson['interactive']);
-            afJsonArray = angularFormlyJsonArrayForInteractive(originalQuestionJson['interactive']);
+            console.log(fsQuestionJson.properties['interactive']);
+            afJsonArray = angularFormlyJsonArrayForInteractive(fsQuestionJson.properties['interactive']);
         };
 
         return afJsonArray;
     };
 
-    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJsonArray) {
+    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJson) {
         var afJsonArray = [];
 
         console.log("Generate angular formly Json for INTERACTIVE:");
-        console.log(fsInteractiveJsonArray);
+        console.log(fsInteractiveJson);
         
         //TODO add interactivespecific attributes to angularFormlyJsonArray
-        
+
+        var fsInteractiveJsonArray = fsInteractiveJson.items;
+
         for (var i in fsInteractiveJsonArray) {
-            var fsInteractiveJson = fsInteractiveJsonArray[i].interactive;
+            var currentFsInteractiveJson = fsInteractiveJsonArray[i].properties['interactive'];
 
             var afJson = {};
 
-            afJson.key = fsInteractiveJson['mapping-key'];
-            afJson.type = angularFormlyTypeStringForFsTypeString(fsInteractiveJson['type']);
+            afJson.key = currentFsInteractiveJson.properties['mapping-key'].id;
 
+            var fsJsonTypeString = currentFsInteractiveJson.properties.elementType['elementValue'];
+            afJson.type = angularFormlyTypeStringForFsTypeString(fsJsonTypeString);
 
-            var jsSpecificInteractiveJson = fsInteractiveJson[fsInteractiveJson['type']];
-            afJson.templateOptions = templateOptionsForInteractiveFsJson(jsSpecificInteractiveJson);
-
-            if (afJson.type === 'date') {
+            if (fsJsonTypeString === 'date') {
+                console.log("no af-template for the calendar-picker implemented yet");
                 break; //no af-template for the calendar-picker implemented yet
             };
 
-            // var url = 'data:text/json;charset=utf8,' + encodeURIComponent(afJson);
-            // window.open(url, '_blank');
-            // window.focus();
+            var fsSpecificInteractiveJson = currentFsInteractiveJson.properties[fsJsonTypeString];
+            afJson.templateOptions = templateOptionsForInteractiveFsJson(fsSpecificInteractiveJson);
+
+            if (fsJsonTypeString === 'date') {
+                console.log("no af-template for the calendar-picker implemented yet");
+                break; //no af-template for the calendar-picker implemented yet
+            };
 
             afJsonArray.push(afJson);
         };
@@ -138,28 +141,32 @@ formularGenerator.factory("jsonTransformer", [function () {
         }
     };
 
-    var templateOptionsForInteractiveFsJson = function(jsSpecificInteractiveJson){
-        console.log(jsSpecificInteractiveJson);
-
+    var templateOptionsForInteractiveFsJson = function(fsSpecificInteractiveJson){
         var templateOptions = {};
-        templateOptions.label = jsSpecificInteractiveJson['label'];
-        templateOptions.placeholder = jsSpecificInteractiveJson['placeholder'];
-        templateOptions.options = angularFormlyArrayForOptions(jsSpecificInteractiveJson['options']);
+        templateOptions.label = fsSpecificInteractiveJson.properties['label'].elementValue;
+        if (fsSpecificInteractiveJson.properties['placeholder']) {
+            templateOptions.placeholder = fsSpecificInteractiveJson.properties['placeholder'].elementValue;
+        };
+        if (fsSpecificInteractiveJson.properties['options']) {
+            templateOptions.options = angularFormlyArrayForOptions(fsSpecificInteractiveJson.properties['options']);
+        };
 
         return templateOptions;
     }; 
 
-    var angularFormlyArrayForOptions = function(fsOptionsArray){
+    var angularFormlyArrayForOptions = function(fsOptions) {
         var afOptionsArray = [];
         console.log("Transform OPTIONS");
+        console.log(fsOptions);
+
+        var fsOptionsArray = fsOptions['items'];
 
         for (var optionIndex in fsOptionsArray) {
-            var option = fsOptionsArray[optionIndex].option;
-            console.log(option.label);
+            var option = fsOptionsArray[optionIndex].properties['option'].properties;
 
             var afOptionJson = {};
-            afOptionJson.name = option.label;
-            afOptionJson.value = option.id;
+            afOptionJson.name = option.label.elementValue;
+            afOptionJson.value = option.id.elementValue;
             afOptionsArray.push(afOptionJson);
         };
 

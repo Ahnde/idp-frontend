@@ -1,35 +1,36 @@
 
 {
 	"id":"1",
-	"type":"form",
+	"elementType":"form",
 	"metadata":[],
 	"description":[],
 	"children":[
 	{
 		"group": {
 			"id":"11",
-			"type":"group",
-			"description": {
+			"elementType":"group",
+			"description": [
+			{
 				"id":"110",
 				"content": "This part of the form is about the title of the patient.",
-				"type": "text"
-			},
+				"elementType": "text"
+			}],
 			"children":[
 			{
 				"question": {
 					"id":"111",
-					"type": "question",
+					"elementType": "question",
 					"description":[
 					{
 						"id":"1110",
 						"content": "Please enter your title if you have one.",
-						"type": "text"
+						"elementType": "text"
 					}],
 					"interactive":[
 					{
 						"interactive": {
 							"id":"1111",
-							"type":"textfield",
+							"elementType":"textfield",
 							"mapping-key":"k_title",
 							"validators":[],
 							"textfield": {
@@ -45,28 +46,29 @@
 			{
 				"group": {
 					"id":"112",
-					"type":"group",
-					"description": {
+					"elementType":"group",
+					"description": [
+					{
 						"id":"1120",
 						"content": "This part of the form is about the name of the patient.",
-						"type": "text"
-					},
+						"elementType": "text"
+					}],
 					"children":[
 					{
 						"question": {
-							"type": "question",
+							"elementType": "question",
 							"id":"1121",
 							"description":[
 							{
 								"id":"11210",
 								"content": "Please enter your first name above.",
-								"type": "text"
+								"elementType": "text"
 							}],
 							"interactive":[
 							{
 								"interactive": {
 									"id":"11211",
-									"type":"textfield",
+									"elementType":"textfield",
 									"mapping-key":"k_firstname",
 									"validators":[],
 									"textfield": {
@@ -81,19 +83,19 @@
 					},
 					{
 						"question": {
-							"type": "question",
+							"elementType": "question",
 							"id":"1122",
 							"description":[
 							{
 								"id":"11220",
 								"content": "Please enter your last name above.",
-								"type": "text"
+								"elementType": "text"
 							}],
 							"interactive":[
 							{
 								"interactive": {
 									"id":"11221",
-									"type":"textfield",
+									"elementType":"textfield",
 									"mapping-key":"k_lastname",
 									"validators":[],
 									"textfield": {
@@ -115,23 +117,23 @@
 	{
 		"question": {
 			"id":"12",
-			"type": "question",
+			"elementType": "question",
 			"description":[
 			{
 				"id":"120",
 				"content": "This question demonstrates various HTML-Testelements.",
-				"type": "text"
+				"elementType": "text"
 			},
 			{
 				"id":"1200",
 				"content": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg",
-				"type": "image"
+				"elementType": "image"
 			}],
 			"interactive":[
 			{
 				"interactive": {
 					"id":"121",
-					"type":"textfield",
+					"elementType":"textfield",
 					"mapping-key":"k_textfield",
 					"validators":[],
 					"textfield": {
@@ -145,7 +147,7 @@
 			{
 				"interactive": {
 					"id":"122",
-					"type":"checkbox",
+					"elementType":"checkbox",
 					"mapping-key":"k_checkbox",
 					"validators":[],
 					"checkbox": {
@@ -156,7 +158,7 @@
 			{
 				"interactive": {
 					"id":"123",
-					"type":"radio",
+					"elementType":"radio",
 					"mapping-key":"k_radio",
 					"validators":[],
 					"radio": {
@@ -180,7 +182,7 @@
 			{
 				"interactive": {
 					"id":"124",
-					"type":"dropdown",
+					"elementType":"dropdown",
 					"mapping-key":"k_dropdown",
 					"validators":[],
 					"dropdown": {
@@ -210,7 +212,7 @@
 			{
 				"interactive": {
 					"id":"125",
-					"type":"date",
+					"elementType":"date",
 					"mapping-key":"k_date",
 					"validators":[],
 					"date": {

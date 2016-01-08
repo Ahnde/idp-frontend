@@ -1,0 +1,923 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "jsonschemaIdUrl",
+  "type": "object",
+  "properties": {
+    "id": {
+      "id": "jsonschemaIdUrl/id",
+      "type": "string",
+      "elementValue": "1"
+    },
+    "elementType": {
+      "id": "jsonschemaIdUrl/elementType",
+      "type": "string",
+      "elementValue": "form"
+    },
+    "metadata": {
+      "id": "jsonschemaIdUrl/metadata",
+      "type": "array",
+      "items": []
+    },
+    "description": {
+      "id": "jsonschemaIdUrl/description",
+      "type": "array",
+      "items": []
+    },
+    "children": {
+      "id": "jsonschemaIdUrl/children",
+      "type": "array",
+      "items": [
+        {
+          "id": "jsonschemaIdUrl/children/0",
+          "type": "object",
+          "properties": {
+            "group": {
+              "id": "jsonschemaIdUrl/children/0/group",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "id": "jsonschemaIdUrl/children/0/group/id",
+                  "type": "string",
+                  "elementValue": "11"
+                },
+                "elementType": {
+                  "id": "jsonschemaIdUrl/children/0/group/elementType",
+                  "type": "string",
+                  "elementValue": "group"
+                },
+                "description": {
+                  "id": "jsonschemaIdUrl/children/0/group/description",
+                  "type": "array",
+                  "items": [{
+                    "id": "jsonschemaIdUrl/children/0/group/description/0",
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "id": "jsonschemaIdUrl/children/0/group/description/0/id",
+                        "type": "string",
+                        "elementValue": "110"
+                      },
+                      "content": {
+                        "id": "jsonschemaIdUrl/children/0/group/description/0/content",
+                        "type": "string",
+                        "elementValue": "This part of the form is about the title of the patient."
+                      },
+                      "elementType": {
+                        "id": "jsonschemaIdUrl/children/0/group/description/0/elementType",
+                        "type": "string",
+                        "elementValue": "text"
+                      }
+                    }
+                  }]
+                },
+                "children": {
+                  "id": "jsonschemaIdUrl/children/0/group/children",
+                  "type": "array",
+                  "items": [
+                    {
+                      "id": "jsonschemaIdUrl/children/0/group/children/0",
+                      "type": "object",
+                      "properties": {
+                        "question": {
+                          "id": "jsonschemaIdUrl/children/0/group/children/0/question",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "id": "jsonschemaIdUrl/children/0/group/children/0/question/id",
+                              "type": "string",
+                              "elementValue": "111"
+                            },
+                            "elementType": {
+                              "id": "jsonschemaIdUrl/children/0/group/children/0/question/elementType",
+                              "type": "string",
+                              "elementValue": "question"
+                            },
+                            "description": {
+                              "id": "jsonschemaIdUrl/children/0/group/children/0/question/description",
+                              "type": "array",
+                              "items": [{
+                                "id": "jsonschemaIdUrl/children/0/group/children/0/question/description/0",
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "id": "jsonschemaIdUrl/children/0/group/children/0/question/description/0/id",
+                                    "type": "string",
+                                    "elementValue": "1110"
+                                  },
+                                  "content": {
+                                    "id": "jsonschemaIdUrl/children/0/group/children/0/question/description/0/content",
+                                    "type": "string",
+                                    "elementValue": "Please enter your title if you have one."
+                                  },
+                                  "elementType": {
+                                    "id": "jsonschemaIdUrl/children/0/group/children/0/question/description/0/elementType",
+                                    "type": "string",
+                                    "elementValue": "text"
+                                  }
+                                }
+                              }]
+                            },
+                            "interactive": {
+                              "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive",
+                              "type": "array",
+                              "items": [
+                              {
+                                "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0",
+                                "type": "object",
+                                "properties": {
+                                  "interactive": {
+                                    "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive",
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive/id",
+                                        "type": "string",
+                                        "elementValue": "1111"
+                                      },
+                                      "elementType": {
+                                        "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive/elementType",
+                                        "type": "string",
+                                        "elementValue": "textfield"
+                                      },
+                                      "mapping-key": {
+                                        "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive/mapping-key",
+                                        "type": "string",
+                                        "elementValue": "k_title"
+                                      },
+                                      "validators": {
+                                        "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive/validators",
+                                        "type": "array",
+                                        "items": []
+                                      },
+                                      "textfield": {
+                                        "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive/textfield",
+                                        "type": "object",
+                                        "properties": {
+                                          "length": {
+                                            "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive/textfield/length",
+                                            "type": "integer",
+                                            "elementValue": 256
+                                          },
+                                          "textfieldtype": {
+                                            "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive/textfield/textfieldtype",
+                                            "type": "string",
+                                            "elementValue": "text"
+                                          },
+                                          "label": {
+                                            "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive/textfield/label",
+                                            "type": "string",
+                                            "elementValue": "Title"
+                                          },
+                                          "placeholder": {
+                                            "id": "jsonschemaIdUrl/children/0/group/children/0/question/interactive/0/interactive/textfield/placeholder",
+                                            "type": "string",
+                                            "elementValue": "Dr."
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "id": "jsonschemaIdUrl/children/0/group/children/1",
+                      "type": "object",
+                      "properties": {
+                        "group": {
+                          "id": "jsonschemaIdUrl/children/0/group/children/1/group",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "id": "jsonschemaIdUrl/children/0/group/children/1/group/id",
+                              "type": "string",
+                              "elementValue": "112"
+                            },
+                            "elementType": {
+                              "id": "jsonschemaIdUrl/children/0/group/children/1/group/elementType",
+                              "type": "string",
+                              "elementValue": "group"
+                            },
+                            "description": {
+                              "id": "jsonschemaIdUrl/children/0/group/children/1/group/description",
+                              "type": "array",
+                              "items": [
+                              {
+                                "id": "jsonschemaIdUrl/children/0/group/children/1/group/description/0",
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/description/0/id",
+                                    "type": "string",
+                                    "elementValue": "1120"
+                                  },
+                                  "content": {
+                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/description/0/content",
+                                    "type": "string",
+                                    "elementValue": "This part of the form is about the name of the patient."
+                                  },
+                                  "elementType": {
+                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/description/0/elementType",
+                                    "type": "string",
+                                    "elementValue": "text"
+                                  }
+                                }
+                              }]
+                            },
+                            "children": {
+                              "id": "jsonschemaIdUrl/children/0/group/children/1/group/children",
+                              "type": "array",
+                              "items": [
+                                {
+                                  "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0",
+                                  "type": "object",
+                                  "properties": {
+                                    "question": {
+                                      "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question",
+                                      "type": "object",
+                                      "properties": {
+                                        "elementType": {
+                                          "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/elementType",
+                                          "type": "string",
+                                          "elementValue": "question"
+                                        },
+                                        "id": {
+                                          "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/id",
+                                          "type": "string",
+                                          "elementValue": "1121"
+                                        },
+                                        "description": {
+                                          "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/description",
+                                          "type": "array",
+                                          "items": [
+                                          {
+                                            "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/description/0",
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/description/0/id",
+                                                "type": "string",
+                                                "elementValue": "11210"
+                                              },
+                                              "content": {
+                                                "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/description/0/content",
+                                                "type": "string",
+                                                "elementValue": "Please enter your first name above."
+                                              },
+                                              "elementType": {
+                                                "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/description/0/elementType",
+                                                "type": "string",
+                                                "elementValue": "text"
+                                              }
+                                            }
+                                          }]
+                                        },
+                                        "interactive": {
+                                          "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive",
+                                          "type": "array",
+                                          "items": [
+                                          {
+                                            "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0",
+                                            "type": "object",
+                                            "properties": {
+                                              "interactive": {
+                                                "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive",
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive/id",
+                                                    "type": "string",
+                                                    "elementValue": "11211"
+                                                  },
+                                                  "elementType": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive/elementType",
+                                                    "type": "string",
+                                                    "elementValue": "textfield"
+                                                  },
+                                                  "mapping-key": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive/mapping-key",
+                                                    "type": "string",
+                                                    "elementValue": "k_firstname"
+                                                  },
+                                                  "validators": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive/validators",
+                                                    "type": "array",
+                                                    "items": []
+                                                  },
+                                                  "textfield": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive/textfield",
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "length": {
+                                                        "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive/textfield/length",
+                                                        "type": "integer",
+                                                        "elementValue": 256
+                                                      },
+                                                      "textfieldtype": {
+                                                        "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive/textfield/textfieldtype",
+                                                        "type": "string",
+                                                        "elementValue": "text"
+                                                      },
+                                                      "label": {
+                                                        "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive/textfield/label",
+                                                        "type": "string",
+                                                        "elementValue": "First Name"
+                                                      },
+                                                      "placeholder": {
+                                                        "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/0/question/interactive/0/interactive/textfield/placeholder",
+                                                        "type": "string",
+                                                        "elementValue": "John"
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1",
+                                  "type": "object",
+                                  "properties": {
+                                    "question": {
+                                      "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question",
+                                      "type": "object",
+                                      "properties": {
+                                        "elementType": {
+                                          "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/elementType",
+                                          "type": "string",
+                                          "elementValue": "question"
+                                        },
+                                        "id": {
+                                          "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/id",
+                                          "type": "string",
+                                          "elementValue": "1122"
+                                        },
+                                        "description": {
+                                          "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/description",
+                                          "type": "array",
+                                          "items": [
+                                          {
+                                            "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/description/0",
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/description/0/id",
+                                                "type": "string",
+                                                "elementValue": "11220"
+                                              },
+                                              "content": {
+                                                "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/description/0/content",
+                                                "type": "string",
+                                                "elementValue": "Please enter your last name above."
+                                              },
+                                              "elementType": {
+                                                "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/description/0/elementType",
+                                                "type": "string",
+                                                "elementValue": "text"
+                                              }
+                                            }
+                                          }]
+                                        },
+                                        "interactive": {
+                                          "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive",
+                                          "type": "array",
+                                          "items": [
+                                          {
+                                            "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0",
+                                            "type": "object",
+                                            "properties": {
+                                              "interactive": {
+                                                "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive",
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive/id",
+                                                    "type": "string",
+                                                    "elementValue": "11221"
+                                                  },
+                                                  "elementType": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive/elementType",
+                                                    "type": "string",
+                                                    "elementValue": "textfield"
+                                                  },
+                                                  "mapping-key": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive/mapping-key",
+                                                    "type": "string",
+                                                    "elementValue": "k_lastname"
+                                                  },
+                                                  "validators": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive/validators",
+                                                    "type": "array",
+                                                    "items": []
+                                                  },
+                                                  "textfield": {
+                                                    "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive/textfield",
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "length": {
+                                                        "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive/textfield/length",
+                                                        "type": "integer",
+                                                        "elementValue": 256
+                                                      },
+                                                      "textfieldtype": {
+                                                        "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive/textfield/textfieldtype",
+                                                        "type": "string",
+                                                        "elementValue": "text"
+                                                      },
+                                                      "label": {
+                                                        "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive/textfield/label",
+                                                        "type": "string",
+                                                        "elementValue": "Last Name"
+                                                      },
+                                                      "placeholder": {
+                                                        "id": "jsonschemaIdUrl/children/0/group/children/1/group/children/1/question/interactive/0/interactive/textfield/placeholder",
+                                                        "type": "string",
+                                                        "elementValue": "Doe"
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "repeatable": {
+                              "id": "jsonschemaIdUrl/children/0/group/children/1/group/repeatable",
+                              "type": "boolean",
+                              "elementValue": false
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "repeatable": {
+                  "id": "jsonschemaIdUrl/children/0/group/repeatable",
+                  "type": "boolean",
+                  "elementValue": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "jsonschemaIdUrl/children/1",
+          "type": "object",
+          "properties": {
+            "question": {
+              "id": "jsonschemaIdUrl/children/1/question",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "id": "jsonschemaIdUrl/children/1/question/id",
+                  "type": "string",
+                  "elementValue": "12"
+                },
+                "elementType": {
+                  "id": "jsonschemaIdUrl/children/1/question/elementType",
+                  "type": "string",
+                  "elementValue": "question"
+                },
+                "description": {
+                  "id": "jsonschemaIdUrl/children/1/question/description",
+                  "type": "array",
+                  "items": [
+                    {
+                      "id": "jsonschemaIdUrl/children/1/question/description/0",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "id": "jsonschemaIdUrl/children/1/question/description/0/id",
+                          "type": "string",
+                          "elementValue": "120"
+                        },
+                        "content": {
+                          "id": "jsonschemaIdUrl/children/1/question/description/0/content",
+                          "type": "string",
+                          "elementValue": "This question demonstrates various HTML-Testelements."
+                        },
+                        "elementType": {
+                          "id": "jsonschemaIdUrl/children/1/question/description/0/elementType",
+                          "type": "string",
+                          "elementValue": "text"
+                        }
+                      }
+                    },
+                    {
+                      "id": "jsonschemaIdUrl/children/1/question/description/1",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "id": "jsonschemaIdUrl/children/1/question/description/1/id",
+                          "type": "string",
+                          "elementValue": "1200"
+                        },
+                        "content": {
+                          "id": "jsonschemaIdUrl/children/1/question/description/1/content",
+                          "type": "string",
+                          "elementValue": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg"
+                        },
+                        "elementType": {
+                          "id": "jsonschemaIdUrl/children/1/question/description/1/elementType",
+                          "type": "string",
+                          "elementValue": "image"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "interactive": {
+                  "id": "jsonschemaIdUrl/children/1/question/interactive",
+                  "type": "array",
+                  "items": [
+                    {
+                      "id": "jsonschemaIdUrl/children/1/question/interactive/0",
+                      "type": "object",
+                      "properties": {
+                        "interactive": {
+                          "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive/id",
+                              "type": "string",
+                              "elementValue": "121"
+                            },
+                            "elementType": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive/elementType",
+                              "type": "string",
+                              "elementValue": "textfield"
+                            },
+                            "mapping-key": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive/mapping-key",
+                              "type": "string",
+                              "elementValue": "k_textfield"
+                            },
+                            "validators": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive/validators",
+                              "type": "array",
+                              "items": []
+                            },
+                            "textfield": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive/textfield",
+                              "type": "object",
+                              "properties": {
+                                "length": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive/textfield/length",
+                                  "type": "integer",
+                                  "elementValue": 256
+                                },
+                                "textfieldtype": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive/textfield/textfieldtype",
+                                  "type": "string",
+                                  "elementValue": "text"
+                                },
+                                "label": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive/textfield/label",
+                                  "type": "string",
+                                  "elementValue": "Input Test"
+                                },
+                                "placeholder": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/0/interactive/textfield/placeholder",
+                                  "type": "string",
+                                  "elementValue": "Placeholder"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "id": "jsonschemaIdUrl/children/1/question/interactive/1",
+                      "type": "object",
+                      "properties": {
+                        "interactive": {
+                          "id": "jsonschemaIdUrl/children/1/question/interactive/1/interactive",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/1/interactive/id",
+                              "type": "string",
+                              "elementValue": "122"
+                            },
+                            "elementType": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/1/interactive/elementType",
+                              "type": "string",
+                              "elementValue": "checkbox"
+                            },
+                            "mapping-key": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/1/interactive/mapping-key",
+                              "type": "string",
+                              "elementValue": "k_checkbox"
+                            },
+                            "validators": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/1/interactive/validators",
+                              "type": "array",
+                              "items": []
+                            },
+                            "checkbox": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/1/interactive/checkbox",
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/1/interactive/checkbox/label",
+                                  "type": "string",
+                                  "elementValue": "Checkbox Test"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "id": "jsonschemaIdUrl/children/1/question/interactive/2",
+                      "type": "object",
+                      "properties": {
+                        "interactive": {
+                          "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/id",
+                              "type": "string",
+                              "elementValue": "123"
+                            },
+                            "elementType": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/elementType",
+                              "type": "string",
+                              "elementValue": "radio"
+                            },
+                            "mapping-key": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/mapping-key",
+                              "type": "string",
+                              "elementValue": "k_radio"
+                            },
+                            "validators": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/validators",
+                              "type": "array",
+                              "items": []
+                            },
+                            "radio": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio",
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/label",
+                                  "type": "string",
+                                  "elementValue": "Radio Test"
+                                },
+                                "options": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/options",
+                                  "type": "array",
+                                  "items": [
+                                    {
+                                      "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/options/0",
+                                      "type": "object",
+                                      "properties": {
+                                        "option": {
+                                          "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/options/0/option",
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/options/0/option/id",
+                                              "type": "string",
+                                              "elementValue": "1230"
+                                            },
+                                            "label": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/options/0/option/label",
+                                              "type": "string",
+                                              "elementValue": "Option one"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/options/1",
+                                      "type": "object",
+                                      "properties": {
+                                        "option": {
+                                          "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/options/1/option",
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/options/1/option/id",
+                                              "type": "string",
+                                              "elementValue": "1231"
+                                            },
+                                            "label": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/2/interactive/radio/options/1/option/label",
+                                              "type": "string",
+                                              "elementValue": "Option two"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "id": "jsonschemaIdUrl/children/1/question/interactive/3",
+                      "type": "object",
+                      "properties": {
+                        "interactive": {
+                          "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/id",
+                              "type": "string",
+                              "elementValue": "124"
+                            },
+                            "elementType": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/elementType",
+                              "type": "string",
+                              "elementValue": "dropdown"
+                            },
+                            "mapping-key": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/mapping-key",
+                              "type": "string",
+                              "elementValue": "k_dropdown"
+                            },
+                            "validators": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/validators",
+                              "type": "array",
+                              "items": []
+                            },
+                            "dropdown": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown",
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/label",
+                                  "type": "string",
+                                  "elementValue": "Dropdown Test"
+                                },
+                                "options": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options",
+                                  "type": "array",
+                                  "items": [
+                                    {
+                                      "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/0",
+                                      "type": "object",
+                                      "properties": {
+                                        "option": {
+                                          "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/0/option",
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/0/option/id",
+                                              "type": "string",
+                                              "elementValue": "1240"
+                                            },
+                                            "label": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/0/option/label",
+                                              "type": "string",
+                                              "elementValue": "First option"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/1",
+                                      "type": "object",
+                                      "properties": {
+                                        "option": {
+                                          "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/1/option",
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/1/option/id",
+                                              "type": "string",
+                                              "elementValue": "1241"
+                                            },
+                                            "label": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/1/option/label",
+                                              "type": "string",
+                                              "elementValue": "Second option"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/2",
+                                      "type": "object",
+                                      "properties": {
+                                        "option": {
+                                          "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/2/option",
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/2/option/id",
+                                              "type": "string",
+                                              "elementValue": "1242"
+                                            },
+                                            "label": {
+                                              "id": "jsonschemaIdUrl/children/1/question/interactive/3/interactive/dropdown/options/2/option/label",
+                                              "type": "string",
+                                              "elementValue": "Third option"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "id": "jsonschemaIdUrl/children/1/question/interactive/4",
+                      "type": "object",
+                      "properties": {
+                        "interactive": {
+                          "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive",
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/id",
+                              "type": "string",
+                              "elementValue": "125"
+                            },
+                            "elementType": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/elementType",
+                              "type": "string",
+                              "elementValue": "date"
+                            },
+                            "mapping-key": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/mapping-key",
+                              "type": "string",
+                              "elementValue": "k_date"
+                            },
+                            "validators": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/validators",
+                              "type": "array",
+                              "items": []
+                            },
+                            "date": {
+                              "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/date",
+                              "type": "object",
+                              "properties": {
+                                "date": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/date/date",
+                                  "type": "object",
+                                  "properties": {
+                                    "label": {
+                                      "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/date/date/label",
+                                      "type": "string",
+                                      "elementValue": "07.08.1989"
+                                    }
+                              	  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "elementType",
+    "metadata",
+    "description",
+    "children"
+  ]
+}
