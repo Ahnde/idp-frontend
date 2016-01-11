@@ -8,11 +8,12 @@
 		<script src="../node_modules/angular/angular.js"></script>
 		<script src="../node_modules/angular-formly/dist/formly.js"></script>
 		<script src="../node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
+		<!--<script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>-->
 
 		<script src="js/formulargenerator.js" ></script>
-		<script src="js/backendconnector.js" /></script>
+		<script src="js/backendconnector.js" ></script>
 		<script src="js/jsontransformer.js" ></script>
-		<script src="js/renderercontroller.js"></script>
+		<script src="js/renderercontroller.js" ></script>
 
 
 		<title>Hello Angular Formly</title>
@@ -22,12 +23,12 @@
 	<body ng-app="formularGenerator">
 
 		<div ng-controller="rendererController">
-				<form ng-submit="onSubmit()">
-  					<formly-form model="formular" fields="formularFields">
-    					<button type="submit">Submit</button>
-  					</formly-form>
-				</form>
-			</div>
-
+			<form ng-submit="onSubmit()">
+  				<formly-form model="formular" fields="formularFields">
+    				<button type="submit">Submit</button>
+  				</formly-form>
+			</form>
+		</div>
+		
 	</body>
 </html>

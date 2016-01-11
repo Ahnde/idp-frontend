@@ -99,24 +99,31 @@ formularGenerator.factory("jsonTransformer", [function () {
             var currentFsInteractiveJson = fsInteractiveJsonArray[i].properties['interactive'];
 
             var afJson = {};
-
-            afJson.key = currentFsInteractiveJson.properties['mapping-key'].id;
+            afJson.key = currentFsInteractiveJson.properties['mapping-key'].elementValue;
 
             var fsJsonTypeString = currentFsInteractiveJson.properties.elementType['elementValue'];
-            afJson.type = angularFormlyTypeStringForFsTypeString(fsJsonTypeString);
-
-            if (fsJsonTypeString === 'date') {
-                console.log("no af-template for the calendar-picker implemented yet");
-                break; //no af-template for the calendar-picker implemented yet
+            if (fsJsonTypeString === 'error') {
+                console.log("Object has no valid type");
+                continue;
             };
 
+            afJson.type = angularFormlyTypeStringForFsTypeString(fsJsonTypeString);
+            
             var fsSpecificInteractiveJson = currentFsInteractiveJson.properties[fsJsonTypeString];
             afJson.templateOptions = templateOptionsForInteractiveFsJson(fsSpecificInteractiveJson);
 
-            if (fsJsonTypeString === 'date') {
-                console.log("no af-template for the calendar-picker implemented yet");
-                break; //no af-template for the calendar-picker implemented yet
-            };
+            // if (fsJsonTypeString === 'date') {
+            //     console.log("no af-template for the calendar-picker implemented yet");
+            //     continue; //no af-template for the calendar-picker implemented yet
+            // };
+
+            // if (fsJsonTypeString != 'date') {
+            //     console.log("no af-template for the calendar-picker implemented yet");
+            //     continue; //no af-template for the calendar-picker implemented yet
+            // };
+
+            console.log("survived");
+
 
             afJsonArray.push(afJson);
         };
@@ -135,20 +142,26 @@ formularGenerator.factory("jsonTransformer", [function () {
                 case "dropdown":
                     return "select";
                 case "date":
-                    return "date";
+                    return "datepicker";
                 default:
-                    return "not a valid type";
+                    return "error";
         }
     };
 
     var templateOptionsForInteractiveFsJson = function(fsSpecificInteractiveJson){
         var templateOptions = {};
         templateOptions.label = fsSpecificInteractiveJson.properties['label'].elementValue;
+
         if (fsSpecificInteractiveJson.properties['placeholder']) {
             templateOptions.placeholder = fsSpecificInteractiveJson.properties['placeholder'].elementValue;
         };
         if (fsSpecificInteractiveJson.properties['options']) {
             templateOptions.options = angularFormlyArrayForOptions(fsSpecificInteractiveJson.properties['options']);
+        };
+        if (fsSpecificInteractiveJson.properties['dateFormat']) {
+            console.log("oh welll");
+            templateOptions.type = "text";
+            templateOptions.datepickerPopup = fsSpecificInteractiveJson.properties['dateFormat'].elementValue;
         };
 
         return templateOptions;
@@ -162,8 +175,7 @@ formularGenerator.factory("jsonTransformer", [function () {
         var fsOptionsArray = fsOptions['items'];
 
         for (var optionIndex in fsOptionsArray) {
-            var option = fsOptionsArray[optionIndex].properties['option'].properties;
-
+            var option = fsOptionsArray[optionIndex].properties['option'].properties;        
             var afOptionJson = {};
             afOptionJson.name = option.label.elementValue;
             afOptionJson.value = option.id.elementValue;

@@ -887,16 +887,15 @@
                               "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/date",
                               "type": "object",
                               "properties": {
-                                "date": {
-                                  "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/date/date",
-                                  "type": "object",
-                                  "properties": {
-                                    "label": {
-                                      "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/date/date/label",
-                                      "type": "string",
-                                      "elementValue": "07.08.1989"
-                                    }
-                              	  }
+                              	"label": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/date/label",
+                                  "type": "string",
+                                  "elementValue": "Birthday"
+                                },
+                                "dateFormat": {
+                                  "id": "jsonschemaIdUrl/children/1/question/interactive/4/interactive/date/dateFormat",
+                                  "type": "string",
+                                  "elementValue": "dd-MMMM-yyyy"
                                 }
                               }
                             }
