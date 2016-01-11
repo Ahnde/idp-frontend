@@ -26,27 +26,28 @@ describe('jsonTransformer', function () {
 
         jasmine.getJSONFixtures().fixturesPath='base/test/mock';
 
+        inputJson = getJSONFixture('mock_formularSpecification-schema.json');
+        expectedOutputJson = getJSONFixture('mock_angularFormly.json');
+
         $httpBackend = $injector.get('$httpBackend');
-        $httpBackend.whenGET('http://localhost:8080/IDPBackend/rest/form/2').respond(
-            inputJson = getJSONFixture('mock_formularSpecification.json')
+        $httpBackend.whenGET('http://localhost:8080/IDPBackend/rest/form/3').respond(
+            getJSONFixture('mock_formularSpecification-schema.json')
         );
-
-        expectedOutputJson = getJSONFixture('mock_angularFormly.json'); 
-
     }));
 
     describe('Complete transformation', function () {
-        beforeEach(inject(function () {
 
-            it('should have transformed the FS-JSON to the correct AF-JSON', function () {
-                // $httpBackend.flush();
-                outputJson = getJSONFixture('mock_angularFormly.json'); //todo: transform
+        it('should have transformed the FS-JSON to the correct AF-JSON', inject(function () {
+            $httpBackend.flush();
 
-                var $scope = {};
-                var controller = $controller('jsonTransformer', {$scope: $scope});
+            dump(expectedOutputJson);
 
-                expect(outputJson).toBe(expectedOutputJson);
-            });
+            outputJson = getJSONFixture('mock_angularFormly.json'); //todo: transform
+                
+            var $scope = {};
+            var controller = $controller('jsonTransformer', {$scope: $scope});
+
+            expect(outputJson).toBe(expectedOutputJson);
         }));
     });
 });
