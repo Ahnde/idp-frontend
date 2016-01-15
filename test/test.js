@@ -19,6 +19,6 @@ describe('jsonTransformer', function () {
     
     it('should have transformed the FS-JSON to the correct AF-JSON', function () {
         outputJson = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(inputFsJson);
-        expect(outputJson).toBeJsonEqual(expectedOutputJson);
+        expect(outputJson).toEqual(expectedOutputJson);
     });
 });
