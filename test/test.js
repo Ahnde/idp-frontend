@@ -12,13 +12,84 @@ describe('jsonTransformer', function () {
 
     beforeEach(function () {
         jasmine.getJSONFixtures().fixturesPath='base/test/mock';
-        inputFsJson = getJSONFixture('mock_formularSpecification-schema.json');
-        expectedOutputJson = getJSONFixture('mock_angularFormly.json');
+        inputFsJson = {};
+        expectedOutputJson = {};
         outputJson = {};
     });
     
-    it('should have transformed the FS-JSON to the correct AF-JSON', function () {
-        outputJson = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(inputFsJson);
-        expect(outputJson).toEqual(expectedOutputJson);
+    function testJsonMapping(result, expectedpath)
+    {
+        dump(JSON.stringify(result));
+        var expected = getJSONFixture(expectedpath);
+        dump(JSON.stringify(expected));
+        expect(result).toEqual(expected);
+    } 
+
+    it('should transform basic json', function () {
+        var testcase = getJSONFixture('mock_formularSpecification.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+        
+        testJsonMapping(result, 'mock_angularFormly.json')
     });
+
+
+    // it('should map an empty form to an empty af-json-array', function () {
+    //     var testcase = getJSONFixture('testcase_empty_form.json');
+    //     var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+
+    //     testJsonMapping(result, 'expected_testcase_empty_form.json')
+    // });
+
+    // it('should map an one interactive textfield to one af-inputfield', function () {
+    //     var testcase = getJSONFixture('testcase_single_interactive_textfield.json');
+    //     var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+
+    //     testJsonMapping(result, 'expected_testcase_single_interactive_textfield.json')
+    // });
+
+
 });
+
+
+// describe("backendConnector", function() {
+//     var backendConnector, httpBackend, fsresponse, originalTimeout;
+
+//     beforeEach(module('formularGenerator'));
+
+//     beforeEach(inject(function (_backendConnector_, $httpBackend) {
+//         backendConnector = _backendConnector_;
+//         httpBackend = $httpBackend;
+//     }));
+
+//     beforeEach(function() {
+//       originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+//       jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+//     });
+
+//     beforeEach(function(done) {
+//         dump("davor");
+//         dump(backendConnector);
+//         // backendConnector.getFormularSpecification(
+//         //     function(formularSpecification) {
+//         //         dump("drin");
+//         //         fsresponse = formularSpecification;
+//         //         dump(formularSpecification);
+//         //         dump(fsresponse);
+//         //         done();
+//         //     }
+//         // )
+//         httpBackend.expectGET(backendConnector.getFormularSpecification()).respond(200, {});
+//         httpBackend.flush();
+//         dump("danach");
+//     });
+
+//     it("should not return an error when getting the FS", function(done) {
+//         dump(fsresponse);
+//         expect(1).toBeGreaterThan(0);
+//         done();
+//     });
+
+//     afterEach(function() {
+//       jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+//     });
+// });

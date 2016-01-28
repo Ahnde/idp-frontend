@@ -1,1 +1,81 @@
-[{"key":"k_title","type":"input","templateOptions":{"label":"Title","placeholder":"Dr."}},{"key":"k_firstname","type":"input","templateOptions":{"label":"First Name","placeholder":"John"}},{"key":"k_lastname","type":"input","templateOptions":{"label":"Last Name","placeholder":"Doe"}},{"key":"k_textfield","type":"input","templateOptions":{"label":"Input Test","placeholder":"Placeholder"}},{"key":"k_checkbox","type":"checkbox","templateOptions":{"label":"Checkbox Test"}},{"key":"k_radio","type":"radio","templateOptions":{"label":"Radio Test","options":[{"name":"Option one","value":"1230"},{"name":"Option two","value":"1231"}]}},{"key":"k_dropdown","type":"select","templateOptions":{"label":"Dropdown Test","options":[{"name":"First option","value":"1240"},{"name":"Second option","value":"1241"},{"name":"Third option","value":"1242"}]}},{"key":"k_date","type":"datepicker","templateOptions":{"label":"Birthday","type":"text","datepickerPopup":"dd-MMMM-yyyy"}}]
+[
+  {
+    "type": "input",
+    "key": "k_title",
+    "templateOptions": {
+      "label": "Title",
+      "placeholder": "Dr."
+    }
+  },
+  {
+    "type": "input",
+    "key": "k_firstname",
+    "templateOptions": {
+      "label": "First Name",
+      "placeholder": "John"
+    }
+  },
+  {
+    "type": "input",
+    "key": "k_lastname",
+    "templateOptions": {
+      "label": "Last Name",
+      "placeholder": "Doe"
+    }
+  },
+  {
+    "type": "input",
+    "key": "k_textfield",
+    "templateOptions": {
+      "label": "Input Test",
+      "placeholder": "Placeholder"
+    }
+  },
+  {
+    "type": "checkbox",
+    "key": "k_checkbox",
+    "templateOptions": {
+      "label": "Checkbox Test"
+    }
+  },
+  {
+    "type": "select",
+    "key": "k_dropdown",
+    "templateOptions": {
+      "label": "Dropdown Test",
+      "options": [
+        {
+          "name": "First option"
+        },
+        {
+          "name": "Second option"
+        },
+        {
+          "name": "Third option"
+        }
+      ]
+    }
+  },
+  {
+    "type": "radio",
+    "key": "k_radio",
+    "templateOptions": {
+      "label": "Radio Test",
+      "options": [
+        {
+          "name": "Option one"
+        },
+        {
+          "name": "Option two"
+        }
+      ]
+    }
+  },
+  {
+    "type": "datepicker",
+    "key": "k_date",
+    "templateOptions": {
+      "label": "Date Test"
+    }
+  }
+]

@@ -1,225 +1,189 @@
 
 {
-	"id":"1",
-	"elementType":"form",
-	"metadata":[],
-	"description":[],
-	"children":[
-	{
-		"group": {
-			"id":"11",
-			"elementType":"group",
-			"description": [
-			{
-				"id":"110",
-				"content": "This part of the form is about the title of the patient.",
-				"elementType": "text"
-			}],
-			"children":[
-			{
-				"question": {
-					"id":"111",
-					"elementType": "question",
-					"description":[
-					{
-						"id":"1110",
-						"content": "Please enter your title if you have one.",
-						"elementType": "text"
-					}],
-					"interactive":[
-					{
-						"interactive": {
-							"id":"1111",
-							"elementType":"textfield",
-							"mapping-key":"k_title",
-							"validators":[],
-							"textfield": {
-								"length":256,
-								"textfieldtype":"text",
-								"label":"Title",
-								"placeholder":"Dr."
-							}
-						}
-					}]
-				}
-			},
-			{
-				"group": {
-					"id":"112",
-					"elementType":"group",
-					"description": [
-					{
-						"id":"1120",
-						"content": "This part of the form is about the name of the patient.",
-						"elementType": "text"
-					}],
-					"children":[
-					{
-						"question": {
-							"elementType": "question",
-							"id":"1121",
-							"description":[
-							{
-								"id":"11210",
-								"content": "Please enter your first name above.",
-								"elementType": "text"
-							}],
-							"interactive":[
-							{
-								"interactive": {
-									"id":"11211",
-									"elementType":"textfield",
-									"mapping-key":"k_firstname",
-									"validators":[],
-									"textfield": {
-										"length":256,
-										"textfieldtype":"text",
-										"label":"First Name",
-										"placeholder":"John"
-									}
-								}
-							}]
-						}
-					},
-					{
-						"question": {
-							"elementType": "question",
-							"id":"1122",
-							"description":[
-							{
-								"id":"11220",
-								"content": "Please enter your last name above.",
-								"elementType": "text"
-							}],
-							"interactive":[
-							{
-								"interactive": {
-									"id":"11221",
-									"elementType":"textfield",
-									"mapping-key":"k_lastname",
-									"validators":[],
-									"textfield": {
-										"length":256,
-										"textfieldtype":"text",
-										"label":"Last Name",
-										"placeholder":"Doe"
-									}
-								}
-							}]
-						}
-					}],
-					"repeatable":false
-				}
-			}],
-			"repeatable":false
-		}
-	},
-	{
-		"question": {
-			"id":"12",
-			"elementType": "question",
-			"description":[
-			{
-				"id":"120",
-				"content": "This question demonstrates various HTML-Testelements.",
-				"elementType": "text"
-			},
-			{
-				"id":"1200",
-				"content": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg",
-				"elementType": "image"
-			}],
-			"interactive":[
-			{
-				"interactive": {
-					"id":"121",
-					"elementType":"textfield",
-					"mapping-key":"k_textfield",
-					"validators":[],
-					"textfield": {
-						"length":256,
-						"textfieldtype":"text",
-						"label":"Input Test",
-						"placeholder":"Placeholder"
-					}
-				}
-			},
-			{
-				"interactive": {
-					"id":"122",
-					"elementType":"checkbox",
-					"mapping-key":"k_checkbox",
-					"validators":[],
-					"checkbox": {
-						"label":"Checkbox Test"
-					}
-				}
-			},
-			{
-				"interactive": {
-					"id":"123",
-					"elementType":"radio",
-					"mapping-key":"k_radio",
-					"validators":[],
-					"radio": {
-						"label":"Radio Test",
-						"options":[
-						{
-							"option":{
-								"id":"1230",
-								"label":"Option one"
-							}
-						},
-						{
-                			"option":{
-                				"id":"1231",
-								"label":"Option two"
-							}
-						}]
-					}
-				}
-			},
-			{
-				"interactive": {
-					"id":"124",
-					"elementType":"dropdown",
-					"mapping-key":"k_dropdown",
-					"validators":[],
-					"dropdown": {
-						"label":"Dropdown Test",
-						"options":[
-						{
-							"option":{
-								"id":"1240",
-								"label":"First option"	
-							}
-						},
-						{
-							"option":{
-								"id":"1241",
-								"label":"Second option"	
-							}
-						},
-						{
-							"option":{
-								"id":"1242",
-								"label":"Third option"	
-							}
-						}]
-					}
-				}
-			},
-			{
-				"interactive": {
-					"id":"125",
-					"elementType":"date",
-					"mapping-key":"k_date",
-					"validators":[],
-					"date": {
-						"date":"07.08.1989"
-					}
-				}
-			}]
-		}
-	}]
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"11",
+        "elementType":"group",
+        "repeatable":false,
+        "descriptions": [
+        {
+            "elementId":"110",
+            "content": "This part of the form is about the title of the patient.",
+            "descriptionType":"text"
+        }],
+        "children":[
+        {
+            "elementId":"111",
+            "elementType": "question",
+            "descriptions":[
+            {
+                "elementId":"1110",
+                "content": "Please enter your title if you have one.",
+                "descriptionType":"text"
+            }],
+            "interactives":[
+            {
+                "elementId":"1111",
+                "elementType":"textfield",
+                "mappingKey":"k_title",
+                "validators":[],
+                "interactiveDetails": {
+                    "length":256,
+                    "label":"Title",
+                    "placeholder":"Dr.",
+                    "textfieldType":"text"
+                }
+            }]
+        },
+        {
+            "elementId":"112",
+            "elementType":"group",
+            "repeatable":false,
+            "descriptions": [
+            {
+                "elementId":"1120",
+                "content": "This part of the form is about the name of the patient.",
+                "descriptionType": "text"
+            }],
+            "children":[
+            {
+                "elementId":"1121",
+                "elementType": "question",
+                "descriptions":[
+                {
+                    "elementId":"11210",
+                    "content": "Please enter your first name above.",
+                    "descriptionType": "text"
+                }],
+                "interactives":[
+                {
+                    "elementId":"11211",
+                    "elementType":"textfield",
+                    "mappingKey":"k_firstname",
+                    "validators":[],
+                    "interactiveDetails": {
+                        "length":256,
+                        "label":"First Name",
+                        "placeholder":"John",
+                        "textfieldType":"text"   
+                    }
+                }]
+            },
+            {
+                "elementType": "question",
+                "elementId":"1122",
+                "descriptions":[
+                {
+                    "elementId":"11220",
+                    "content": "Please enter your last name above.",
+                    "descriptionType": "text"
+                }],
+                "interactives":[
+                {
+                    "elementId":"11221",
+                    "elementType":"textfield",
+                    "mappingKey":"k_lastname",
+                    "validators":[],
+                    "interactiveDetails": {
+                        "length":256,
+                        "label":"Last Name",
+                        "placeholder":"Doe",
+                        "textfieldType":"text"
+                    }
+                }]
+            }]
+        }]
+    },
+    {
+        "elementId":"12",
+        "elementType": "question",
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This question demonstrates various HTML-Testelements.",
+            "descriptionType": "text"
+        },
+        {
+            "elementId":"1200",
+            "content": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg",
+            "descriptionType": "image"
+        }],
+        "interactives":[
+        {
+            "elementId":"121",
+            "elementType":"textfield",
+            "mappingKey":"k_textfield",
+            "validators":[],
+            "interactiveDetails": {
+                "length":256,
+                "label":"Input Test",
+                "placeholder":"Placeholder",
+                "textfieldType":"text"
+            }
+        },
+        {
+            "elementId":"122",
+            "elementType":"checkbox",
+            "mappingKey":"k_checkbox",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Checkbox Test"
+            }
+        },
+        {
+            "elementId":"124",
+            "elementType":"dropdown",
+            "mappingKey":"k_dropdown",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Dropdown Test",
+                "defaultOption":1,
+                "options":[
+                {
+                    "elementId":"1240",
+                    "label":"First option"  
+                },
+                {
+                    "elementId":"1241",
+                    "label":"Second option" 
+                },
+                {
+                    "elementId":"1242",
+                    "label":"Third option"  
+                }]
+            }
+        },
+        {
+            "elementId":"123",
+            "elementType":"radio",
+            "mappingKey":"k_radio",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Radio Test",
+                "options":[
+                {
+                    "elementId":"1230",
+                    "label":"Option one"
+                },
+                {
+                    "elementId":"1231",
+                    "label":"Option two"
+                }]
+            }
+        },
+        {
+            "elementId":"125",
+            "elementType":"date",
+            "mappingKey":"k_date",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Date Test",
+                "dateFormat":"dd/mm/yyyy"
+            }
+        }]
+    }]
 }
