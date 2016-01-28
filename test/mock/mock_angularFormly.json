@@ -75,7 +75,9 @@
     "type": "datepicker",
     "key": "k_date",
     "templateOptions": {
-      "label": "Date Test"
+      "label": "Date Test",
+      "type": "text",
+      "datepickerPopup": "dd/mm/yyyy"
     }
   }
 ]
