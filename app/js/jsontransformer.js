@@ -4,11 +4,11 @@ formularGenerator.factory("jsonTransformer", [function () {
     var JT = {};
 
     JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecification) {
-        //console.log("Transforming Json:");
-        //console.log(formularSpecification);
-        //console.log("");
+        // console.log("Transforming Json:");
+        // console.log(formularSpecification);
+        // console.log("");
 
-        var formularSpecificationArray = formularSpecification.properties['children'].items;
+        var formularSpecificationArray = formularSpecification['children'];
         var angularFormlyJsonArray = [];
 
         for (var objectNumber in formularSpecificationArray) {
@@ -22,8 +22,8 @@ formularGenerator.factory("jsonTransformer", [function () {
         //console.log(angularFormlyJsonArray);
         //console.log("");
 
-        // var json = JSON.stringify(angularFormlyJsonArray);
-        // console.log(json);
+        var json = JSON.stringify(angularFormlyJsonArray);
+        console.log(json);
         // var url = 'data:text/json;charset=utf8,' + encodeURIComponent(json);
         // window.open(url, '_blank');
         // window.focus();
@@ -32,17 +32,17 @@ formularGenerator.factory("jsonTransformer", [function () {
     };
 
     var angularFormlyJsonArrayForFsJson = function(fsJson) {
-        //console.log("Generate angular formly Json for Json:");
-        //console.log(fsJson);
+        // console.log("Generate angular formly Json for Json:");
+        // console.log(fsJson);
 
         var afJsonArray = [];
         
-        if (fsJson.properties.hasOwnProperty("group")) {
-            //console.log("Found GROUP");
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForGroup(fsJson.properties.group));
-        } else if(fsJson.properties.hasOwnProperty("question")) {
-            //console.log("found QUESTION");
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForQuestion(fsJson.properties.question));
+        if (fsJson['elementType'] === "group") {
+            // console.log("Found GROUP");
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForGroup(fsJson));
+        } else if(fsJson['elementType'] === "question") {
+            // console.log("found QUESTION");
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForQuestion(fsJson));
         } else {
             //console.log("No match for generating Json found.");
         };
@@ -53,11 +53,11 @@ formularGenerator.factory("jsonTransformer", [function () {
     var angularFormlyJsonArrayForGroup = function(fsGroupJson) {
         var afJsonArray = [];
 
-        //console.log("Generate angular formly Json for GROUP:");
-        //console.log(fsGroupJson);
+        // console.log("Generate angular formly Json for GROUP:");
+        // console.log(fsGroupJson);
 
         //TODO add groupspecific attributes to angularFormlyJsonArray
-        var fsGroupJsonArray = fsGroupJson.properties['children'].items;
+        var fsGroupJsonArray = fsGroupJson['children'];
 
         for (var i in fsGroupJsonArray) {
             //console.log("Call again angularFormlyJsonArrayForFsJson with groups child element:");
@@ -71,59 +71,48 @@ formularGenerator.factory("jsonTransformer", [function () {
     var angularFormlyJsonArrayForQuestion = function(fsQuestionJson) {
         var afJsonArray = [];
 
-        //console.log("Generate angular formly Json for QUESTION:");
-        //console.log(fsQuestionJson);
+        // console.log("Generate angular formly Json for QUESTION:");
+        // console.log(fsQuestionJson);
 
         //TODO add questionspecific attributes to angularFormlyJsonArray
 
-        if (fsQuestionJson.properties['interactive']) {
-            //console.log("The question contains an interactive element:");
-            //console.log(fsQuestionJson.properties['interactive']);
-            afJsonArray = angularFormlyJsonArrayForInteractive(fsQuestionJson.properties['interactive']);
+        if (fsQuestionJson['interactives']) {
+            // console.log("The question contains interactive elements:");
+            // console.log(fsQuestionJson['interactives']);
+            afJsonArray = angularFormlyJsonArrayForInteractive(fsQuestionJson['interactives']);
         };
 
         return afJsonArray;
     };
 
-    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJson) {
+    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJsonArray) {
         var afJsonArray = [];
 
-        //console.log("Generate angular formly Json for INTERACTIVE:");
-        //console.log(fsInteractiveJson);
+        // console.log("Generate angular formly Json for INTERACTIVE:");
+        // console.log(fsInteractiveJsonArray);
         
         //TODO add interactivespecific attributes to angularFormlyJsonArray
 
-        var fsInteractiveJsonArray = fsInteractiveJson.items;
-
         for (var i in fsInteractiveJsonArray) {
-            var currentFsInteractiveJson = fsInteractiveJsonArray[i].properties['interactive'];
+            var currentFsInteractiveJson = fsInteractiveJsonArray[i];
 
             var afJson = {};
-            afJson.key = currentFsInteractiveJson.properties['mapping-key'].elementValue;
 
-            var fsJsonTypeString = currentFsInteractiveJson.properties.elementType['elementValue'];
+            var fsJsonTypeString = currentFsInteractiveJson['elementType'];
             if (fsJsonTypeString === 'error') {
+                //Return since no interactive details should be added due to error-type
                 //console.log("Object has no valid type");
                 continue;
             };
 
             afJson.type = angularFormlyTypeStringForFsTypeString(fsJsonTypeString);
             
-            var fsSpecificInteractiveJson = currentFsInteractiveJson.properties[fsJsonTypeString];
-            afJson.templateOptions = templateOptionsForInteractiveFsJson(fsSpecificInteractiveJson);
+            afJson.key = currentFsInteractiveJson['mappingKey'];
 
-            // if (fsJsonTypeString === 'date') {
-            //     //console.log("no af-template for the calendar-picker implemented yet");
-            //     continue; //no af-template for the calendar-picker implemented yet
-            // };
+            //TODO: validators
 
-            // if (fsJsonTypeString != 'date') {
-            //     //console.log("no af-template for the calendar-picker implemented yet");
-            //     continue; //no af-template for the calendar-picker implemented yet
-            // };
-
-            //console.log("survived");
-
+            var fsSpecificInteractiveJson = currentFsInteractiveJson['interactiveDetails'];
+            afJson.templateOptions = templateOptionsForInteractiveFsJson(fsSpecificInteractiveJson);            
 
             afJsonArray.push(afJson);
         };
@@ -150,35 +139,43 @@ formularGenerator.factory("jsonTransformer", [function () {
 
     var templateOptionsForInteractiveFsJson = function(fsSpecificInteractiveJson){
         var templateOptions = {};
-        templateOptions.label = fsSpecificInteractiveJson.properties['label'].elementValue;
 
-        if (fsSpecificInteractiveJson.properties['placeholder']) {
-            templateOptions.placeholder = fsSpecificInteractiveJson.properties['placeholder'].elementValue;
+        templateOptions.label = fsSpecificInteractiveJson['label'];
+
+        if (fsSpecificInteractiveJson['length']) {
+            //TODO: tempalte does not support this feature, yet
+        }
+        if (fsSpecificInteractiveJson['placeholder']) {
+            templateOptions.placeholder = fsSpecificInteractiveJson['placeholder'];
         };
-        if (fsSpecificInteractiveJson.properties['options']) {
-            templateOptions.options = angularFormlyArrayForOptions(fsSpecificInteractiveJson.properties['options']);
-        };
-        if (fsSpecificInteractiveJson.properties['dateFormat']) {
-            //console.log("oh welll");
+        if (fsSpecificInteractiveJson['textfieldType']) {
+            //TODO: tempalte does not support this feature, yet
+        }
+        if (fsSpecificInteractiveJson['dateFormat']) {
             templateOptions.type = "text";
-            templateOptions.datepickerPopup = fsSpecificInteractiveJson.properties['dateFormat'].elementValue;
+            templateOptions.datepickerPopup = fsSpecificInteractiveJson['dateFormat'];
+        };
+        if (fsSpecificInteractiveJson['options']) {
+            templateOptions.options = angularFormlyArrayForOptions(fsSpecificInteractiveJson['options']);
+            
+            if (fsSpecificInteractiveJson['defaultOption']) {
+                //TODO: tempalte does not support this feature, yet
+            };
         };
 
         return templateOptions;
     }; 
 
-    var angularFormlyArrayForOptions = function(fsOptions) {
+    var angularFormlyArrayForOptions = function(fsOptionsArray) {
         var afOptionsArray = [];
-        //console.log("Transform OPTIONS");
-        //console.log(fsOptions);
-
-        var fsOptionsArray = fsOptions['items'];
+        // console.log("Transform OPTIONS");
+        // console.log(fsOptionsArray);
 
         for (var optionIndex in fsOptionsArray) {
-            var option = fsOptionsArray[optionIndex].properties['option'].properties;        
+            var option = fsOptionsArray[optionIndex];
             var afOptionJson = {};
-            afOptionJson.name = option.label.elementValue;
-            afOptionJson.value = option.id.elementValue;
+            afOptionJson.name = option.label;
+            afOptionJson.value = option.id;
             afOptionsArray.push(afOptionJson);
         };
 
