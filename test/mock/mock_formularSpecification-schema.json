@@ -54,8 +54,8 @@
                         "enum": [ "text", "password", "number" ]
                     },
                     "dateFormat": { "$ref": "#/definitions/dateFormat" },
-                    "minDate": { "$ref": "#/definitions/dateFormat" },
-                    "options": { "$ref": "#/definitions/minDate" },
+                    "minDate": { "$ref": "#/definitions/minDate" },
+                    "options": { "$ref": "#/definitions/options" },
                     "defaultOption": { "$ref": "#/definitions/defaultOption" }
                 },
                 "required": ["label"]
