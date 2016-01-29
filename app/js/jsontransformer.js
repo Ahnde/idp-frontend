@@ -22,8 +22,8 @@ formularGenerator.factory("jsonTransformer", [function () {
         //console.log(angularFormlyJsonArray);
         //console.log("");
 
-        var json = JSON.stringify(angularFormlyJsonArray);
-        console.log(json);
+        // var json = JSON.stringify(angularFormlyJsonArray);
+        // console.log(json);
         // var url = 'data:text/json;charset=utf8,' + encodeURIComponent(json);
         // window.open(url, '_blank');
         // window.focus();
