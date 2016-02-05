@@ -1,0 +1,92 @@
+[
+  {
+    "type": "select",
+    "key": "k_dropdown1",
+    "templateOptions": {
+      "label": "Dropdown Test 1",
+      "options": [
+        {
+          "name": "1/1"
+        }
+      ]
+    }
+  },
+  {
+    "type": "select",
+    "key": "k_dropdown2",
+    "templateOptions": {
+      "label": "Dropdown Test 2",
+      "options": [
+        {
+          "name": "1/2"
+        },
+        {
+          "name": "2/2"
+        }
+      ]
+    }
+  },
+  {
+    "type": "select",
+    "key": "k_dropdown3",
+    "templateOptions": {
+      "label": "Dropdown Test 3",
+      "options": [
+        {
+          "name": "1/3"
+        },
+        {
+          "name": "2/3"
+        },
+        {
+          "name": "3/3"
+        }
+      ]
+    }
+  },
+  {
+    "type": "select",
+    "key": "k_dropdown4",
+    "templateOptions": {
+      "label": "Dropdown Test 4",
+      "options": [
+        {
+          "name": "1/4"
+        },
+        {
+          "name": "2/4"
+        },
+        {
+          "name": "3/4"
+        },
+        {
+          "name": "4/4"
+        }
+      ]
+    }
+  },
+  {
+    "type": "select",
+    "key": "k_dropdown5",
+    "templateOptions": {
+      "label": "Dropdown Test 5",
+      "options": [
+        {
+          "name": "1/5"
+        },
+        {
+          "name": "2/5"
+        },
+        {
+          "name": "3/5"
+        },
+        {
+          "name": "4/5"
+        },
+        {
+          "name": "5/5"
+        }
+      ]
+    }
+  }
+]

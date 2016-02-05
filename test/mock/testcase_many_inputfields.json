@@ -1,0 +1,78 @@
+{
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"12",
+        "elementType": "question",
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This question demonstrates various HTML-Testelements.",
+            "descriptionType": "text"
+        }],
+        "interactives":[
+        {
+            "elementId":"121",
+            "elementType":"textfield",
+            "mappingKey":"k_textfield1",
+            "validators":[],
+            "interactiveDetails": {
+                "length":256,
+                "label":"Input Test 1",
+                "placeholder":"Placeholder 1",
+                "textfieldType":"text"
+            }
+        },
+        {
+            "elementId":"121",
+            "elementType":"textfield",
+            "mappingKey":"k_textfield2",
+            "validators":[],
+            "interactiveDetails": {
+                "length":256,
+                "label":"Input Test 2",
+                "placeholder":"Placeholder 2",
+                "textfieldType":"text"
+            }
+        },
+        {
+            "elementId":"121",
+            "elementType":"textfield",
+            "mappingKey":"k_textfield3",
+            "validators":[],
+            "interactiveDetails": {
+                "length":256,
+                "label":"Input Test 3",
+                "placeholder":"Placeholder 3",
+                "textfieldType":"text"
+            }
+        },
+        {
+            "elementId":"121",
+            "elementType":"textfield",
+            "mappingKey":"k_textfield4",
+            "validators":[],
+            "interactiveDetails": {
+                "length":256,
+                "label":"Input Test 4",
+                "placeholder":"Placeholder 4",
+                "textfieldType":"text"
+            }
+        },
+        {
+            "elementId":"121",
+            "elementType":"textfield",
+            "mappingKey":"k_textfield5",
+            "validators":[],
+            "interactiveDetails": {
+                "length":256,
+                "label":"Input Test 5",
+                "placeholder":"Placeholder 5",
+                "textfieldType":"text"
+            }
+        }]
+    }]
+}

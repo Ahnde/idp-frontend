@@ -1,0 +1,68 @@
+{
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"12",
+        "elementType": "question",
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This question demonstrates various HTML-Testelements.",
+            "descriptionType": "text"
+        }],
+        "interactives":[
+        {
+            "elementId":"125",
+            "elementType":"date",
+            "mappingKey":"k_date1",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Date Test 1",
+                "dateFormat":"dd/mm/yyyy"
+            }
+        },
+        {
+            "elementId":"125",
+            "elementType":"date",
+            "mappingKey":"k_date2",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Date Test 2",
+                "dateFormat":"dd/mm/yyyy"
+            }
+        },
+        {
+            "elementId":"125",
+            "elementType":"date",
+            "mappingKey":"k_date3",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Date Test 3",
+                "dateFormat":"dd/mm/yyyy"
+            }
+        },
+        {
+            "elementId":"125",
+            "elementType":"date",
+            "mappingKey":"k_date4",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Date Test 4",
+                "dateFormat":"dd/mm/yyyy"
+            }
+        },
+        {
+            "elementId":"125",
+            "elementType":"date",
+            "mappingKey":"k_date5",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Date Test 5",
+                "dateFormat":"dd/mm/yyyy"
+            }
+        }]
+    }]
+}

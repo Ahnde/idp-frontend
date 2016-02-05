@@ -1,0 +1,37 @@
+[
+  {
+    "type": "checkbox",
+    "key": "k_checkbox1",
+    "templateOptions": {
+      "label": "Checkbox Test 1"
+    }
+  },
+  {
+    "type": "checkbox",
+    "key": "k_checkbox2",
+    "templateOptions": {
+      "label": "Checkbox Test 2"
+    }
+  },
+  {
+    "type": "checkbox",
+    "key": "k_checkbox3",
+    "templateOptions": {
+      "label": "Checkbox Test 3"
+    }
+  },
+  {
+    "type": "checkbox",
+    "key": "k_checkbox4",
+    "templateOptions": {
+      "label": "Checkbox Test 4"
+    }
+  },
+  {
+    "type": "checkbox",
+    "key": "k_checkbox5",
+    "templateOptions": {
+      "label": "Checkbox Test 5"
+    }
+  }
+]

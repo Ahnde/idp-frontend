@@ -1,0 +1,27 @@
+{
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"12",
+        "elementType": "question",
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This question demonstrates various HTML-Testelements.",
+            "descriptionType": "text"
+        }],
+        "interactives":[
+        {
+            "elementId":"122",
+            "elementType":"checkbox",
+            "mappingKey":"k_checkbox",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Checkbox Test"
+            }
+        }]
+    }]
+}
