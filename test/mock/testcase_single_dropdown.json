@@ -1,0 +1,41 @@
+{
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"12",
+        "elementType": "question",
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This question demonstrates various HTML-Testelements.",
+            "descriptionType": "text"
+        }],
+        "interactives":[
+        {
+            "elementId":"124",
+            "elementType":"dropdown",
+            "mappingKey":"k_dropdown",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Dropdown Test",
+                "defaultOption":1,
+                "options":[
+                {
+                    "elementId":"1240",
+                    "label":"First option"  
+                },
+                {
+                    "elementId":"1241",
+                    "label":"Second option" 
+                },
+                {
+                    "elementId":"1242",
+                    "label":"Third option"  
+                }]
+            }
+        }]
+    }]
+}

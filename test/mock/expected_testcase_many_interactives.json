@@ -1,0 +1,59 @@
+[
+  {
+    "type": "input",
+    "key": "k_textfield",
+    "templateOptions": {
+      "label": "Input Test",
+      "placeholder": "Placeholder"
+    }
+  },
+  {
+    "type": "checkbox",
+    "key": "k_checkbox",
+    "templateOptions": {
+      "label": "Checkbox Test"
+    }
+  },
+  {
+    "type": "select",
+    "key": "k_dropdown",
+    "templateOptions": {
+      "label": "Dropdown Test",
+      "options": [
+        {
+          "name": "First option"
+        },
+        {
+          "name": "Second option"
+        },
+        {
+          "name": "Third option"
+        }
+      ]
+    }
+  },
+  {
+    "type": "radio",
+    "key": "k_radio",
+    "templateOptions": {
+      "label": "Radio Test",
+      "options": [
+        {
+          "name": "Option one"
+        },
+        {
+          "name": "Option two"
+        }
+      ]
+    }
+  },
+  {
+    "type": "datepicker",
+    "key": "k_date",
+    "templateOptions": {
+      "label": "Date Test",
+      "type": "text",
+      "datepickerPopup": "dd/mm/yyyy"
+    }
+  }
+]

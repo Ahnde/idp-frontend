@@ -1,0 +1,133 @@
+{
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"12",
+        "elementType": "question",
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This question demonstrates various HTML-Testelements.",
+            "descriptionType": "text"
+        }],
+        "interactives":[
+        {
+            "elementId":"124",
+            "elementType":"dropdown",
+            "mappingKey":"k_dropdown1",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Dropdown Test 1",
+                "defaultOption":1,
+                "options":[
+                {
+                    "elementId":"1240",
+                    "label":"1/1"  
+                }]
+            }
+        },
+        {
+            "elementId":"124",
+            "elementType":"dropdown",
+            "mappingKey":"k_dropdown2",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Dropdown Test 2",
+                "defaultOption":1,
+                "options":[
+                {
+                    "elementId":"1240",
+                    "label":"1/2"  
+                },
+                {
+                    "elementId":"1241",
+                    "label":"2/2" 
+                }]
+            }
+        },
+        {
+            "elementId":"124",
+            "elementType":"dropdown",
+            "mappingKey":"k_dropdown3",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Dropdown Test 3",
+                "defaultOption":1,
+                "options":[
+                {
+                    "elementId":"1240",
+                    "label":"1/3"  
+                },
+                {
+                    "elementId":"1241",
+                    "label":"2/3" 
+                },
+                {
+                    "elementId":"1242",
+                    "label":"3/3"  
+                }]
+            }
+        },
+        {
+            "elementId":"124",
+            "elementType":"dropdown",
+            "mappingKey":"k_dropdown4",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Dropdown Test 4",
+                "defaultOption":1,
+                "options":[
+                {
+                    "elementId":"1240",
+                    "label":"1/4"  
+                },
+                {
+                    "elementId":"1241",
+                    "label":"2/4" 
+                },
+                {
+                    "elementId":"1242",
+                    "label":"3/4"  
+                },
+                {
+                    "elementId":"1243",
+                    "label":"4/4"  
+                }]
+            }
+        },
+        {
+            "elementId":"124",
+            "elementType":"dropdown",
+            "mappingKey":"k_dropdown5",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Dropdown Test 5",
+                "defaultOption":1,
+                "options":[
+                {
+                    "elementId":"1240",
+                    "label":"1/5"  
+                },
+                {
+                    "elementId":"1241",
+                    "label":"2/5" 
+                },
+                {
+                    "elementId":"1242",
+                    "label":"3/5"  
+                },
+                {
+                    "elementId":"1243",
+                    "label":"4/5"  
+                },
+                {
+                    "elementId":"1244",
+                    "label":"5/5"  
+                }]
+            }
+        }]
+    }]
+}

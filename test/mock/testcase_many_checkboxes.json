@@ -1,0 +1,63 @@
+{
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"12",
+        "elementType": "question",
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This question demonstrates various HTML-Testelements.",
+            "descriptionType": "text"
+        }],
+        "interactives":[
+        {
+            "elementId":"122",
+            "elementType":"checkbox",
+            "mappingKey":"k_checkbox1",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Checkbox Test 1"
+            }
+        },
+        {
+            "elementId":"122",
+            "elementType":"checkbox",
+            "mappingKey":"k_checkbox2",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Checkbox Test 2"
+            }
+        },
+        {
+            "elementId":"122",
+            "elementType":"checkbox",
+            "mappingKey":"k_checkbox3",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Checkbox Test 3"
+            }
+        },
+        {
+            "elementId":"122",
+            "elementType":"checkbox",
+            "mappingKey":"k_checkbox4",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Checkbox Test 4"
+            }
+        },
+        {
+            "elementId":"122",
+            "elementType":"checkbox",
+            "mappingKey":"k_checkbox5",
+            "validators":[],
+            "interactiveDetails": {
+                "label":"Checkbox Test 5"
+            }
+        }]
+    }]
+}

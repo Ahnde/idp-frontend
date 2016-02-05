@@ -1,0 +1,30 @@
+{
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"12",
+        "elementType": "question",
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This question demonstrates various HTML-Testelements.",
+            "descriptionType": "text"
+        }],
+        "interactives":[
+        {
+            "elementId":"121",
+            "elementType":"textfield",
+            "mappingKey":"k_textfield",
+            "validators":[],
+            "interactiveDetails": {
+                "length":256,
+                "label":"Input Test",
+                "placeholder":"Placeholder",
+                "textfieldType":"text"
+            }
+        }]
+    }]
+}

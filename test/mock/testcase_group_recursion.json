@@ -1,0 +1,81 @@
+{
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"11",
+        "elementType":"group",
+        "repeatable":false,
+        "descriptions": [
+        {
+            "elementId":"110",
+            "content": "1st level group",
+            "descriptionType":"text"
+        }],
+        "children":[
+        {
+            "elementId":"112",
+            "elementType":"group",
+            "repeatable":false,
+            "descriptions": [
+            {
+                "elementId":"1120",
+                "content": "2nd level group",
+                "descriptionType": "text"
+            }],
+            "children":[
+            {
+                "elementId":"11",
+                "elementType":"group",
+                "repeatable":false,
+                "descriptions": [
+                {
+                    "elementId":"110",
+                    "content": "3rd level group",
+                    "descriptionType":"text"
+                }],
+                "children":[
+                {
+                    "elementId":"112",
+                    "elementType":"group",
+                    "repeatable":false,
+                    "descriptions": [
+                    {
+                        "elementId":"1120",
+                        "content": "4th level group",
+                        "descriptionType": "text"
+                    }],
+                    "children":[
+                    {
+                        "elementId":"112",
+                        "elementType":"group",
+                        "repeatable":false,
+                        "descriptions": [
+                        {
+                            "elementId":"1120",
+                            "content": "5th level group",
+                            "descriptionType": "text"
+                        }],
+                        "children":[
+                        {
+                            "elementId":"111",
+                            "elementType": "question",
+                            "descriptions":[
+                            {
+                                "elementId":"1110",
+                                "content": "Question",
+                                "descriptionType":"text"
+                            }],
+                            "interactives":[]
+                        }]
+                    }]
+                }]
+            }]
+        }]
+    }]
+}
+
+
+        
