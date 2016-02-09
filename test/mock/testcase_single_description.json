@@ -7,7 +7,12 @@
     {
         "elementId":"12",
         "elementType": "question",
-        "descriptions":[],
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This is a text description.",
+            "descriptionType": "text"
+        }],
         "interactives":[]
     }]
 }

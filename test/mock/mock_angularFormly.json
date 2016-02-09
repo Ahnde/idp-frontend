@@ -1,10 +1,34 @@
 [
   {
+    "type": "textlabel",
+    "templateOptions": {
+      "label": "This part of the form is about the title of the patient."
+    }
+  },
+  {
+    "type": "textlabel",
+    "templateOptions": {
+      "label": "Please enter your title if you have one."
+    }
+  },
+  {
     "type": "input",
     "key": "k_title",
     "templateOptions": {
       "label": "Title",
       "placeholder": "Dr."
+    }
+  },
+  {
+    "type": "textlabel",
+    "templateOptions": {
+      "label": "This part of the form is about the name of the patient."
+    }
+  },
+  {
+    "type": "textlabel",
+    "templateOptions": {
+      "label": "Please enter your first name above."
     }
   },
   {
@@ -16,11 +40,29 @@
     }
   },
   {
+    "type": "textlabel",
+    "templateOptions": {
+      "label": "Please enter your last name above."
+    }
+  },
+  {
     "type": "input",
     "key": "k_lastname",
     "templateOptions": {
       "label": "Last Name",
       "placeholder": "Doe"
+    }
+  },
+  {
+    "type": "textlabel",
+    "templateOptions": {
+      "label": "This question demonstrates various HTML-Testelements."
+    }
+  },
+  {
+    "type": "image",
+    "templateOptions": {
+      "url": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg"
     }
   },
   {

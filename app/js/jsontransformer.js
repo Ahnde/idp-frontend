@@ -4,10 +4,6 @@ formularGenerator.factory("jsonTransformer", [function () {
     var JT = {};
 
     JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecification) {
-        // console.log("Transforming Json:");
-        // console.log(formularSpecification);
-        // console.log("");
-
         var formularSpecificationArray = formularSpecification['children'];
         var angularFormlyJsonArray = [];
 
@@ -17,12 +13,7 @@ formularGenerator.factory("jsonTransformer", [function () {
             angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
         };
 
-        //console.log("");
-        //console.log("The array with the transformed Json:");
-        //console.log(angularFormlyJsonArray);
-        //console.log("");
-
-        var json = JSON.stringify(angularFormlyJsonArray);
+        // var json = JSON.stringify(angularFormlyJsonArray);
         // console.log(json);
         // var url = 'data:text/json;charset=utf8,' + encodeURIComponent(json);
         // window.open(url, '_blank');
@@ -32,19 +23,13 @@ formularGenerator.factory("jsonTransformer", [function () {
     };
 
     var angularFormlyJsonArrayForFsJson = function(fsJson) {
-        // console.log("Generate angular formly Json for Json:");
-        // console.log(fsJson);
 
         var afJsonArray = [];
         
         if (fsJson['elementType'] === "group") {
-            // console.log("Found GROUP");
             afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForGroup(fsJson));
         } else if(fsJson['elementType'] === "question") {
-            // console.log("found QUESTION");
             afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForQuestion(fsJson));
-        } else {
-            //console.log("No match for generating Json found.");
         };
 
         return afJsonArray;
@@ -53,16 +38,16 @@ formularGenerator.factory("jsonTransformer", [function () {
     var angularFormlyJsonArrayForGroup = function(fsGroupJson) {
         var afJsonArray = [];
 
-        // console.log("Generate angular formly Json for GROUP:");
-        // console.log(fsGroupJson);
+        var fsGroupDescriptionsArray = fsGroupJson['descriptions']
+        if (fsGroupDescriptionsArray.length > 0)
+        {
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForDescriptions(fsGroupDescriptionsArray));
+        }
 
-        //TODO add groupspecific attributes to angularFormlyJsonArray
-        var fsGroupJsonArray = fsGroupJson['children'];
+        var fsGroupChildrenArray = fsGroupJson['children'];
 
-        for (var i in fsGroupJsonArray) {
-            //console.log("Call again angularFormlyJsonArrayForFsJson with groups child element:");
-            //console.log(fsGroupJsonArray[i]);
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForFsJson(fsGroupJsonArray[i]));
+        for (var i in fsGroupChildrenArray) {
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForFsJson(fsGroupChildrenArray[i]));
         };
         
         return afJsonArray;
@@ -71,27 +56,50 @@ formularGenerator.factory("jsonTransformer", [function () {
     var angularFormlyJsonArrayForQuestion = function(fsQuestionJson) {
         var afJsonArray = [];
 
-        // console.log("Generate angular formly Json for QUESTION:");
-        // console.log(fsQuestionJson);
-
-        //TODO add questionspecific attributes to angularFormlyJsonArray
+        var fsQuestionDescriptionsArray = fsQuestionJson['descriptions']
+        if (fsQuestionDescriptionsArray.length > 0)
+        {
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForDescriptions(fsQuestionDescriptionsArray));
+        }
 
         if (fsQuestionJson['interactives']) {
-            // console.log("The question contains interactive elements:");
-            // console.log(fsQuestionJson['interactives']);
-            afJsonArray = angularFormlyJsonArrayForInteractive(fsQuestionJson['interactives']);
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForInteractive(fsQuestionJson['interactives']));
         };
 
         return afJsonArray;
     };
 
-    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJsonArray) {
+    var angularFormlyJsonArrayForDescriptions = function(fsDescriptionJsonArray) {
         var afJsonArray = [];
 
-        // console.log("Generate angular formly Json for INTERACTIVE:");
-        // console.log(fsInteractiveJsonArray);
-        
-        //TODO add interactivespecific attributes to angularFormlyJsonArray
+        for (var i in fsDescriptionJsonArray)
+        {
+            var fsDescription = fsDescriptionJsonArray[i];
+            afJsonArray = afJsonArray.concat(angularFormlyJsonAForDescription(fsDescription))
+        }
+
+        return afJsonArray;
+    }
+
+    var angularFormlyJsonAForDescription = function(fsDescriptionJson) {
+        var afJson = {};
+        var templateOptions = {};
+
+        if (fsDescriptionJson['descriptionType'] === "image") {
+            afJson.type = "image";
+            templateOptions.url = fsDescriptionJson['content'];
+        } else {
+            afJson.type = "textlabel";
+            templateOptions.label = fsDescriptionJson['content'];
+        };
+
+        afJson.templateOptions = templateOptions;
+
+        return afJson;
+    }
+
+    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJsonArray) {
+        var afJsonArray = [];
 
         for (var i in fsInteractiveJsonArray) {
             var currentFsInteractiveJson = fsInteractiveJsonArray[i];
@@ -100,8 +108,6 @@ formularGenerator.factory("jsonTransformer", [function () {
 
             var fsJsonTypeString = currentFsInteractiveJson['elementType'];
             if (fsJsonTypeString === 'error') {
-                //Return since no interactive details should be added due to error-type
-                //console.log("Object has no valid type");
                 continue;
             };
 
@@ -168,8 +174,6 @@ formularGenerator.factory("jsonTransformer", [function () {
 
     var angularFormlyArrayForOptions = function(fsOptionsArray) {
         var afOptionsArray = [];
-        // console.log("Transform OPTIONS");
-        // console.log(fsOptionsArray);
 
         for (var optionIndex in fsOptionsArray) {
             var option = fsOptionsArray[optionIndex];

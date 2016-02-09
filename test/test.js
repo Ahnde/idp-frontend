@@ -1,13 +1,12 @@
 "use strict";
 
 describe('jsonTransformer', function () {
-    var inputFsJson, outputJson, expectedOutputJson, jsonTransformer, httpBackend;
+    var inputFsJson, outputJson, expectedOutputJson, jsonTransformer;
 
     beforeEach(module('formularGenerator'));
 
-    beforeEach(inject(function (_jsonTransformer_, $httpBackend) {
+    beforeEach(inject(function (_jsonTransformer_) {
         jsonTransformer = _jsonTransformer_;
-        httpBackend = $httpBackend;
     }));
 
     beforeEach(function () {
@@ -55,6 +54,22 @@ describe('jsonTransformer', function () {
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
 
         testJsonMapping(result, 'expected_testcase_group_recursion.json')
+    });
+
+    // one description
+    it('should map a question with an description to an af-label', function () {
+        var testcase = getJSONFixture('testcase_single_description.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+
+        testJsonMapping(result, 'expected_testcase_single_description.json')
+    });
+
+    // many descriptions
+    it('should map a question with many descriptions to many af-labels and images', function () {
+        var testcase = getJSONFixture('testcase_many_descriptions.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+        
+        testJsonMapping(result, 'expected_testcase_many_descriptions.json')
     });
     
     // one inputfield
@@ -150,10 +165,60 @@ describe('jsonTransformer', function () {
     it('should transform the mixed stff', function () {
         var testcase = getJSONFixture('mock_formularSpecification.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-        
+        // dump(JSON.stringify(result));
         testJsonMapping(result, 'mock_angularFormly.json')
     });
 });
+
+// describe("asyncTest", function() {
+//     var flag = false;
+
+//     beforeEach(function(done) {
+//         setTimeout(function () {
+//             flag = true;
+//             done();
+//         }, 2000);
+//     });
+
+//     it("should be successful", function() {
+//         expect(flag).toBeTruthy();
+//     });
+// });
+
+
+// describe("asyncTest", function() {
+//     var $httpBackend, $rootScope, createController, authRequestHandler;
+
+//     beforeEach(module('formularGenerator'));
+
+//     beforeEach(inject(function($injector) {
+//         // Set up the mock http service responses
+//         $httpBackend = $injector.get('$httpBackend');
+//         // backend definition common for all tests
+//         authRequestHandler = $httpBackend.when('GET', '/auth.py').respond({userId: 'userX'}, {'A-Token': 'xxx'});
+
+//         // Get hold of a scope (i.e. the root scope)
+//         $rootScope = $injector.get('$rootScope');
+//         // The $controller service is used to create instances of controllers
+//         var $controller = $injector.get('$controller');
+
+//         createController = function() {
+//             return $controller('formularGenerator', {'$scope' : $rootScope });
+//         };
+//     }));
+
+//     afterEach(function() {
+//        $httpBackend.verifyNoOutstandingExpectation();
+//        $httpBackend.verifyNoOutstandingRequest();
+//     });
+
+//     it('should fetch authentication token', function() {
+//         $httpBackend.expectGET('/auth.py');
+//         var controller = createController();
+//         $httpBackend.flush();
+//     });
+// });
+
 
 
 // describe("backendConnector", function() {
@@ -174,27 +239,81 @@ describe('jsonTransformer', function () {
 //     beforeEach(function(done) {
 //         dump("davor");
 //         dump(backendConnector);
-//         // backendConnector.getFormularSpecification(
-//         //     function(formularSpecification) {
-//         //         dump("drin");
-//         //         fsresponse = formularSpecification;
-//         //         dump(formularSpecification);
-//         //         dump(fsresponse);
-//         //         done();
-//         //     }
-//         // )
-//         httpBackend.expectGET(backendConnector.getFormularSpecification()).respond(200, {});
-//         httpBackend.flush();
+//         backendConnector.getFormularSpecification(
+//             function(formularSpecification) {
+//                 dump("drin");
+//                 fsresponse = formularSpecification;
+//                 dump(formularSpecification);
+//                 dump(fsresponse);
+//                 done();
+//             }
+//         )
+//         // httpBackend.expectGET(backendConnector.getFormularSpecification()).respond(200, {});
+//         // httpBackend.flush();
 //         dump("danach");
 //     });
 
-//     it("should not return an error when getting the FS", function(done) {
+//     it("should not return an error when getting the FS", function() {
 //         dump(fsresponse);
 //         expect(1).toBeGreaterThan(0);
-//         done();
 //     });
 
 //     afterEach(function() {
 //       jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
 //     });
 // });
+
+// describe("backendConnector", function() {
+//     var backendConnector, httpBackend, fsresponse, originalTimeout;
+
+//     beforeEach(module('formularGenerator'));
+
+//     beforeEach(inject(function (_backendConnector_, $httpBackend) {
+//         backendConnector = _backendConnector_;
+//         httpBackend = $httpBackend;
+//     }));
+
+//     beforeEach(function(done) {
+//         backendConnector.getFormularSpecification(
+//             function(formularSpecification) {
+//                 fsresponse = formularSpecification;
+//                 done();
+//             }
+//         )
+
+//         httpBackend.whenGET("http://localhost:8000/response.json", undefined, undefined, ['id'])
+//                    .respond(function(method, url, data, headers, params) { 
+//                         dump("params");
+//                         dump(params);
+//                    });
+
+
+
+//         httpBackend.expectGET("http://localhost:8000/response.json");
+//         httpBackend.flush();
+//     });
+
+//     it("should return a JSON-object", function() {
+//         dump(fsresponse);
+//         expect(fsresponse).toEqual({ "test": "json" });
+//     });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

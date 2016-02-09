@@ -1,0 +1,20 @@
+[
+  {
+    "type": "textlabel",
+    "templateOptions": {
+      "label": "This is a text description."
+    }
+  },
+  {
+    "type": "textlabel",
+    "templateOptions": {
+      "label": "7338"
+    }
+  },
+  {
+    "type": "image",
+    "templateOptions": {
+      "url": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg"
+    }
+  }
+]

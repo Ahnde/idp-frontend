@@ -7,12 +7,7 @@
     {
         "elementId":"12",
         "elementType": "question",
-        "descriptions":[
-        {
-            "elementId":"120",
-            "content": "This question demonstrates various HTML-Testelements.",
-            "descriptionType": "text"
-        }],
+        "descriptions":[],
         "interactives":[
         {
             "elementId":"122",
