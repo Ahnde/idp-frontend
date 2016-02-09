@@ -1,0 +1,28 @@
+{
+    "elementId":"1",
+    "elementType":"form",
+    "metadata":[],
+    "descriptions":[],
+    "children":[
+    {
+        "elementId":"12",
+        "elementType": "question",
+        "descriptions":[
+        {
+            "elementId":"120",
+            "content": "This is a text description.",
+            "descriptionType": "text"
+        },
+        {
+            "elementId":"121",
+            "content": "7338",
+            "descriptionType": "number"
+        },
+        {
+            "elementId":"121",
+            "content": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg",
+            "descriptionType": "image"
+        }],
+        "interactives":[]
+    }]
+}
