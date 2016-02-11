@@ -120,18 +120,22 @@ formularGenerator.factory("jsonTransformer", [function () {
 
     var angularFormlyTypeStringForDescriptionFsTypeString = function(fsTypeString) {
         var afTypeString;
-        console.log(fsTypeString);
+
         switch (fsTypeString) {
                 case "image":
                     afTypeString = "image";
+                    break;
                 case "video":
                     afTypeString = "video";
+                    break;
                 case "text":
                     afTypeString = "textlabel";
+                    break;
                 default:
                     afTypeString = "error";
+                    break;
         }
-
+        
         return afTypeString;
     };
 
@@ -141,16 +145,22 @@ formularGenerator.factory("jsonTransformer", [function () {
         switch (fsTypeString) {
                 case "textfield":
                     afTypeString = "input";
+                    break;
                 case "checkbox":
                     afTypeString = "checkbox";
+                    break;
                 case "radio":
                     afTypeString = "radio";
+                    break;
                 case "dropdown":
                     afTypeString = "select";
+                    break;
                 case "date":
                     afTypeString = "datepicker";
+                    break;
                 default:
                     afTypeString = "error";
+                    break;
         }
 
         return afTypeString;
@@ -158,6 +168,10 @@ formularGenerator.factory("jsonTransformer", [function () {
 
     var templateOptionsForDescriptionFsJson = function(fsDescriptionJson) {
         var templateOptions = {};
+
+        if (fsDescriptionJson['text']) {
+            templateOptions.label = fsDescriptionJson['text'];
+        }
         
         if (fsDescriptionJson['urls']) {
             var urls = fsDescriptionJson['urls'];
