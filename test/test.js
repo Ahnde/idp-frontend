@@ -10,7 +10,7 @@ describe('jsonTransformer', function () {
     }));
 
     beforeEach(function () {
-        jasmine.getJSONFixtures().fixturesPath='base/test/mock';
+        jasmine.getJSONFixtures().fixturesPath='base/test/testcases';
         inputFsJson = {};
         expectedOutputJson = {};
         outputJson = {};

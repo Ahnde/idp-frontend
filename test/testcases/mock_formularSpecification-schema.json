@@ -7,9 +7,11 @@
             "mappingKey": { "type": "string" },
             "elementType": { "type": "string" },
             "repeatable": { "type": "boolean" },
+            "isRequired": { "type": "boolean" },
             "length": { "type": "integer" },
             "label": { "type": "string" },
-            "content": { "type": "string" },
+            "text": { "type": "string" },
+            "url": { "type": "string" },
             "placeholder": { "type": "string" },
             "defaultOption": { "type": "integer" },
             "dateFormat": {
@@ -37,12 +39,18 @@
             "validator": {
                 "type": "object",
                 "properties": {
-                    "elementId": { "$ref": "#/definitions/elementId" }
-                }
+                    "elementId": { "$ref": "#/definitions/elementId" },
+                    "isRequired": { "$ref": "#/definitions/isRequired" },
+                    "minLength": { "$ref": "#/definitions/length" },
+                    "maxLength": { "$ref": "#/definitions/length" }
+                },
+                "required": ["elementId"]
             },
             "validators": {
                 "type": "array",
-                "items": { "$ref": "#/definitions/validator" }
+                "items": { "$ref": "#/definitions/validator" },
+                "minItems": 1,
+                "uniqueItems": true
             },
             "interactiveDetails": {
                 "type": "object",
@@ -75,16 +83,21 @@
                 "type": "array",
                 "items": { "$ref": "#/definitions/interactive" }
             },
+            "urls": {
+                "type": "array",
+                "items": { "$ref": "#/definitions/url" }
+            },
             "description": {
                 "type": "object",
                 "properties": {
                     "elementId": { "$ref": "#/definitions/elementId" },
-                    "content": { "$ref": "#/definitions/content" },
+                    "text": { "$ref": "#/definitions/text" },
+                    "urls": {"$ref": "#/definitions/urls"},
                     "descriptionType": {
-                        "enum": [ "text", "image", "number" ]
+                        "enum": [ "text", "image", "video" ]
                     }
                 },
-                "required": ["elementId", "content", "descriptionType"]
+                "required": ["elementId", "descriptionType"]
             },
             "descriptions": {
                 "type": "array",

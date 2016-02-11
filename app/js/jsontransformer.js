@@ -83,17 +83,9 @@ formularGenerator.factory("jsonTransformer", [function () {
 
     var angularFormlyJsonAForDescription = function(fsDescriptionJson) {
         var afJson = {};
-        var templateOptions = {};
 
-        if (fsDescriptionJson['descriptionType'] === "image") {
-            afJson.type = "image";
-            templateOptions.url = fsDescriptionJson['content'];
-        } else {
-            afJson.type = "textlabel";
-            templateOptions.label = fsDescriptionJson['content'];
-        };
-
-        afJson.templateOptions = templateOptions;
+        afJson.type = angularFormlyTypeStringForDescriptionFsTypeString(fsDescriptionJson['descriptionType']);
+        afJson.templateOptions = templateOptionsForDescriptionFsJson(fsDescriptionJson);;
 
         return afJson;
     }
@@ -111,7 +103,7 @@ formularGenerator.factory("jsonTransformer", [function () {
                 continue;
             };
 
-            afJson.type = angularFormlyTypeStringForFsTypeString(fsJsonTypeString);
+            afJson.type = angularFormlyTypeStringForInteractiveFsTypeString(fsJsonTypeString);
             
             afJson.key = currentFsInteractiveJson['mappingKey'];
 
@@ -126,24 +118,62 @@ formularGenerator.factory("jsonTransformer", [function () {
         return afJsonArray;
     };
 
-    var angularFormlyTypeStringForFsTypeString = function(fsTypeString) {
+    var angularFormlyTypeStringForDescriptionFsTypeString = function(fsTypeString) {
+        var afTypeString;
+        console.log(fsTypeString);
         switch (fsTypeString) {
-                case "textfield":
-                    return "input";
-                case "checkbox":
-                    return "checkbox";
-                case "radio":
-                    return "radio";
-                case "dropdown":
-                    return "select";
-                case "date":
-                    return "datepicker";
+                case "image":
+                    afTypeString = "image";
+                case "video":
+                    afTypeString = "video";
+                case "text":
+                    afTypeString = "textlabel";
                 default:
-                    return "error";
+                    afTypeString = "error";
         }
+
+        return afTypeString;
     };
 
-    var templateOptionsForInteractiveFsJson = function(fsSpecificInteractiveJson){
+    var angularFormlyTypeStringForInteractiveFsTypeString = function(fsTypeString) {
+        var afTypeString;
+
+        switch (fsTypeString) {
+                case "textfield":
+                    afTypeString = "input";
+                case "checkbox":
+                    afTypeString = "checkbox";
+                case "radio":
+                    afTypeString = "radio";
+                case "dropdown":
+                    afTypeString = "select";
+                case "date":
+                    afTypeString = "datepicker";
+                default:
+                    afTypeString = "error";
+        }
+
+        return afTypeString;
+    };
+
+    var templateOptionsForDescriptionFsJson = function(fsDescriptionJson) {
+        var templateOptions = {};
+        
+        if (fsDescriptionJson['urls']) {
+            var urls = fsDescriptionJson['urls'];
+            var oneUrl;
+            var urlString;
+            for (var urlIndex in urls) {
+                oneUrl = urls[urlIndex];
+                urlString = "url" + urlIndex;
+                templateOptions[urlString] = oneUrl;
+            }
+        }
+
+        return templateOptions;
+    };
+
+    var templateOptionsForInteractiveFsJson = function(fsSpecificInteractiveJson) {
         var templateOptions = {};
 
         templateOptions.label = fsSpecificInteractiveJson['label'];
