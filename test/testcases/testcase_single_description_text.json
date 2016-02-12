@@ -10,7 +10,7 @@
         "descriptions":[
         {
             "elementId":"120",
-            "content": "This is a text description.",
+            "text": "This is a text description.",
             "descriptionType": "text"
         }],
         "interactives":[]

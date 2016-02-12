@@ -1,20 +1,40 @@
 [
-  {
-    "type": "textlabel",
-    "templateOptions": {
-      "label": "This is a text description."
+    {
+        "templateOptions": {
+            "label": "This question demonstrates various HTML-Testelements."
+        },
+        "type": "textlabel"
+    },
+    {
+        "templateOptions": {
+            "url0": "../test/files/test_image.jpg"
+        },
+        "type": "image"
+    },
+    {
+        "templateOptions": {
+            "url0": "../test/files/test_image.jpg0",
+            "url1": "../test/files/test_image.jpg1",
+            "url2": "../test/files/test_image.jpg2",
+            "url3": "../test/files/test_image.jpg3",
+            "url4": "../test/files/test_image.jpg4"
+        },
+        "type": "image"
+    },
+    {
+        "templateOptions": {
+            "url0": "../test/files/test_video.mp4"
+        },
+        "type": "video"
+    },
+    {
+        "templateOptions": {
+            "url0": "../test/files/test_video0.mp4",
+            "url1": "../test/files/test_video1.mp4",
+            "url2": "../test/files/test_video2.mp4",
+            "url3": "../test/files/test_video3.mp4",
+            "url4": "../test/files/test_video4.mp4"
+        },
+        "type": "video"
     }
-  },
-  {
-    "type": "textlabel",
-    "templateOptions": {
-      "label": "7338"
-    }
-  },
-  {
-    "type": "image",
-    "templateOptions": {
-      "url": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg"
-    }
-  }
 ]

@@ -11,7 +11,7 @@
         "descriptions": [
         {
             "elementId":"110",
-            "content": "This part of the form is about the title of the patient.",
+            "text": "This part of the form is about the title of the patient.",
             "descriptionType":"text"
         }],
         "children":[
@@ -21,7 +21,7 @@
             "descriptions":[
             {
                 "elementId":"1110",
-                "content": "Please enter your title if you have one.",
+                "text": "Please enter your title if you have one.",
                 "descriptionType":"text"
             }],
             "interactives":[
@@ -29,7 +29,11 @@
                 "elementId":"1111",
                 "elementType":"textfield",
                 "mappingKey":"k_title",
-                "validators":[],
+                "validators":[
+                {
+                    "elementId":"11110",
+                    "isRequired": true
+                }],
                 "interactiveDetails": {
                     "length":256,
                     "label":"Title",
@@ -45,7 +49,7 @@
             "descriptions": [
             {
                 "elementId":"1120",
-                "content": "This part of the form is about the name of the patient.",
+                "text": "This part of the form is about the name of the patient.",
                 "descriptionType": "text"
             }],
             "children":[
@@ -55,7 +59,7 @@
                 "descriptions":[
                 {
                     "elementId":"11210",
-                    "content": "Please enter your first name above.",
+                    "text": "Please enter your first name above.",
                     "descriptionType": "text"
                 }],
                 "interactives":[
@@ -78,7 +82,7 @@
                 "descriptions":[
                 {
                     "elementId":"11220",
-                    "content": "Please enter your last name above.",
+                    "text": "Please enter your last name above.",
                     "descriptionType": "text"
                 }],
                 "interactives":[
@@ -94,6 +98,37 @@
                         "textfieldType":"text"
                     }
                 }]
+            },
+            {
+                "elementType": "question",
+                "elementId":"1123",
+                "descriptions":[
+                {
+                    "elementId":"11230",
+                    "text": "Please write something about you. (At least 10 and at most 20 characters)",
+                    "descriptionType": "text"
+                }],
+                "interactives":[
+                {
+                    "elementId":"11231",
+                    "elementType":"textfield",
+                    "mappingKey":"k_aboutme",
+                    "validators":[
+                    {
+                        "elementId":"112310",
+                        "minLength": 10
+                    },
+                    {
+                        "elementId":"112311",
+                        "maxLength": 20
+                    }],
+                    "interactiveDetails": {
+                        "length":256,
+                        "label":"About me",
+                        "placeholder":"I am Batman",
+                        "textfieldType":"text"
+                    }
+                }]
             }]
         }]
     },
@@ -103,13 +138,22 @@
         "descriptions":[
         {
             "elementId":"120",
-            "content": "This question demonstrates various HTML-Testelements.",
+            "text": "This question demonstrates various HTML-Testelements.",
             "descriptionType": "text"
         },
         {
-            "elementId":"1200",
-            "content": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg",
+            "elementId":"121",
+            "urls": [
+                "../test/files/test_image.jpg"
+            ],
             "descriptionType": "image"
+        },
+        {
+            "elementId":"122",
+            "urls": [ 
+                "../test/files/test_video.mp4"
+            ],
+            "descriptionType": "video"
         }],
         "interactives":[
         {

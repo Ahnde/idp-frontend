@@ -10,18 +10,44 @@
         "descriptions":[
         {
             "elementId":"120",
-            "content": "This is a text description.",
+            "text": "This question demonstrates various HTML-Testelements.",
             "descriptionType": "text"
         },
         {
             "elementId":"121",
-            "content": "7338",
-            "descriptionType": "number"
+            "urls": [
+                "../test/files/test_image.jpg"
+            ],
+            "descriptionType": "image"
         },
         {
-            "elementId":"121",
-            "content": "http://www.mri.tum.de/sites/mri.tum.de/themes/mri/images/mri-link.jpg",
+            "elementId":"1211",
+            "urls": [
+                "../test/files/test_image.jpg0",
+                "../test/files/test_image.jpg1",
+                "../test/files/test_image.jpg2",
+                "../test/files/test_image.jpg3",
+                "../test/files/test_image.jpg4"
+            ],
             "descriptionType": "image"
+        },
+        {
+            "elementId":"122",
+            "urls": [ 
+                "../test/files/test_video.mp4"
+            ],
+            "descriptionType": "video"
+        },
+        {
+            "elementId":"1221",
+            "urls": [ 
+                "../test/files/test_video0.mp4",
+                "../test/files/test_video1.mp4",
+                "../test/files/test_video2.mp4",
+                "../test/files/test_video3.mp4",
+                "../test/files/test_video4.mp4"
+            ],
+            "descriptionType": "video"
         }],
         "interactives":[]
     }]

@@ -1,0 +1,145 @@
+[
+    {
+        "templateOptions": {
+            "label": "This part of the form is about the title of the patient."
+        },
+        "type": "textlabel"
+    },
+    {
+        "templateOptions": {
+            "label": "Please enter your title if you have one."
+        },
+        "type": "textlabel"
+    },
+    {
+        "key": "k_title",
+        "templateOptions": {
+            "label": "Title",
+            "placeholder": "Dr."
+        },
+        "type": "input"
+    },
+    {
+        "templateOptions": {
+            "label": "This part of the form is about the name of the patient."
+        },
+        "type": "textlabel"
+    },
+    {
+        "templateOptions": {
+            "label": "Please enter your first name above."
+        },
+        "type": "textlabel"
+    },
+    {
+        "key": "k_firstname",
+        "templateOptions": {
+            "label": "First Name",
+            "placeholder": "John"
+        },
+        "type": "input"
+    },
+    {
+        "templateOptions": {
+            "label": "Please enter your last name above."
+        },
+        "type": "textlabel"
+    },
+    {
+        "key": "k_lastname",
+        "templateOptions": {
+            "label": "Last Name",
+            "placeholder": "Doe"
+        },
+        "type": "input"
+    },
+    {
+        "templateOptions": {
+            "label": "Please write something about you. (At least 10 and at most 20 characters)"
+        },
+        "type": "textlabel"
+    },
+    {
+        "key": "k_aboutme",
+        "templateOptions": {
+            "label": "About me",
+            "placeholder": "I am Batman"
+        },
+        "type": "input"
+    },
+    {
+        "templateOptions": {
+            "label": "This question demonstrates various HTML-Testelements."
+        },
+        "type": "textlabel"
+    },
+    {
+        "templateOptions": {
+            "url0": "../test/files/test_image.jpg"
+        },
+        "type": "image"
+    },
+    {
+        "templateOptions": {
+            "url0": "../test/files/test_video.mp4"
+        },
+        "type": "video"
+    },
+    {
+        "key": "k_textfield",
+        "templateOptions": {
+            "label": "Input Test",
+            "placeholder": "Placeholder"
+        },
+        "type": "input"
+    },
+    {
+        "key": "k_checkbox",
+        "templateOptions": {
+            "label": "Checkbox Test"
+        },
+        "type": "checkbox"
+    },
+    {
+        "key": "k_dropdown",
+        "templateOptions": {
+            "label": "Dropdown Test",
+            "options": [
+                {
+                    "name": "First option"
+                },
+                {
+                    "name": "Second option"
+                },
+                {
+                    "name": "Third option"
+                }
+            ]
+        },
+        "type": "select"
+    },
+    {
+        "key": "k_radio",
+        "templateOptions": {
+            "label": "Radio Test",
+            "options": [
+                {
+                    "name": "Option one"
+                },
+                {
+                    "name": "Option two"
+                }
+            ]
+        },
+        "type": "radio"
+    },
+    {
+        "key": "k_date",
+        "templateOptions": {
+            "datepickerPopup": "dd/mm/yyyy",
+            "label": "Date Test",
+            "type": "text"
+        },
+        "type": "datepicker"
+    }
+]

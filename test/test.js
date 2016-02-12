@@ -28,7 +28,7 @@ describe('jsonTransformer', function () {
     it('should map an empty form to an empty af-json-array', function () {
         var testcase = getJSONFixture('testcase_empty_form.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-
+        
         testJsonMapping(result, 'expected_testcase_empty_form.json')
     });
 
@@ -36,7 +36,7 @@ describe('jsonTransformer', function () {
     it('should map one question without any interactive elements to an empty af-question', function () {
         var testcase = getJSONFixture('testcase_single_question_without_interactive.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-
+        
         testJsonMapping(result, 'expected_testcase_single_question_without_interactive.json')
     });
 
@@ -56,12 +56,44 @@ describe('jsonTransformer', function () {
         testJsonMapping(result, 'expected_testcase_group_recursion.json')
     });
 
-    // one description
-    it('should map a question with an description to an af-label', function () {
-        var testcase = getJSONFixture('testcase_single_description.json');
+    // one text description
+    it('should map a question with a text description to an af-label', function () {
+        var testcase = getJSONFixture('testcase_single_description_text.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
 
-        testJsonMapping(result, 'expected_testcase_single_description.json')
+        testJsonMapping(result, 'expected_testcase_single_description_text.json')
+    });
+
+    // one image description one url
+    it('should map a question with an image description including one url to an af-label', function () {
+        var testcase = getJSONFixture('testcase_single_description_image_single_url.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+        
+        testJsonMapping(result, 'expected_testcase_single_description_image_single_url.json')
+    });
+
+    // one image description many urls
+    it('should map a question with an image description including many urls to an af-label', function () {
+        var testcase = getJSONFixture('testcase_single_description_image_many_urls.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+        
+        testJsonMapping(result, 'expected_testcase_single_description_image_many_urls.json')
+    });
+
+    // one video description one url
+    it('should map a question with a video description including one url to an af-label', function () {
+        var testcase = getJSONFixture('testcase_single_description_video_single_url.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+        
+        testJsonMapping(result, 'expected_testcase_single_description_video_single_url.json')
+    });
+
+    // one video description many urls
+    it('should map a question with a video description including many urls to an af-label', function () {
+        var testcase = getJSONFixture('testcase_single_description_video_many_urls.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+        
+        testJsonMapping(result, 'expected_testcase_single_description_video_many_urls.json')
     });
 
     // many descriptions
@@ -159,14 +191,6 @@ describe('jsonTransformer', function () {
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
 
         testJsonMapping(result, 'expected_testcase_many_interactives.json')
-    });
-
-    // mixed fs
-    it('should transform the mixed stff', function () {
-        var testcase = getJSONFixture('mock_formularSpecification.json');
-        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-        // dump(JSON.stringify(result));
-        testJsonMapping(result, 'mock_angularFormly.json')
     });
 });
 

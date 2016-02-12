@@ -1,0 +1,12 @@
+[
+    {
+        "templateOptions": {
+            "url0": "../test/files/test_video0.mp4",
+            "url1": "../test/files/test_video1.mp4",
+            "url2": "../test/files/test_video2.mp4",
+            "url3": "../test/files/test_video3.mp4",
+            "url4": "../test/files/test_video4.mp4"
+        },
+        "type": "video"
+    }
+]

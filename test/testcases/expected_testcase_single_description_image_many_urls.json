@@ -1,0 +1,12 @@
+[
+    {
+        "templateOptions": {
+            "url0": "../test/files/test_image.jpg0",
+            "url1": "../test/files/test_image.jpg1",
+            "url2": "../test/files/test_image.jpg2",
+            "url3": "../test/files/test_image.jpg3",
+            "url4": "../test/files/test_image.jpg4"
+        },
+        "type": "image"
+    }
+]

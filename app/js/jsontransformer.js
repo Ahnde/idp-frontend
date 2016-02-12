@@ -86,7 +86,7 @@ formularGenerator.factory("jsonTransformer", [function () {
 
         afJson.type = angularFormlyTypeStringForDescriptionFsTypeString(fsDescriptionJson['descriptionType']);
         afJson.templateOptions = templateOptionsForDescriptionFsJson(fsDescriptionJson);;
-
+        
         return afJson;
     }
 

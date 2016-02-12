@@ -1,0 +1,8 @@
+[
+    {
+        "templateOptions": {
+            "label": "This is a text description."
+        },
+        "type": "textlabel"
+    }
+]
