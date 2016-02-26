@@ -1,0 +1,80 @@
+BNF - Grammar for FormSpecification
+
+
+FORM =  { id: ID, type: "form", metadata : FORM_METADATA, descriptions: [DESCRIPTION *], children:[CHILD *] }
+
+CHILD = QUESTION | GROUP
+
+GROUP = { id: ID, type: "group",                           descriptions: [DESCRIPTION *],children:[CHILD *], repeatable : BOOL}
+
+QUESTION = { id: ID, type: "question",                     descriptions: [DESCRIPTION *], interactives: [INTERACTIVE *] }
+
+INTERACTIVE = {
+                id: ID,
+                type: INTERACTIVE_TYPE,
+                mappingkey : MAPPING_KEY,
+                validators: [VALIDATOR *],
+                details: [INTERACTIVE_DETAIL *]
+                }
+
+
+INTERACTIVE_DETAIL = {
+                        label: STRING,
+                        (post-label: STRING, )?
+                        (length:INTEGER, )?
+                        (placeholder:STRING, )?
+                        (inputtype: INPUT_TYPE, )?
+                        (dateformat: DATE_FORMAT, )?
+                        (mindate: DATE, )?
+                        (maxdate: DATE, )?
+                        (options: [OPTION *], )?
+                        (defaultoption: INTEGER )?
+  }
+
+
+
+INTERACTIVE_TYPE = "textarea" | "input" | "date" | "number" | "radio" | "dropdown" | "checkbox"
+
+INPUT_TYPE = "text" | "password" | "number"
+
+DESCRIPTION = {
+                id: ID,
+                descriptiontype: DESCRIPTION_TYPE,
+
+                (text: STRING | urls: [ URL *] ,)?
+
+                }
+
+
+VALIDATOR = {
+              id: ID,
+              validatortype: VALIDATOR_TYPE,
+              expression: VALIDATOR_EXPRESSION
+          }
+
+FORM_METADATA = ...
+
+DESCRIPTION_TYPE = "text" | "image" | "video"
+
+
+MAPPING_KEY = STRING
+ID = STRING
+
+VALIDATOR_TYPE = "minlength" | "maxlength" | "custom" | "isRequired"
+VALIDATOR_EXPRESSION = REGEX | FUNCTION
+
+
+DATE_FORMAT = {
+                format: "..." //iso standard,
+                default: "DD/MM/YYYY"
+              }
+
+
+
+FUNCTION = "..."
+REGEX = "..."
+
+URL = STRING
+STRING = [a-zA-Z0-9]*
+INTEGER = [1-9][0-9]*
+BOOL = true | false
