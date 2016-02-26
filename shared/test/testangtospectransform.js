@@ -24,7 +24,6 @@ describe('transform angular to specification', function () {
     }
 
 
-
   it('should transform empty spec', function(){
 
     var input = getJSONFixture('input_empty_form.json');
@@ -33,31 +32,9 @@ describe('transform angular to specification', function () {
   });
 
   it('should transform single textfield', function(){
-    var singletextfield = [
-      {
-        "key": "test-mapping-key",
-        "templateOptions": {
-          "required": false,
-          "label": "Text Input",
-          "placeholder": "placeholder"
-        },
-        "type": "input"
-      }
-    ]
-
-    var expected = {"id":0,"type":"form","metadata":[],"description":[],"children":[
-      {
-        "id":"foo",
-        "type":"question",
-        "description" : "",
-        "interactives": [
-          {
-            "id":""
-          }
-        ]
-      }
-    ]};
-
+    var input = getJSONFixture('input_single_textfield.json');
+    var result  = jsonTransformer.transformAngularFormlyJsonToFormularSpecification(input);
+//    testJsonMapping(result, 'expected_single_textfield.json')
 
 
   });
