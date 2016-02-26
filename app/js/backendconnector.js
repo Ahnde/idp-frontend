@@ -7,8 +7,8 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 	BC.getFormularSpecification = function (callback) {
 		$http({
 		 	method: 'GET',
-		 	// url: 'http://'+backendURL+':8080/IDPBackend/rest/form/4'
-			url: 'http://localhost:8000/response.json'
+		 	url: 'http://'+backendURL+':8080/IDPBackend/rest/form/4'
+			// url: 'http://localhost:8000/response.json'
 		}).then(function (response, status) {
 			console.log("Formular-Specification from backend successfully fechted: ");
 			console.log(response.data);
