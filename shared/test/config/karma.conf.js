@@ -24,9 +24,13 @@ module.exports = function(config) {
         'node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js',
         'node_modules/requirejs/require.js',
     	'app/js/formulargenerator.js',
-      	'app/js/*.js',
-        'shared/js/*.js',
-      	'shared/test/*.js',
+//      'app/js/backendconnector.js',
+
+      'shared/test/test.js',
+      'shared/js/jsontransformer.js',
+
+
+      'shared/js/transformMethods.js',
 
         // fixtures
         {pattern: 'shared/test/testcases/*.json', watched: true, served: true, included: false}

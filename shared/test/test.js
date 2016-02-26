@@ -192,152 +192,19 @@ describe('jsonTransformer', function () {
 
         testJsonMapping(result, 'expected_testcase_many_interactives.json')
     });
+
+
+  it('should transform empty spec', function(){
+    var input = [];
+    var expected = {"id":0,"type":"form","metadata":[],"description":[],"children":[]};
+    var result  = jsonTransformer.transformAngularFormlyJsonToFormularSpecification(input);
+    expect(angular.equals(result, expected)).toBeTruthy();
+  });
+
+  it('should transform single textfield //todo', function(){
+
+  });
+
 });
-
-// describe("asyncTest", function() {
-//     var flag = false;
-
-//     beforeEach(function(done) {
-//         setTimeout(function () {
-//             flag = true;
-//             done();
-//         }, 2000);
-//     });
-
-//     it("should be successful", function() {
-//         expect(flag).toBeTruthy();
-//     });
-// });
-
-
-// describe("asyncTest", function() {
-//     var $httpBackend, $rootScope, createController, authRequestHandler;
-
-//     beforeEach(module('formularGenerator'));
-
-//     beforeEach(inject(function($injector) {
-//         // Set up the mock http service responses
-//         $httpBackend = $injector.get('$httpBackend');
-//         // backend definition common for all tests
-//         authRequestHandler = $httpBackend.when('GET', '/auth.py').respond({userId: 'userX'}, {'A-Token': 'xxx'});
-
-//         // Get hold of a scope (i.e. the root scope)
-//         $rootScope = $injector.get('$rootScope');
-//         // The $controller service is used to create instances of controllers
-//         var $controller = $injector.get('$controller');
-
-//         createController = function() {
-//             return $controller('formularGenerator', {'$scope' : $rootScope });
-//         };
-//     }));
-
-//     afterEach(function() {
-//        $httpBackend.verifyNoOutstandingExpectation();
-//        $httpBackend.verifyNoOutstandingRequest();
-//     });
-
-//     it('should fetch authentication token', function() {
-//         $httpBackend.expectGET('/auth.py');
-//         var controller = createController();
-//         $httpBackend.flush();
-//     });
-// });
-
-
-
-// describe("backendConnector", function() {
-//     var backendConnector, httpBackend, fsresponse, originalTimeout;
-
-//     beforeEach(module('formularGenerator'));
-
-//     beforeEach(inject(function (_backendConnector_, $httpBackend) {
-//         backendConnector = _backendConnector_;
-//         httpBackend = $httpBackend;
-//     }));
-
-//     beforeEach(function() {
-//       originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-//       jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
-//     });
-
-//     beforeEach(function(done) {
-//         dump("davor");
-//         dump(backendConnector);
-//         backendConnector.getFormularSpecification(
-//             function(formularSpecification) {
-//                 dump("drin");
-//                 fsresponse = formularSpecification;
-//                 dump(formularSpecification);
-//                 dump(fsresponse);
-//                 done();
-//             }
-//         )
-//         // httpBackend.expectGET(backendConnector.getFormularSpecification()).respond(200, {});
-//         // httpBackend.flush();
-//         dump("danach");
-//     });
-
-//     it("should not return an error when getting the FS", function() {
-//         dump(fsresponse);
-//         expect(1).toBeGreaterThan(0);
-//     });
-
-//     afterEach(function() {
-//       jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-//     });
-// });
-
-// describe("backendConnector", function() {
-//     var backendConnector, httpBackend, fsresponse, originalTimeout;
-
-//     beforeEach(module('formularGenerator'));
-
-//     beforeEach(inject(function (_backendConnector_, $httpBackend) {
-//         backendConnector = _backendConnector_;
-//         httpBackend = $httpBackend;
-//     }));
-
-//     beforeEach(function(done) {
-//         backendConnector.getFormularSpecification(
-//             function(formularSpecification) {
-//                 fsresponse = formularSpecification;
-//                 done();
-//             }
-//         )
-
-//         httpBackend.whenGET("http://localhost:8000/response.json", undefined, undefined, ['id'])
-//                    .respond(function(method, url, data, headers, params) { 
-//                         dump("params");
-//                         dump(params);
-//                    });
-
-
-
-//         httpBackend.expectGET("http://localhost:8000/response.json");
-//         httpBackend.flush();
-//     });
-
-//     it("should return a JSON-object", function() {
-//         dump(fsresponse);
-//         expect(fsresponse).toEqual({ "test": "json" });
-//     });
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
