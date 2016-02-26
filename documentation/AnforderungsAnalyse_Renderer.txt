@@ -1,0 +1,44 @@
+Der Renderer erhält JSON als Input aus zwei Quellen:
+
+1) Formular Spezifikation
+2) Formular Daten
+Der Renderer produziert daraus HTML.
+
+Akzeptanzkriterien:
+
+Relevante Elemente, die möglicherweise abgebildet werden:
+
+- Anordnung von Elementen
+- Identifier von Elementen
+- Label
+- Textinput
+- Links
+- Bilder
+- Anhänge - Anzeige der Anhänge
+- Checkboxen
+- Radiobuttons / Dropdowns
+- (Unter-)Gruppierungen (Rekursiv und Wiederholend)
+- Tooltips
+- (Kalender)
+- Date-Picker
+- Disabled Felder abhängig von anderen
+- Berechnende Felder
+
+Optional:
+
+- Paging
+- Tabbing
+
+
+Zusätzlich soll der Renderer die Validatoren, welche von der Formular Spezifikation geliefert werden, auswerten.
+
+Einschränkungen:
+
+"HTML dient als Auszeichnungssprache dazu, einen Text semantisch zu strukturieren, nicht aber zu formatieren. Die visuelle Darstellung ist nicht Teil der HTML-Spezifikationen und wird durch den Webbrowser und Gestaltungsvorlagen wie CSS bestimmt."
+
+Der Renderer soll folgende Dinge NICHT unterstützen:
+
+- Farbe von Elementen
+- Größe von Elementen
+- Highlighting von Elementen
+- Schriftart
