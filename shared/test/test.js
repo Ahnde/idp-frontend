@@ -193,18 +193,6 @@ describe('jsonTransformer', function () {
         testJsonMapping(result, 'expected_testcase_many_interactives.json')
     });
 
-
-  it('should transform empty spec', function(){
-    var input = [];
-    var expected = {"id":0,"type":"form","metadata":[],"description":[],"children":[]};
-    var result  = jsonTransformer.transformAngularFormlyJsonToFormularSpecification(input);
-    expect(angular.equals(result, expected)).toBeTruthy();
-  });
-
-  it('should transform single textfield //todo', function(){
-
-  });
-
 });
 
 

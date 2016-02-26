@@ -26,14 +26,16 @@ module.exports = function(config) {
     	'app/js/formulargenerator.js',
 //      'app/js/backendconnector.js',
 
+//tests
       'shared/test/test.js',
+      'shared/test/testangtospectransform.js',
+      
       'shared/js/jsontransformer.js',
-
-
       'shared/js/transformMethods.js',
 
         // fixtures
-        {pattern: 'shared/test/testcases/*.json', watched: true, served: true, included: false}
+        {pattern: 'shared/test/testcases/*.json', watched: true, served: true, included: false},
+      {pattern: 'shared/test/testcases/af_to_idp_spec/*.json', watched: true, served: true, included: false}
     ],
 
 

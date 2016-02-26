@@ -248,5 +248,7 @@
 
 //angular formly -> formspec
 var formspecFromAngluar = function(angularSpec) {
+
   return {"id":0,"type":"form","metadata":[],"description":[],"children":[]};
+
 };
