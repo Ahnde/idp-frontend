@@ -23,7 +23,6 @@ module.exports = function(config) {
         'node_modules/angular-formly/dist/formly.js',
         'node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js',
         'node_modules/requirejs/require.js',
-        'node_modules/jsen/dist/jsen.js',
     	'app/js/formulargenerator.js',
       	'app/js/*.js',
         'shared/js/*.js',

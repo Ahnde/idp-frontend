@@ -1077,6 +1077,28 @@ describe('timepicker directive', function() {
     });
   });
 
+  describe('setting uibTimepickerConfig template url', function() {
+    var originalConfig = {};
+    var newTemplateUrl = 'foo/bar.html';
+    beforeEach(inject(function(_$compile_, _$rootScope_, uibTimepickerConfig) {
+      angular.extend(originalConfig, uibTimepickerConfig);
+      $templateCache.put(newTemplateUrl, '<div>baz</div>');
+      uibTimepickerConfig.templateUrl = newTemplateUrl;
+
+      element = $compile('<uib-timepicker ng-model="time"></uib-timepicker>')($rootScope);
+      $rootScope.$digest();
+    }));
+    afterEach(inject(function(uibTimepickerConfig) {
+      // return it to the original state
+      angular.extend(uibTimepickerConfig, originalConfig);
+    }));
+
+    it('should use a custom template', function() {
+      expect(element[0].tagName.toLowerCase()).toBe('div');
+      expect(element.html()).toBe('baz');
+    });
+  });
+
   describe('$formatter', function() {
     var ngModel,
       date;
@@ -1159,7 +1181,6 @@ describe('timepicker directive', function() {
       expect(getModelState()).toEqual([14, 9, 25]);
     });
 
-
     it('updates seconds & pads on input change & pads on blur', function() {
       var el = getSecondsInputEl();
 
@@ -1192,7 +1213,7 @@ describe('timepicker directive', function() {
     it('clears model when input minutes is invalid & alerts the UI', function() {
       var el = getMinutesInputEl();
 
-      changeInputValueTo(el, 'pizza');
+      changeInputValueTo(el, '8a');
       expect($rootScope.time).toBe(null);
       expect(el.parent().hasClass('has-error')).toBe(true);
       expect(element.hasClass('ng-invalid-time')).toBe(true);
@@ -1203,7 +1224,6 @@ describe('timepicker directive', function() {
       expect(el.parent().hasClass('has-error')).toBe(false);
       expect(element.hasClass('ng-invalid-time')).toBe(false);
     });
-
 
     it('clears model when input seconds is invalid & alerts the UI', function() {
       var el = getSecondsInputEl();
@@ -2148,7 +2168,7 @@ describe('timepicker directive', function() {
       $rootScope.$digest();
       expect(getTimeState()).toEqual(['02', '40', '25', 'PM']);
       expect(getModelState()).toEqual([14, 40, 25]);
-    
+
       hoursEl.trigger(upMouseWheelEvent);
       $rootScope.$digest();
       expect(getTimeState()).toEqual(['02', '40', '25', 'PM']);
@@ -2164,11 +2184,28 @@ describe('timepicker directive', function() {
       $rootScope.$digest();
       expect(getTimeState()).toEqual(['02', '40', '25', 'PM']);
       expect(getModelState()).toEqual([14, 40, 25]);
-    
+
       hoursEl.trigger(downMouseWheelEvent);
       $rootScope.$digest();
       expect(getTimeState()).toEqual(['02', '40', '25', 'PM']);
       expect(getModelState()).toEqual([14, 40, 25]);
+    });
+  });
+
+  describe('gc', function() {
+    var $scope;
+    beforeEach(inject(function() {
+      $scope = $rootScope.$new();
+      element = $compile('<uib-timepicker ng-model="time"></uib-timepicker>')($scope);
+      $rootScope.$digest();
+    }));
+
+    it('should clean up watchers', function() {
+      expect($scope.$$watchers.length > 1).toBe(true);
+
+      element.isolateScope().$destroy();
+
+      expect($scope.$$watchers.length).toBe(1);
     });
   });
 });

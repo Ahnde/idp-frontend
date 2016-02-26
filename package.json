@@ -32,7 +32,6 @@
     "jasmine-core": "^2.4.1",
     "jasmine-jquery": "^2.1.1",
     "jquery": "^2.1.4",
-    "jsen": "^0.6.0",
     "karma": "^0.13.19",
     "karma-chrome-launcher": "^0.2.2",
     "karma-clear-screen-reporter": "^1.0.0",
