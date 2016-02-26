@@ -5,7 +5,7 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
 	RE.formular = {};
 	RE.formularFields = [];
 
-    backendConnector.getFormularSpecification(function(formularSpecification){
+    backendConnector.getFormularSpecification(function(formularSpecification) {
 		
         var arrayWithJSONs = [];
 
@@ -17,7 +17,7 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
 
         RE.formularFields = arrayWithJSONs;	
 
-        backendConnector.getFormularData(1,1,function(response){
+        backendConnector.getFormularData(1,1,function(response) {
             for(var key in response)
             {
                 RE.formular[key] = response[key];

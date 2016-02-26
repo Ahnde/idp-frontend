@@ -93,12 +93,19 @@ formularGenerator.factory("jsonTransformer", [function () {
     var angularFormlyJsonArrayForInteractive = function(fsInteractiveJsonArray) {
         var afJsonArray = [];
 
+        var currentFsInteractiveJson, 
+            afJson, 
+            fsJsonTypeString, 
+            fsSpecificInteractiveJson, 
+            fsValidatorsJsonArray,
+            templateOptions;
+
         for (var i in fsInteractiveJsonArray) {
-            var currentFsInteractiveJson = fsInteractiveJsonArray[i];
+             currentFsInteractiveJson = fsInteractiveJsonArray[i];
 
-            var afJson = {};
+            afJson = {};
 
-            var fsJsonTypeString = currentFsInteractiveJson['elementType'];
+            fsJsonTypeString = currentFsInteractiveJson['elementType'];
             if (fsJsonTypeString === 'error') {
                 continue;
             };
@@ -107,10 +114,18 @@ formularGenerator.factory("jsonTransformer", [function () {
             
             afJson.key = currentFsInteractiveJson['mappingKey'];
 
-            //TODO: validators
+            fsSpecificInteractiveJson = currentFsInteractiveJson['interactiveDetails'];
+            templateOptions = templateOptionsForInteractiveFsJson(fsSpecificInteractiveJson); 
+            afJson.templateOptions = templateOptions;
 
-            var fsSpecificInteractiveJson = currentFsInteractiveJson['interactiveDetails'];
-            afJson.templateOptions = templateOptionsForInteractiveFsJson(fsSpecificInteractiveJson);            
+            if (currentFsInteractiveJson['validators'].length > 0) {
+                fsValidatorsJsonArray = currentFsInteractiveJson['validators'];
+                validatorsForFsJsonArray(fsValidatorsJsonArray, templateOptions, function(callbackTemplateOptions, callbackValidators, callbackExpressionProperties) {
+                    afJson.templateOptions = callbackTemplateOptions;
+                    afJson.validators = callbackValidators;
+                    afJson.expressionProperties = callbackExpressionProperties;
+                });
+            }
 
             afJsonArray.push(afJson);
         };
@@ -166,6 +181,31 @@ formularGenerator.factory("jsonTransformer", [function () {
         return afTypeString;
     };
 
+    var validatorsForFsJsonArray = function(fsValidatorsArray, oldTemplateOptions, callback) {
+        var validators = {};
+        var templateOptions = {};
+        var expressionProperties = {};
+
+        templateOptions = oldTemplateOptions;
+
+        var oneValidator;
+        for (var validatorIndex in fsValidatorsArray) {
+            oneValidator = fsValidatorsArray[validatorIndex];
+            if (oneValidator['isRequired']) {
+                templateOptions.required = true;
+            }
+            if (oneValidator['minLength']) {
+                templateOptions.minLength = oneValidator['minLength'];
+            }
+            if (oneValidator['maxLength']) {
+                templateOptions.maxLength = oneValidator['maxLength'];
+            }
+        }
+
+        callback(templateOptions, validators, expressionProperties);
+        return validators;
+    };
+
     var templateOptionsForDescriptionFsJson = function(fsDescriptionJson) {
         var templateOptions = {};
 
@@ -197,6 +237,7 @@ formularGenerator.factory("jsonTransformer", [function () {
         }
         if (fsSpecificInteractiveJson['placeholder']) {
             templateOptions.placeholder = fsSpecificInteractiveJson['placeholder'];
+            // templateOptions.required = true;
         };
         if (fsSpecificInteractiveJson['textfieldType']) {
             //TODO: tempalte does not support this feature, yet
