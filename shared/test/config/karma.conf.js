@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../../../',
 
 
     // frameworks to use
@@ -26,10 +26,11 @@ module.exports = function(config) {
         'node_modules/jsen/dist/jsen.js',
     	'app/js/formulargenerator.js',
       	'app/js/*.js',
-      	'test/*.js',
+        'shared/js/*.js',
+      	'shared/test/*.js',
 
         // fixtures
-        {pattern: 'test/testcases/*.json', watched: true, served: true, included: false}
+        {pattern: 'shared/test/testcases/*.json', watched: true, served: true, included: false}
     ],
 
 
