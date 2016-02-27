@@ -1,6 +1,7 @@
 Der Formular Editor benutzt den Formular Renderer zur Darstellung der "Baukasten-Umgebung", sprich alle angezeigten Elemente werden mittels HTML angezeigt.
 
-Der Formular Editor beinhaltet eine Auswahl an möglichen Elementen. Diese können via Drag&Drop vom Benutzer in das gewünschte Formular gezogen werden.
+Der Formular Editor beinhaltet eine Auswahl an möglichen Elementen (siehe AnforderungsAnalyse_Renderer.txt). Diese können via Drag&Drop vom Benutzer in das gewünschte Formular gezogen werden.
 Mehrere Elemente können als eine Gruppe zusammengefasst werden und sind dann als eigenständiges Element unter den möglichen Elementen zu finden.
 
+Neue Formulare können angelegt werden.
 Existierende Formulare können kopiert/editiert/gelöscht.
