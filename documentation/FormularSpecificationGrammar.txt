@@ -1,17 +1,17 @@
 BNF - Grammar for FormSpecification
 
 
-FORM =  { elementId: ID, elementType: "form", metadata : FORM_METADATA, descriptions: [DESCRIPTION *], children:[CHILD *] }
+FORM =  { element_id: ID, element_type: "form", metadata : FORM_METADATA, descriptions: [DESCRIPTION *], children:[CHILD *] }
 
 CHILD = QUESTION | GROUP
 
-GROUP = { elementId: ID, elementType: "group",                          descriptions: [DESCRIPTION *], children:[CHILD +], repeatable : BOOL}
+GROUP = { element_id: ID, element_type: "group",                          descriptions: [DESCRIPTION *], children:[CHILD +], repeatable : BOOL}
 
-QUESTION = { elementId: ID, elementType: "question",                    descriptions: [DESCRIPTION *], interactives: [INTERACTIVE *] }
+QUESTION = { element_id: ID, element_type: "question",                    descriptions: [DESCRIPTION *], interactives: [INTERACTIVE *] }
 
 DESCRIPTION = {
-                elementId: ID,
-                descriptionType: DESCRIPTION_TYPE,
+                element_id: ID,
+                description_type: DESCRIPTION_TYPE,
 
                 (text: STRING | urls: [ URL *] ,)?
               }
@@ -19,23 +19,23 @@ DESCRIPTION = {
 DESCRIPTION_TYPE = "text" | "image" | "video"
 
 INTERACTIVE = {
-                elementId: ID,
-                interactiveType: INTERACTIVE_TYPE,
-                mappingKey : MAPPING_KEY,
+                element_id: ID,
+                interactive_type: INTERACTIVE_TYPE,
+                mapping_key : MAPPING_KEY,
                 validators: [VALIDATOR +],
-                interactiveDetails: [INTERACTIVE_DETAIL *]
+                interactive_details: [INTERACTIVE_DETAIL *]
               }
 
 
 INTERACTIVE_DETAIL = {
                         (label: STRING, )?
-                        (postLabel: STRING, )?
+                        (post_label: STRING, )?
                         (length: INTEGER, )?
                         (placeholder: STRING, )?
-                        (inputType: INPUT_TYPE, )?
-                        (dateFormat: DATE_FORMAT, )?
+                        (input_type: INPUT_TYPE, )?
+                        (date_format: DATE_FORMAT, )?
                         (options: [OPTION +], )?
-                        (defaultOption: INTEGER )?
+                        (default_option: INTEGER )?
                       }
 
 INTERACTIVE_TYPE = "textarea" | "input" | "date" | "number" | "radio" | "dropdown" | "checkbox"
@@ -43,8 +43,8 @@ INTERACTIVE_TYPE = "textarea" | "input" | "date" | "number" | "radio" | "dropdow
 INPUT_TYPE = "text" | "password" | "number"
 
 VALIDATOR = {
-              elementId: ID,
-              validatorType: VALIDATOR_TYPE,
+              element_id: ID,
+              validator_type: VALIDATOR_TYPE,
               expression: VALIDATOR_EXPRESSION
             }
 
