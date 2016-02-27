@@ -36,8 +36,15 @@ describe('transform angular to specification', function () {
     var result  = jsonTransformer.transformAngularFormlyJsonToFormularSpecification(input);
     testJsonMapping(result, 'expected_single_textfield.json')
 
+  });
+
+  it('should transform two textfields', function(){
+    var input = getJSONFixture('input_two_textfields.json');
+    var result  = jsonTransformer.transformAngularFormlyJsonToFormularSpecification(input);
+    testJsonMapping(result, 'expected_two_textfields.json')
 
   });
+
 
 });
 

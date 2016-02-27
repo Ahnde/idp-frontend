@@ -1,0 +1,20 @@
+[
+  {
+    "key": "test-key-1",
+    "templateOptions": {
+      "required": false,
+      "label": "Text Input1",
+      "placeholder": "placeholder1"
+    },
+    "type": "input"
+  },
+  {
+    "key": "test-key-2",
+    "templateOptions": {
+      "required": false,
+      "label": "Text Input2",
+      "placeholder": "placeholder2"
+    },
+    "type": "input"
+  }
+]

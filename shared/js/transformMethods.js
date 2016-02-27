@@ -265,8 +265,8 @@ var parseInteractiveDetails = function(angSpec)
 {
   var details = [];
   var detail = {
-    "placeholder" : "placeholder",
-    "label" : "Text Input"
+    "placeholder" : angSpec["placeholder"],
+    "label" : angSpec["label"]
   };
 
   details.push(detail);
@@ -286,11 +286,10 @@ var parseInteractiveDetails = function(angSpec)
  */
 var parseInteractive = function(angSpec)
 {
-
   var interactive = {
-    "element_id": "2",
+    "element_id": getID(),
     "element_type": "input",
-    "mapping_key":"test-mapping-key",
+    "mapping_key":angSpec["key"],
     "validators":[],
     "interactive_details":parseInteractiveDetails(angSpec["templateOptions"])
   };
@@ -314,7 +313,7 @@ var parseGroup = function(angSpec) { }; //todo
 var parseQuestion = function(angSpec)
 {
   var question = {
-    "element_id" : "1",
+    "element_id" : getID(),
     "element_type":"question",
     "descriptions":[],
     "interactives":parseInteractives(angSpec)
@@ -330,29 +329,34 @@ var parseChildren = function(angSpec)
   {
     var child = parseQuestion(angSpec[key]);
     children.push(child);
-//    console.log(child);
   };
-
   return children;
 };
 
 
 //FORM =  { element_id: ID, element_type: "form", metadata : [FORM_METADATA *], descriptions: [DESCRIPTION *], children:[CHILD *] }
+var idCounter = 0;
+var getID = function()
+{
+  var id = idCounter+"";
+  idCounter++;
+  return id;
+};
 var parseForm = function(angSpec)
 {
+
   var form = {
-    "element_id" : "0",
+    "element_id" : getID(),
     "element_type" : "form",
     "metadata" : [],
     "description" : [],
     "children" : parseChildren(angSpec)
   };
-
   return form;
 };
 
 var formspecFromAngluar = function(angularSpec) {
-
+  idCounter = 0;
   return parseForm(angularSpec);
 
 };

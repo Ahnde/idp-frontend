@@ -1,0 +1,49 @@
+
+{
+  "element_id":"0",
+  "element_type":"form",
+  "metadata":[],
+  "description":[],
+  "children":[
+    {
+      "element_id":"1",
+      "element_type":"question",
+      "descriptions" : [],
+      "interactives": [
+        {
+          "element_id":"2",
+          "element_type": "input",
+          "mapping_key" : "test-key-1",
+          "validators": [],
+          "interactive_details": [
+            {
+              "placeholder" : "placeholder1",
+              "label" : "Text Input1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "element_id":"3",
+      "element_type":"question",
+      "descriptions" : [],
+      "interactives": [
+        {
+          "element_id":"4",
+          "element_type": "input",
+          "mapping_key" : "test-key-2",
+          "validators": [],
+          "interactive_details": [
+            {
+              "placeholder" : "placeholder2",
+              "label" : "Text Input2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
