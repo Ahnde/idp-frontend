@@ -1,7 +1,7 @@
 BNF - Grammar for FormSpecification
 
 
-FORM =  { element_id: ID, element_type: "form", metadata : FORM_METADATA, descriptions: [DESCRIPTION *], children:[CHILD *] }
+FORM =  { element_id: ID, element_type: "form", metadata : [FORM_METADATA *], descriptions: [DESCRIPTION *], children:[CHILD *] }
 
 CHILD = QUESTION | GROUP
 
