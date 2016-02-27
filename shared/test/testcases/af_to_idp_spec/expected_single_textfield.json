@@ -1,11 +1,24 @@
-{"id":0,"type":"form","metadata":[],"description":[],"children":[
+{"element_id":"0",
+ "element_type":"form",
+ "metadata":[],
+ "description":[],
+ "children":[
   {
-    "id":"foo",
-    "type":"question",
-    "description" : "",
+    "element_id":"1",
+    "element_type":"question",
+    "descriptions" : [],
     "interactives": [
       {
-        "id":""
+        "element_id":"2",
+        "element_type": "input",
+        "mapping_key" : "test-mapping-key",
+        "validators": [],
+        "interactive_details": [
+          {
+            "placeholder" : "placeholder",
+            "label" : "Text Input"
+          }
+        ]
       }
     ]
   }

@@ -246,9 +246,114 @@
         return afOptionsArray;
     };
 
-//angular formly -> formspec
-var formspecFromAngluar = function(angularSpec) {
 
-  return {"id":0,"type":"form","metadata":[],"description":[],"children":[]};
+
+/*
+ *
+ * INTERACTIVE_DETAIL = {
+ * (label: STRING, )?
+ * (post_label: STRING, )?
+ * (length: INTEGER, )?
+ * (placeholder: STRING, )?
+ * (input_type: INPUT_TYPE, )?
+ * (date_format: DATE_FORMAT, )?
+ * (options: [OPTION +], )?
+ * (default_option: INTEGER )?
+ * }
+ */
+var parseInteractiveDetails = function(angSpec)
+{
+  var details = [];
+  var detail = {
+    "placeholder" : "placeholder",
+    "label" : "Text Input"
+  };
+
+  details.push(detail);
+  return details;
+};
+
+/*
+ *
+ * INTERACTIVE = {
+ * element_id: ID,
+ * interactive_type: INTERACTIVE_TYPE,
+ * mapping_key : MAPPING_KEY,
+ * validators: [VALIDATOR +],
+ * interactive_details: [INTERACTIVE_DETAIL *]
+ * }
+ *
+ */
+var parseInteractive = function(angSpec)
+{
+
+  var interactive = {
+    "element_id": "2",
+    "element_type": "input",
+    "mapping_key":"test-mapping-key",
+    "validators":[],
+    "interactive_details":parseInteractiveDetails(angSpec["templateOptions"])
+  };
+  return interactive;
+};
+
+//[INTERACTIVE *]
+var parseInteractives = function(angSpec)
+{
+  var interactives = [];
+  var interactive = parseInteractive(angSpec);
+  interactives.push(interactive);
+  return interactives;
 
 };
+
+//GROUP = { element_id: ID, element_type: "group", descriptions: [DESCRIPTION *], children:[CHILD +], repeatable : BOOL}
+var parseGroup = function(angSpec) { }; //todo
+
+//QUESTION = { element_id: ID, element_type: "question", descriptions: [DESCRIPTION *], interactives: [INTERACTIVE *] }
+var parseQuestion = function(angSpec)
+{
+  var question = {
+    "element_id" : "1",
+    "element_type":"question",
+    "descriptions":[],
+    "interactives":parseInteractives(angSpec)
+  };
+  return question;
+};
+
+//CHILD = QUESTION | GROUP
+var parseChildren = function(angSpec)
+{
+  var children = [];
+  for (var key in angSpec)
+  {
+    var child = parseQuestion(angSpec[key]);
+    children.push(child);
+//    console.log(child);
+  };
+
+  return children;
+};
+
+
+//FORM =  { element_id: ID, element_type: "form", metadata : [FORM_METADATA *], descriptions: [DESCRIPTION *], children:[CHILD *] }
+var parseForm = function(angSpec)
+{
+  var form = {
+    "element_id" : "0",
+    "element_type" : "form",
+    "metadata" : [],
+    "description" : [],
+    "children" : parseChildren(angSpec)
+  };
+
+  return form;
+};
+
+var formspecFromAngluar = function(angularSpec) {
+
+  return parseForm(angularSpec);
+
+};
+

@@ -34,7 +34,7 @@ describe('transform angular to specification', function () {
   it('should transform single textfield', function(){
     var input = getJSONFixture('input_single_textfield.json');
     var result  = jsonTransformer.transformAngularFormlyJsonToFormularSpecification(input);
-//    testJsonMapping(result, 'expected_single_textfield.json')
+    testJsonMapping(result, 'expected_single_textfield.json')
 
 
   });
