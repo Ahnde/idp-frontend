@@ -10,12 +10,13 @@ describe('jsonTransformer', function () {
     }));
 
     beforeEach(function () {
-        jasmine.getJSONFixtures().fixturesPath='base/shared/test/testcases';
+        jasmine.getJSONFixtures().fixturesPath='base/shared/test/testcases/idp_spec_to_af';
         inputFsJson = {};
         expectedOutputJson = {};
         outputJson = {};
     });
     
+
     function testJsonMapping(result, expectedpath)
     {
         var expected = getJSONFixture(expectedpath);
