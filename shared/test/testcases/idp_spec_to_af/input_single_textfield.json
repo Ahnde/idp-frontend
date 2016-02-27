@@ -1,0 +1,12 @@
+[
+ {
+    "key": "test-mapping-key",
+    "templateOptions": {
+      "required": false,
+      "label": "Text Input",
+      "placeholder": "placeholder"
+    },
+    "type": "input"
+  }
+]
+
