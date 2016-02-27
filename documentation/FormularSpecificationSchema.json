@@ -7,7 +7,7 @@
             "mappingKey": { "type": "string" },
             "elementType": { "type": "string" },
             "repeatable": { "type": "boolean" },
-            "isRequired": { "type": "boolean" },
+            "expression": { "type": "string" },
             "length": { "type": "integer" },
             "label": { "type": "string" },
             "text": { "type": "string" },
@@ -15,12 +15,8 @@
             "placeholder": { "type": "string" },
             "defaultOption": { "type": "integer" },
             "dateFormat": {
-                "type": "string",
+                "format": "string",
                 "default": "DD/MM/YYYY"
-            },
-            "minDate": {
-                "type": "string",
-                "default": "01.01.1900"
             },
             "option": {
                 "type": "object",
@@ -40,11 +36,12 @@
                 "type": "object",
                 "properties": {
                     "elementId": { "$ref": "#/definitions/elementId" },
-                    "isRequired": { "$ref": "#/definitions/isRequired" },
-                    "minLength": { "$ref": "#/definitions/length" },
-                    "maxLength": { "$ref": "#/definitions/length" }
+                    "validatorType" : { 
+                        "enum": [ "isRequired", "minLength", "maxLength", "minDate", "maxDate", "custom" ]
+                    },
+                    "expression": { "$ref": "#/definitions/expression" }
                 },
-                "required": ["elementId"]
+                "required": ["elementId", "validatorType", "expression"]
             },
             "validators": {
                 "type": "array",
@@ -56,23 +53,24 @@
                 "type": "object",
                 "properties": {
                     "label": { "$ref": "#/definitions/label" },
+                    "postLabel": { "$ref": "#/definitions/label" },
                     "length": { "$ref": "#/definitions/length" },
                     "placeholder": { "$ref": "#/definitions/placeholder" },
-                    "textfieldType": {
+                    "inputType": {
                         "enum": [ "text", "password", "number" ]
                     },
                     "dateFormat": { "$ref": "#/definitions/dateFormat" },
-                    "minDate": { "$ref": "#/definitions/minDate" },
                     "options": { "$ref": "#/definitions/options" },
                     "defaultOption": { "$ref": "#/definitions/defaultOption" }
-                },
-                "required": ["label"]
+                }
             },
             "interactive": {
                 "type": "object",
                 "properties": {
                     "elementId": { "$ref": "#/definitions/elementId" },
-                    "elementType": { "$ref": "#/definitions/elementType" },
+                    "interactiveType": {
+                        "enum": [ "textarea", "input", "date", "number", "radio", "dropdown", "checkbox" ]
+                    },
                     "mappingKey": { "$ref": "#/definitions/mappingKey" },
                     "validators": { "$ref": "#/definitions/validators" },
                     "interactiveDetails" : { "$ref": "#/definitions/interactiveDetails" }
@@ -139,7 +137,7 @@
         "properties": {
             "elementId": { "$ref": "#/definitions/elementId" },
             "elementType": { "$ref": "#/definitions/elementType" },
-            "description": { "$ref": "#/definitions/descriptions" },
+            "descriptions": { "$ref": "#/definitions/descriptions" },
             "children": { "$ref": "#/definitions/children" }
         },
         "required": [

@@ -1,75 +1,66 @@
 BNF - Grammar for FormSpecification
 
 
-FORM =  { id: ID, type: "form", metadata : FORM_METADATA, descriptions: [DESCRIPTION *], children:[CHILD *] }
+FORM =  { elementId: ID, elementType: "form", metadata : FORM_METADATA, descriptions: [DESCRIPTION *], children:[CHILD *] }
 
 CHILD = QUESTION | GROUP
 
-GROUP = { id: ID, type: "group",                           descriptions: [DESCRIPTION *],children:[CHILD *], repeatable : BOOL}
+GROUP = { elementId: ID, elementType: "group",                          descriptions: [DESCRIPTION *], children:[CHILD +], repeatable : BOOL}
 
-QUESTION = { id: ID, type: "question",                     descriptions: [DESCRIPTION *], interactives: [INTERACTIVE *] }
+QUESTION = { elementId: ID, elementType: "question",                    descriptions: [DESCRIPTION *], interactives: [INTERACTIVE *] }
+
+DESCRIPTION = {
+                elementId: ID,
+                descriptionType: DESCRIPTION_TYPE,
+
+                (text: STRING | urls: [ URL *] ,)?
+              }
+
+DESCRIPTION_TYPE = "text" | "image" | "video"
 
 INTERACTIVE = {
-                id: ID,
-                type: INTERACTIVE_TYPE,
-                mappingkey : MAPPING_KEY,
-                validators: [VALIDATOR *],
-                details: [INTERACTIVE_DETAIL *]
-                }
+                elementId: ID,
+                interactiveType: INTERACTIVE_TYPE,
+                mappingKey : MAPPING_KEY,
+                validators: [VALIDATOR +],
+                interactiveDetails: [INTERACTIVE_DETAIL *]
+              }
 
 
 INTERACTIVE_DETAIL = {
-                        label: STRING,
-                        (post-label: STRING, )?
-                        (length:INTEGER, )?
-                        (placeholder:STRING, )?
-                        (inputtype: INPUT_TYPE, )?
-                        (dateformat: DATE_FORMAT, )?
-                        (mindate: DATE, )?
-                        (maxdate: DATE, )?
-                        (options: [OPTION *], )?
-                        (defaultoption: INTEGER )?
-  }
-
-
+                        (label: STRING, )?
+                        (postLabel: STRING, )?
+                        (length: INTEGER, )?
+                        (placeholder: STRING, )?
+                        (inputType: INPUT_TYPE, )?
+                        (dateFormat: DATE_FORMAT, )?
+                        (options: [OPTION +], )?
+                        (defaultOption: INTEGER )?
+                      }
 
 INTERACTIVE_TYPE = "textarea" | "input" | "date" | "number" | "radio" | "dropdown" | "checkbox"
 
 INPUT_TYPE = "text" | "password" | "number"
 
-DESCRIPTION = {
-                id: ID,
-                descriptiontype: DESCRIPTION_TYPE,
-
-                (text: STRING | urls: [ URL *] ,)?
-
-                }
-
-
 VALIDATOR = {
-              id: ID,
-              validatortype: VALIDATOR_TYPE,
+              elementId: ID,
+              validatorType: VALIDATOR_TYPE,
               expression: VALIDATOR_EXPRESSION
-          }
+            }
 
-FORM_METADATA = ...
+VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "custom"
 
-DESCRIPTION_TYPE = "text" | "image" | "video"
-
-
-MAPPING_KEY = STRING
-ID = STRING
-
-VALIDATOR_TYPE = "minlength" | "maxlength" | "custom" | "isRequired"
 VALIDATOR_EXPRESSION = REGEX | FUNCTION
-
 
 DATE_FORMAT = {
                 format: "..." //iso standard,
                 default: "DD/MM/YYYY"
               }
 
+FORM_METADATA = ...
 
+MAPPING_KEY = STRING
+ID = STRING
 
 FUNCTION = "..."
 REGEX = "..."
