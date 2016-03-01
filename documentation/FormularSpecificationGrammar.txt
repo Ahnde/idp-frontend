@@ -18,6 +18,7 @@ DESCRIPTION = {
 
 DESCRIPTION_TYPE = "text" | "image" | "video"
 
+#this is the interactive element (like a textfield or a checkbox)
 INTERACTIVE = {
                 element_id: ID,
                 interactive_type: INTERACTIVE_TYPE,
@@ -37,6 +38,11 @@ INTERACTIVE_DETAIL = {
                         (options: [OPTION +], )?
                         (default_option: INTEGER )?
                       }
+
+OPTION = {
+       "label":STRING,
+       "value":STRING
+}
 
 INTERACTIVE_TYPE = "textarea" | "input" | "date" | "number" | "radio" | "dropdown" | "checkbox"
 
