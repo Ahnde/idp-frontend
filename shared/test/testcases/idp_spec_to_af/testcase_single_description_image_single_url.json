@@ -11,7 +11,7 @@
         {
             "elementId":"121",
             "urls": [
-                "../test/files/test_image.jpg"
+                "../shared/test/dummyfiles/test_image.jpg"
             ],
             "descriptionType": "image"
         }],

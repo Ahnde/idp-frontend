@@ -189,14 +189,15 @@
         }
 
         if (fsDescriptionJson['urls']) {
-            var urls = fsDescriptionJson['urls'];
+            var fsUrls = fsDescriptionJson['urls'];
             var oneUrl;
-            var urlString;
-            for (var urlIndex in urls) {
-                oneUrl = urls[urlIndex];
-                urlString = "url" + urlIndex;
-                templateOptions[urlString] = oneUrl;
+            var afUrls = [];
+
+            for (var urlIndex in fsUrls) {
+                oneUrl = fsUrls[urlIndex];
+                afUrls.push(oneUrl);
             }
+            templateOptions.urls = afUrls;
         }
 
         return templateOptions;
@@ -208,14 +209,14 @@
         templateOptions.label = fsSpecificInteractiveJson['label'];
 
         if (fsSpecificInteractiveJson['length']) {
-            //TODO: tempalte does not support this feature, yet
+            //TODO: template does not support this feature, yet
         }
         if (fsSpecificInteractiveJson['placeholder']) {
             templateOptions.placeholder = fsSpecificInteractiveJson['placeholder'];
             // templateOptions.required = true;
         };
         if (fsSpecificInteractiveJson['textfieldType']) {
-            //TODO: tempalte does not support this feature, yet
+            //TODO: template does not support this feature, yet
         }
         if (fsSpecificInteractiveJson['dateFormat']) {
             templateOptions.type = "text";
@@ -225,7 +226,7 @@
             templateOptions.options = angularFormlyArrayForOptions(fsSpecificInteractiveJson['options']);
 
             if (fsSpecificInteractiveJson['defaultOption']) {
-                //TODO: tempalte does not support this feature, yet
+                //TODO: template does not support this feature, yet
             };
         };
 

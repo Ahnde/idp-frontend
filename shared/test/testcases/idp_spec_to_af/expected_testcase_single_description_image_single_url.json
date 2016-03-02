@@ -1,7 +1,10 @@
 [
     {
         "templateOptions": {
-            "url0": "../test/files/test_image.jpg"
+            "urls": 
+            [
+                "../shared/test/dummyfiles/test_image.jpg"
+            ]
         },
         "type": "image"
     }

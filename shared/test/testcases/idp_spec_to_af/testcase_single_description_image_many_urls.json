@@ -11,11 +11,11 @@
         {
             "elementId":"121",
             "urls": [
-                "../test/files/test_image.jpg0",
-                "../test/files/test_image.jpg1",
-                "../test/files/test_image.jpg2",
-                "../test/files/test_image.jpg3",
-                "../test/files/test_image.jpg4"
+                "../shared/test/dummyfiles/test_image.jpg0",
+                "../shared/test/dummyfiles/test_image.jpg1",
+                "../shared/test/dummyfiles/test_image.jpg2",
+                "../shared/test/dummyfiles/test_image.jpg3",
+                "../shared/test/dummyfiles/test_image.jpg4"
             ],
             "descriptionType": "image"
         }],

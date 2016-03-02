@@ -11,11 +11,11 @@
         {
             "elementId":"122",
             "urls": [ 
-                "../test/files/test_video0.mp4",
-                "../test/files/test_video1.mp4",
-                "../test/files/test_video2.mp4",
-                "../test/files/test_video3.mp4",
-                "../test/files/test_video4.mp4"
+                "../shared/test/dummyfiles/test_video0.mp4",
+                "../shared/test/dummyfiles/test_video1.mp4",
+                "../shared/test/dummyfiles/test_video2.mp4",
+                "../shared/test/dummyfiles/test_video3.mp4",
+                "../shared/test/dummyfiles/test_video4.mp4"
             ],
             "descriptionType": "video"
         }],

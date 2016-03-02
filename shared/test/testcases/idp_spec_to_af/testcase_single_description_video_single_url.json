@@ -11,7 +11,7 @@
         {
             "elementId":"122",
             "urls": [ 
-                "../test/files/test_video.mp4"
+                "../shared/test/dummyfiles/test_video.mp4"
             ],
             "descriptionType": "video"
         }],

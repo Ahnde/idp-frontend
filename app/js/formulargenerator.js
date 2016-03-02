@@ -8,12 +8,12 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
     });
     formlyConfigProvider.setType({
       name: 'image',
-      template: '<img ng-src="{{to.url0}}" alt="{{to.url0}}" width="200" />',
+      template: '<img ng-src="{{to.urls[0]}}" alt="{{to.urls[0]}}" width="200" />',
       wrapper: ['bootstrapHasError']
     });
     formlyConfigProvider.setType({
       name: 'video',
-      template: '<video controls width="400"><source src="{{to.url0}}" /></video>',
+      template: '<video controls width="400"><source src="{{to.urls[0]}}" /></video>',
       wrapper: ['bootstrapHasError']
     });
     formlyConfigProvider.setType({

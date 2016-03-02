@@ -16,36 +16,36 @@
         {
             "elementId":"121",
             "urls": [
-                "../test/files/test_image.jpg"
+                "../shared/test/dummyfiles/test_image.jpg"
             ],
             "descriptionType": "image"
         },
         {
             "elementId":"1211",
             "urls": [
-                "../test/files/test_image.jpg0",
-                "../test/files/test_image.jpg1",
-                "../test/files/test_image.jpg2",
-                "../test/files/test_image.jpg3",
-                "../test/files/test_image.jpg4"
+                "../shared/test/dummyfiles/test_image.jpg0",
+                "../shared/test/dummyfiles/test_image.jpg1",
+                "../shared/test/dummyfiles/test_image.jpg2",
+                "../shared/test/dummyfiles/test_image.jpg3",
+                "../shared/test/dummyfiles/test_image.jpg4"
             ],
             "descriptionType": "image"
         },
         {
             "elementId":"122",
             "urls": [ 
-                "../test/files/test_video.mp4"
+                "../shared/test/dummyfiles/test_video.mp4"
             ],
             "descriptionType": "video"
         },
         {
             "elementId":"1221",
             "urls": [ 
-                "../test/files/test_video0.mp4",
-                "../test/files/test_video1.mp4",
-                "../test/files/test_video2.mp4",
-                "../test/files/test_video3.mp4",
-                "../test/files/test_video4.mp4"
+                "../shared/test/dummyfiles/test_video0.mp4",
+                "../shared/test/dummyfiles/test_video1.mp4",
+                "../shared/test/dummyfiles/test_video2.mp4",
+                "../shared/test/dummyfiles/test_video3.mp4",
+                "../shared/test/dummyfiles/test_video4.mp4"
             ],
             "descriptionType": "video"
         }],

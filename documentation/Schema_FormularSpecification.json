@@ -22,7 +22,8 @@
                 "type": "object",
                 "properties": {
                     "elementId": { "$ref": "#/definitions/elementId" },
-                    "label": { "$ref": "#/definitions/label" }
+                    "label": { "$ref": "#/definitions/label" },
+                    "value": { "$ref": "#/definitions/label" }
                 },
                 "required": ["elementId", "label"]
             },

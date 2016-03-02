@@ -3,11 +3,11 @@ BNF - Grammar for FormSpecification
 
 FORM =  { element_id: ID, element_type: "form", metadata : [FORM_METADATA *], descriptions: [DESCRIPTION *], children:[CHILD *] }
 
-CHILD = QUESTION | GROUP
+CHILD = GROUP | QUESTION
 
-GROUP = { element_id: ID, element_type: "group",                          descriptions: [DESCRIPTION *], children:[CHILD +], repeatable : BOOL}
+GROUP = { element_id: ID, element_type: "group",                              descriptions: [DESCRIPTION *], children:[CHILD +], repeatable : BOOL}
 
-QUESTION = { element_id: ID, element_type: "question",                    descriptions: [DESCRIPTION *], interactives: [INTERACTIVE *] }
+QUESTION = { element_id: ID, element_type: "question",                        descriptions: [DESCRIPTION *], interactives: [INTERACTIVE *] }
 
 DESCRIPTION = {
                 element_id: ID,
@@ -40,8 +40,7 @@ INTERACTIVE_DETAIL = {
                       }
 
 OPTION = {
-       "label":STRING,
-       "value":STRING
+       "label":STRING
 }
 
 INTERACTIVE_TYPE = "textarea" | "input" | "date" | "number" | "radio" | "dropdown" | "checkbox"

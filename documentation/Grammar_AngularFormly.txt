@@ -1,0 +1,26 @@
+BNF - Grammar for Angular Formly
+
+
+
+FORM = [ ] | [ELEMENT *]
+
+ELEMENT = { type: ELEMENTTYPE, key: KEY, templateOptions: TEMPLATEOPTIONS }
+
+TEMPLATEOPTIONS = { label: LABEL, 
+                    (options: [OPTION*], )?
+                    (type: TOTYPE, )?
+                    (datepickerPopup: DATEPICKERPOPUP, )?
+                    (urls: [URL*])?
+                  }
+
+OPTION = { name: LABEL }
+
+ELEMENTTYPE = "input" | "checkbox" | "select" | "radio" | "datepicker" | "textLabel" | "image" | "video"
+
+TOTYPE = "text" | ...
+
+DATEPICKERPOPUP = "dd/mm/yyyy" | "dd/mm/yy" | "mm/dd/yyyy" | "dd/mm/yy"
+
+URL = STRING
+KEY = STRING
+LABEL = STRING
