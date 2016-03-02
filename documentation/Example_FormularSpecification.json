@@ -144,14 +144,14 @@
         {
             "elementId":"121",
             "urls": [
-                "../test/files/test_image.jpg"
+                "../shared/test/dummyfiles/test_image.jpg"
             ],
             "descriptionType": "image"
         },
         {
             "elementId":"122",
             "urls": [ 
-                "../test/files/test_video.mp4"
+                "../shared/test/dummyfiles/test_video.mp4"
             ],
             "descriptionType": "video"
         }],
