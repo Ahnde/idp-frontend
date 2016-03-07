@@ -1,13 +1,13 @@
 formularGenerator.factory("backendConnector", ["$http", function ($http) {
-  	var backendURL = "192.168.99.100";
-  	// var backendURL = "localhost";
+  	//var backendURL = "192.168.99.100";
+  	 var backendURL = "localhost";
   	
 	var BC = {};
 
-	BC.getFormularSpecification = function (callback) {
+	BC.getFormularSpecification = function (id, callback) {
 		$http({
 		 	method: 'GET',
-		 	url: 'http://'+backendURL+':8080/IDPBackend/rest/form/4'
+		 	url: 'http://'+backendURL+':8080/IDPBackend/rest/form/' + id
 			// url: 'http://localhost:8000/response.json'
 		}).then(function (response, status) {
 			console.log("Formular-Specification from backend successfully fechted: ");

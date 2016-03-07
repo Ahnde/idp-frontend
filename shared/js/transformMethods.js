@@ -1,9 +1,30 @@
+console.log("spec loaded");
+
+
+var angularFromIDPSpec = function(formularSpecification) {
+  var formularSpecificationArray = formularSpecification['children'];
+  var angularFormlyJsonArray = [];
+
+
+  for (var objectNumber in formularSpecificationArray) {
+   
+    var currentFsJson = formularSpecificationArray[objectNumber];
+    var currentAfArray = angularFormlyJsonArrayForFsJson(currentFsJson);
+    angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
+  };
+  console.log("--");
+  console.log(angularFormlyJsonArray);
+  return angularFormlyJsonArray;
+
+};
+
+
     var angularFormlyJsonArrayForFsJson = function(fsJson) {
         var afJsonArray = [];
 
-        if (fsJson['elementType'] === "group") {
+        if (fsJson['element_type'] === "group") {
             afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForGroup(fsJson));
-        } else if(fsJson['elementType'] === "question") {
+        } else if(fsJson['element_type'] === "question") {
             afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForQuestion(fsJson));
         };
 
@@ -59,7 +80,7 @@
     var angularFormlyJsonAForDescription = function(fsDescriptionJson) {
         var afJson = {};
 
-        afJson.type = angularFormlyTypeStringForDescriptionFsTypeString(fsDescriptionJson['descriptionType']);
+        afJson.type = angularFormlyTypeStringForDescriptionFsTypeString(fsDescriptionJson['description_type']);
         afJson.templateOptions = templateOptionsForDescriptionFsJson(fsDescriptionJson);;
 
         return afJson;
@@ -80,7 +101,7 @@
 
             afJson = {};
 
-            fsJsonTypeString = currentFsInteractiveJson['elementType'];
+            fsJsonTypeString = currentFsInteractiveJson['interactive_type'];
             if (fsJsonTypeString === 'error') {
                 continue;
             };
@@ -89,7 +110,7 @@
 
             afJson.key = currentFsInteractiveJson['mappingKey'];
 
-            fsSpecificInteractiveJson = currentFsInteractiveJson['interactiveDetails'];
+            fsSpecificInteractiveJson = currentFsInteractiveJson['interactive_details'];
             templateOptions = templateOptionsForInteractiveFsJson(fsSpecificInteractiveJson);
             afJson.templateOptions = templateOptions;
 
@@ -133,7 +154,7 @@
         var afTypeString;
 
         switch (fsTypeString) {
-                case "textfield":
+                case "input":
                     afTypeString = "input";
                     break;
                 case "checkbox":

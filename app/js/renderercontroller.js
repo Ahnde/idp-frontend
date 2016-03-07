@@ -1,11 +1,15 @@
-formularGenerator.controller("rendererController",function ($scope, backendConnector, jsonTransformer) {
+
+formularGenerator.controller("rendererController",
+function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
 	var RE = $scope;
 
 	RE.formular = {};
 	RE.formularFields = [];
 
-    backendConnector.getFormularSpecification(function(formularSpecification) {
+  $scope.$on('$routeChangeSuccess', function() {
+  	console.log($routeParams)
+    backendConnector.getFormularSpecification($routeParams.id,function(formularSpecification) {
 		
         var arrayWithJSONs = [];
 
@@ -25,6 +29,9 @@ formularGenerator.controller("rendererController",function ($scope, backendConne
         });
     });   
 
+  });
+
+    
 
     RE.onSubmit = onSubmit;
 	function onSubmit() {

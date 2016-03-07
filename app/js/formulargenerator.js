@@ -1,6 +1,9 @@
-var formularGenerator = angular.module('formularGenerator', ["formly","formlyBootstrap"]);
+var formularGenerator = angular.module('formularGenerator', ["formly","formlyBootstrap","ngRoute"]);
 
-formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider) {
+formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider) 
+{
+ 
+
     formlyConfigProvider.setType({
       name: 'datepicker',
       template: '<input type="date" class="form-control" ng-model="model[options.key]" />',
@@ -22,3 +25,15 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
       wrapper: ['bootstrapHasError']
     });
 }])
+
+
+formularGenerator.config(function($locationProvider,$routeProvider) {
+    
+       $routeProvider.
+       when('/form/:id', {
+           controller: 'rendererController'
+       }).otherwise({ redirectTo: '/form/1' });;
+
+          
+});
+

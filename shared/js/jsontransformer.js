@@ -4,15 +4,8 @@ formularGenerator.factory("jsonTransformer", [function () {
     var JT = {};
 
     JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecification) {
-        var formularSpecificationArray = formularSpecification['children'];
-        var angularFormlyJsonArray = [];
 
-        for (var objectNumber in formularSpecificationArray) {
-            var currentFsJson = formularSpecificationArray[objectNumber];
-            var currentAfArray = angularFormlyJsonArrayForFsJson(currentFsJson);
-            angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
-        };
-        return angularFormlyJsonArray;
+      return angularFromIDPSpec(formularSpecification);
     };
 
   JT.transformAngularFormlyJsonToFormularSpecification = function(angularSpecification) {
