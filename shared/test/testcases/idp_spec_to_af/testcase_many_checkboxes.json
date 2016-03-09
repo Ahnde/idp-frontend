@@ -1,56 +1,56 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[],
         "interactives":[
         {
-            "elementId":"122",
-            "elementType":"checkbox",
-            "mappingKey":"k_checkbox1",
+            "element_id":"122",
+            "element_type":"checkbox",
+            "mapping_key":"k_checkbox1",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Checkbox Test 1"
             }
         },
         {
-            "elementId":"122",
-            "elementType":"checkbox",
-            "mappingKey":"k_checkbox2",
+            "element_id":"122",
+            "element_type":"checkbox",
+            "mapping_key":"k_checkbox2",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Checkbox Test 2"
             }
         },
         {
-            "elementId":"122",
-            "elementType":"checkbox",
-            "mappingKey":"k_checkbox3",
+            "element_id":"122",
+            "element_type":"checkbox",
+            "mapping_key":"k_checkbox3",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Checkbox Test 3"
             }
         },
         {
-            "elementId":"122",
-            "elementType":"checkbox",
-            "mappingKey":"k_checkbox4",
+            "element_id":"122",
+            "element_type":"checkbox",
+            "mapping_key":"k_checkbox4",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Checkbox Test 4"
             }
         },
         {
-            "elementId":"122",
-            "elementType":"checkbox",
-            "mappingKey":"k_checkbox5",
+            "element_id":"122",
+            "element_type":"checkbox",
+            "mapping_key":"k_checkbox5",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Checkbox Test 5"
             }
         }]

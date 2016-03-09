@@ -1,27 +1,27 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[
         {
-            "elementId":"120",
+            "element_id":"120",
             "text": "This question demonstrates various HTML-Testelements.",
-            "descriptionType": "text"
+            "description_type": "text"
         },
         {
-            "elementId":"121",
+            "element_id":"121",
             "urls": [
                 "../shared/test/dummyfiles/test_image.jpg"
             ],
-            "descriptionType": "image"
+            "description_type": "image"
         },
         {
-            "elementId":"1211",
+            "element_id":"1211",
             "urls": [
                 "../shared/test/dummyfiles/test_image.jpg0",
                 "../shared/test/dummyfiles/test_image.jpg1",
@@ -29,17 +29,17 @@
                 "../shared/test/dummyfiles/test_image.jpg3",
                 "../shared/test/dummyfiles/test_image.jpg4"
             ],
-            "descriptionType": "image"
+            "description_type": "image"
         },
         {
-            "elementId":"122",
+            "element_id":"122",
             "urls": [ 
                 "../shared/test/dummyfiles/test_video.mp4"
             ],
-            "descriptionType": "video"
+            "description_type": "video"
         },
         {
-            "elementId":"1221",
+            "element_id":"1221",
             "urls": [ 
                 "../shared/test/dummyfiles/test_video0.mp4",
                 "../shared/test/dummyfiles/test_video1.mp4",
@@ -47,7 +47,7 @@
                 "../shared/test/dummyfiles/test_video3.mp4",
                 "../shared/test/dummyfiles/test_video4.mp4"
             ],
-            "descriptionType": "video"
+            "description_type": "video"
         }],
         "interactives":[]
     }]

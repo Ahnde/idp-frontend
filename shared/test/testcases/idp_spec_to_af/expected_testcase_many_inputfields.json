@@ -1,7 +1,7 @@
 [
   {
     "type": "input",
-    "key": "k_textfield1",
+    "key": "k_input1",
     "templateOptions": {
       "label": "Input Test 1",
       "placeholder": "Placeholder 1"
@@ -9,7 +9,7 @@
   },
   {
     "type": "input",
-    "key": "k_textfield2",
+    "key": "k_input2",
     "templateOptions": {
       "label": "Input Test 2",
       "placeholder": "Placeholder 2"
@@ -17,7 +17,7 @@
   },
   {
     "type": "input",
-    "key": "k_textfield3",
+    "key": "k_input3",
     "templateOptions": {
       "label": "Input Test 3",
       "placeholder": "Placeholder 3"
@@ -25,7 +25,7 @@
   },
   {
     "type": "input",
-    "key": "k_textfield4",
+    "key": "k_input4",
     "templateOptions": {
       "label": "Input Test 4",
       "placeholder": "Placeholder 4"
@@ -33,7 +33,7 @@
   },
   {
     "type": "input",
-    "key": "k_textfield5",
+    "key": "k_input5",
     "templateOptions": {
       "label": "Input Test 5",
       "placeholder": "Placeholder 5"

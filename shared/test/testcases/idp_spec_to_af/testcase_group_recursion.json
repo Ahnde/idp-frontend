@@ -1,42 +1,42 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"11",
-        "elementType":"group",
+        "element_id":"11",
+        "element_type":"group",
         "repeatable":false,
         "descriptions": [],
         "children":[
         {
-            "elementId":"112",
-            "elementType":"group",
+            "element_id":"112",
+            "element_type":"group",
             "repeatable":false,
             "descriptions": [],
             "children":[
             {
-                "elementId":"11",
-                "elementType":"group",
+                "element_id":"11",
+                "element_type":"group",
                 "repeatable":false,
                 "descriptions": [],
                 "children":[
                 {
-                    "elementId":"112",
-                    "elementType":"group",
+                    "element_id":"112",
+                    "element_type":"group",
                     "repeatable":false,
                     "descriptions": [],
                     "children":[
                     {
-                        "elementId":"112",
-                        "elementType":"group",
+                        "element_id":"112",
+                        "element_type":"group",
                         "repeatable":false,
                         "descriptions": [],
                         "children":[
                         {
-                            "elementId":"111",
-                            "elementType": "question",
+                            "element_id":"111",
+                            "element_type": "question",
                             "descriptions":[],
                             "interactives":[]
                         }]

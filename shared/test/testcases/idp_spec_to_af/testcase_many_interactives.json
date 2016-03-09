@@ -1,82 +1,82 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[],
         "interactives":[
         {
-            "elementId":"121",
-            "elementType":"textfield",
-            "mappingKey":"k_textfield",
+            "element_id":"121",
+            "element_type":"input",
+            "mapping_key":"k_input",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "length":256,
                 "label":"Input Test",
                 "placeholder":"Placeholder",
-                "textfieldType":"text"
+                "input_type":"text"
             }
         },
         {
-            "elementId":"122",
-            "elementType":"checkbox",
-            "mappingKey":"k_checkbox",
+            "element_id":"122",
+            "element_type":"checkbox",
+            "mapping_key":"k_checkbox",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Checkbox Test"
             }
         },
         {
-            "elementId":"124",
-            "elementType":"dropdown",
-            "mappingKey":"k_dropdown",
+            "element_id":"124",
+            "element_type":"dropdown",
+            "mapping_key":"k_dropdown",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Dropdown Test",
                 "defaultOption":1,
                 "options":[
                 {
-                    "elementId":"1240",
+                    "element_id":"1240",
                     "label":"First option"  
                 },
                 {
-                    "elementId":"1241",
+                    "element_id":"1241",
                     "label":"Second option" 
                 },
                 {
-                    "elementId":"1242",
+                    "element_id":"1242",
                     "label":"Third option"  
                 }]
             }
         },
         {
-            "elementId":"123",
-            "elementType":"radio",
-            "mappingKey":"k_radio",
+            "element_id":"123",
+            "element_type":"radio",
+            "mapping_key":"k_radio",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Radio Test",
                 "options":[
                 {
-                    "elementId":"1230",
+                    "element_id":"1230",
                     "label":"Option one"
                 },
                 {
-                    "elementId":"1231",
+                    "element_id":"1231",
                     "label":"Option two"
                 }]
             }
         },
         {
-            "elementId":"125",
-            "elementType":"date",
-            "mappingKey":"k_date",
+            "element_id":"125",
+            "element_type":"date",
+            "mapping_key":"k_date",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Date Test",
                 "dateFormat":"dd/mm/yyyy"
             }

@@ -1,28 +1,28 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[],
         "interactives":[
         {
-            "elementId":"123",
-            "elementType":"radio",
-            "mappingKey":"k_radio",
+            "element_id":"123",
+            "element_type":"radio",
+            "mapping_key":"k_radio",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Radio Test",
                 "options":[
                 {
-                    "elementId":"1230",
+                    "element_id":"1230",
                     "label":"Option one"
                 },
                 {
-                    "elementId":"1231",
+                    "element_id":"1231",
                     "label":"Option two"
                 }]
             }

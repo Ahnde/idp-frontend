@@ -1,72 +1,72 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[],
         "interactives":[
         {
-            "elementId":"121",
-            "elementType":"textfield",
-            "mappingKey":"k_textfield1",
+            "element_id":"121",
+            "element_type":"input",
+            "mapping_key":"k_input1",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "length":256,
                 "label":"Input Test 1",
                 "placeholder":"Placeholder 1",
-                "textfieldType":"text"
+                "input_type":"text"
             }
         },
         {
-            "elementId":"121",
-            "elementType":"textfield",
-            "mappingKey":"k_textfield2",
+            "element_id":"121",
+            "element_type":"input",
+            "mapping_key":"k_input2",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "length":256,
                 "label":"Input Test 2",
                 "placeholder":"Placeholder 2",
-                "textfieldType":"text"
+                "input_type":"text"
             }
         },
         {
-            "elementId":"121",
-            "elementType":"textfield",
-            "mappingKey":"k_textfield3",
+            "element_id":"121",
+            "element_type":"input",
+            "mapping_key":"k_input3",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "length":256,
                 "label":"Input Test 3",
                 "placeholder":"Placeholder 3",
-                "textfieldType":"text"
+                "input_type":"text"
             }
         },
         {
-            "elementId":"121",
-            "elementType":"textfield",
-            "mappingKey":"k_textfield4",
+            "element_id":"121",
+            "element_type":"input",
+            "mapping_key":"k_input4",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "length":256,
                 "label":"Input Test 4",
                 "placeholder":"Placeholder 4",
-                "textfieldType":"text"
+                "input_type":"text"
             }
         },
         {
-            "elementId":"121",
-            "elementType":"textfield",
-            "mappingKey":"k_textfield5",
+            "element_id":"121",
+            "element_type":"input",
+            "mapping_key":"k_input5",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "length":256,
                 "label":"Input Test 5",
                 "placeholder":"Placeholder 5",
-                "textfieldType":"text"
+                "input_type":"text"
             }
         }]
     }]

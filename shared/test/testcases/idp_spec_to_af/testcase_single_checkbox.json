@@ -1,20 +1,20 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[],
         "interactives":[
         {
-            "elementId":"122",
-            "elementType":"checkbox",
-            "mappingKey":"k_checkbox",
+            "element_id":"122",
+            "element_type":"checkbox",
+            "mapping_key":"k_checkbox",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Checkbox Test"
             }
         }]

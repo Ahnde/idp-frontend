@@ -1,23 +1,16 @@
-console.log("spec loaded");
+    var angularFromIDPSpec = function(formularSpecification) {
+        var formularSpecificationArray = formularSpecification['children'];
+        var angularFormlyJsonArray = [];
 
+        for (var objectNumber in formularSpecificationArray) {
+            var currentFsJson = formularSpecificationArray[objectNumber];
+            var currentAfArray = angularFormlyJsonArrayForFsJson(currentFsJson);
+            angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
+        };
 
-var angularFromIDPSpec = function(formularSpecification) {
-  var formularSpecificationArray = formularSpecification['children'];
-  var angularFormlyJsonArray = [];
+        return angularFormlyJsonArray;
 
-
-  for (var objectNumber in formularSpecificationArray) {
-   
-    var currentFsJson = formularSpecificationArray[objectNumber];
-    var currentAfArray = angularFormlyJsonArrayForFsJson(currentFsJson);
-    angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
-  };
-  console.log("--");
-  console.log(angularFormlyJsonArray);
-  return angularFormlyJsonArray;
-
-};
-
+    };
 
     var angularFormlyJsonArrayForFsJson = function(fsJson) {
         var afJsonArray = [];
@@ -101,14 +94,14 @@ var angularFromIDPSpec = function(formularSpecification) {
 
             afJson = {};
 
-            fsJsonTypeString = currentFsInteractiveJson['interactive_type'];
+            fsJsonTypeString = currentFsInteractiveJson['element_type'];
             if (fsJsonTypeString === 'error') {
                 continue;
             };
 
             afJson.type = angularFormlyTypeStringForInteractiveFsTypeString(fsJsonTypeString);
 
-            afJson.key = currentFsInteractiveJson['mappingKey'];
+            afJson.key = currentFsInteractiveJson['mapping_key'];
 
             fsSpecificInteractiveJson = currentFsInteractiveJson['interactive_details'];
             templateOptions = templateOptionsForInteractiveFsJson(fsSpecificInteractiveJson);
@@ -236,7 +229,7 @@ var angularFromIDPSpec = function(formularSpecification) {
             templateOptions.placeholder = fsSpecificInteractiveJson['placeholder'];
             // templateOptions.required = true;
         };
-        if (fsSpecificInteractiveJson['textfieldType']) {
+        if (fsSpecificInteractiveJson['input_type']) {
             //TODO: template does not support this feature, yet
         }
         if (fsSpecificInteractiveJson['dateFormat']) {

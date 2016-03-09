@@ -1,17 +1,17 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[
         {
-            "elementId":"120",
+            "element_id":"120",
             "text": "This is a text description.",
-            "descriptionType": "text"
+            "description_type": "text"
         }],
         "interactives":[]
     }]

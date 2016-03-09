@@ -1,33 +1,33 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[],
         "interactives":[
         {
-            "elementId":"124",
-            "elementType":"dropdown",
-            "mappingKey":"k_dropdown",
+            "element_id":"124",
+            "element_type":"dropdown",
+            "mapping_key":"k_dropdown",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Dropdown Test",
                 "defaultOption":1,
                 "options":[
                 {
-                    "elementId":"1240",
+                    "element_id":"1240",
                     "label":"First option"  
                 },
                 {
-                    "elementId":"1241",
+                    "element_id":"1241",
                     "label":"Second option" 
                 },
                 {
-                    "elementId":"1242",
+                    "element_id":"1242",
                     "label":"Third option"  
                 }]
             }

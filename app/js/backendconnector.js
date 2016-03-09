@@ -1,14 +1,15 @@
 formularGenerator.factory("backendConnector", ["$http", function ($http) {
-  	//var backendURL = "192.168.99.100";
-  	 var backendURL = "localhost";
+  	// var backendURL = "localhost";
+  	var backendURL = "192.168.99.100";
   	
 	var BC = {};
 
 	BC.getFormularSpecification = function (id, callback) {
 		$http({
 		 	method: 'GET',
-		 	url: 'http://'+backendURL+':8080/IDPBackend/rest/form/' + id
+		 	// url: 'http://'+backendURL+':8080/IDPBackend/rest/form/' + id
 			// url: 'http://localhost:8000/response.json'
+            url: 'http://localhost:8000/TUM/Faecher/IDP/ipd/submodules/idp-frontend/documentation/Example_FormularSpecification.json'
 		}).then(function (response, status) {
 			console.log("Formular-Specification from backend successfully fechted: ");
 			console.log(response.data);

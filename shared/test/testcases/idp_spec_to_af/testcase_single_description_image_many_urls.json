@@ -1,15 +1,15 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[
         {
-            "elementId":"121",
+            "element_id":"121",
             "urls": [
                 "../shared/test/dummyfiles/test_image.jpg0",
                 "../shared/test/dummyfiles/test_image.jpg1",
@@ -17,7 +17,7 @@
                 "../shared/test/dummyfiles/test_image.jpg3",
                 "../shared/test/dummyfiles/test_image.jpg4"
             ],
-            "descriptionType": "image"
+            "description_type": "image"
         }],
         "interactives":[]
     }]

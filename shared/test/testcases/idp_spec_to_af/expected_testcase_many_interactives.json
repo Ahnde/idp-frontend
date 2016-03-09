@@ -1,7 +1,7 @@
 [
   {
     "type": "input",
-    "key": "k_textfield",
+    "key": "k_input",
     "templateOptions": {
       "label": "Input Test",
       "placeholder": "Placeholder"

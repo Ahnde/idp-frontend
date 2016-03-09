@@ -1,20 +1,20 @@
 {
-    "elementId":"1",
-    "elementType":"form",
+    "element_id":"1",
+    "element_type":"form",
     "metadata":[],
     "descriptions":[],
     "children":[
     {
-        "elementId":"12",
-        "elementType": "question",
+        "element_id":"12",
+        "element_type": "question",
         "descriptions":[],
         "interactives":[
         {
-            "elementId":"125",
-            "elementType":"date",
-            "mappingKey":"k_date",
+            "element_id":"125",
+            "element_type":"date",
+            "mapping_key":"k_date",
             "validators":[],
-            "interactiveDetails": {
+            "interactive_details": {
                 "label":"Date Test",
                 "dateFormat":"dd/mm/yyyy"
             }

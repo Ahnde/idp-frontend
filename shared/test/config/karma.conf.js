@@ -19,6 +19,7 @@ module.exports = function(config) {
         'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
     	'node_modules/angular/angular.js',
         'node_modules/api-check/dist/api-check.js',
+        'node_modules/angular-route/angular-route.js',
         'node_modules/angular-mocks/angular-mocks.js',
         'node_modules/angular-formly/dist/formly.js',
         'node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js',
