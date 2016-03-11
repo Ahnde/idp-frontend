@@ -125,7 +125,7 @@
             {
                 "element_id":"1212",
                 "element_type":"input",
-                "mapping_key":"k_title",
+                "mapping_key":"k_inputIsRequired",
                 "validators":[
                 {
                     "element_id":"12121",
@@ -133,15 +133,15 @@
                 }],
                 "interactive_details": {
                     "length":256,
-                    "label":"Title",
-                    "placeholder":"Dr.",
+                    "label":"Is required",
+                    "placeholder":"",
                     "input_type":"text"
                 }
             },
             {
                 "element_id":"1213",
                 "element_type":"input",
-                "mapping_key":"k_title",
+                "mapping_key":"k_inputMinMaxLength",
                 "validators":[
                 {
                     "element_id":"12131",
@@ -155,15 +155,15 @@
                 }],
                 "interactive_details": {
                     "length":256,
-                    "label":"Title",
-                    "placeholder":"Dr.",
+                    "label":"Min 5 & Max 8",
+                    "placeholder":"1234567",
                     "input_type":"text"
                 }
             },
             {
                 "element_id":"1214",
                 "element_type":"input",
-                "mapping_key":"k_title",
+                "mapping_key":"k_inputNotBob",
                 "validators":[
                 {
                     "element_id":"12141",
@@ -173,15 +173,15 @@
                 }],
                 "interactive_details": {
                     "length":256,
-                    "label":"Title",
-                    "placeholder":"Dr.",
+                    "label":"Not Bob",
+                    "placeholder":"Bill",
                     "input_type":"text"
                 }
             },
             {
                 "element_id":"1215",
                 "element_type":"input",
-                "mapping_key":"k_title",
+                "mapping_key":"k_inputIp",
                 "validators":[
                 {
                     "element_id":"12151",
@@ -191,8 +191,8 @@
                 }],
                 "interactive_details": {
                     "length":256,
-                    "label":"Title",
-                    "placeholder":"Dr.",
+                    "label":"IP",
+                    "placeholder":"127.0.0.0",
                     "input_type":"text"
                 }
             }]
@@ -209,18 +209,32 @@
             "interactives":[
             {
                 "element_id":"1222",
-                "element_type":"input",
-                "mapping_key":"k_title",
+                "element_type":"date",
+                "mapping_key":"k_dateMin",
                 "validators":[
                 {
-                    "element_id":"12221",
-                    "validator_type": "isRequired"
+                    "element_id":"12151",
+                    "validator_type": "minDate",
+                    "expression": "01.01.2000"
                 }],
                 "interactive_details": {
-                    "length":256,
-                    "label":"Title",
-                    "placeholder":"Dr.",
-                    "input_type":"text"
+                    "label":"Min 1.1.2000",
+                    "dateFormat":"dd/mm/yyyy"
+                }
+            },
+            {
+                "element_id":"1222",
+                "element_type":"date",
+                "mapping_key":"k_dateMax",
+                "validators":[
+                {
+                    "element_id":"12151",
+                    "validator_type": "maxDate",
+                    "expression": "01.01.2000"
+                }],
+                "interactive_details": {
+                    "label":"Max 1.1.2000",
+                    "dateFormat":"dd/mm/yyyy"
                 }
             }]
         },
@@ -236,20 +250,17 @@
             "interactives":[
             {
                 "element_id":"1232",
-                "element_type":"input",
-                "mapping_key":"k_title",
+                "element_type":"checkbox",
+                "mapping_key":"k_checkboxIsRequired",
                 "validators":[
                 {
                     "element_id":"12321",
                     "validator_type": "isRequired"
                 }],
                 "interactive_details": {
-                    "length":256,
-                    "label":"Title",
-                    "placeholder":"Dr.",
-                    "input_type":"text"
+                    "label":"Checkbox is required"
                 }
             }]
         }]
-    },]
+    }]
 }
