@@ -6,150 +6,22 @@
     "children":[
     {
         "element_id":"11",
-        "element_type":"group",
-        "repeatable":false,
-        "descriptions": [
-        {
-            "element_id":"110",
-            "text": "This part of the form is about the title of the patient.",
-            "description_type":"text"
-        }],
-        "children":[
-        {
-            "element_id":"111",
-            "element_type": "question",
-            "descriptions":[
-            {
-                "element_id":"1110",
-                "text": "Please enter your title if you have one.",
-                "description_type":"text"
-            }],
-            "interactives":[
-            {
-                "element_id":"1111",
-                "element_type":"input",
-                "mapping_key":"k_title",
-                "validators":[
-                {
-                    "element_id":"11110",
-                    "isRequired": true
-                }],
-                "interactive_details": {
-                    "length":256,
-                    "label":"Title",
-                    "placeholder":"Dr.",
-                    "input_type":"text"
-                }
-            }]
-        },
-        {
-            "element_id":"112",
-            "element_type":"group",
-            "repeatable":false,
-            "descriptions": [
-            {
-                "element_id":"1120",
-                "text": "This part of the form is about the name of the patient.",
-                "description_type": "text"
-            }],
-            "children":[
-            {
-                "element_id":"1121",
-                "element_type": "question",
-                "descriptions":[
-                {
-                    "element_id":"11210",
-                    "text": "Please enter your first name above.",
-                    "description_type": "text"
-                }],
-                "interactives":[
-                {
-                    "element_id":"11211",
-                    "element_type":"input",
-                    "mapping_key":"k_firstname",
-                    "validators":[],
-                    "interactive_details": {
-                        "length":256,
-                        "label":"First Name",
-                        "placeholder":"John",
-                        "input_type":"text"   
-                    }
-                }]
-            },
-            {
-                "element_type": "question",
-                "element_id":"1122",
-                "descriptions":[
-                {
-                    "element_id":"11220",
-                    "text": "Please enter your last name above.",
-                    "description_type": "text"
-                }],
-                "interactives":[
-                {
-                    "element_id":"11221",
-                    "element_type":"input",
-                    "mapping_key":"k_lastname",
-                    "validators":[],
-                    "interactive_details": {
-                        "length":256,
-                        "label":"Last Name",
-                        "placeholder":"Doe",
-                        "input_type":"text"
-                    }
-                }]
-            },
-            {
-                "element_type": "question",
-                "element_id":"1123",
-                "descriptions":[
-                {
-                    "element_id":"11230",
-                    "text": "Please write something about you. (At least 10 and at most 20 characters)",
-                    "description_type": "text"
-                }],
-                "interactives":[
-                {
-                    "element_id":"11231",
-                    "element_type":"input",
-                    "mapping_key":"k_aboutme",
-                    "validators":[
-                    {
-                        "element_id":"112310",
-                        "minLength": 10
-                    },
-                    {
-                        "element_id":"112311",
-                        "maxLength": 20
-                    }],
-                    "interactive_details": {
-                        "length":256,
-                        "label":"About me",
-                        "placeholder":"I am Batman",
-                        "input_type":"text"
-                    }
-                }]
-            }]
-        }]
-    },
-    {
-        "element_id":"12",
         "element_type": "question",
         "descriptions":[
         {
-            "element_id":"120",
+            "element_id":"111",
             "text": "This question demonstrates various HTML-Testelements.",
             "description_type": "text"
         },
         {
-            "element_id":"121",
+            "element_id":"112",
             "urls": [
                 "../shared/test/dummyfiles/test_image.jpg"
             ],
             "description_type": "image"
         },
         {
-            "element_id":"122",
+            "element_id":"113",
             "urls": [ 
                 "../shared/test/dummyfiles/test_video.mp4"
             ],
@@ -157,7 +29,7 @@
         }],
         "interactives":[
         {
-            "element_id":"121",
+            "element_id":"114",
             "element_type":"input",
             "mapping_key":"k_input",
             "validators":[],
@@ -169,7 +41,7 @@
             }
         },
         {
-            "element_id":"122",
+            "element_id":"115",
             "element_type":"checkbox",
             "mapping_key":"k_checkbox",
             "validators":[],
@@ -178,7 +50,7 @@
             }
         },
         {
-            "element_id":"124",
+            "element_id":"116",
             "element_type":"dropdown",
             "mapping_key":"k_dropdown",
             "validators":[],
@@ -187,21 +59,21 @@
                 "defaultOption":1,
                 "options":[
                 {
-                    "element_id":"1240",
+                    "element_id":"1161",
                     "label":"First option"  
                 },
                 {
-                    "element_id":"1241",
+                    "element_id":"1162",
                     "label":"Second option" 
                 },
                 {
-                    "element_id":"1242",
+                    "element_id":"1163",
                     "label":"Third option"  
                 }]
             }
         },
         {
-            "element_id":"123",
+            "element_id":"117",
             "element_type":"radio",
             "mapping_key":"k_radio",
             "validators":[],
@@ -209,17 +81,17 @@
                 "label":"Radio Test",
                 "options":[
                 {
-                    "element_id":"1230",
+                    "element_id":"1171",
                     "label":"Option one"
                 },
                 {
-                    "element_id":"1231",
+                    "element_id":"1172",
                     "label":"Option two"
                 }]
             }
         },
         {
-            "element_id":"125",
+            "element_id":"118",
             "element_type":"date",
             "mapping_key":"k_date",
             "validators":[],
@@ -228,5 +100,156 @@
                 "dateFormat":"dd/mm/yyyy"
             }
         }]
-    }]
+    },
+    {
+        "element_id":"12",
+        "element_type":"group",
+        "repeatable":false,
+        "descriptions": [
+        {
+            "element_id":"121",
+            "text": "Here are some Interactive elements with validators.",
+            "description_type":"text"
+        }],
+        "children":[
+        {
+            "element_id":"121",
+            "element_type": "question",
+            "descriptions":[
+            {
+                "element_id":"1211",
+                "text": "Input fields:",
+                "description_type":"text"
+            }],
+            "interactives":[
+            {
+                "element_id":"1212",
+                "element_type":"input",
+                "mapping_key":"k_title",
+                "validators":[
+                {
+                    "element_id":"12121",
+                    "validator_type": "isRequired"
+                }],
+                "interactive_details": {
+                    "length":256,
+                    "label":"Title",
+                    "placeholder":"Dr.",
+                    "input_type":"text"
+                }
+            },
+            {
+                "element_id":"1213",
+                "element_type":"input",
+                "mapping_key":"k_title",
+                "validators":[
+                {
+                    "element_id":"12131",
+                    "validator_type": "minLength",
+                    "expression": "5"
+                },
+                {
+                    "element_id":"12132",
+                    "validator_type": "maxLength",
+                    "expression": "8"
+                }],
+                "interactive_details": {
+                    "length":256,
+                    "label":"Title",
+                    "placeholder":"Dr.",
+                    "input_type":"text"
+                }
+            },
+            {
+                "element_id":"1214",
+                "element_type":"input",
+                "mapping_key":"k_title",
+                "validators":[
+                {
+                    "element_id":"12141",
+                    "validator_name": "notBob",
+                    "validator_type": "custom",
+                    "expression": "$viewValue !== \"Bob\""
+                }],
+                "interactive_details": {
+                    "length":256,
+                    "label":"Title",
+                    "placeholder":"Dr.",
+                    "input_type":"text"
+                }
+            },
+            {
+                "element_id":"1215",
+                "element_type":"input",
+                "mapping_key":"k_title",
+                "validators":[
+                {
+                    "element_id":"12151",
+                    "validator_name": "ip",
+                    "validator_type": "custom",
+                    "expression": "/(\\d{1,3}\\.){3}\\d{1,3}/"
+                }],
+                "interactive_details": {
+                    "length":256,
+                    "label":"Title",
+                    "placeholder":"Dr.",
+                    "input_type":"text"
+                }
+            }]
+        },
+        {
+            "element_id":"122",
+            "element_type": "question",
+            "descriptions":[
+            {
+                "element_id":"1221",
+                "text": "Date pickers:",
+                "description_type":"text"
+            }],
+            "interactives":[
+            {
+                "element_id":"1222",
+                "element_type":"input",
+                "mapping_key":"k_title",
+                "validators":[
+                {
+                    "element_id":"12221",
+                    "validator_type": "isRequired"
+                }],
+                "interactive_details": {
+                    "length":256,
+                    "label":"Title",
+                    "placeholder":"Dr.",
+                    "input_type":"text"
+                }
+            }]
+        },
+        {
+            "element_id":"123",
+            "element_type": "question",
+            "descriptions":[
+            {
+                "element_id":"1231",
+                "text": "Other stff:",
+                "description_type":"text"
+            }],
+            "interactives":[
+            {
+                "element_id":"1232",
+                "element_type":"input",
+                "mapping_key":"k_title",
+                "validators":[
+                {
+                    "element_id":"12321",
+                    "validator_type": "isRequired"
+                }],
+                "interactive_details": {
+                    "length":256,
+                    "label":"Title",
+                    "placeholder":"Dr.",
+                    "input_type":"text"
+                }
+            }]
+        }]
+    },]
 }

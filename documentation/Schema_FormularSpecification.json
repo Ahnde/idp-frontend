@@ -3,9 +3,9 @@
         "$schema": "http://json-schema.org/draft-04/schema#",
         "description": "schema for the FormularSpecification",
         "definitions": {
-            "elementId": { "type": "string" },
-            "mappingKey": { "type": "string" },
-            "elementType": { "type": "string" },
+            "element_id": { "type": "string" },
+            "mapping_key": { "type": "string" },
+            "element_type": { "type": "string" },
             "repeatable": { "type": "boolean" },
             "expression": { "type": "string" },
             "length": { "type": "integer" },
@@ -13,19 +13,19 @@
             "text": { "type": "string" },
             "url": { "type": "string" },
             "placeholder": { "type": "string" },
-            "defaultOption": { "type": "integer" },
-            "dateFormat": {
+            "default_option": { "type": "integer" },
+            "date_format": {
                 "format": "string",
                 "default": "DD/MM/YYYY"
             },
             "option": {
                 "type": "object",
                 "properties": {
-                    "elementId": { "$ref": "#/definitions/elementId" },
+                    "element_id": { "$ref": "#/definitions/element_id" },
                     "label": { "$ref": "#/definitions/label" },
                     "value": { "$ref": "#/definitions/label" }
                 },
-                "required": ["elementId", "label"]
+                "required": ["element_id", "label"]
             },
             "options": {
                 "type": "array",
@@ -36,13 +36,14 @@
             "validator": {
                 "type": "object",
                 "properties": {
-                    "elementId": { "$ref": "#/definitions/elementId" },
-                    "validatorType" : { 
+                    "element_id": { "$ref": "#/definitions/element_id" },
+                    "validator_name": { "$ref": "#/definitions/label" },
+                    "validator_type" : { 
                         "enum": [ "isRequired", "minLength", "maxLength", "minDate", "maxDate", "custom" ]
                     },
                     "expression": { "$ref": "#/definitions/expression" }
                 },
-                "required": ["elementId", "validatorType", "expression"]
+                "required": ["element_id", "validator_type"]
             },
             "validators": {
                 "type": "array",
@@ -50,33 +51,33 @@
                 "minItems": 1,
                 "uniqueItems": true
             },
-            "interactiveDetails": {
+            "interactive_details": {
                 "type": "object",
                 "properties": {
                     "label": { "$ref": "#/definitions/label" },
-                    "postLabel": { "$ref": "#/definitions/label" },
+                    "post_label": { "$ref": "#/definitions/label" },
                     "length": { "$ref": "#/definitions/length" },
                     "placeholder": { "$ref": "#/definitions/placeholder" },
-                    "inputType": {
+                    "input_type": {
                         "enum": [ "text", "password", "number" ]
                     },
-                    "dateFormat": { "$ref": "#/definitions/dateFormat" },
+                    "date_format": { "$ref": "#/definitions/date_format" },
                     "options": { "$ref": "#/definitions/options" },
-                    "defaultOption": { "$ref": "#/definitions/defaultOption" }
+                    "default_option": { "$ref": "#/definitions/default_option" }
                 }
             },
             "interactive": {
                 "type": "object",
                 "properties": {
-                    "elementId": { "$ref": "#/definitions/elementId" },
-                    "interactiveType": {
+                    "element_id": { "$ref": "#/definitions/element_id" },
+                    "interactive_type": {
                         "enum": [ "textarea", "input", "date", "number", "radio", "dropdown", "checkbox" ]
                     },
-                    "mappingKey": { "$ref": "#/definitions/mappingKey" },
+                    "mapping_key": { "$ref": "#/definitions/mapping_key" },
                     "validators": { "$ref": "#/definitions/validators" },
-                    "interactiveDetails" : { "$ref": "#/definitions/interactiveDetails" }
+                    "interactive_details" : { "$ref": "#/definitions/interactive_details" }
                 },
-                "required": ["elementId", "elementType", "mappingKey", "validators"]
+                "required": ["element_id", "element_type", "mapping_key", "validators"]
             },
             "interactives": {
                 "type": "array",
@@ -89,14 +90,14 @@
             "description": {
                 "type": "object",
                 "properties": {
-                    "elementId": { "$ref": "#/definitions/elementId" },
+                    "element_id": { "$ref": "#/definitions/element_id" },
                     "text": { "$ref": "#/definitions/text" },
                     "urls": {"$ref": "#/definitions/urls"},
-                    "descriptionType": {
+                    "description_type": {
                         "enum": [ "text", "image", "video" ]
                     }
                 },
-                "required": ["elementId", "descriptionType"]
+                "required": ["element_id", "description_type"]
             },
             "descriptions": {
                 "type": "array",
@@ -115,35 +116,35 @@
             "question": {
                 "type": "object",
                 "properties": {
-                    "elementId": { "$ref": "#/definitions/elementId" },
-                    "elementType": { "$ref": "#/definitions/elementType" },
+                    "element_id": { "$ref": "#/definitions/element_id" },
+                    "element_type": { "$ref": "#/definitions/element_type" },
                     "descriptions": { "$ref": "#/definitions/descriptions" },
                     "interactives": { "$ref": "#/definitions/interactives" }
                 },
-                "required": ["elementId", "descriptions", "interactives"]
+                "required": ["element_id", "descriptions", "interactives"]
             },
             "group": {
                 "type": "object",
                 "properties": {
-                    "elementId": { "$ref": "#/definitions/elementId" },
-                    "elementType": { "$ref": "#/definitions/elementType" },
+                    "element_id": { "$ref": "#/definitions/element_id" },
+                    "element_type": { "$ref": "#/definitions/element_type" },
                     "descriptions": { "$ref": "#/definitions/descriptions" },
                     "repeatable": { "$ref": "#/definitions/repeatable" },
                     "children": { "$ref": "#/definitions/children"}
                 },
-                "required": ["elementId", "descriptions", "children"]
+                "required": ["element_id", "descriptions", "children"]
             }
         },
         "type": "object",
         "properties": {
-            "elementId": { "$ref": "#/definitions/elementId" },
-            "elementType": { "$ref": "#/definitions/elementType" },
+            "element_id": { "$ref": "#/definitions/element_id" },
+            "element_type": { "$ref": "#/definitions/element_type" },
             "descriptions": { "$ref": "#/definitions/descriptions" },
             "children": { "$ref": "#/definitions/children" }
         },
         "required": [
-            "elementId",
-            "elementType",
+            "element_id",
+            "element_type",
             "metadata",
             "descriptions",
             "children"
