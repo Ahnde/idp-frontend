@@ -169,7 +169,13 @@
                     "element_id":"12141",
                     "validator_name": "notBob",
                     "validator_type": "custom",
-                    "expression": "$viewValue !== \"Bob\""
+                    "expression": "^Bob$"
+                },
+                {
+                    "element_id":"12141",
+                    "validator_name": "notBobby",
+                    "validator_type": "custom",
+                    "expression": "^Bobby$"
                 }],
                 "interactive_details": {
                     "length":256,
@@ -187,7 +193,7 @@
                     "element_id":"12151",
                     "validator_name": "ip",
                     "validator_type": "custom",
-                    "expression": "/(\\d{1,3}\\.){3}\\d{1,3}/"
+                    "expression": "^(?!0)(?!.*\\.$)((1?\\d?\\d|25[0-5]|2[0-4]\\d)(\\.|$)){4}$"
                 }],
                 "interactive_details": {
                     "length":256,
