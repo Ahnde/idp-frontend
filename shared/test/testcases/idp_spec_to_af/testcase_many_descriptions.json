@@ -1,54 +1,53 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"120",
-            "text": "This question demonstrates various HTML-Testelements.",
-            "description_type": "text"
+            "description_type": "text",
+            "element_id": "11",
+            "element_type": "description",
+            "text": "This question demonstrates various HTML-Testelements."
         },
         {
-            "element_id":"121",
+            "description_type": "image",
+            "element_id": "12",
+            "element_type": "description",
             "urls": [
                 "../shared/test/dummyfiles/test_image.jpg"
-            ],
-            "description_type": "image"
+            ]
         },
         {
-            "element_id":"1211",
+            "description_type": "image",
+            "element_id": "13",
+            "element_type": "description",
             "urls": [
                 "../shared/test/dummyfiles/test_image.jpg0",
                 "../shared/test/dummyfiles/test_image.jpg1",
                 "../shared/test/dummyfiles/test_image.jpg2",
                 "../shared/test/dummyfiles/test_image.jpg3",
                 "../shared/test/dummyfiles/test_image.jpg4"
-            ],
-            "description_type": "image"
+            ]
         },
         {
-            "element_id":"122",
-            "urls": [ 
+            "description_type": "video",
+            "element_id": "14",
+            "element_type": "description",
+            "urls": [
                 "../shared/test/dummyfiles/test_video.mp4"
-            ],
-            "description_type": "video"
+            ]
         },
         {
-            "element_id":"1221",
-            "urls": [ 
+            "description_type": "video",
+            "element_id": "15",
+            "element_type": "description",
+            "urls": [
                 "../shared/test/dummyfiles/test_video0.mp4",
                 "../shared/test/dummyfiles/test_video1.mp4",
                 "../shared/test/dummyfiles/test_video2.mp4",
                 "../shared/test/dummyfiles/test_video3.mp4",
                 "../shared/test/dummyfiles/test_video4.mp4"
-            ],
-            "description_type": "video"
-        }],
-        "interactives":[]
-    }]
+            ]
+        }
+    ]
 }

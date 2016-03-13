@@ -1,10 +1,10 @@
 [
-  {
-    "type": "input",
-    "key": "k_input",
-    "templateOptions": {
-      "label": "Input Test",
-      "placeholder": "Placeholder"
+    {
+        "key": "k_input",
+        "templateOptions": {
+            "label": "Input Test",
+            "placeholder": "Placeholder"
+        },
+        "type": "input"
     }
-  }
 ]

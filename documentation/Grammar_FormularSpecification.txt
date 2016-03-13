@@ -1,13 +1,21 @@
 BNF - Grammar for FormSpecification
 
 
-FORM =  { element_id: ID, element_type: "form", metadata : [FORM_METADATA *], descriptions: [DESCRIPTION *], children:[CHILD *] }
+FORM =  { 
+          element_id: ID, 
+          element_type: "form", 
+          metadata : [FORM_METADATA *],
+          children:[CHILD *] 
+        }
 
-CHILD = GROUP | QUESTION
+CHILD = GROUP | DESCRIPTION | INTERACTIVE
 
-GROUP = { element_id: ID, element_type: "group",                              descriptions: [DESCRIPTION *], children:[CHILD +], repeatable : BOOL}
-
-QUESTION = { element_id: ID, element_type: "question",                        descriptions: [DESCRIPTION *], interactives: [INTERACTIVE *] }
+GROUP = { 
+          element_id: ID, 
+          element_type: "group", 
+          children:[CHILD +], 
+          repeatable : BOOL 
+        }
 
 DESCRIPTION = {
                 element_id: ID,

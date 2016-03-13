@@ -15,62 +15,30 @@
     var angularFormlyJsonArrayForFsJson = function(fsJson) {
         var afJsonArray = [];
 
-        if (fsJson['element_type'] === "group") {
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForGroup(fsJson));
-        } else if(fsJson['element_type'] === "question") {
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForQuestion(fsJson));
+        if (fsJson['element_type'] === "container") {
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForContainer(fsJson));
+        } else if(fsJson['element_type'] === "description") {
+            afJsonArray.push(angularFormlyJsonForDescription(fsJson));
+        } else if(fsJson['element_type'] === "interactive") {
+            afJsonArray.push(angularFormlyJsonArrayForInteractive(fsJson));
         };
 
         return afJsonArray;
     };
 
-    var angularFormlyJsonArrayForGroup = function(fsGroupJson) {
+    var angularFormlyJsonArrayForContainer = function(fsContainerJson) {
         var afJsonArray = [];
 
-        var fsGroupDescriptionsArray = fsGroupJson['descriptions']
-        if (fsGroupDescriptionsArray.length > 0)
-        {
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForDescriptions(fsGroupDescriptionsArray));
-        }
+        var fsContainerChildrenArray = fsContainerJson['children'];
 
-        var fsGroupChildrenArray = fsGroupJson['children'];
-
-        for (var i in fsGroupChildrenArray) {
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForFsJson(fsGroupChildrenArray[i]));
+        for (var i in fsContainerChildrenArray) {
+            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForFsJson(fsContainerChildrenArray[i]));
         };
 
         return afJsonArray;
     };
 
-    var angularFormlyJsonArrayForQuestion = function(fsQuestionJson) {
-        var afJsonArray = [];
-
-        var fsQuestionDescriptionsArray = fsQuestionJson['descriptions']
-        if (fsQuestionDescriptionsArray.length > 0)
-        {
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForDescriptions(fsQuestionDescriptionsArray));
-        }
-
-        if (fsQuestionJson['interactives']) {
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForInteractive(fsQuestionJson['interactives']));
-        };
-
-        return afJsonArray;
-    };
-
-    var angularFormlyJsonArrayForDescriptions = function(fsDescriptionJsonArray) {
-        var afJsonArray = [];
-
-        for (var i in fsDescriptionJsonArray)
-        {
-            var fsDescription = fsDescriptionJsonArray[i];
-            afJsonArray = afJsonArray.concat(angularFormlyJsonAForDescription(fsDescription))
-        }
-
-        return afJsonArray;
-    }
-
-    var angularFormlyJsonAForDescription = function(fsDescriptionJson) {
+    var angularFormlyJsonForDescription = function(fsDescriptionJson) {
         var afJson = {};
 
         afJson.type = angularFormlyTypeStringForDescriptionFsTypeString(fsDescriptionJson['description_type']);
@@ -79,47 +47,37 @@
         return afJson;
     }
 
-    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJsonArray) {
-        var afJsonArray = [];
+    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJson) {
+        
+        fsJsonTypeString = fsInteractiveJson['interactive_type'];
+        if (fsJsonTypeString === 'error') {
+            return {};
+        };
 
-        var currentFsInteractiveJson,
-            afJson,
-            fsJsonTypeString,
-            fsSpecificInteractiveJson,
+        var fsJsonTypeString,
+            fsInteractiveDetailsJson,
             fsValidatorsJsonArray,
             templateOptions;
 
-        for (var i in fsInteractiveJsonArray) {
-             currentFsInteractiveJson = fsInteractiveJsonArray[i];
+        var afJson = {};
 
-            afJson = {};
+        afJson.type = angularFormlyTypeStringForInteractiveFsTypeString(fsJsonTypeString);
+        afJson.key = fsInteractiveJson['mapping_key'];
 
-            fsJsonTypeString = currentFsInteractiveJson['element_type'];
-            if (fsJsonTypeString === 'error') {
-                continue;
-            };
+        fsInteractiveDetailsJson = fsInteractiveJson['interactive_details'];
+        templateOptions = templateOptionsForInteractiveFsJson(fsInteractiveDetailsJson);
+        afJson.templateOptions = templateOptions;
 
-            afJson.type = angularFormlyTypeStringForInteractiveFsTypeString(fsJsonTypeString);
-
-            afJson.key = currentFsInteractiveJson['mapping_key'];
-
-            fsSpecificInteractiveJson = currentFsInteractiveJson['interactive_details'];
-            templateOptions = templateOptionsForInteractiveFsJson(fsSpecificInteractiveJson);
-            afJson.templateOptions = templateOptions;
-
-            if (currentFsInteractiveJson['validators'].length > 0) {
-                fsValidatorsJsonArray = currentFsInteractiveJson['validators'];
-                validatorsForFsJsonArray(fsValidatorsJsonArray, templateOptions, function(callbackTemplateOptions, callbackValidators, callbackExpressionProperties) {
-                    afJson.templateOptions = callbackTemplateOptions;
-                    afJson.validators = callbackValidators;
-                    afJson.expressionProperties = callbackExpressionProperties;
-                });
-            }
-
-            afJsonArray.push(afJson);
-        };
-
-        return afJsonArray;
+        if (fsInteractiveJson['validators'].length > 0) {
+            fsValidatorsJsonArray = fsInteractiveJson['validators'];
+            validatorsForFsJsonArray(fsValidatorsJsonArray, templateOptions, function(callbackTemplateOptions, callbackValidators, callbackExpressionProperties) {
+                afJson.templateOptions = callbackTemplateOptions;
+                afJson.validators = callbackValidators;
+                afJson.expressionProperties = callbackExpressionProperties;
+            });
+        }
+        
+        return afJson;
     };
 
     var angularFormlyTypeStringForDescriptionFsTypeString = function(fsTypeString) {

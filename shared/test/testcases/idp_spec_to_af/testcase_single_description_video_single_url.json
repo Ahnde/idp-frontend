@@ -1,20 +1,15 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"122",
-            "urls": [ 
+            "description_type": "video",
+            "element_id": "11",
+            "element_type": "description",
+            "urls": [
                 "../shared/test/dummyfiles/test_video.mp4"
-            ],
-            "description_type": "video"
-        }],
-        "interactives":[]
-    }]
+            ]
+        }
+    ]
 }

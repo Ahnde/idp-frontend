@@ -1,92 +1,92 @@
 [
-  {
-    "type": "radio",
-    "key": "k_radio1",
-    "templateOptions": {
-      "label": "Radio Test 1",
-      "options": [
-        {
-          "name": "1/1"
-        }
-      ]
+    {
+        "key": "k_radio1",
+        "templateOptions": {
+            "label": "Radio Test 1",
+            "options": [
+                {
+                    "name": "1/1"
+                }
+            ]
+        },
+        "type": "radio"
+    },
+    {
+        "key": "k_radio2",
+        "templateOptions": {
+            "label": "Radio Test 2",
+            "options": [
+                {
+                    "name": "1/2"
+                },
+                {
+                    "name": "2/2"
+                }
+            ]
+        },
+        "type": "radio"
+    },
+    {
+        "key": "k_radio3",
+        "templateOptions": {
+            "label": "Radio Test 3",
+            "options": [
+                {
+                    "name": "1/3"
+                },
+                {
+                    "name": "2/3"
+                },
+                {
+                    "name": "3/3"
+                }
+            ]
+        },
+        "type": "radio"
+    },
+    {
+        "key": "k_radio4",
+        "templateOptions": {
+            "label": "Radio Test 4",
+            "options": [
+                {
+                    "name": "1/4"
+                },
+                {
+                    "name": "2/4"
+                },
+                {
+                    "name": "3/4"
+                },
+                {
+                    "name": "4/4"
+                }
+            ]
+        },
+        "type": "radio"
+    },
+    {
+        "key": "k_radio5",
+        "templateOptions": {
+            "label": "Radio Test 5",
+            "options": [
+                {
+                    "name": "1/5"
+                },
+                {
+                    "name": "2/5"
+                },
+                {
+                    "name": "3/5"
+                },
+                {
+                    "name": "4/5"
+                },
+                {
+                    "name": "5/5"
+                }
+            ]
+        },
+        "type": "radio"
     }
-  },
-  {
-    "type": "radio",
-    "key": "k_radio2",
-    "templateOptions": {
-      "label": "Radio Test 2",
-      "options": [
-        {
-          "name": "1/2"
-        },
-        {
-          "name": "2/2"
-        }
-      ]
-    }
-  },
-  {
-    "type": "radio",
-    "key": "k_radio3",
-    "templateOptions": {
-      "label": "Radio Test 3",
-      "options": [
-        {
-          "name": "1/3"
-        },
-        {
-          "name": "2/3"
-        },
-        {
-          "name": "3/3"
-        }
-      ]
-    }
-  },
-  {
-    "type": "radio",
-    "key": "k_radio4",
-    "templateOptions": {
-      "label": "Radio Test 4",
-      "options": [
-        {
-          "name": "1/4"
-        },
-        {
-          "name": "2/4"
-        },
-        {
-          "name": "3/4"
-        },
-        {
-          "name": "4/4"
-        }
-      ]
-    }
-  },
-  {
-    "type": "radio",
-    "key": "k_radio5",
-    "templateOptions": {
-      "label": "Radio Test 5",
-      "options": [
-        {
-          "name": "1/5"
-        },
-        {
-          "name": "2/5"
-        },
-        {
-          "name": "3/5"
-        },
-        {
-          "name": "4/5"
-        },
-        {
-          "name": "5/5"
-        }
-      ]
-    }
-  }
 ]

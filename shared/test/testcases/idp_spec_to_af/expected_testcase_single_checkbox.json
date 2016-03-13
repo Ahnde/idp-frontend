@@ -1,9 +1,9 @@
 [
-  {
-    "type": "checkbox",
-    "key": "k_checkbox",
-    "templateOptions": {
-      "label": "Checkbox Test"
+    {
+        "key": "k_checkbox",
+        "templateOptions": {
+            "label": "Checkbox Test"
+        },
+        "type": "checkbox"
     }
-  }
 ]

@@ -1,47 +1,47 @@
 [
-  {
-    "type": "datepicker",
-    "key": "k_date1",
-    "templateOptions": {
-      "label": "Date Test 1",
-      "type": "text",
-      "datepickerPopup": "dd/mm/yyyy"
+    {
+        "key": "k_date1",
+        "templateOptions": {
+            "datepickerPopup": "dd/mm/yyyy",
+            "label": "Date Test 1",
+            "type": "text"
+        },
+        "type": "datepicker"
+    },
+    {
+        "key": "k_date2",
+        "templateOptions": {
+            "datepickerPopup": "dd/mm/yyyy",
+            "label": "Date Test 2",
+            "type": "text"
+        },
+        "type": "datepicker"
+    },
+    {
+        "key": "k_date3",
+        "templateOptions": {
+            "datepickerPopup": "dd/mm/yyyy",
+            "label": "Date Test 3",
+            "type": "text"
+        },
+        "type": "datepicker"
+    },
+    {
+        "key": "k_date4",
+        "templateOptions": {
+            "datepickerPopup": "dd/mm/yyyy",
+            "label": "Date Test 4",
+            "type": "text"
+        },
+        "type": "datepicker"
+    },
+    {
+        "key": "k_date5",
+        "templateOptions": {
+            "datepickerPopup": "dd/mm/yyyy",
+            "label": "Date Test 5",
+            "type": "text"
+        },
+        "type": "datepicker"
     }
-  },
-  {
-    "type": "datepicker",
-    "key": "k_date2",
-    "templateOptions": {
-      "label": "Date Test 2",
-      "type": "text",
-      "datepickerPopup": "dd/mm/yyyy"
-    }
-  },
-  {
-    "type": "datepicker",
-    "key": "k_date3",
-    "templateOptions": {
-      "label": "Date Test 3",
-      "type": "text",
-      "datepickerPopup": "dd/mm/yyyy"
-    }
-  },
-  {
-    "type": "datepicker",
-    "key": "k_date4",
-    "templateOptions": {
-      "label": "Date Test 4",
-      "type": "text",
-      "datepickerPopup": "dd/mm/yyyy"
-    }
-  },
-  {
-    "type": "datepicker",
-    "key": "k_date5",
-    "templateOptions": {
-      "label": "Date Test 5",
-      "type": "text",
-      "datepickerPopup": "dd/mm/yyyy"
-    }
-  }
 ]

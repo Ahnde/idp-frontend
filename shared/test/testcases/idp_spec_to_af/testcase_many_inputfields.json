@@ -1,73 +1,72 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[],
-        "interactives":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"121",
-            "element_type":"input",
-            "mapping_key":"k_input1",
-            "validators":[],
+            "element_id": "11",
+            "element_type": "interactive",
+            "interactive_type": "input",
             "interactive_details": {
-                "length":256,
-                "label":"Input Test 1",
-                "placeholder":"Placeholder 1",
-                "input_type":"text"
-            }
+                "input_type": "text",
+                "label": "Input Test 1",
+                "length": 256,
+                "placeholder": "Placeholder 1"
+            },
+            "mapping_key": "k_input1",
+            "validators": []
         },
         {
-            "element_id":"121",
-            "element_type":"input",
-            "mapping_key":"k_input2",
-            "validators":[],
+            "element_id": "12",
+            "element_type": "interactive",
+            "interactive_type": "input",
             "interactive_details": {
-                "length":256,
-                "label":"Input Test 2",
-                "placeholder":"Placeholder 2",
-                "input_type":"text"
-            }
+                "input_type": "text",
+                "label": "Input Test 2",
+                "length": 256,
+                "placeholder": "Placeholder 2"
+            },
+            "mapping_key": "k_input2",
+            "validators": []
         },
         {
-            "element_id":"121",
-            "element_type":"input",
-            "mapping_key":"k_input3",
-            "validators":[],
+            "element_id": "13",
+            "element_type": "interactive",
+            "interactive_type": "input",
             "interactive_details": {
-                "length":256,
-                "label":"Input Test 3",
-                "placeholder":"Placeholder 3",
-                "input_type":"text"
-            }
+                "input_type": "text",
+                "label": "Input Test 3",
+                "length": 256,
+                "placeholder": "Placeholder 3"
+            },
+            "mapping_key": "k_input3",
+            "validators": []
         },
         {
-            "element_id":"121",
-            "element_type":"input",
-            "mapping_key":"k_input4",
-            "validators":[],
+            "element_id": "14",
+            "element_type": "interactive",
+            "interactive_type": "input",
             "interactive_details": {
-                "length":256,
-                "label":"Input Test 4",
-                "placeholder":"Placeholder 4",
-                "input_type":"text"
-            }
+                "input_type": "text",
+                "label": "Input Test 4",
+                "length": 256,
+                "placeholder": "Placeholder 4"
+            },
+            "mapping_key": "k_input4",
+            "validators": []
         },
         {
-            "element_id":"121",
-            "element_type":"input",
-            "mapping_key":"k_input5",
-            "validators":[],
+            "element_id": "15",
+            "element_type": "interactive",
+            "interactive_type": "input",
             "interactive_details": {
-                "length":256,
-                "label":"Input Test 5",
-                "placeholder":"Placeholder 5",
-                "input_type":"text"
-            }
-        }]
-    }]
+                "input_type": "text",
+                "label": "Input Test 5",
+                "length": 256,
+                "placeholder": "Placeholder 5"
+            },
+            "mapping_key": "k_input5",
+            "validators": []
+        }
+    ]
 }

@@ -2,19 +2,21 @@
     "element_id":"1",
     "element_type":"form",
     "metadata":[],
-    "descriptions":[],
     "children":[
-    {
+    {        
         "element_id":"11",
-        "element_type": "question",
-        "descriptions":[
+        "element_type": "container",
+        "repeatable":false,
+        "children":[
         {
-            "element_id":"111",
-            "text": "This question demonstrates various HTML-Testelements.",
+            "element_id": "111",
+            "element_type": "description",
+            "text": "This description demonstrates Text content.",
             "description_type": "text"
         },
         {
             "element_id":"112",
+            "element_type": "description",
             "urls": [
                 "../shared/test/dummyfiles/test_image.jpg"
             ],
@@ -22,15 +24,22 @@
         },
         {
             "element_id":"113",
+            "element_type": "description",
             "urls": [ 
                 "../shared/test/dummyfiles/test_video.mp4"
             ],
             "description_type": "video"
-        }],
-        "interactives":[
+        }]
+    },
+    {
+        "element_id":"12",
+        "element_type": "container",
+        "repeatable":false,
+        "children":[
         {
-            "element_id":"114",
-            "element_type":"input",
+            "element_id":"124",
+            "element_type":"interactive",
+            "interactive_type":"input",
             "mapping_key":"k_input",
             "validators":[],
             "interactive_details": {
@@ -41,8 +50,9 @@
             }
         },
         {
-            "element_id":"115",
-            "element_type":"checkbox",
+            "element_id":"122",
+            "element_type":"interactive",
+            "interactive_type":"checkbox",
             "mapping_key":"k_checkbox",
             "validators":[],
             "interactive_details": {
@@ -50,8 +60,9 @@
             }
         },
         {
-            "element_id":"116",
-            "element_type":"dropdown",
+            "element_id":"123",
+            "element_type":"interactive",
+            "interactive_type":"dropdown",
             "mapping_key":"k_dropdown",
             "validators":[],
             "interactive_details": {
@@ -59,40 +70,42 @@
                 "defaultOption":1,
                 "options":[
                 {
-                    "element_id":"1161",
+                    "element_id":"1231",
                     "label":"First option"  
                 },
                 {
-                    "element_id":"1162",
+                    "element_id":"1232",
                     "label":"Second option" 
                 },
                 {
-                    "element_id":"1163",
+                    "element_id":"1233",
                     "label":"Third option"  
                 }]
             }
         },
         {
-            "element_id":"117",
-            "element_type":"radio",
+            "element_id":"124",
+            "element_type":"interactive",
+            "interactive_type":"radio",
             "mapping_key":"k_radio",
             "validators":[],
             "interactive_details": {
                 "label":"Radio Test",
                 "options":[
                 {
-                    "element_id":"1171",
+                    "element_id":"1241",
                     "label":"Option one"
                 },
                 {
-                    "element_id":"1172",
+                    "element_id":"1242",
                     "label":"Option two"
                 }]
             }
         },
         {
-            "element_id":"118",
-            "element_type":"date",
+            "element_id":"125",
+            "element_type":"interactive",
+            "interactive_type":"date",
             "mapping_key":"k_date",
             "validators":[],
             "interactive_details": {
@@ -103,32 +116,34 @@
     },
     {
         "element_id":"12",
-        "element_type":"group",
+        "element_type":"container",
         "repeatable":false,
-        "descriptions": [
-        {
-            "element_id":"121",
-            "text": "Here are some Interactive elements with validators.",
-            "description_type":"text"
-        }],
         "children":[
         {
             "element_id":"121",
-            "element_type": "question",
-            "descriptions":[
+            "element_type": "description",
+            "text": "Here are some Interactive elements with validators.",
+            "description_type":"text"
+        },
+        {
+            "element_id":"122",
+            "element_type":"container",
+            "repeatable":false,
+            "children":[
             {
-                "element_id":"1211",
+                "element_id":"1221",
+                "element_type": "description",
                 "text": "Input fields:",
                 "description_type":"text"
-            }],
-            "interactives":[
+            },
             {
-                "element_id":"1212",
-                "element_type":"input",
+                "element_id":"1222",
+                "element_type": "interactive",
+                "interactive_type":"input",
                 "mapping_key":"k_inputIsRequired",
                 "validators":[
                 {
-                    "element_id":"12121",
+                    "element_id":"12221",
                     "validator_type": "isRequired"
                 }],
                 "interactive_details": {
@@ -139,17 +154,18 @@
                 }
             },
             {
-                "element_id":"1213",
-                "element_type":"input",
+                "element_id":"1223",
+                "element_type": "interactive",
+                "interactive_type":"input",
                 "mapping_key":"k_inputMinMaxLength",
                 "validators":[
                 {
-                    "element_id":"12131",
+                    "element_id":"12231",
                     "validator_type": "minLength",
                     "expression": "5"
                 },
                 {
-                    "element_id":"12132",
+                    "element_id":"12232",
                     "validator_type": "maxLength",
                     "expression": "8"
                 }],
@@ -161,12 +177,13 @@
                 }
             },
             {
-                "element_id":"1214",
-                "element_type":"input",
+                "element_id":"1224",
+                "element_type": "interactive",
+                "interactive_type":"input",
                 "mapping_key":"k_inputNotBob",
                 "validators":[
                 {
-                    "element_id":"12141",
+                    "element_id":"12241",
                     "validator_name": "notBob",
                     "validator_type": "custom",
                     "expression": "^Bob$"
@@ -185,12 +202,13 @@
                 }
             },
             {
-                "element_id":"1215",
-                "element_type":"input",
+                "element_id":"1225",
+                "element_type": "interactive",
+                "interactive_type":"input",
                 "mapping_key":"k_inputIp",
                 "validators":[
                 {
-                    "element_id":"12151",
+                    "element_id":"12251",
                     "validator_name": "ip",
                     "validator_type": "custom",
                     "expression": "^(?!0)(?!.*\\.$)((1?\\d?\\d|25[0-5]|2[0-4]\\d)(\\.|$)){4}$"
@@ -204,22 +222,24 @@
             }]
         },
         {
-            "element_id":"122",
-            "element_type": "question",
-            "descriptions":[
+            "element_id":"123",
+            "element_type":"container",
+            "repeatable":false,
+            "children":[
             {
-                "element_id":"1221",
+                "element_id":"1231",
+                "interactive_type": "description",
                 "text": "Date pickers:",
                 "description_type":"text"
-            }],
-            "interactives":[
+            },
             {
-                "element_id":"1222",
-                "element_type":"date",
+                "element_id":"1232",
+                "element_type": "interactive",
+                "interactive_type":"date",
                 "mapping_key":"k_dateMin",
                 "validators":[
                 {
-                    "element_id":"12151",
+                    "element_id":"12351",
                     "validator_type": "minDate",
                     "expression": "01.01.2000"
                 }],
@@ -229,12 +249,13 @@
                 }
             },
             {
-                "element_id":"1222",
-                "element_type":"date",
+                "element_id":"1232",
+                "element_type": "interactive",
+                "interactive_type":"date",
                 "mapping_key":"k_dateMax",
                 "validators":[
                 {
-                    "element_id":"12151",
+                    "element_id":"12351",
                     "validator_type": "maxDate",
                     "expression": "01.01.2000"
                 }],
@@ -245,28 +266,30 @@
             }]
         },
         {
-            "element_id":"123",
-            "element_type": "question",
-            "descriptions":[
+            "element_id":"124",
+            "element_type":"container",
+            "repeatable":false,
+            "children":[
             {
-                "element_id":"1231",
+                "element_id":"1241",
+                "element_type": "description",
                 "text": "Other stff:",
                 "description_type":"text"
-            }],
-            "interactives":[
+            },
             {
-                "element_id":"1232",
-                "element_type":"checkbox",
+                "element_id":"1242",
+                "element_type": "interactive",
+                "interactive_type":"checkbox",
                 "mapping_key":"k_checkboxIsRequired",
                 "validators":[
                 {
-                    "element_id":"12321",
+                    "element_id":"12421",
                     "validator_type": "isRequired"
                 }],
                 "interactive_details": {
                     "label":"Checkbox is required"
                 }
-            }]
+                }]
         }]
     }]
 }

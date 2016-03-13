@@ -1,17 +1,17 @@
 [
-  {
-    "type": "radio",
-    "key": "k_radio",
-    "templateOptions": {
-      "label": "Radio Test",
-      "options": [
-        {
-          "name": "Option one"
+    {
+        "key": "k_radio",
+        "templateOptions": {
+            "label": "Radio Test",
+            "options": [
+                {
+                    "name": "Option one"
+                },
+                {
+                    "name": "Option two"
+                }
+            ]
         },
-        {
-          "name": "Option two"
-        }
-      ]
+        "type": "radio"
     }
-  }
 ]
