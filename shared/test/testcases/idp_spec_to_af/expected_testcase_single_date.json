@@ -1,11 +1,11 @@
 [
-  {
-    "type": "datepicker",
-    "key": "k_date",
-    "templateOptions": {
-      "label": "Date Test",
-      "type": "text",
-      "datepickerPopup": "dd/mm/yyyy"
+    {
+        "key": "k_date",
+        "templateOptions": {
+            "datepickerPopup": "dd/mm/yyyy",
+            "label": "Date Test",
+            "type": "text"
+        },
+        "type": "datepicker"
     }
-  }
 ]

@@ -1,12 +1,18 @@
-{"id":0,"type":"form","metadata":[],"description":[],"children":[
-  {
-    "id":"foo",
-    "type":"question",
-    "description" : "",
-    "interactives": [
-      {
-        "id":""
-      }
-    ]
-  }
-]}
+{
+    "children": [
+        {
+            "description": "",
+            "id": "foo",
+            "interactives": [
+                {
+                    "id": ""
+                }
+            ],
+            "type": "question"
+        }
+    ],
+    "description": [],
+    "id": 0,
+    "metadata": [],
+    "type": "form"
+}

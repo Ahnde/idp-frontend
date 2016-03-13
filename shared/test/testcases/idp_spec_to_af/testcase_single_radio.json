@@ -1,31 +1,27 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[],
-        "interactives":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"123",
-            "element_type":"radio",
-            "mapping_key":"k_radio",
-            "validators":[],
+            "element_id": "11",
+            "element_type": "interactive",
+            "interactive_type": "radio",
             "interactive_details": {
-                "label":"Radio Test",
-                "options":[
-                {
-                    "element_id":"1230",
-                    "label":"Option one"
-                },
-                {
-                    "element_id":"1231",
-                    "label":"Option two"
-                }]
-            }
-        }]
-    }]
+                "label": "Radio Test",
+                "options": [
+                    {
+                        "element_id": "111",
+                        "label": "Option one"
+                    },
+                    {
+                        "element_id": "112",
+                        "label": "Option two"
+                    }
+                ]
+            },
+            "mapping_key": "k_radio",
+            "validators": []
+        }
+    ]
 }

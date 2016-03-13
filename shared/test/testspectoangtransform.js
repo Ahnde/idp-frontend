@@ -33,32 +33,16 @@ describe('jsonTransformer', function () {
         testJsonMapping(result, 'expected_testcase_empty_form.json')
     });
 
-    // one question
-    it('should map one question without any interactive elements to an empty af-question', function () {
-        var testcase = getJSONFixture('testcase_single_question_without_interactive.json');
+    // recursive container
+    it('should map recursive container to the appropriate af-json-array', function () {
+        var testcase = getJSONFixture('testcase_container_recursion.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
         
-        testJsonMapping(result, 'expected_testcase_single_question_without_interactive.json')
-    });
-
-    // many questions
-    it('should map many questions without any interactive elements to many empty af-questions', function () {
-        var testcase = getJSONFixture('testcase_many_questions.json');
-        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-
-        testJsonMapping(result, 'expected_testcase_many_questions.json')
-    });
-
-    // recursive groups
-    it('should map recursive group to the appropriate af-json-array', function () {
-        var testcase = getJSONFixture('testcase_group_recursion.json');
-        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-
-        testJsonMapping(result, 'expected_testcase_group_recursion.json')
+        testJsonMapping(result, 'expected_testcase_container_recursion.json')
     });
 
     // one text description
-    it('should map a question with a text description to an af-label', function () {
+    it('should map a text description to an af-label', function () {
         var testcase = getJSONFixture('testcase_single_description_text.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
 
@@ -66,7 +50,7 @@ describe('jsonTransformer', function () {
     });
 
     // one image description one url
-    it('should map a question with an image description including one url to an af-label', function () {
+    it('should map an image description including one url to an af-label', function () {
         var testcase = getJSONFixture('testcase_single_description_image_single_url.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
         
@@ -74,7 +58,7 @@ describe('jsonTransformer', function () {
     });
 
     // one image description many urls
-    it('should map a question with an image description including many urls to an af-label', function () {
+    it('should map an image description including many urls to an af-label', function () {
         var testcase = getJSONFixture('testcase_single_description_image_many_urls.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
         
@@ -82,7 +66,7 @@ describe('jsonTransformer', function () {
     });
 
     // one video description one url
-    it('should map a question with a video description including one url to an af-label', function () {
+    it('should map a video description including one url to an af-label', function () {
         var testcase = getJSONFixture('testcase_single_description_video_single_url.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
         
@@ -90,7 +74,7 @@ describe('jsonTransformer', function () {
     });
 
     // one video description many urls
-    it('should map a question with a video description including many urls to an af-label', function () {
+    it('should map a video description including many urls to an af-label', function () {
         var testcase = getJSONFixture('testcase_single_description_video_many_urls.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
         
@@ -98,7 +82,7 @@ describe('jsonTransformer', function () {
     });
 
     // many descriptions
-    it('should map a question with many descriptions to many af-labels and images', function () {
+    it('should map many descriptions to many af-labels and images', function () {
         var testcase = getJSONFixture('testcase_many_descriptions.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
         
@@ -142,7 +126,7 @@ describe('jsonTransformer', function () {
     it('should map one interactive radiobutton to one af-radiobutton', function () {
         var testcase = getJSONFixture('testcase_single_radio.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-
+        
         testJsonMapping(result, 'expected_testcase_single_radio.json')
     });
 

@@ -7,8 +7,7 @@
     },
     {
         "templateOptions": {
-            "urls": 
-            [
+            "urls": [
                 "../shared/test/dummyfiles/test_image.jpg"
             ]
         },
@@ -16,8 +15,7 @@
     },
     {
         "templateOptions": {
-            "urls": 
-            [
+            "urls": [
                 "../shared/test/dummyfiles/test_image.jpg0",
                 "../shared/test/dummyfiles/test_image.jpg1",
                 "../shared/test/dummyfiles/test_image.jpg2",
@@ -29,8 +27,7 @@
     },
     {
         "templateOptions": {
-            "urls": 
-            [
+            "urls": [
                 "../shared/test/dummyfiles/test_video.mp4"
             ]
         },
@@ -38,8 +35,7 @@
     },
     {
         "templateOptions": {
-            "urls": 
-            [
+            "urls": [
                 "../shared/test/dummyfiles/test_video0.mp4",
                 "../shared/test/dummyfiles/test_video1.mp4",
                 "../shared/test/dummyfiles/test_video2.mp4",

@@ -1,7 +1,6 @@
 {
-    "elementId":"1",
-    "elementType":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[]
+    "children": [],
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": []
 }

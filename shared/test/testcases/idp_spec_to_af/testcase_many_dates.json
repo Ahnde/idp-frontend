@@ -1,63 +1,62 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[],
-        "interactives":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"125",
-            "element_type":"date",
-            "mapping_key":"k_date1",
-            "validators":[],
+            "element_id": "12",
+            "element_type": "interactive",
+            "interactive_type": "date",
             "interactive_details": {
-                "label":"Date Test 1",
-                "dateFormat":"dd/mm/yyyy"
-            }
+                "dateFormat": "dd/mm/yyyy",
+                "label": "Date Test 1"
+            },
+            "mapping_key": "k_date1",
+            "validators": []
         },
         {
-            "element_id":"125",
-            "element_type":"date",
-            "mapping_key":"k_date2",
-            "validators":[],
+            "element_id": "13",
+            "element_type": "interactive",
+            "interactive_type": "date",
             "interactive_details": {
-                "label":"Date Test 2",
-                "dateFormat":"dd/mm/yyyy"
-            }
+                "dateFormat": "dd/mm/yyyy",
+                "label": "Date Test 2"
+            },
+            "mapping_key": "k_date2",
+            "validators": []
         },
         {
-            "element_id":"125",
-            "element_type":"date",
-            "mapping_key":"k_date3",
-            "validators":[],
+            "element_id": "14",
+            "element_type": "interactive",
+            "interactive_type": "date",
             "interactive_details": {
-                "label":"Date Test 3",
-                "dateFormat":"dd/mm/yyyy"
-            }
+                "dateFormat": "dd/mm/yyyy",
+                "label": "Date Test 3"
+            },
+            "mapping_key": "k_date3",
+            "validators": []
         },
         {
-            "element_id":"125",
-            "element_type":"date",
-            "mapping_key":"k_date4",
-            "validators":[],
+            "element_id": "15",
+            "element_type": "interactive",
+            "interactive_type": "date",
             "interactive_details": {
-                "label":"Date Test 4",
-                "dateFormat":"dd/mm/yyyy"
-            }
+                "dateFormat": "dd/mm/yyyy",
+                "label": "Date Test 4"
+            },
+            "mapping_key": "k_date4",
+            "validators": []
         },
         {
-            "element_id":"125",
-            "element_type":"date",
-            "mapping_key":"k_date5",
-            "validators":[],
+            "element_id": "16",
+            "element_type": "interactive",
+            "interactive_type": "date",
             "interactive_details": {
-                "label":"Date Test 5",
-                "dateFormat":"dd/mm/yyyy"
-            }
-        }]
-    }]
+                "dateFormat": "dd/mm/yyyy",
+                "label": "Date Test 5"
+            },
+            "mapping_key": "k_date5",
+            "validators": []
+        }
+    ]
 }

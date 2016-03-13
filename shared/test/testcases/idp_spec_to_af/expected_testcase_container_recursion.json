@@ -1,0 +1,8 @@
+[
+    {
+        "templateOptions": {
+            "label": "End of recursion"
+        },
+        "type": "textlabel"
+    }
+]

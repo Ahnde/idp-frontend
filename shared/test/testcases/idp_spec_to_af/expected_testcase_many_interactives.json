@@ -1,59 +1,59 @@
 [
-  {
-    "type": "input",
-    "key": "k_input",
-    "templateOptions": {
-      "label": "Input Test",
-      "placeholder": "Placeholder"
-    }
-  },
-  {
-    "type": "checkbox",
-    "key": "k_checkbox",
-    "templateOptions": {
-      "label": "Checkbox Test"
-    }
-  },
-  {
-    "type": "select",
-    "key": "k_dropdown",
-    "templateOptions": {
-      "label": "Dropdown Test",
-      "options": [
-        {
-          "name": "First option"
+    {
+        "key": "k_input",
+        "templateOptions": {
+            "label": "Input Test",
+            "placeholder": "Placeholder"
         },
-        {
-          "name": "Second option"
+        "type": "input"
+    },
+    {
+        "key": "k_checkbox",
+        "templateOptions": {
+            "label": "Checkbox Test"
         },
-        {
-          "name": "Third option"
-        }
-      ]
-    }
-  },
-  {
-    "type": "radio",
-    "key": "k_radio",
-    "templateOptions": {
-      "label": "Radio Test",
-      "options": [
-        {
-          "name": "Option one"
+        "type": "checkbox"
+    },
+    {
+        "key": "k_dropdown",
+        "templateOptions": {
+            "label": "Dropdown Test",
+            "options": [
+                {
+                    "name": "First option"
+                },
+                {
+                    "name": "Second option"
+                },
+                {
+                    "name": "Third option"
+                }
+            ]
         },
-        {
-          "name": "Option two"
-        }
-      ]
+        "type": "select"
+    },
+    {
+        "key": "k_radio",
+        "templateOptions": {
+            "label": "Radio Test",
+            "options": [
+                {
+                    "name": "Option one"
+                },
+                {
+                    "name": "Option two"
+                }
+            ]
+        },
+        "type": "radio"
+    },
+    {
+        "key": "k_date",
+        "templateOptions": {
+            "datepickerPopup": "dd/mm/yyyy",
+            "label": "Date Test",
+            "type": "text"
+        },
+        "type": "datepicker"
     }
-  },
-  {
-    "type": "datepicker",
-    "key": "k_date",
-    "templateOptions": {
-      "label": "Date Test",
-      "type": "text",
-      "datepickerPopup": "dd/mm/yyyy"
-    }
-  }
 ]

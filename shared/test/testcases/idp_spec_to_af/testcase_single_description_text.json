@@ -1,18 +1,13 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"120",
-            "text": "This is a text description.",
-            "description_type": "text"
-        }],
-        "interactives":[]
-    }]
+            "description_type": "text",
+            "element_id": "11",
+            "element_type": "description",
+            "text": "This is a text description."
+        }
+    ]
 }

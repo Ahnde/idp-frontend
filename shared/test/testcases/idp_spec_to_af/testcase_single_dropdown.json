@@ -1,36 +1,32 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[],
-        "interactives":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"124",
-            "element_type":"dropdown",
-            "mapping_key":"k_dropdown",
-            "validators":[],
+            "element_id": "11",
+            "element_type": "interactive",
+            "interactive_type": "dropdown",
             "interactive_details": {
-                "label":"Dropdown Test",
-                "defaultOption":1,
-                "options":[
-                {
-                    "element_id":"1240",
-                    "label":"First option"  
-                },
-                {
-                    "element_id":"1241",
-                    "label":"Second option" 
-                },
-                {
-                    "element_id":"1242",
-                    "label":"Third option"  
-                }]
-            }
-        }]
-    }]
+                "defaultOption": 1,
+                "label": "Dropdown Test",
+                "options": [
+                    {
+                        "element_id": "111",
+                        "label": "First option"
+                    },
+                    {
+                        "element_id": "112",
+                        "label": "Second option"
+                    },
+                    {
+                        "element_id": "113",
+                        "label": "Third option"
+                    }
+                ]
+            },
+            "mapping_key": "k_dropdown",
+            "validators": []
+        }
+    ]
 }

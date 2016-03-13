@@ -1,8 +1,7 @@
 [
     {
         "templateOptions": {
-            "urls": 
-            [
+            "urls": [
                 "../shared/test/dummyfiles/test_video.mp4"
             ]
         },

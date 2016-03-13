@@ -1,128 +1,132 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[],
-        "interactives":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"124",
-            "element_type":"dropdown",
-            "mapping_key":"k_dropdown1",
-            "validators":[],
+            "element_id": "11",
+            "element_type": "interactive",
+            "interactive_type": "dropdown",
             "interactive_details": {
-                "label":"Dropdown Test 1",
-                "defaultOption":1,
-                "options":[
-                {
-                    "element_id":"1240",
-                    "label":"1/1"  
-                }]
-            }
+                "defaultOption": 1,
+                "label": "Dropdown Test 1",
+                "options": [
+                    {
+                        "element_id": "111",
+                        "label": "1/1"
+                    }
+                ]
+            },
+            "mapping_key": "k_dropdown1",
+            "validators": []
         },
         {
-            "element_id":"124",
-            "element_type":"dropdown",
-            "mapping_key":"k_dropdown2",
-            "validators":[],
+            "element_id": "12",
+            "element_type": "interactive",
+            "interactive_type": "dropdown",
             "interactive_details": {
-                "label":"Dropdown Test 2",
-                "defaultOption":1,
-                "options":[
-                {
-                    "element_id":"1240",
-                    "label":"1/2"  
-                },
-                {
-                    "element_id":"1241",
-                    "label":"2/2" 
-                }]
-            }
+                "defaultOption": 1,
+                "label": "Dropdown Test 2",
+                "options": [
+                    {
+                        "element_id": "121",
+                        "label": "1/2"
+                    },
+                    {
+                        "element_id": "122",
+                        "label": "2/2"
+                    }
+                ]
+            },
+            "mapping_key": "k_dropdown2",
+            "validators": []
         },
         {
-            "element_id":"124",
-            "element_type":"dropdown",
-            "mapping_key":"k_dropdown3",
-            "validators":[],
+            "element_id": "13",
+            "element_type": "interactive",
+            "interactive_type": "dropdown",
             "interactive_details": {
-                "label":"Dropdown Test 3",
-                "defaultOption":1,
-                "options":[
-                {
-                    "element_id":"1240",
-                    "label":"1/3"  
-                },
-                {
-                    "element_id":"1241",
-                    "label":"2/3" 
-                },
-                {
-                    "element_id":"1242",
-                    "label":"3/3"  
-                }]
-            }
+                "defaultOption": 1,
+                "label": "Dropdown Test 3",
+                "options": [
+                    {
+                        "element_id": "131",
+                        "label": "1/3"
+                    },
+                    {
+                        "element_id": "132",
+                        "label": "2/3"
+                    },
+                    {
+                        "element_id": "133",
+                        "label": "3/3"
+                    }
+                ]
+            },
+            "mapping_key": "k_dropdown3",
+            "validators": []
         },
         {
-            "element_id":"124",
-            "element_type":"dropdown",
-            "mapping_key":"k_dropdown4",
-            "validators":[],
+            "element_id": "14",
+            "element_type": "interactive",
+            "interactive_type": "dropdown",
             "interactive_details": {
-                "label":"Dropdown Test 4",
-                "defaultOption":1,
-                "options":[
-                {
-                    "element_id":"1240",
-                    "label":"1/4"  
-                },
-                {
-                    "element_id":"1241",
-                    "label":"2/4" 
-                },
-                {
-                    "element_id":"1242",
-                    "label":"3/4"  
-                },
-                {
-                    "element_id":"1243",
-                    "label":"4/4"  
-                }]
-            }
+                "defaultOption": 1,
+                "label": "Dropdown Test 4",
+                "options": [
+                    {
+                        "element_id": "141",
+                        "label": "1/4"
+                    },
+                    {
+                        "element_id": "142",
+                        "label": "2/4"
+                    },
+                    {
+                        "element_id": "143",
+                        "label": "3/4"
+                    },
+                    {
+                        "element_id": "144",
+                        "label": "4/4"
+                    }
+                ]
+            },
+            "mapping_key": "k_dropdown4",
+            "validators": []
         },
         {
-            "element_id":"124",
-            "element_type":"dropdown",
-            "mapping_key":"k_dropdown5",
-            "validators":[],
+            "element_id": "15",
+            "element_type": "interactive",
+            "interactive_type": "dropdown",
             "interactive_details": {
-                "label":"Dropdown Test 5",
-                "defaultOption":1,
-                "options":[
-                {
-                    "element_id":"1240",
-                    "label":"1/5"  
-                },
-                {
-                    "element_id":"1241",
-                    "label":"2/5" 
-                },
-                {
-                    "element_id":"1242",
-                    "label":"3/5"  
-                },
-                {
-                    "element_id":"1243",
-                    "label":"4/5"  
-                },
-                {
-                    "element_id":"1244",
-                    "label":"5/5"  
-                }]
-            }
-        }]
-    }]
+                "defaultOption": 1,
+                "label": "Dropdown Test 5",
+                "options": [
+                    {
+                        "element_id": "151",
+                        "label": "1/5"
+                    },
+                    {
+                        "element_id": "152",
+                        "label": "2/5"
+                    },
+                    {
+                        "element_id": "153",
+                        "label": "3/5"
+                    },
+                    {
+                        "element_id": "154",
+                        "label": "4/5"
+                    },
+                    {
+                        "element_id": "155",
+                        "label": "5/5"
+                    }
+                ]
+            },
+            "mapping_key": "k_dropdown5",
+            "validators": []
+        }
+    ]
 }

@@ -1,25 +1,20 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[],
-        "interactives":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"121",
-            "element_type":"input",
-            "mapping_key":"k_input",
-            "validators":[],
+            "element_id": "11",
+            "element_type": "interactive",
+            "interactive_type": "input",
             "interactive_details": {
-                "length":256,
-                "label":"Input Test",
-                "placeholder":"Placeholder",
-                "input_type":"text"
-            }
-        }]
-    }]
+                "input_type": "text",
+                "label": "Input Test",
+                "length": 256,
+                "placeholder": "Placeholder"
+            },
+            "mapping_key": "k_input",
+            "validators": []
+        }
+    ]
 }

@@ -1,22 +1,17 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[],
-        "interactives":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"122",
-            "element_type":"checkbox",
-            "mapping_key":"k_checkbox",
-            "validators":[],
+            "element_id": "11",
+            "element_type": "interactive",
+            "interactive_type": "checkbox",
             "interactive_details": {
-                "label":"Checkbox Test"
-            }
-        }]
-    }]
+                "label": "Checkbox Test"
+            },
+            "mapping_key": "k_checkbox",
+            "validators": []
+        }
+    ]
 }

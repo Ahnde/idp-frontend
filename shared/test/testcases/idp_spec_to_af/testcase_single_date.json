@@ -1,23 +1,18 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
-    "descriptions":[],
-    "children":[
-    {
-        "element_id":"12",
-        "element_type": "question",
-        "descriptions":[],
-        "interactives":[
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
         {
-            "element_id":"125",
-            "element_type":"date",
-            "mapping_key":"k_date",
-            "validators":[],
+            "element_id": "11",
+            "element_type": "interactive",
+            "interactive_type": "date",
             "interactive_details": {
-                "label":"Date Test",
-                "dateFormat":"dd/mm/yyyy"
-            }
-        }]
-    }]
+                "dateFormat": "dd/mm/yyyy",
+                "label": "Date Test"
+            },
+            "mapping_key": "k_date",
+            "validators": []
+        }
+    ]
 }

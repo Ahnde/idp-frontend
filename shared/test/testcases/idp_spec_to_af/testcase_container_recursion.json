@@ -2,43 +2,42 @@
     "element_id":"1",
     "element_type":"form",
     "metadata":[],
-    "descriptions":[],
     "children":[
     {
         "element_id":"11",
-        "element_type":"group",
+        "element_type":"container",
         "repeatable":false,
         "descriptions": [],
         "children":[
         {
-            "element_id":"112",
-            "element_type":"group",
+            "element_id":"111",
+            "element_type":"container",
             "repeatable":false,
             "descriptions": [],
             "children":[
             {
-                "element_id":"11",
-                "element_type":"group",
+                "element_id":"1111",
+                "element_type":"container",
                 "repeatable":false,
                 "descriptions": [],
                 "children":[
                 {
-                    "element_id":"112",
-                    "element_type":"group",
+                    "element_id":"11111",
+                    "element_type":"container",
                     "repeatable":false,
                     "descriptions": [],
                     "children":[
                     {
-                        "element_id":"112",
-                        "element_type":"group",
+                        "element_id":"111111",
+                        "element_type":"container",
                         "repeatable":false,
                         "descriptions": [],
                         "children":[
                         {
-                            "element_id":"111",
-                            "element_type": "question",
-                            "descriptions":[],
-                            "interactives":[]
+                            "element_id":"1111111",
+                            "element_type": "description",
+                            "text": "End of recursion",
+                            "description_type":"text"
                         }]
                     }]
                 }]
