@@ -20,7 +20,7 @@
         } else if(fsJson['element_type'] === "description") {
             afJsonArray.push(angularFormlyJsonForDescription(fsJson));
         } else if(fsJson['element_type'] === "interactive") {
-            afJsonArray.push(angularFormlyJsonArrayForInteractive(fsJson));
+            afJsonArray.push(angularFormlyJsonForInteractive(fsJson));
         };
 
         return afJsonArray;
@@ -47,7 +47,7 @@
         return afJson;
     }
 
-    var angularFormlyJsonArrayForInteractive = function(fsInteractiveJson) {
+    var angularFormlyJsonForInteractive = function(fsInteractiveJson) {
         
         fsJsonTypeString = fsInteractiveJson['interactive_type'];
         if (fsJsonTypeString === 'error') {
@@ -175,29 +175,30 @@
         return templateOptions;
     };
 
-    var templateOptionsForInteractiveFsJson = function(fsSpecificInteractiveJson) {
+    var templateOptionsForInteractiveFsJson = function(fsInteractiveDetailsJson) {
         var templateOptions = {};
 
-        templateOptions.label = fsSpecificInteractiveJson['label'];
+        templateOptions.label = fsInteractiveDetailsJson['label'];
+        templateOptions.postLabel = fsInteractiveDetailsJson['post_label'];
 
-        if (fsSpecificInteractiveJson['length']) {
+        if (fsInteractiveDetailsJson['length']) {
             //TODO: template does not support this feature, yet
         }
-        if (fsSpecificInteractiveJson['placeholder']) {
-            templateOptions.placeholder = fsSpecificInteractiveJson['placeholder'];
+        if (fsInteractiveDetailsJson['placeholder']) {
+            templateOptions.placeholder = fsInteractiveDetailsJson['placeholder'];
             // templateOptions.required = true;
         };
-        if (fsSpecificInteractiveJson['input_type']) {
+        if (fsInteractiveDetailsJson['input_type']) {
             //TODO: template does not support this feature, yet
         }
-        if (fsSpecificInteractiveJson['dateFormat']) {
+        if (fsInteractiveDetailsJson['dateFormat']) {
             templateOptions.type = "text";
-            templateOptions.datepickerPopup = fsSpecificInteractiveJson['dateFormat'];
+            templateOptions.datepickerPopup = fsInteractiveDetailsJson['dateFormat'];
         };
-        if (fsSpecificInteractiveJson['options']) {
-            templateOptions.options = angularFormlyArrayForOptions(fsSpecificInteractiveJson['options']);
+        if (fsInteractiveDetailsJson['options']) {
+            templateOptions.options = angularFormlyArrayForOptions(fsInteractiveDetailsJson['options']);
 
-            if (fsSpecificInteractiveJson['defaultOption']) {
+            if (fsInteractiveDetailsJson['defaultOption']) {
                 //TODO: template does not support this feature, yet
             };
         };
