@@ -45,6 +45,7 @@
             "interactive_details": {
                 "length":256,
                 "label":"Input Test",
+                "post_label":"Input Test post",
                 "placeholder":"Placeholder",
                 "input_type":"text"
             }
