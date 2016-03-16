@@ -1,41 +1,58 @@
-
 formularGenerator.controller("rendererController",
 function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
-	var RE = $scope;
+    var RE = $scope;
 
-	RE.formular = {};
-	RE.formularFields = [];
+    RE.formular = {};
+    RE.formularFields = [];
 
-  $scope.$on('$routeChangeSuccess', function() {
-  	console.log($routeParams)
-    backendConnector.getFormularSpecification($routeParams.id,function(formularSpecification) {
-		
-        var arrayWithJSONs = [];
+    var formId, 
+        userId,
+        didLoadFormularData;
 
-        arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
+    $scope.$on('$routeChangeSuccess', function() {
+        console.log($routeParams)
+        
+        didLoadFormularData = false;
 
-        console.log("FormularSpecification filled in formularFields: ");
-        console.log(arrayWithJSONs);
-        console.log("");
+        formId = $routeParams.id
+        userId = $routeParams.userid;
 
-        RE.formularFields = arrayWithJSONs;	
+        backendConnector.getFormularSpecification(formId,function(formularSpecification) {
+        
+            var arrayWithJSONs = [];
 
-        backendConnector.getFormularData(1,1,function(response) {
-            for(var key in response)
-            {
-                RE.formular[key] = response[key];
+            arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
+
+            console.log("FormularSpecification filled in formularFields: ");
+            console.log(arrayWithJSONs);
+            console.log("");
+
+            RE.formularFields = arrayWithJSONs;
+            RE.formular = {};
+
+            if (userId) {
+                backendConnector.getFormularData(userId,function(response) {
+                    for(var key in response)
+                    {
+                        RE.formular[key] = response[key];
+                    }
+                    didLoadFormularData = true;
+                });
             }
-        });
-    });   
-
-  });
-
-    
+        });   
+    });
 
     RE.onSubmit = onSubmit;
-	function onSubmit() {
-		//TODO postFormularData
-    	console.log('form submitted:', RE.formular);
+    function onSubmit() {
+        if (didLoadFormularData) {
+            backendConnector.updateFormularData(userId,RE.formular,function(success, error) {
+                if (success) { } else { }
+            });
+        } else {
+            backendConnector.postFormularData(RE.formular,function(success, error) {
+                if (success) { } else { }
+            });
+        }
     }
 });
