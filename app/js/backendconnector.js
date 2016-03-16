@@ -23,10 +23,10 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 		});
 	}
 
-	BC.getFormularData = function (id,userid,callback) {
-	$http({
+	BC.getFormularData = function (userid,callback) {
+		$http({
 		 	method: 'GET',
-                        url: 'http://'+backendURL+':8080/IDPBackend/rest/data/'+userid
+            url: 'http://'+backendURL+':8080/IDPBackend/rest/data/' + userid
 		}).then(function (response, status) {
 			console.log("Formular-Data from backend successfully fechted: ");
 			console.log(response.data);
