@@ -18,8 +18,6 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         formId = $routeParams.id
         userId = $routeParams.userid;
 
-        console.log(userId);
-
         backendConnector.getFormularSpecification(formId,function(formularSpecification) {
         
             var arrayWithJSONs = [];
