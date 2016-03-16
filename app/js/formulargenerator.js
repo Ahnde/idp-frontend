@@ -27,11 +27,13 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
 
 formularGenerator.config(function($locationProvider,$routeProvider) {
     
-       $routeProvider.
-       when('/form/:id', {
-           controller: 'rendererController'
-       }).otherwise({ redirectTo: '/form/1' });;
-
-          
+    $routeProvider.
+        when('/form/:id/user/:userid', {
+            controller: 'rendererController'
+        }).
+        when('/form/:id', {
+            controller: 'rendererController'
+        }).
+        otherwise({ redirectTo: '/form/1' });
 });
 

@@ -23,10 +23,10 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 		});
 	}
 
-	BC.getFormularData = function (id,userid,callback) {
-	$http({
+	BC.getFormularData = function (userid,callback) {
+		$http({
 		 	method: 'GET',
-                        url: 'http://'+backendURL+':8080/IDPBackend/rest/data/'+userid
+            url: 'http://'+backendURL+':8080/IDPBackend/rest/data/' + userid
 		}).then(function (response, status) {
 			console.log("Formular-Data from backend successfully fechted: ");
 			console.log(response.data);
@@ -41,8 +41,39 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 	}
 
 	BC.postFormularData = function (formularData,callback) {
-		//TODO
-		callback();
+		$http({
+		 	method: 'POST',
+            url: 'http://'+backendURL+':8080/IDPBackend/rest/data',
+            data: formularData
+		}).then(function (response, status) {
+			console.log("Formular-Data saved successfully in backend: ");
+			console.log(response.data);
+			console.log("");
+			callback(true, null);
+		},function (error){
+			console.log("Error saving Formular-Data in backendConnector: ");
+			console.log(error);
+			console.log("");
+			callback(false, error);
+		});
+	}
+
+	BC.updateFormularData = function (userid,formularData,callback) {
+		$http({
+		 	method: 'PUT',
+            url: 'http://'+backendURL+':8080/IDPBackend/rest/data/' + userid,
+            data: formularData
+		}).then(function (response, status) {
+			console.log("Formular-Data updated successfully in backend: ");
+			console.log(response.data);
+			console.log("");
+			callback(true, null);
+		},function (error){
+			console.log("Error updating Formular-Data in backendConnector: ");
+			console.log(error);
+			console.log("");
+			callback(false, error);
+		});
 	}
 
 	return BC;
