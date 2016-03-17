@@ -133,9 +133,6 @@
         var templateOptions = {};
         var expressionProperties = {};
 
-        console.log("fsValidatorsArray");
-        console.log(fsValidatorsArray);
-
         templateOptions = oldTemplateOptions;
 
         var oneValidator;
@@ -151,9 +148,6 @@
             }
         }
 
-        console.log("validators");
-        console.log(validators);
-
         callback(templateOptions, validators, expressionProperties);
         return validators;
     };
@@ -163,9 +157,6 @@
 
         afValidator['validatorName'] = nameForValidator(fsValidator);
         afValidator['validatorExpression'] = expressionForValidator(fsValidator['expression']);
-
-        console.log("Validator name = \'"+afValidator['validatorName']+"\' - Expression in fs = \'"+fsValidator['expression']+"\' - Expression in af = \'"+afValidator['validatorExpression']+"\'");
-
 
         return afValidator;
     }
@@ -200,10 +191,6 @@
             var regExp = new RegExp(fsValidatorExpression);
             var value = $viewValue || $viewModel;
             if (value) {
-                console.log("RegExprString in FS = "+fsValidatorExpression);
-                console.log("RegExpr = "+regExp);
-                console.log("Input = "+value);
-                console.log("Result = "+regExp.test(value));
                 return regExp.test(value);
             }
         };
