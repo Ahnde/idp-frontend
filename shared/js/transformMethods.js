@@ -133,8 +133,8 @@
         var templateOptions = {};
         var expressionProperties = {};
 
-        // console.log("fsValidatorsArray");
-        // console.log(fsValidatorsArray);
+        console.log("fsValidatorsArray");
+        console.log(fsValidatorsArray);
 
         templateOptions = oldTemplateOptions;
 
@@ -151,8 +151,8 @@
             }
         }
 
-        // console.log("validators");
-        // console.log(validators);
+        console.log("validators");
+        console.log(validators);
 
         callback(templateOptions, validators, expressionProperties);
         return validators;
@@ -161,48 +161,50 @@
     var validatorForFsJson = function(fsValidator) {
         var afValidator = {};
 
-        var validatorName = fsValidator['validator_type'];
-        var validatorExpression;
+        afValidator['validatorName'] = nameForValidator(fsValidator);
+        afValidator['validatorExpression'] = expressionForValidator(fsValidator['expression']);
+
+        console.log("Validator name = \'"+afValidator['validatorName']+"\' - Expression in fs = \'"+fsValidator['expression']+"\' - Expression in af = \'"+afValidator['validatorExpression']+"\'");
+
+
+        return afValidator;
+    }
+
+    var nameForValidator = function(fsValidator) {
+        var validatorName;
 
         switch (fsValidator['validator_type']) {
                 case "minLength":
                     validatorName = "minLength";
-                    validatorExpression = "$viewValue.length >= " + fsValidator['expression'];
                     break;
                 case "maxLength":
                     validatorName = "maxLength";
-                    validatorExpression = "$viewValue.length <= " + fsValidator['expression'];
                     break;
                 case "minDate":
                     validatorName = "minDate";
-                    validatorExpression = "$viewValue.length >= " + fsValidator['expression'];
                     break;
                 case "maxDate":
                     validatorName = "maxDate";
-                    validatorExpression = "$viewValue.length <= " + fsValidator['expression'];
                     break;
                 default:
                     // custom
-                    validatorExpression = expressionForValidator(fsValidator['expression']);
                     validatorName = fsValidator['validator_name'];
                     break;
         }
 
-        afValidator['validatorName'] = validatorName;
-        afValidator['validatorExpression'] = validatorExpression;
-
-        // console.log("Validator name = \'"+validatorName+"\' - Expression in fs = \'"+fsValidator['expression']+"\' - Expression in af = \'"+validatorExpression+"\'");
-
-        return afValidator; 
+        return validatorName;
     }
 
     var expressionForValidator = function(fsValidatorExpression) {
-        var regEx = new RegExp(fsValidatorExpression);
-        
         var expressionFunction = function($viewValue, $viewModel, scope) {
+            var regExp = new RegExp(fsValidatorExpression);
             var value = $viewValue || $viewModel;
             if (value) {
-                return regEx.test(value);
+                console.log("RegExprString in FS = "+fsValidatorExpression);
+                console.log("RegExpr = "+regExp);
+                console.log("Input = "+value);
+                console.log("Result = "+regExp.test(value));
+                return regExp.test(value);
             }
         };
         return expressionFunction;
