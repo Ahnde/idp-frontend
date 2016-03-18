@@ -1,6 +1,5 @@
 formularGenerator.factory("backendConnector", ["$http", function ($http) {
-  	// var backendURL = "localhost";
-  	var backendURL = "192.168.99.100";
+  	var backendURL = "localhost";
   	
 	var BC = {};
 
