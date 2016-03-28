@@ -1,14 +1,14 @@
 formularGenerator.controller("rendererController",
 function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
+    var formId,
+        userId,
+        didLoadFormularData;
+
     var RE = $scope;
 
     RE.formular = {};
     RE.formularFields = [];
-
-    var formId, 
-        userId,
-        didLoadFormularData;
 
     $scope.isFormularActive = false;
 
@@ -68,6 +68,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         } 
     });
 
+    //user triggered a formular change
     $scope.formChanged = function() {
         setSelectedForm($scope.selectedForm.id);
 
@@ -79,6 +80,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         $route.updateParams($routeParams);
     }
 
+    //user triggered a formular-data change
     $scope.dataChanged = function() {
         setSelectedData($scope.selectedData.id);
 
@@ -86,6 +88,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         $route.updateParams($routeParams);
     }
 
+    //user triggered a formular-data submit
     RE.onSubmit = onSubmit;
     function onSubmit() {
         if (didLoadFormularData) {
