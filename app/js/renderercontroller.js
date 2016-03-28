@@ -102,8 +102,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     // HELPER
 
     var loadFormList = function() {
-        backendConnector.getAllFormularSpecifications(function(formularSpecifications) {
-            localStorage.setItem("formList", JSON.stringify(formularSpecifications.forms));
+        backendConnector.getAllFormularSpecifications(function(response) {
+            localStorage.setItem("formList", JSON.stringify(response.formList));
         });   
     }
 
@@ -120,8 +120,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     }
 
     var loadDataList = function(formId) {
-        backendConnector.getAllFormularDatas(formId,function(formularDatas) {
-            localStorage.setItem("dataList", JSON.stringify(formularDatas.datas));
+        backendConnector.getAllFormularDatas(formId,function(response) {
+            localStorage.setItem("dataList", JSON.stringify(response.dataList));
         });
     }
 
