@@ -26,11 +26,31 @@
 	<body ng-app="formularGenerator">
 
 		<div ng-controller="rendererController">
+
+            <p>
+                Formulars:
+                <select ng-change="formChanged()" ng-options="item as item.label for item in formList track by item.id" ng-model="selectedForm"></select>
+            </p>
+            <p ng-show="isFormularActive">
+                Formular Datas:
+                <select ng-change="dataChanged()" ng-options="item as item.label for item in dataList track by item.id" ng-model="selectedData"></select>
+            </p>
+
+
 			<form ng-submit="onSubmit()">
-  				<formly-form model="formular" fields="formularFields">
-    				<button type="submit">Submit</button>
+  				<formly-form model="formular" fields="formularFields" form="">
+                    <p>
+    				    <button type="submit" ng-disabled="vm.formularFields.$invalid">Submit</button>
+                    </p>
   				</formly-form>
 			</form>
+
+			<!-- <h2>Model</h2>
+      		<pre>{{formular | json}}</pre>
+      		<h2>Fields <small>(note, functions are not shown)</small></h2>
+      		<pre>{{vm.originalFields | json}}</pre>
+      		<h2>Form</h2>
+      		<pre>{{formularFields | json}}</pre> -->
 		</div>
 		
 	</body>

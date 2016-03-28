@@ -10,38 +10,80 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         userId,
         didLoadFormularData;
 
-    $scope.$on('$routeChangeSuccess', function() {
-        console.log($routeParams)
-        
-        didLoadFormularData = false;
+    $scope.isFormularActive = false;
 
-        formId = $routeParams.id
-        userId = $routeParams.userid;
-
-        backendConnector.getFormularSpecification(formId,function(formularSpecification) {
-        
-            var arrayWithJSONs = [];
-
-            arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
-
-            console.log("FormularSpecification filled in formularFields: ");
-            console.log(arrayWithJSONs);
-            console.log("");
-
-            RE.formularFields = arrayWithJSONs;
-            RE.formular = {};
-
-            if (userId) {
-                backendConnector.getFormularData(userId,function(response) {
-                    for(var key in response)
-                    {
-                        RE.formular[key] = response[key];
-                    }
-                    didLoadFormularData = true;
-                });
-            }
-        });   
+    // dirty workaround to convert query params to a restful url
+    $scope.$on('$routeChangeStart', function(event, next, current) {
+        if ($routeParams.userId) {
+            next.$$route.keys.push({ "name"    : "userId", "optional": false });
+            next.$$route.originalPath = "/form/:id/user/:userId";
+            next.$$route.regexp = new RegExp("^\/form\/(?:([^\/]+))\/user\/(?:([^\/]+))$");
+            next.pathParams.userId = next.params.userId;
+        }
     });
+
+    $scope.$on('$routeChangeSuccess', function() {
+
+        //clear models
+        didLoadFormularData = false;
+        RE.formular = {};
+        RE.formularFields = {};
+
+        //load form list if not yet done
+        if (!localStorage.formListHasBeenLoaded) {
+            loadFormList();
+            localStorage.setItem("formListHasBeenLoaded", true);       
+        }
+
+        var isNewFormular = false;
+
+        // load formular and data list, only if new formular is selected
+        if ($routeParams.id) {
+            isNewFormular = formId !== $routeParams.id;
+            if (isNewFormular) {
+                formId = $routeParams.id;
+                loadFormWithId(formId);
+                loadDataList(formId);
+            } 
+        } else {
+            localStorage.setItem("selectedForm", JSON.stringify({}));
+        }
+
+        // load data set, if new formular or if new data are selected
+        if ($routeParams.userId) {
+            if (isNewFormular || userId !== $routeParams.userId) {
+                userId = $routeParams.userId;
+                loadDataWithId(userId);
+            }
+        } else {
+            localStorage.setItem("selectedData", JSON.stringify({}));
+        }
+
+        //bind formular and data to its scope variables
+        $scope.formList = getFormList();
+        $scope.selectedForm = getSelectedForm();
+
+        if ($scope.selectedForm) {
+            $scope.isFormularActive = true;
+            
+            $scope.dataList = getDataList();
+            $scope.selectedData = getSelectedData();
+        }
+    });
+
+    $scope.formChanged = function() {
+        localStorage.setItem("selectedForm", JSON.stringify($scope.selectedForm));
+
+        $routeParams.id = $scope.selectedForm['id'].toString();
+        $route.updateParams($routeParams);
+    }
+
+    $scope.dataChanged = function() {
+        localStorage.setItem("selectedData", JSON.stringify($scope.selectedData));
+
+        $routeParams.userId = $scope.selectedData['id'].toString();
+        $route.updateParams($routeParams);
+    }
 
     RE.onSubmit = onSubmit;
     function onSubmit() {
@@ -54,5 +96,60 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
                 if (success) { } else { }
             });
         }
+    }
+
+
+    // HELPER
+
+    var loadFormList = function() {
+        backendConnector.getAllFormularSpecifications(function(formularSpecifications) {
+            localStorage.setItem("formList", JSON.stringify(formularSpecifications.forms));
+        });   
+    }
+
+    var loadFormWithId = function(formId) {
+        localStorage.setItem("selectedForm", "{ \"id\": "+formId+", \"label\": \""+formId+"\" }");
+
+        backendConnector.getFormularSpecification(formId,function(formularSpecification) {
+            var arrayWithJSONs = [];
+
+            arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
+
+            RE.formularFields = arrayWithJSONs;
+        });
+    }
+
+    var loadDataList = function(formId) {
+        backendConnector.getAllFormularDatas(formId,function(formularDatas) {
+            localStorage.setItem("dataList", JSON.stringify(formularDatas.datas));
+        });
+    }
+
+    var loadDataWithId = function(userId) {
+        localStorage.setItem("selectedData", "{ \"id\": "+userId+", \"label\": \""+userId+"\" }");
+
+        backendConnector.getFormularData(userId,function(formularData) {
+            for(var key in formularData)
+            {
+                RE.formular[key] = formularData[key];
+            }
+            didLoadFormularData = true;
+        });
+    }
+
+    var getFormList = function() {
+        return JSON.parse(localStorage.formList);
+    }
+
+    var getSelectedForm = function() {
+        return JSON.parse(localStorage.selectedForm);
+    }
+
+    var getDataList = function() {
+        return JSON.parse(localStorage.dataList);
+    }
+
+    var getSelectedData = function() {
+        return JSON.parse(localStorage.selectedData);
     }
 });
