@@ -39,7 +39,7 @@
 
 			<form ng-submit="onSubmit()">
   				<formly-form model="formular" fields="formularFields" form="">
-                    <p>
+                    <p ng-show="isFormularActive">
     				    <button type="submit" ng-disabled="vm.formularFields.$invalid">Submit</button>
                     </p>
   				</formly-form>

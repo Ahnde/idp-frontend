@@ -40,6 +40,6 @@ formularGenerator.config(function($locationProvider,$routeProvider) {
         when('/form/:id/user/:userId', {
             controller: 'rendererController'
         }).
-        otherwise({ redirectTo: '/form/1' });
+        otherwise({ redirectTo: '/' });
 });
 
