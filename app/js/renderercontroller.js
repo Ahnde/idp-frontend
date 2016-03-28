@@ -1,16 +1,12 @@
 formularGenerator.controller("rendererController",
 function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
-    var RE = $scope;
-
-    RE.formular = {};
-    RE.formularFields = [];
-
     var formId, 
         userId,
         didLoadFormularData;
 
-    $scope.isFormularActive = false;
+    $scope.formular = {};
+    $scope.formularFields = [];
 
     $scope.$on('$routeChangeStart', function(event, next, current) {
         if ($routeParams.userId && next.$$route) {
@@ -22,8 +18,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
         //clear models
         didLoadFormularData = false;
-        RE.formular = {};
-        RE.formularFields = {};
+        $scope.formular = {};
+        $scope.formularFields = {};
 
         //load form list if not yet done
         if (!localStorage.formListHasBeenLoaded) {
@@ -60,25 +56,27 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         //bind formular and data to its scope variables
         $scope.formList = getFormList();
         $scope.selectedForm = getSelectedForm();
-        $scope.isFormularActive = ($scope.selectedForm != undefined) && !(Object.keys($scope.selectedForm).length === 0 && JSON.stringify($scope.selectedForm) === JSON.stringify({}));
+        $scope.formularIsActive = ($scope.selectedForm != undefined) && !(Object.keys($scope.selectedForm).length === 0 && JSON.stringify($scope.selectedForm) === JSON.stringify({}));
 
-        if ($scope.isFormularActive) {
+        if ($scope.formularIsActive) {
             $scope.dataList = getDataList();
             $scope.selectedData = getSelectedData();
-        } 
+        }
     });
 
+    //user triggered a formular change
     $scope.formChanged = function() {
         setSelectedForm($scope.selectedForm.id);
 
         if($route.current.$$route === undefined) {
             $route.current = createRoute($route.current, $scope.selectedForm.id);
         }
-        
+
         $routeParams.id = $scope.selectedForm['id'].toString();
         $route.updateParams($routeParams);
     }
 
+    //user triggered a formular-data change
     $scope.dataChanged = function() {
         setSelectedData($scope.selectedData.id);
 
@@ -86,14 +84,14 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         $route.updateParams($routeParams);
     }
 
-    RE.onSubmit = onSubmit;
-    function onSubmit() {
+    //user triggered a formular-data submit
+    $scope.onSubmit() {
         if (didLoadFormularData) {
-            backendConnector.updateFormularData(userId,RE.formular,function(success, error) {
+            backendConnector.updateFormularData(userId,$scope.formular,function(success, error) {
                 if (success) { } else { }
             });
         } else {
-            backendConnector.postFormularData(RE.formular,function(success, error) {
+            backendConnector.postFormularData($scope.formular,function(success, error) {
                 if (success) { } else { }
             });
         }
@@ -116,7 +114,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
             arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
 
-            RE.formularFields = arrayWithJSONs;
+            $scope.formularFields = arrayWithJSONs;
         });
     }
 
@@ -132,7 +130,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         backendConnector.getFormularData(userId,function(formularData) {
             for(var key in formularData)
             {
-                RE.formular[key] = formularData[key];
+                $scope.formular[key] = formularData[key];
             }
             didLoadFormularData = true;
         });
@@ -170,7 +168,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         return JSON.parse(localStorage.selectedData);
     }
 
-    // dirty workaround
+    // dirty ngroute workarounds
 
     // convert query params to a restful url
     var queryToREST = function(next) {
