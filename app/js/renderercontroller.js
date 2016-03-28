@@ -33,7 +33,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
         var isNewFormular = false;
 
-        // load formular and data list, only if new formular is selected
+        // load specific formular and data-list, only if new formular is selected
         if ($routeParams.id) {
             isNewFormular = formId !== $routeParams.id;
             if (isNewFormular) {
@@ -177,7 +177,18 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     // convert query params to a restful url
     var queryToREST = function(next) {
-        next.$$route.keys.push({ "name": "userId", "optional": false });
+
+        var found = false;
+        for(var i = 0; i < next.$$route.keys.length; i++) {
+            if (next.$$route.keys[i].name == 'userId') {
+                found = true;
+            break;
+            }
+        }
+
+        if (!found) {
+            next.$$route.keys.push({ "name": "userId", "optional": false });
+        }
         next.$$route.originalPath = "/form/:id/user/:userId";
         next.$$route.regexp = new RegExp("^\/form\/(?:([^\/]+))\/user\/(?:([^\/]+))$");
         next.pathParams.userId = next.params.userId;
