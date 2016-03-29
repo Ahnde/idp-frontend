@@ -37,7 +37,7 @@ formularGenerator.config(function($locationProvider,$routeProvider) {
         when('/form/:id/data/ids', {
             controller: 'rendererController'
         }).
-        when('/form/:id/user/:userId', {
+        when('/form/:id/data/:dataId', {
             controller: 'rendererController'
         }).
         otherwise({ redirectTo: '/' });

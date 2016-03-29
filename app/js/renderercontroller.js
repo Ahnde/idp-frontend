@@ -2,7 +2,7 @@ formularGenerator.controller("rendererController",
 function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     var formId,
-        userId,
+        dataId,
         didLoadFormularData;
 
     var RE = $scope;
@@ -13,7 +13,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     $scope.isFormularActive = false;
 
     $scope.$on('$routeChangeStart', function(event, next, current) {
-        if ($routeParams.userId && next.$$route) {
+        if ($routeParams.dataId && next.$$route) {
             next = queryToREST(next);
         }
     });
@@ -26,9 +26,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         RE.formularFields = {};
 
         //load form list if not yet done
-        if (!localStorage.formListHasBeenLoaded) {
+        if ($scope.formList === undefined) {
             loadFormList();
-            localStorage.setItem("formListHasBeenLoaded", true);       
         }
 
         var isNewFormular = false;
@@ -43,29 +42,21 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             } else {
                 setSelectedForm(formId);
             }
+            $scope.isFormularActive = true;
         } else {
-            localStorage.setItem("selectedForm", JSON.stringify({}));
+            $scope.selectedForm = {};
+            $scope.isFormularActive = false;
         }
 
         // load data set, if new formular or if new data are selected
-        if ($routeParams.userId) {
-            if (isNewFormular || userId !== $routeParams.userId) {
-                userId = $routeParams.userId;
-                loadDataWithId(userId);
+        if ($routeParams.dataId) {
+            if (isNewFormular || dataId !== $routeParams.dataId) {
+                dataId = $routeParams.dataId;
+                loadDataWithId(dataId);
             }
         } else {
-            localStorage.setItem("selectedData", JSON.stringify({}));
+            $scope.selectedData = {};
         }
-
-        //bind formular and data to its scope variables
-        $scope.formList = getFormList();
-        $scope.selectedForm = getSelectedForm();
-        $scope.isFormularActive = ($scope.selectedForm != undefined) && !(Object.keys($scope.selectedForm).length === 0 && JSON.stringify($scope.selectedForm) === JSON.stringify({}));
-
-        if ($scope.isFormularActive) {
-            $scope.dataList = getDataList();
-            $scope.selectedData = getSelectedData();
-        } 
     });
 
     //user triggered a formular change
@@ -84,7 +75,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     $scope.dataChanged = function() {
         setSelectedData($scope.selectedData.id);
 
-        $routeParams.userId = $scope.selectedData['id'].toString();
+        $routeParams.dataId = $scope.selectedData['id'].toString();
         $route.updateParams($routeParams);
     }
 
@@ -92,7 +83,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     RE.onSubmit = onSubmit;
     function onSubmit() {
         if (didLoadFormularData) {
-            backendConnector.updateFormularData(userId,RE.formular,function(success, error) {
+            backendConnector.updateFormularData(dataId,RE.formular,function(success, error) {
                 if (success) { } else { }
             });
         } else {
@@ -102,17 +93,20 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         }
     }
 
-
+    //
     // HELPER
+    //
+
+    // Backend calls
 
     var loadFormList = function() {
         backendConnector.getAllFormularSpecifications(function(response) {
-            setFormList(response.formList);
+            $scope.formList = response.formList;
         });   
     }
 
     var loadFormWithId = function(formId) {
-        setSelectedForm(formId)
+        setSelectedForm(formId, formId);
 
         backendConnector.getFormularSpecification(formId,function(formularSpecification) {
             var arrayWithJSONs = [];
@@ -125,14 +119,14 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     var loadDataList = function(formId) {
         backendConnector.getAllFormularDatas(formId,function(response) {
-            setDataList(response.dataList);
+            $scope.dataList = response.dataList;
         });
     }
 
-    var loadDataWithId = function(userId) {
-        setSelectedData(userId);
+    var loadDataWithId = function(dataId) {
+        setSelectedData(dataId, dataId);
 
-        backendConnector.getFormularData(userId,function(formularData) {
+        backendConnector.getFormularData(dataId,function(formularData) {
             for(var key in formularData)
             {
                 RE.formular[key] = formularData[key];
@@ -141,36 +135,14 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         });
     }
 
-    var setFormList = function(formList) {
-        localStorage.setItem("formList", JSON.stringify(formList));
+    // setter
+
+    var setSelectedForm = function(formId, formLabel) {
+        $scope.selectedForm = { "id": formId, "label": formLabel };
     }
 
-    var getFormList = function() {
-        return JSON.parse(localStorage.formList);
-    }
-
-    var setSelectedForm = function(formId) {
-        localStorage.setItem("selectedForm", "{ \"id\": "+formId+", \"label\": \""+formId+"\" }");
-    }
-
-    var getSelectedForm = function() {
-        return JSON.parse(localStorage.selectedForm);
-    }
-
-    var setDataList = function(dataList) {
-        localStorage.setItem("dataList", JSON.stringify(dataList));
-    }
-
-    var getDataList = function() {
-        return JSON.parse(localStorage.dataList);
-    }
-
-    var setSelectedData = function(userId) {
-        localStorage.setItem("selectedData", "{ \"id\": "+userId+", \"label\": \""+userId+"\" }");
-    }
-
-    var getSelectedData = function() {
-        return JSON.parse(localStorage.selectedData);
+    var setSelectedData = function(dataId, dataLabel) {
+        $scope.selectedData = { "id": dataId, "label": dataLabel };
     }
 
     // dirty workaround
@@ -180,18 +152,18 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
         var found = false;
         for(var i = 0; i < next.$$route.keys.length; i++) {
-            if (next.$$route.keys[i].name == 'userId') {
+            if (next.$$route.keys[i].name == 'dataId') {
                 found = true;
             break;
             }
         }
 
         if (!found) {
-            next.$$route.keys.push({ "name": "userId", "optional": false });
+            next.$$route.keys.push({ "name": "dataId", "optional": false });
         }
-        next.$$route.originalPath = "/form/:id/user/:userId";
-        next.$$route.regexp = new RegExp("^\/form\/(?:([^\/]+))\/user\/(?:([^\/]+))$");
-        next.pathParams.userId = next.params.userId;
+        next.$$route.originalPath = "/form/:id/data/:dataId";
+        next.$$route.regexp = new RegExp("^\/form\/(?:([^\/]+))\/data\/(?:([^\/]+))$");
+        next.pathParams.dataId = next.params.dataId;
         return next;
     }
 
