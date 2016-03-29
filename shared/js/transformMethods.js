@@ -136,22 +136,66 @@
         templateOptions = oldTemplateOptions;
 
         var oneValidator;
+        var afValidator;
         for (var validatorIndex in fsValidatorsArray) {
             oneValidator = fsValidatorsArray[validatorIndex];
-            if (oneValidator['isRequired']) {
+            afValidator = validatorForFsJson(oneValidator);
+            
+            if (oneValidator['validator_type'] === "isRequired") {
                 templateOptions.required = true;
-            }
-            if (oneValidator['minLength']) {
-                templateOptions.minLength = oneValidator['minLength'];
-            }
-            if (oneValidator['maxLength']) {
-                templateOptions.maxLength = oneValidator['maxLength'];
+            } else {
+                validators[afValidator['validatorName']] = afValidator['validatorExpression'];
             }
         }
 
         callback(templateOptions, validators, expressionProperties);
         return validators;
     };
+
+    var validatorForFsJson = function(fsValidator) {
+        var afValidator = {};
+
+        afValidator['validatorName'] = nameForValidator(fsValidator);
+        afValidator['validatorExpression'] = expressionForValidator(fsValidator['expression']);
+
+        return afValidator;
+    }
+
+    var nameForValidator = function(fsValidator) {
+        var validatorName;
+
+        switch (fsValidator['validator_type']) {
+                case "minLength":
+                    validatorName = "minLength";
+                    break;
+                case "maxLength":
+                    validatorName = "maxLength";
+                    break;
+                case "minDate":
+                    validatorName = "minDate";
+                    break;
+                case "maxDate":
+                    validatorName = "maxDate";
+                    break;
+                default:
+                    // custom
+                    validatorName = fsValidator['validator_name'];
+                    break;
+        }
+
+        return validatorName;
+    }
+
+    var expressionForValidator = function(fsValidatorExpression) {
+        var expressionFunction = function($viewValue, $viewModel, scope) {
+            var regExp = new RegExp(fsValidatorExpression);
+            var value = $viewValue || $viewModel;
+            if (value) {
+                return regExp.test(value);
+            }
+        };
+        return expressionFunction;
+    }
 
     var templateOptionsForDescriptionFsJson = function(fsDescriptionJson) {
         var templateOptions = {};

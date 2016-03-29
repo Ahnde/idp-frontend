@@ -8,14 +8,14 @@ FORM =  {
           children:[CHILD *] 
         }
 
-CHILD = GROUP | DESCRIPTION | INTERACTIVE
+CHILD = CONTAINER | DESCRIPTION | INTERACTIVE
 
-GROUP = { 
-          element_id: ID, 
-          element_type: "group", 
-          children:[CHILD +], 
-          repeatable : BOOL 
-        }
+CONTAINER = { 
+              element_id: ID, 
+              element_type: "container", 
+              children:[CHILD +], 
+              repeatable : BOOL 
+            } 
 
 DESCRIPTION = {
                 element_id: ID,

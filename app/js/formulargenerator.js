@@ -28,12 +28,18 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
 formularGenerator.config(function($locationProvider,$routeProvider) {
     
     $routeProvider.
-        when('/form/:id/user/:userid', {
+        when('/form/ids', {
             controller: 'rendererController'
         }).
         when('/form/:id', {
             controller: 'rendererController'
         }).
-        otherwise({ redirectTo: '/form/1' });
+        when('/form/:id/data/ids', {
+            controller: 'rendererController'
+        }).
+        when('/form/:id/data/:dataId', {
+            controller: 'rendererController'
+        }).
+        otherwise({ redirectTo: '/' });
 });
 
