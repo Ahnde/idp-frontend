@@ -12,14 +12,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     $scope.isFormularActive = false;
 
-    $scope.$on('$routeChangeStart', function(event, next, current) {
-        if ($routeParams.dataId && next.$$route) {
-            next = queryToREST(next);
-        }
-    });
-
     $scope.$on('$routeChangeSuccess', function() {
-
+        console.log('$routeChangeSuccess');
         //clear models
         didLoadFormularData = false;
         RE.formular = {};
@@ -76,6 +70,11 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         setSelectedData($scope.selectedData.id);
 
         $routeParams.dataId = $scope.selectedData['id'].toString();
+
+        if (!didLoadFormularData) {
+            $route.current = queryToREST($route.current);
+        }
+
         $route.updateParams($routeParams);
     }
 
@@ -148,23 +147,23 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     // dirty workaround
 
     // convert query params to a restful url
-    var queryToREST = function(next) {
+    var queryToREST = function(current) {
 
         var found = false;
-        for(var i = 0; i < next.$$route.keys.length; i++) {
-            if (next.$$route.keys[i].name == 'dataId') {
+        for(var i = 0; i < current.$$route.keys.length; i++) {
+            if (current.$$route.keys[i].name == 'dataId') {
                 found = true;
             break;
             }
         }
 
         if (!found) {
-            next.$$route.keys.push({ "name": "dataId", "optional": false });
+            current.$$route.keys.push({ "name": "dataId", "optional": false });
         }
-        next.$$route.originalPath = "/form/:id/data/:dataId";
-        next.$$route.regexp = new RegExp("^\/form\/(?:([^\/]+))\/data\/(?:([^\/]+))$");
-        next.pathParams.dataId = next.params.dataId;
-        return next;
+        current.$$route.originalPath = "/form/:id/data/:dataId";
+        current.$$route.regexp = new RegExp("^\/form\/(?:([^\/]+))\/data\/(?:([^\/]+))$");
+        current.pathParams.dataId = current.params.dataId;
+        return current;
     }
 
     // create current route
