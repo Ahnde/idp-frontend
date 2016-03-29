@@ -57,7 +57,8 @@
             "mapping_key":"k_checkbox",
             "validators":[],
             "interactive_details": {
-                "label":"Checkbox Test"
+                "label":"Checkbox Test",
+                "post_label":"Checkbox Test post"
             }
         },
         {
@@ -68,6 +69,7 @@
             "validators":[],
             "interactive_details": {
                 "label":"Dropdown Test",
+                "post_label":"Dropdown Test post",
                 "defaultOption":1,
                 "options":[
                 {
@@ -92,6 +94,7 @@
             "validators":[],
             "interactive_details": {
                 "label":"Radio Test",
+                "post_label":"Radio Test post",
                 "options":[
                 {
                     "element_id":"1241",
@@ -111,6 +114,7 @@
             "validators":[],
             "interactive_details": {
                 "label":"Date Test",
+                "post_label":"Date Test post",
                 "dateFormat":"dd/mm/yyyy"
             }
         }]
