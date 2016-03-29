@@ -13,7 +13,6 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     $scope.isFormularActive = false;
 
     $scope.$on('$routeChangeSuccess', function() {
-        console.log('$routeChangeSuccess');
         //clear models
         didLoadFormularData = false;
         RE.formular = {};
