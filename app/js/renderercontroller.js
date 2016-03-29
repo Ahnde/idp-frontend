@@ -16,7 +16,6 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         //clear models
         didLoadFormularData = false;
         RE.formular = {};
-        RE.formularFields = {};
 
         //load form list if not yet done
         if ($scope.formList === undefined) {
@@ -30,6 +29,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             isNewFormular = formId !== $routeParams.id;
             if (isNewFormular) {
                 formId = $routeParams.id;
+
                 loadFormWithId(formId);
                 loadDataList(formId);
             } else {
@@ -61,6 +61,10 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         }
         
         $routeParams.id = $scope.selectedForm['id'].toString();
+        delete $routeParams.dataId;
+
+        $route.current = removeDataFromUrl($route.current);
+
         $route.updateParams($routeParams);
     }
 
@@ -71,7 +75,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         $routeParams.dataId = $scope.selectedData['id'].toString();
 
         if (!didLoadFormularData) {
-            $route.current = queryToREST($route.current);
+            $route.current = addDataToUrl($route.current);
         }
 
         $route.updateParams($routeParams);
@@ -105,6 +109,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     var loadFormWithId = function(formId) {
         setSelectedForm(formId, formId);
+        
+        RE.formularFields = [];
 
         backendConnector.getFormularSpecification(formId,function(formularSpecification) {
             var arrayWithJSONs = [];
@@ -123,6 +129,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     var loadDataWithId = function(dataId) {
         setSelectedData(dataId, dataId);
+
+        RE.formular = {};
 
         backendConnector.getFormularData(dataId,function(formularData) {
             for(var key in formularData)
@@ -143,11 +151,25 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         $scope.selectedData = { "id": dataId, "label": dataLabel };
     }
 
-    // dirty workaround
+    // dirty ngroute workarounds :(
 
-    // convert query params to a restful url
-    var queryToREST = function(current) {
+    // create current route
+    var createRoute = function(current, formId) {
+        current.$$route = {};
+        current.$$route.caseInsensitivityMatch = false;
+        current.$$route.controller = "rendererController";
+        current.$$route.keys = [];
+        current.$$route.keys.push({ "name": "id", "optional": false });
+        current.$$route.originalPath = "/form/:id";
+        current.$$route.regexp = new RegExp("^\/form\/(?:([^\/]+))$");
+        current.$$route.reloadOnSearch = true;
+        current.params.id = formId;
+        current.pathParams.id = formId;
+        return current;
+    }
 
+    // convert current route so that data will be requested RESTful
+    var addDataToUrl = function(current) {
         var found = false;
         for(var i = 0; i < current.$$route.keys.length; i++) {
             if (current.$$route.keys[i].name == 'dataId') {
@@ -165,18 +187,17 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         return current;
     }
 
-    // create current route
-    var createRoute = function(current, formId) {
-        current.$$route = {};
-        current.$$route.caseInsensitivityMatch = false;
-        current.$$route.controller = "rendererController";
-        current.$$route.keys = [];
-        current.$$route.keys.push({ "name": "id", "optional": false });
+    // convert current route, so that no more data appear in it
+    var removeDataFromUrl = function(current) {
+        current.$$route.keys = current.$$route.keys.filter(function (element) {
+                                    return element.name !== "dataId";
+                                });
         current.$$route.originalPath = "/form/:id";
         current.$$route.regexp = new RegExp("^\/form\/(?:([^\/]+))$");
-        current.$$route.reloadOnSearch = true;
-        current.params.id = formId;
-        current.pathParams.id = formId;
+        delete current.pathParams.dataId; 
+        delete current.params.dataId;
         return current;
     }
+
+    
 });
