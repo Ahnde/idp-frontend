@@ -11,7 +11,8 @@
         "key": "k_input2",
         "templateOptions": {
             "label": "Input Test 2",
-            "placeholder": "Placeholder 2"
+            "placeholder": "Placeholder 2",
+            "postLabel": "Post Input Test 2"
         },
         "type": "input"
     },
@@ -27,7 +28,8 @@
         "key": "k_input4",
         "templateOptions": {
             "label": "Input Test 4",
-            "placeholder": "Placeholder 4"
+            "placeholder": "Placeholder 4",
+            "postLabel": "Post Input Test 4"
         },
         "type": "input"
     },

@@ -20,7 +20,8 @@
             "interactive_type": "date",
             "interactive_details": {
                 "dateFormat": "dd/mm/yyyy",
-                "label": "Date Test 2"
+                "label": "Date Test 2",
+                "post_label": "Post Date Test 2"
             },
             "mapping_key": "k_date2",
             "validators": []
@@ -42,7 +43,8 @@
             "interactive_type": "date",
             "interactive_details": {
                 "dateFormat": "dd/mm/yyyy",
-                "label": "Date Test 4"
+                "label": "Date Test 4",
+                "post_label": "Post Date Test 4"
             },
             "mapping_key": "k_date4",
             "validators": []

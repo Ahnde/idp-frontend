@@ -27,6 +27,7 @@
             "interactive_details": {
                 "defaultOption": 1,
                 "label": "Dropdown Test 2",
+                "post_label": "Post Dropdown Test 2",
                 "options": [
                     {
                         "element_id": "121",
@@ -73,6 +74,7 @@
             "interactive_details": {
                 "defaultOption": 1,
                 "label": "Dropdown Test 4",
+                "post_label": "Post Dropdown Test 4",
                 "options": [
                     {
                         "element_id": "141",

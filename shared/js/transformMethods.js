@@ -9,7 +9,6 @@
         };
 
         return angularFormlyJsonArray;
-
     };
 
     var angularFormlyJsonArrayForFsJson = function(fsJson) {
@@ -265,6 +264,8 @@
     };
 
 
+
+//not in use anymore...
 
 /*
  *

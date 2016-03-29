@@ -23,6 +23,7 @@
             "interactive_details": {
                 "input_type": "text",
                 "label": "Input Test 2",
+                "post_label": "Post Input Test 2",
                 "length": 256,
                 "placeholder": "Placeholder 2"
             },
@@ -49,6 +50,7 @@
             "interactive_details": {
                 "input_type": "text",
                 "label": "Input Test 4",
+                "post_label": "Post Input Test 4",
                 "length": 256,
                 "placeholder": "Placeholder 4"
             },

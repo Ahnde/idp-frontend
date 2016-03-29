@@ -22,7 +22,8 @@
                 {
                     "name": "2/2"
                 }
-            ]
+            ],
+            "postLabel": "Post Dropdown Test 2"
         },
         "type": "select"
     },
@@ -61,7 +62,8 @@
                 {
                     "name": "4/4"
                 }
-            ]
+            ],
+            "postLabel": "Post Dropdown Test 4"
         },
         "type": "select"
     },

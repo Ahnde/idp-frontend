@@ -13,6 +13,7 @@
         "templateOptions": {
             "datepickerPopup": "dd/mm/yyyy",
             "label": "Date Test 2",
+            "postLabel": "Post Date Test 2",
             "type": "text"
         },
         "type": "datepicker"
@@ -31,6 +32,7 @@
         "templateOptions": {
             "datepickerPopup": "dd/mm/yyyy",
             "label": "Date Test 4",
+            "postLabel": "Post Date Test 4",
             "type": "text"
         },
         "type": "datepicker"

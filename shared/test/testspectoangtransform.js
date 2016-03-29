@@ -93,12 +93,11 @@ describe('jsonTransformer', function () {
     it('should map one interactive inputfield to one af-inputfield', function () {
         var testcase = getJSONFixture('testcase_single_inputfield.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-        
+
         testJsonMapping(result, 'expected_testcase_single_inputfield.json')
     });
 
     // many inputfields
-    // TODO: support different types
     it('should map many interactive inputfields to many af-inputfields', function () {
         var testcase = getJSONFixture('testcase_many_inputfields.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
@@ -166,7 +165,7 @@ describe('jsonTransformer', function () {
     it('should map many interactive dates to many af-dates', function () {
         var testcase = getJSONFixture('testcase_many_dates.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-
+        
         testJsonMapping(result, 'expected_testcase_many_dates.json')
     });
 
@@ -174,7 +173,7 @@ describe('jsonTransformer', function () {
     it('should map many different interactive elements to the appropriate af-json', function () {
         var testcase = getJSONFixture('testcase_many_interactives.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-        
+
         testJsonMapping(result, 'expected_testcase_many_interactives.json')
     });
 

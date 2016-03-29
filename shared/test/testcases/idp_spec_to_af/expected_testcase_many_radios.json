@@ -22,7 +22,8 @@
                 {
                     "name": "2/2"
                 }
-            ]
+            ],
+            "postLabel": "Post Radio Test 2"
         },
         "type": "radio"
     },
@@ -61,7 +62,8 @@
                 {
                     "name": "4/4"
                 }
-            ]
+            ],
+            "postLabel": "Post Radio Test 4"
         },
         "type": "radio"
     },

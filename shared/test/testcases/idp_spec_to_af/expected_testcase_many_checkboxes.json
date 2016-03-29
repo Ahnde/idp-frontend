@@ -9,7 +9,8 @@
     {
         "key": "k_checkbox2",
         "templateOptions": {
-            "label": "Checkbox Test 2"
+            "label": "Checkbox Test 2",
+            "postLabel": "Post Checkbox Test 2"
         },
         "type": "checkbox"
     },
@@ -23,7 +24,8 @@
     {
         "key": "k_checkbox4",
         "templateOptions": {
-            "label": "Checkbox Test 4"
+            "label": "Checkbox Test 4",
+            "postLabel": "Post Checkbox Test 4"
         },
         "type": "checkbox"
     },
