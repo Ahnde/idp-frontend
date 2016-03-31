@@ -10,21 +10,19 @@ FORM =  {
 
 CHILD = CONTAINER | DESCRIPTION | INTERACTIVE
 
+DESCRIPTION = {
+                element_id: ID,
+                description_type: "text" | "image" | "video"
+
+                (text: STRING | urls: [ URL *] ,)?
+              }
+
 CONTAINER = { 
               element_id: ID, 
               element_type: "container", 
               children:[CHILD +], 
               repeatable : BOOL 
             } 
-
-DESCRIPTION = {
-                element_id: ID,
-                description_type: DESCRIPTION_TYPE,
-
-                (text: STRING | urls: [ URL *] ,)?
-              }
-
-DESCRIPTION_TYPE = "text" | "image" | "video"
 
 #this is the interactive element (like a textfield or a checkbox)
 INTERACTIVE = {
@@ -34,7 +32,6 @@ INTERACTIVE = {
                 validators: [VALIDATOR +],
                 interactive_details: [INTERACTIVE_DETAIL *]
               }
-
 
 INTERACTIVE_DETAIL = {
                         (label: STRING, )?
@@ -49,11 +46,16 @@ INTERACTIVE_DETAIL = {
 
 OPTION = {
        "label":STRING
-}
+       }
+
 
 INTERACTIVE_TYPE = "textarea" | "input" | "date" | "number" | "radio" | "dropdown" | "checkbox"
 
+
 INPUT_TYPE = "text" | "password" | "number"
+
+
+
 
 VALIDATOR = {
               element_id: ID,

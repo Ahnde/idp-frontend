@@ -256,7 +256,7 @@
             var option = fsOptionsArray[optionIndex];
             var afOptionJson = {};
             afOptionJson.name = option.label;
-            afOptionJson.value = option.id;
+            afOptionJson.value = option.element_id;
             afOptionsArray.push(afOptionJson);
         };
 
