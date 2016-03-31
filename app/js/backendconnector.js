@@ -98,8 +98,9 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
             url: 'http://'+backendURL+':8080/IDPBackend/rest/data',
             data: formularData
 		}).then(function (response, status) {
+			console.log("Formular-Data saved successfully in backend");
 			if (printLogs) {
-				console.log("Formular-Data saved successfully in backend: ");
+				
 				console.log(response.data);
 				console.log("");
 			}
@@ -120,8 +121,8 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
             url: 'http://'+backendURL+':8080/IDPBackend/rest/data/' + userid,
             data: formularData
 		}).then(function (response, status) {
+			console.log("Formular-Data updated successfully in backend");
 			if (printLogs) {
-				console.log("Formular-Data updated successfully in backend: ");
 				console.log(response.data);
 				console.log("");
 			}

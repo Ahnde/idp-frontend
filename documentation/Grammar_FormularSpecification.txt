@@ -12,6 +12,7 @@ CHILD = CONTAINER | DESCRIPTION | INTERACTIVE
 
 DESCRIPTION = {
                 element_id: ID,
+                element_type: "description"
                 description_type: "text" | "image" | "video"
 
                 (text: STRING | urls: [ URL *] ,)?
@@ -27,6 +28,7 @@ CONTAINER = {
 #this is the interactive element (like a textfield or a checkbox)
 INTERACTIVE = {
                 element_id: ID,
+                element_type  : "interactive"
                 interactive_type: INTERACTIVE_TYPE,
                 mapping_key : MAPPING_KEY,
                 validators: [VALIDATOR +],
