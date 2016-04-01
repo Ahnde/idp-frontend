@@ -139,12 +139,7 @@
         for (var validatorIndex in fsValidatorsArray) {
             oneValidator = fsValidatorsArray[validatorIndex];
             afValidator = validatorForFsJson(oneValidator);
-            
-            if (oneValidator['validator_type'] === "isRequired") {
-                templateOptions.required = true;
-            } else {
-                validators[afValidator['validatorName']] = afValidator['validatorExpression'];
-            }
+            validators[afValidator['validatorName']] = afValidator['validatorExpression'];
         }
 
         callback(templateOptions, validators, expressionProperties);
@@ -164,6 +159,9 @@
         var validatorName;
 
         switch (fsValidator['validator_type']) {
+                case "isRequired":
+                    validatorName = "isRequired";
+                    break;
                 case "minLength":
                     validatorName = "minLength";
                     break;
