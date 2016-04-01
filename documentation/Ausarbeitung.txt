@@ -1,0 +1,10 @@
+Contributed Paper
+
+Michi:
+- Editor
+- Backend
+- Transformation
+
+Andi:
+- Frontend
+- Formularspezifikation
