@@ -140,6 +140,10 @@
             oneValidator = fsValidatorsArray[validatorIndex];
             afValidator = validatorForFsJson(oneValidator);
             validators[afValidator['validatorName']] = afValidator['validatorExpression'];
+            // if (oneValidator['validator_type'] === "isRequired") {
+            //     validatorName = "isRequired2";
+            //     validatorExpression = expressionForValidator("^$");
+            // }
         }
 
         callback(templateOptions, validators, expressionProperties);
@@ -149,38 +153,40 @@
     var validatorForFsJson = function(fsValidator) {
         var afValidator = {};
 
-        afValidator['validatorName'] = nameForValidator(fsValidator);
-        afValidator['validatorExpression'] = expressionForValidator(fsValidator['expression']);
-
-        return afValidator;
-    }
-
-    var nameForValidator = function(fsValidator) {
         var validatorName;
-
+        var validatorExpression;
         switch (fsValidator['validator_type']) {
-                case "isRequired":
-                    validatorName = "isRequired";
-                    break;
-                case "minLength":
-                    validatorName = "minLength";
-                    break;
-                case "maxLength":
-                    validatorName = "maxLength";
-                    break;
-                case "minDate":
-                    validatorName = "minDate";
-                    break;
-                case "maxDate":
-                    validatorName = "maxDate";
-                    break;
-                default:
-                    // custom
-                    validatorName = fsValidator['validator_name'];
-                    break;
+            case "isRequired":
+                validatorName = "isRequired";
+                validatorExpression = expressionForValidator("([^\s]*)");
+                break;
+            case "minLength":
+                validatorName = "minLength";
+                validatorExpression = expressionForValidator("([^\s]*)");
+                break;
+            case "maxLength":
+                validatorName = "maxLength";
+                validatorExpression = expressionForValidator("([^\s]*)");
+                break;
+            case "minDate":
+                validatorName = "minDate";
+                validatorExpression = expressionForValidator("([^\s]*)");
+                break;
+            case "maxDate":
+                validatorName = "maxDate";
+                validatorExpression = expressionForValidator("([^\s]*)");
+                break;
+            default:
+                // custom
+                validatorName = fsValidator['validator_name'];
+                validatorExpression = expressionForValidator(fsValidator['expression']);
+                break;
         }
 
-        return validatorName;
+        afValidator['validatorName'] = validatorName;
+        afValidator['validatorExpression'] = validatorExpression;
+        
+        return afValidator;
     }
 
     var expressionForValidator = function(fsValidatorExpression) {
