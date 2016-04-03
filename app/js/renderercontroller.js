@@ -89,7 +89,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
                 if (success) { } else { }
             });
         } else {
-            backendConnector.postFormularData(RE.formular,function(success, error) {
+            backendConnector.postFormularData(formId,RE.formular,function(success, error) {
                 if (success) { } else { }
             });
         }
@@ -112,7 +112,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         
         RE.formularFields = [];
 
-        backendConnector.getFormularSpecification(formId,function(formularSpecification) {
+        backendConnector.getFormularSpecification(formId, function(formularSpecification) {
             var arrayWithJSONs = [];
 
             arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
@@ -122,7 +122,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     }
 
     var loadDataList = function(formId) {
-        backendConnector.getAllFormularDatas(formId,function(response) {
+        backendConnector.getAllFormularDatas(formId, function(response) {
             $scope.dataList = response.dataList;
         });
     }
@@ -132,7 +132,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
         RE.formular = {};
 
-        backendConnector.getFormularData(dataId,function(formularData) {
+        backendConnector.getFormularData(dataId, function(formularData) {
             for(var key in formularData)
             {
                 RE.formular[key] = formularData[key];
