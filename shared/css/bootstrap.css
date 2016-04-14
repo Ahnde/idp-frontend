@@ -1739,7 +1739,7 @@ legend {
     border-bottom: 1px solid #e5e5e5;
 }
 label {
-    display: inline-block;
+    /* display: inline-block; */
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: 700;
@@ -1797,8 +1797,8 @@ output {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control {
-    display: inline-block;
-    width: 50%;
+    display: block;
+    /* width: 50%; */
     height: 34px;
     padding: 6px 12px;
     font-size: 14px;
@@ -1814,6 +1814,12 @@ output {
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+.idp .form-control
+{
+    display: inline-block;
+}
+
 .form-control:focus {
     border-color: #66afe9;
     outline: 0;
