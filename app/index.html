@@ -38,7 +38,7 @@
 
             <div class="box">
                 <div class="panel panel-default">
-                    <form ng-submit="onSubmit()">
+                    <form name="idpForm" ng-submit="onSubmit()">
   				        <formly-form model="formular" fields="formularFields" form="">
                             <p ng-show="isFormularActive">
     				            <button type="submit" ng-disabled="vm.formularFields.$invalid">Submit</button>
