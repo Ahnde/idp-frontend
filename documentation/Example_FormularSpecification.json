@@ -1,10 +1,11 @@
 {
-    "element_id":"1",
-    "element_type":"form",
-    "metadata":[],
+    "element_id": "1",
+    "element_type": "form",
+    "label": "Example formular",
+    "metadata": [],
     "children":[
     {        
-        "element_id":"11",
+        "element_id": "11",
         "element_type": "container",
         "repeatable":false,
         "children":[

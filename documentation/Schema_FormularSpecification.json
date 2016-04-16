@@ -122,6 +122,7 @@
         "properties": {
             "element_id": { "$ref": "#/definitions/element_id" },
             "element_type": { "$ref": "#/definitions/element_type" },
+            "label": { "$ref": "#/definitions/label" },
             "children": { "$ref": "#/definitions/children" }
         },
         "required": [

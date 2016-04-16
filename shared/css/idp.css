@@ -1,4 +1,22 @@
+.idp label
+{
+    display: inline-block;
+}
 .idp .form-control
 {
     display: inline-block;
+}
+.menu
+{
+    display: inline-block;
+    margin-right: 10px;
+    width: 15%;
+}
+.menu label
+{
+    width:100%;
+}
+.menu select
+{
+    width:100%;
 }

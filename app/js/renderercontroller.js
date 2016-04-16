@@ -6,11 +6,14 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         didLoadFormularData;
 
     var RE = $scope;
+    var formSelectElement = document.getElementById("form-select");
+    var dataSelectElement = document.getElementById("data-select");
 
     RE.formular = {};
     RE.formularFields = [];
 
     $scope.isFormularActive = false;
+    $scope.formularTitle = "";
 
     $scope.$on('$routeChangeSuccess', function() {
         //clear models
@@ -32,9 +35,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
                 loadFormWithId(formId);
                 loadDataList(formId);
-            } else {
-                setSelectedForm(formId);
             }
+            setSelectedForm(formId);
             $scope.isFormularActive = true;
         } else {
             $scope.selectedForm = {};
@@ -108,13 +110,11 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     }
 
     var loadFormWithId = function(formId) {
-        setSelectedForm(formId, formId);
-        
         RE.formularFields = [];
-
         backendConnector.getFormularSpecification(formId, function(formularSpecification) {
             var arrayWithJSONs = [];
-
+            
+            $scope.formularTitle = formularSpecification.label
             arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
 
             RE.formularFields = arrayWithJSONs;
@@ -128,8 +128,6 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     }
 
     var loadDataWithId = function(dataId) {
-        setSelectedData(dataId, dataId);
-
         RE.formular = {};
 
         backendConnector.getFormularData(dataId, function(formularData) {
@@ -137,18 +135,19 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             {
                 RE.formular[key] = formularData[key];
             }
+            setSelectedData(dataId);
             didLoadFormularData = true;
         });
     }
 
     // setter
 
-    var setSelectedForm = function(formId, formLabel) {
-        $scope.selectedForm = { "id": formId, "label": formLabel };
+    var setSelectedForm = function(formId) {
+        $scope.selectedForm = { "id": formId };
     }
 
-    var setSelectedData = function(dataId, dataLabel) {
-        $scope.selectedData = { "id": dataId, "label": dataLabel };
+    var setSelectedData = function(dataId) {
+        $scope.selectedData = { "id": dataId };
     }
 
     // dirty ngroute workarounds :(

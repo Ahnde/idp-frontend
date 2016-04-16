@@ -3,7 +3,8 @@ BNF - Grammar for FormSpecification
 
 FORM =  { 
           element_id: ID, 
-          element_type: "form", 
+          element_type: "form",
+          label: STRING,
           metadata : [FORM_METADATA *],
           children:[CHILD *] 
         }
