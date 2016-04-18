@@ -1,3 +1,9 @@
+    // FORMULAR DATA
+    var jsonFromLabelAndData = function(dataLabel, formularData) {
+        return{"label": dataLabel, "data":formularData};
+    };
+
+    // FORMULAR FORM
     var angularFromIDPSpec = function(formularSpecification) {
         var formularSpecificationArray = formularSpecification['children'];
         var angularFormlyJsonArray = [];

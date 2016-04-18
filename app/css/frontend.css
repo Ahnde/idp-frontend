@@ -18,3 +18,9 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.error-label {
+    color: #FF0000;
+}
+.success-label {
+    color: #00CC00;
+}

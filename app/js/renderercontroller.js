@@ -5,9 +5,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         dataId,
         didLoadFormularData;
 
+    var removeIsNewDataAfterRouteChange = false;
     var RE = $scope;
-    var formSelectElement = document.getElementById("form-select");
-    var dataSelectElement = document.getElementById("data-select");
 
     RE.formular = {};
     RE.formularFields = [];
@@ -17,8 +16,14 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     $scope.$on('$routeChangeSuccess', function() {
         //clear models
-        didLoadFormularData = false;
         RE.formular = {};
+        didLoadFormularData = false;
+        $scope.savingError = false;
+        $scope.savingSuccess = false;
+        if (!removeIsNewDataAfterRouteChange) {
+            $scope.isNewFormData = false;
+        }
+        removeIsNewDataAfterRouteChange = false;
 
         //load form list if not yet done
         if ($scope.formList === undefined) {
@@ -83,16 +88,49 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         $route.updateParams($routeParams);
     }
 
+    RE.newFormData = newFormData;
+    function newFormData() {
+        $scope.isNewFormData = true;
+
+        if ($routeParams.dataId) {
+            removeIsNewDataAfterRouteChange = true;
+            $routeParams.dataId = undefined;
+            $route.current = removeDataFromUrl($route.current);
+            $route.updateParams($routeParams);
+        }
+    }
+
     //user triggered a formular-data submit
     RE.onSubmit = onSubmit;
     function onSubmit() {
         if (didLoadFormularData) {
-            backendConnector.updateFormularData(dataId,RE.formular,function(success, error) {
-                if (success) { } else { }
+            var dataSelectElement = document.getElementById('data-select');
+            var label = dataSelectElement.options[dataSelectElement.selectedIndex].innerHTML;
+            var data = jsonTransformer.createResponseForLabelAndData(label, RE.formular);
+
+            backendConnector.updateFormularData(dataId,label,data,function(success, error) {
+                if (success) { 
+                    $scope.savingSuccess = true;
+                    $scope.savingError = false;
+                } else { 
+                    $scope.savingSuccess = false;
+                    $scope.savingError = true;
+                }
             });
         } else {
-            backendConnector.postFormularData(formId,RE.formular,function(success, error) {
-                if (success) { } else { }
+            var label = $scope.newDataLabel;
+            var data = jsonTransformer.createResponseForLabelAndData(label, RE.formular);
+
+            backendConnector.postFormularData(formId,label,data,function(success, error) {
+                if (success) {
+                    $scope.isNewFormData = "";
+                    $scope.newDataLabel = "";
+                    $scope.savingSuccess = true;
+                    $scope.savingError = false;
+                } else {
+                    $scope.savingSuccess = false;
+                    $scope.savingError = true;
+                }
             });
         }
     }
@@ -131,9 +169,10 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         RE.formular = {};
 
         backendConnector.getFormularData(dataId, function(formularData) {
-            for(var key in formularData)
+            var data = formularData.data;
+            for(var key in data)
             {
-                RE.formular[key] = formularData[key];
+                RE.formular[key] = data[key];
             }
             setSelectedData(dataId);
             didLoadFormularData = true;

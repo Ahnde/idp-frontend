@@ -37,7 +37,11 @@
                 </div>
                 <div class="menu">
                     <label class="control-label" ng-show="isFormularActive">Formular Datas:</label>
-                    <select id="data-select" class="form-select-control" ng-change="dataChanged()" ng-options="item as item.label for item in dataList track by item.id" ng-model="selectedData" ng-show="isFormularActive"></select>
+                    <select id="data-select" class="form-select-control" ng-change="dataChanged()" ng-options="item as item.label for item in dataList track by item.id" ng-model="selectedData" ng-show="isFormularActive" ng-disabled="isNewFormData"></select>
+                </div>
+                <div class="menu" ng-show="isFormularActive">
+                    <button type="button" ng-click="newFormData()" >+</button>
+                    <input type="text" id="dataLabelInputField" ng-model="newDataLabel" ng-show="isFormularActive && isNewFormData"></button>
                 </div>
             </div>
 
@@ -50,7 +54,11 @@
                         <form name="idpForm" ng-submit="onSubmit()">
   				          <formly-form class="idp" model="formular" fields="formularFields" form="">
                                 <p ng-show="isFormularActive">
-    				                <button type="submit" ng-disabled="vm.formularFields.$invalid">Submit</button>
+                                    <div class="menu" ng-show="isFormularActive">
+                                        <button type="submit" ng-disabled="vm.formularFields.$invalid">Submit</button>
+                                        <label class="error-label" ng-show="savingError">Content could not be saved.</label>
+                                        <label class="success-label" ng-show="savingSuccess">Content has been saved.</label>
+                                    </div>
                                 </p>
   				          </formly-form>
 			         </form>
