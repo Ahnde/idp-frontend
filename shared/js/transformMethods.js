@@ -140,57 +140,70 @@
 
         templateOptions = oldTemplateOptions;
 
-        var oneValidator;
-        var afValidator;
+        var oneValidator,
+            afValidator,
+            theValidator;
         for (var validatorIndex in fsValidatorsArray) {
             oneValidator = fsValidatorsArray[validatorIndex];
             afValidator = validatorForFsJson(oneValidator);
-            validators[afValidator['validatorName']] = afValidator['validatorExpression'];
-            // if (oneValidator['validator_type'] === "isRequired") {
-            //     validatorName = "isRequired2";
-            //     validatorExpression = expressionForValidator("^$");
-            // }
+
+            theValidator = {};
+            theValidator.expression = afValidator['validatorExpression'];
+            theValidator.message = afValidator['validatorMessage'];
+
+            validators[afValidator['validatorName']] = theValidator;
         }
 
+        console.log(validators);
+
         callback(templateOptions, validators, expressionProperties);
-        return validators;
     };
 
     var validatorForFsJson = function(fsValidator) {
         var afValidator = {};
 
-        var validatorName;
-        var validatorExpression;
+        var validatorName,
+            validatorExpression,
+            validatorMessage;
         switch (fsValidator['validator_type']) {
             case "isRequired":
                 validatorName = "isRequired";
                 validatorExpression = expressionForValidator("([^\s]*)");
+                validatorMessage = "This field is required";
                 break;
             case "minLength":
                 validatorName = "minLength";
                 validatorExpression = expressionForValidator("([^\s]*)");
+                validatorMessage = "The min length was exceeded";
                 break;
             case "maxLength":
                 validatorName = "maxLength";
                 validatorExpression = expressionForValidator("([^\s]*)");
+                validatorMessage = "The max length was exceeded";
                 break;
             case "minDate":
                 validatorName = "minDate";
                 validatorExpression = expressionForValidator("([^\s]*)");
+                validatorMessage = "The min date was exceeded";
                 break;
             case "maxDate":
                 validatorName = "maxDate";
                 validatorExpression = expressionForValidator("([^\s]*)");
+                validatorMessage = "The max date was exceeded";
                 break;
             default:
                 // custom
                 validatorName = fsValidator['validator_name'];
                 validatorExpression = expressionForValidator(fsValidator['expression']);
+                validatorMessage = "The custom validation failed";
                 break;
         }
 
+        validatorMessage = fsValidator['message'];
+
         afValidator['validatorName'] = validatorName;
         afValidator['validatorExpression'] = validatorExpression;
+        afValidator['validatorMessage'] = '"'+validatorMessage+'"';
         
         return afValidator;
     }

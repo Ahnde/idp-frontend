@@ -6,12 +6,12 @@ body {
 .box {
     padding-top: 10px;
 }
-/*.panel {
-    padding-left: 10px;
+.form-label {
     padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}*/
+}
+.form-postlabel {
+    padding-left: 10px;
+}
 .form-fields {
     padding-left: 10px;
     margin-right: 10px;
@@ -23,4 +23,12 @@ body {
 }
 .success-label {
     color: #00CC00;
+}
+.validation-block {
+    display: inline-block;
+}
+.validation-message {
+    padding-right: 10px;
+    display: inline-block;
+    color: #a94442;
 }
