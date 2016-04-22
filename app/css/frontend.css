@@ -26,9 +26,27 @@ body {
 }
 .validation-block {
     display: inline-block;
-}
-.validation-message {
-    padding-right: 10px;
-    display: inline-block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
     color: #a94442;
+    background-color: #eee9e9;
+    z-index: 10;
+    border-style: groove;
+    border-width: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 20%;
+    clear: both;
+    height:auto;
+    overflow:auto;
+}
+.inline {
+    display: inline-block;
+}
+.upup {
+    position: static;
+    bottom: 100px;
 }
