@@ -151,7 +151,11 @@
             theValidator.expression = afValidator['validatorExpression'];
             theValidator.message = afValidator['validatorMessage'];
 
-            validators[afValidator['validatorName']] = theValidator;
+            // if (oneValidator['validator_type'] === "isRequired") {
+            //     templateOptions.required = true;
+            // } else {
+                validators[afValidator['validatorName']] = theValidator;
+            // }
         }
 
         console.log(validators);

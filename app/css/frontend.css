@@ -44,7 +44,3 @@ body {
 .inline {
     display: inline-block;
 }
-.upup {
-    position: static;
-    bottom: -100px;
-}
