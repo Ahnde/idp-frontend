@@ -19,9 +19,15 @@ body {
     margin-bottom: 10px;
 }
 .error-label {
+    width: 100%;
     color: #FF0000;
 }
+.warning-label {
+    width: 100%;
+    color: #CCCC00;
+}
 .success-label {
+    width: 100%;
     color: #00CC00;
 }
 .validation-block {

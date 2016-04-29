@@ -81,7 +81,6 @@
                 afJson.expressionProperties = callbackExpressionProperties;
             });
         }
-        
         return afJson;
     };
 
@@ -151,14 +150,8 @@
             theValidator.expression = afValidator['validatorExpression'];
             theValidator.message = afValidator['validatorMessage'];
 
-            // if (oneValidator['validator_type'] === "isRequired") {
-            //     templateOptions.required = true;
-            // } else {
-                validators[afValidator['validatorName']] = theValidator;
-            // }
+            validators[afValidator['validatorName']] = theValidator;
         }
-
-        console.log(validators);
 
         callback(templateOptions, validators, expressionProperties);
     };
@@ -172,7 +165,8 @@
         switch (fsValidator['validator_type']) {
             case "isRequired":
                 validatorName = "isRequired";
-                validatorExpression = expressionForValidator("([^\s]*)");
+                validatorExpression = '$viewValue != ""';
+                // validatorExpression = expressionForValidator("([^\s]*)");
                 validatorMessage = "This field is required";
                 break;
             case "minLength":

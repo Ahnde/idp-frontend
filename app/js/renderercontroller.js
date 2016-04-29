@@ -11,6 +11,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     RE.formular = {};
     RE.formularFields = [];
 
+    $scope.notAllRequiredFieldsAreFilledOut = false;
     $scope.isFormularActive = false;
     $scope.formularTitle = "";
 
@@ -20,6 +21,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         didLoadFormularData = false;
         $scope.savingError = false;
         $scope.savingSuccess = false;
+        modifyAllInvalidRequiredFieldsAsIsTouched(false);
+
         if (!removeIsNewDataAfterRouteChange) {
             $scope.isNewFormData = false;
         }
@@ -103,6 +106,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     //user triggered a formular-data submit
     RE.onSubmit = onSubmit;
     function onSubmit() {
+        modifyAllInvalidRequiredFieldsAsIsTouched(true);
+        
         if (didLoadFormularData) {
             var dataSelectElement = document.getElementById('data-select');
             var label = dataSelectElement.options[dataSelectElement.selectedIndex].innerHTML;
@@ -188,6 +193,47 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     var setSelectedData = function(dataId) {
         $scope.selectedData = { "id": dataId };
     }
+
+    // helper for required fields
+
+    var modifyAllInvalidRequiredFieldsAsIsTouched = function(isTouched) {
+        $scope.notAllRequiredFieldsAreFilledOut = false;
+
+        for (var key in RE.formularFields) {
+            var oneFormField = RE.formularFields[key];
+            if (oneFormField.validators && oneFormField.validators.isRequired) {
+                if (!RE.formular[oneFormField.key]) {
+                    if (isTouched) {
+                        touchField(oneFormField);    
+                        $scope.notAllRequiredFieldsAreFilledOut = true;
+                    } else {
+                        untouchField(oneFormField);    
+                    }
+                }
+            }
+        }
+    }
+
+    // make formularfield "touched" so that its error can be shown
+    var touchField = function(formularfield) {
+        formularfield.formControl.$untouched = false;
+        formularfield.formControl.$touched = true;
+        formularfield.formControl.$pristine = false;
+        formularfield.formControl.$dirty = true;
+        formularfield.formControl.$valid = false;
+        formularfield.formControl.$invalid = true;
+    }
+
+    // remove the "touched" from a formularfield (since new formulardata has been loaded)
+    var untouchField = function(formularfield) {
+        formularfield.formControl.$untouched = true;
+        formularfield.formControl.$touched = false;
+        formularfield.formControl.$pristine = true;
+        formularfield.formControl.$dirty = false;
+        formularfield.formControl.$valid = true;
+        formularfield.formControl.$invalid = false;
+    }
+
 
     // dirty ngroute workarounds :(
 

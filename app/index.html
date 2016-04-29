@@ -53,10 +53,11 @@
                         <form name="idpForm" ng-submit="onSubmit()">
   				          <formly-form class="idp" model="formular" fields="formularFields" form="">
                                 <p ng-show="isFormularActive">
-                                    <div class="menu" ng-show="isFormularActive">
+                                    <div ng-show="isFormularActive">
                                         <button type="submit" ng-disabled="vm.formularFields.$invalid">Submit</button>
-                                        <label class="error-label" ng-show="savingError">Content could not be saved.</label>
-                                        <label class="success-label" ng-show="savingSuccess">Content has been saved.</label>
+                                        <label class="error-label" ng-if="savingError">Content could not be saved.</label>
+                                        <label class="warning-label" ng-if="notAllRequiredFieldsAreFilledOut">Warning: Not all required fields are filled out.</label>
+                                        <label class="success-label" ng-if="savingSuccess">Content has been saved.</label>
                                     </div>
                                 </p>
   				          </formly-form>
@@ -65,12 +66,12 @@
                 </div>
 			</div>
             
-            <h2>Model</h2>
+            <!-- <h2>Model</h2>
             <pre>{{formular | json}}</pre>
             <h2>Fields <small>(note, functions are not shown)</small></h2>
             <pre>{{vm.originalFields | json}}</pre>
             <h2>Form</h2>
-            <pre>{{formularFields | json}}</pre>
+            <pre>{{formularFields | json}}</pre> -->
 		</div>
 
 	</body>
