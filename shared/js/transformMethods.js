@@ -112,6 +112,9 @@
                 case "input":
                     afTypeString = "input";
                     break;
+                case "textarea":
+                    afTypeString = "textarea";
+                    break;
                 case "checkbox":
                     afTypeString = "checkbox";
                     break;
@@ -245,20 +248,32 @@
         templateOptions.label = fsInteractiveDetailsJson['label'];
         templateOptions.postLabel = fsInteractiveDetailsJson['post_label'];
 
-        if (fsInteractiveDetailsJson['length']) {
-            //TODO: template does not support this feature, yet
+        //textarea
+        if (fsInteractiveDetailsJson['rows']) {
+            templateOptions.rows = fsInteractiveDetailsJson['rows'];
         }
+        if (fsInteractiveDetailsJson['columns']) {
+            templateOptions.cols = fsInteractiveDetailsJson['columns'];
+        }
+
+        //input and textarea
         if (fsInteractiveDetailsJson['placeholder']) {
             templateOptions.placeholder = fsInteractiveDetailsJson['placeholder'];
             // templateOptions.required = true;
         };
+
+        //input
         if (fsInteractiveDetailsJson['input_type']) {
             //TODO: template does not support this feature, yet
         }
+
+        //date
         if (fsInteractiveDetailsJson['dateFormat']) {
             templateOptions.type = "text";
             templateOptions.datepickerPopup = fsInteractiveDetailsJson['dateFormat'];
         };
+
+        //dropdown
         if (fsInteractiveDetailsJson['options']) {
             templateOptions.options = angularFormlyArrayForOptions(fsInteractiveDetailsJson['options']);
 

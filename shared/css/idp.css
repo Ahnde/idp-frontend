@@ -4,7 +4,7 @@
 }
 .idp .form-control
 {
-    display: inline-block;
+    /*display: inline-block;*/
 }
 .menu
 {
@@ -23,4 +23,12 @@
 .menu input
 {
     width:80%;
+}
+.form-label {
+    padding-right: 10px;
+    vertical-align: top;
+}
+.form-postlabel {
+    padding-left: 10px;
+    vertical-align: top;
 }

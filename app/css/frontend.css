@@ -6,12 +6,6 @@ body {
 .box {
     padding-top: 10px;
 }
-.form-label {
-    padding-right: 10px;
-}
-.form-postlabel {
-    padding-left: 10px;
-}
 .form-fields {
     padding-left: 10px;
     margin-right: 10px;
@@ -47,6 +41,9 @@ body {
     height:auto;
     overflow:auto;
 }
-.inline {
+.form-inline {
     display: inline-block;
+}
+.form-top {
+    
 }

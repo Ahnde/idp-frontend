@@ -10,6 +10,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     RE.formular = {};
     RE.formularFields = [];
+    RE.formularSpecification = {};
+    RE.formularData = {};
 
     $scope.notAllRequiredFieldsAreFilledOut = false;
     $scope.isFormularActive = false;
@@ -155,8 +157,10 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     var loadFormWithId = function(formId) {
         RE.formularFields = [];
         backendConnector.getFormularSpecification(formId, function(formularSpecification) {
-            var arrayWithJSONs = [];
+            RE.formularSpecification = formularSpecification;
             
+            var arrayWithJSONs = [];
+
             $scope.formularTitle = formularSpecification.label
             arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
 
@@ -174,10 +178,10 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         RE.formular = {};
 
         backendConnector.getFormularData(dataId, function(formularData) {
-            var data = formularData.data;
-            for(var key in data)
+            RE.formularData = formularData.data;
+            for(var key in RE.formularData)
             {
-                RE.formular[key] = data[key];
+                RE.formular[key] = RE.formularData[key];
             }
             setSelectedData(dataId);
             didLoadFormularData = true;
