@@ -5,13 +5,16 @@
             "label": "Dropdown Test",
             "options": [
                 {
-                    "name": "First option"
+                    "name": "First option",
+                    "value": "111"
                 },
                 {
-                    "name": "Second option"
+                    "name": "Second option",
+                    "value": "112"
                 },
                 {
-                    "name": "Third option"
+                    "name": "Third option",
+                    "value": "113"
                 }
             ]
         },

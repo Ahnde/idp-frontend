@@ -101,8 +101,24 @@ describe('jsonTransformer', function () {
     it('should map many interactive inputfields to many af-inputfields', function () {
         var testcase = getJSONFixture('testcase_many_inputfields.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-
+        
         testJsonMapping(result, 'expected_testcase_many_inputfields.json')
+    });
+
+    // one textarea
+    it('should map one interactive textarea to one af-textarea', function () {
+        var testcase = getJSONFixture('testcase_single_textarea.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+
+        testJsonMapping(result, 'expected_testcase_single_textarea.json')
+    });
+
+    // many textareas
+    it('should map many interactive textareas to many af-textareas', function () {
+        var testcase = getJSONFixture('testcase_many_textareas.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+
+        testJsonMapping(result, 'expected_testcase_many_textareas.json')
     });
 
     // one checkbox
@@ -173,7 +189,7 @@ describe('jsonTransformer', function () {
     it('should map many different interactive elements to the appropriate af-json', function () {
         var testcase = getJSONFixture('testcase_many_interactives.json');
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-
+        
         testJsonMapping(result, 'expected_testcase_many_interactives.json')
     });
 

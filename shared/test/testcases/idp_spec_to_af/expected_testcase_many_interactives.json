@@ -20,13 +20,16 @@
             "label": "Dropdown Test",
             "options": [
                 {
-                    "name": "First option"
+                    "name": "First option",
+                    "value": "131"
                 },
                 {
-                    "name": "Second option"
+                    "name": "Second option",
+                    "value": "132"
                 },
                 {
-                    "name": "Third option"
+                    "name": "Third option",
+                    "value": "133"
                 }
             ]
         },
@@ -38,10 +41,12 @@
             "label": "Radio Test",
             "options": [
                 {
-                    "name": "Option one"
+                    "name": "Option one",
+                    "value": "141"
                 },
                 {
-                    "name": "Option two"
+                    "name": "Option two",
+                    "value": "142"
                 }
             ]
         },
@@ -55,5 +60,15 @@
             "type": "text"
         },
         "type": "datepicker"
+    },
+    {
+        "key": "k_textarea",
+        "templateOptions": {
+            "cols": 1,
+            "label": "Textarea Test",
+            "placeholder": "Placeholder",
+            "rows": 1
+        },
+        "type": "textarea"
     }
 ]

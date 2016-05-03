@@ -1,0 +1,52 @@
+[
+    {
+        "key": "k_textarea1",
+        "templateOptions": {
+            "cols": 1,
+            "label": "Textarea Test 1",
+            "placeholder": "Placeholder 1",
+            "rows": 1
+        },
+        "type": "textarea"
+    },
+    {
+        "key": "k_textarea2",
+        "templateOptions": {
+            "cols": 2,
+            "label": "Textarea Test 2",
+            "placeholder": "Placeholder 2",
+            "rows": 2
+        },
+        "type": "textarea"
+    },
+    {
+        "key": "k_textarea3",
+        "templateOptions": {
+            "cols": 3,
+            "label": "Textarea Test 3",
+            "placeholder": "Placeholder 3",
+            "rows": 3
+        },
+        "type": "textarea"
+    },
+    {
+        "key": "k_textarea4",
+        "templateOptions": {
+            "cols": 7,
+            "label": "Textarea Test 4",
+            "placeholder": "Placeholder 4",
+            "rows": 3
+        },
+        "type": "textarea"
+    },
+    {
+        "key": "k_textarea5",
+        "templateOptions": {
+            "cols": 3,
+            "label": "Textarea Test 5",
+            "placeholder": "Placeholder 5",
+            "rows": 7
+        },
+        "type": "textarea"
+    }
+]

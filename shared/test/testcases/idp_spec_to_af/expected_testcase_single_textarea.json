@@ -1,0 +1,12 @@
+[
+    {
+        "key": "k_textarea",
+        "templateOptions": {
+            "cols": 1,
+            "label": "Textarea Test",
+            "placeholder": "Placeholder",
+            "rows": 1
+        },
+        "type": "textarea"
+    }
+]

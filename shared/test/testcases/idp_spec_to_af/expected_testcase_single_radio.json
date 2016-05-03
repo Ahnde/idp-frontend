@@ -5,10 +5,12 @@
             "label": "Radio Test",
             "options": [
                 {
-                    "name": "Option one"
+                    "name": "Option one",
+                    "value": "111"
                 },
                 {
-                    "name": "Option two"
+                    "name": "Option two",
+                    "value": "112"
                 }
             ]
         },

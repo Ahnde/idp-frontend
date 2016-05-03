@@ -1,0 +1,20 @@
+{
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
+        {
+            "element_id": "11",
+            "element_type": "interactive",
+            "interactive_type": "textarea",
+            "interactive_details": {
+                "label": "Textarea Test",
+                "placeholder": "Placeholder",
+                "rows": 1,
+                "columns": 1
+            },
+            "mapping_key": "k_textarea",
+            "validators": []
+        }
+    ]
+}

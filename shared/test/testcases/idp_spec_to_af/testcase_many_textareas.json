@@ -1,0 +1,72 @@
+{
+    "element_id": "1",
+    "element_type": "form",
+    "metadata": [],
+    "children": [
+        {
+            "element_id": "11",
+            "element_type": "interactive",
+            "interactive_type": "textarea",
+            "interactive_details": {
+                "label": "Textarea Test 1",
+                "placeholder": "Placeholder 1",
+                "rows": 1,
+                "columns": 1
+            },
+            "mapping_key": "k_textarea1",
+            "validators": []
+        },
+        {
+            "element_id": "12",
+            "element_type": "interactive",
+            "interactive_type": "textarea",
+            "interactive_details": {
+                "label": "Textarea Test 2",
+                "placeholder": "Placeholder 2",
+                "rows": 2,
+                "columns": 2
+            },
+            "mapping_key": "k_textarea2",
+            "validators": []
+        },
+        {
+            "element_id": "13",
+            "element_type": "interactive",
+            "interactive_type": "textarea",
+            "interactive_details": {
+                "label": "Textarea Test 3",
+                "placeholder": "Placeholder 3",
+                "rows": 3,
+                "columns": 3
+            },
+            "mapping_key": "k_textarea3",
+            "validators": []
+        },
+        {
+            "element_id": "14",
+            "element_type": "interactive",
+            "interactive_type": "textarea",
+            "interactive_details": {
+                "label": "Textarea Test 4",
+                "placeholder": "Placeholder 4",
+                "rows": 3,
+                "columns": 7
+            },
+            "mapping_key": "k_textarea4",
+            "validators": []
+        },
+        {
+            "element_id": "15",
+            "element_type": "interactive",
+            "interactive_type": "textarea",
+            "interactive_details": {
+                "label": "Textarea Test 5",
+                "placeholder": "Placeholder 5",
+                "rows": 7,
+                "columns": 3
+            },
+            "mapping_key": "k_textarea5",
+            "validators": []
+        }
+    ]
+}

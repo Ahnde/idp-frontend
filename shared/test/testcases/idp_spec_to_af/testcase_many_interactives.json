@@ -81,6 +81,19 @@
             },
             "mapping_key": "k_date",
             "validators": []
+        },
+        {
+            "element_id": "16",
+            "element_type": "interactive",
+            "interactive_type": "textarea",
+            "interactive_details": {
+                "label": "Textarea Test",
+                "placeholder": "Placeholder",
+                "rows": 1,
+                "columns": 1
+            },
+            "mapping_key": "k_textarea",
+            "validators": []
         }
     ]
 }
