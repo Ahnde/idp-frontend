@@ -179,9 +179,36 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
         backendConnector.getFormularData(dataId, function(formularData) {
             RE.formularData = formularData.data;
+
+            var inputs = document.getElementsByTagName("input");
+            var datePickerIds = [];
+
+            for (var key in inputs) {
+                if (inputs[key].type === 'date') {
+                    datePickerIds.push(inputs[key].id);
+                }
+            }
+
+            var isDate;
             for(var key in RE.formularData)
             {
-                RE.formular[key] = RE.formularData[key];
+                isDate = false;
+                if (typeof RE.formularData[key] === "string")
+                {
+                    var datePickerId;
+                    for (var index in datePickerIds) {
+                        datePickerId = datePickerIds[index];
+                        if (datePickerId.indexOf(key) > -1) {
+                            isDate = true
+                            var theMoment = moment(RE.formularData[key]);
+                            var date = theMoment.toDate();
+                            RE.formular[key] = date;
+                        }
+                    }
+                }
+                if (!isDate) {
+                    RE.formular[key] = RE.formularData[key];
+                }
             }
             setSelectedData(dataId);
             didLoadFormularData = true;

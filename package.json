@@ -22,9 +22,9 @@
   "devDependencies": {
     "angular": "^1.4.8",
     "angular-formly": "^7.3.9",
-    "angular-route": "1.4.x",
     "angular-formly-templates-bootstrap": "^6.2.0",
     "angular-mocks": "^1.4.8",
+    "angular-route": "1.4.x",
     "angular-ui-bootstrap": "^1.0.0",
     "api-check": "^7.5.5",
     "bootstrap": "^3.3.6",
@@ -37,6 +37,7 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-clear-screen-reporter": "^1.0.0",
     "karma-jasmine": "^0.3.6",
+    "moment": "^2.13.0",
     "requirejs": "^2.1.22"
   }
 }
