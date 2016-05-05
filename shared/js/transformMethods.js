@@ -169,17 +169,16 @@
             case "isRequired":
                 validatorName = "isRequired";
                 validatorExpression = '$viewValue != ""';
-                // validatorExpression = expressionForValidator("([^\s]*)");
                 validatorMessage = "This field is required";
                 break;
             case "minLength":
                 validatorName = "minLength";
-                validatorExpression = expressionForValidator("([^\s]*)");
+                validatorExpression = expressionForValidator("^.{"+fsValidator['expression']+",}$");
                 validatorMessage = "The min length was exceeded";
                 break;
             case "maxLength":
                 validatorName = "maxLength";
-                validatorExpression = expressionForValidator("([^\s]*)");
+                validatorExpression = expressionForValidator("^.{0,"+fsValidator['expression']+"}$");
                 validatorMessage = "The max length was exceeded";
                 break;
             case "minDate":
