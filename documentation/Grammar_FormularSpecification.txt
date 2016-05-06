@@ -48,8 +48,8 @@ INTERACTIVE_DETAIL = {
                       }
 
 OPTION = {
-       "label":STRING
-       }
+            label: STRING
+         }
 
 
 INTERACTIVE_TYPE = "textarea" | "input" | "date" | "number" | "radio" | "dropdown" | "checkbox"
@@ -76,15 +76,31 @@ DATE_FORMAT = {
                 default: "DD/MM/YYYY"
               }
 
-FORM_METADATA = ...
+FORM_METADATA = {
+                  title: STRING,
+                  version: VERSION,
+                  creation_date: DATE,
+                  last_modified_date: DATE,
+                  is_template: BOOL,
+                  (category: STRING, )?
+                  (creator: STRING )?
+                }
+
+VERSION = {
+            type: "productive" | "beta" | "alpha"
+            version_number: DOUBLE
+            default: 1.0
+          }
 
 MAPPING_KEY = STRING
 ID = STRING
 
 FUNCTION = "..."
 REGEX = "..."
+DATE = "..."
 
 URL = STRING
 STRING = [a-zA-Z0-9]*
+DOUBLE = INTEGER,INTEGER
 INTEGER = [1-9][0-9]*
 BOOL = true | false

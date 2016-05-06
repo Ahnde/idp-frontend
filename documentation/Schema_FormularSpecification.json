@@ -17,6 +17,13 @@
                 "format": "string",
                 "default": "DD/MM/YYYY"
             },
+            "version": {
+                "type": { 
+                    "enum": [ "productive", "beta", "alpha" ]
+                },
+                "version_number": "double",
+                "default": "1.0"
+            },
             "option": {
                 "type": "object",
                 "properties": {
@@ -116,13 +123,26 @@
                     "children": { "$ref": "#/definitions/children"}
                 },
                 "required": ["element_id", "element_type", "children"]
+            },
+            "metadata": {
+                "type": "object",
+                "properties": {
+                    "title": { "$ref": "#/definitions/text" },
+                    "version": { "$ref": "#/definitions/label" },
+                    "creation_date": { "type": "date" },
+                    "last_modified_date": { "type": "date" },
+                    "is_template": { "type": "boolean" },
+                    "category": { "$ref": "#/definitions/text" },
+                    "creator": { "$ref": "#/definitions/text" }
+                },
+                "required": ["title", "version", "creation_date", "last_modified_date", "is_template"]
             }
         },
         "type": "object",
         "properties": {
             "element_id": { "$ref": "#/definitions/element_id" },
             "element_type": { "$ref": "#/definitions/element_type" },
-            "label": { "$ref": "#/definitions/label" },
+            "metadata": { "$ref": "#/definitions/metadata" },
             "children": { "$ref": "#/definitions/children" }
         },
         "required": [
