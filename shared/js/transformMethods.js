@@ -169,33 +169,27 @@
             case "isRequired":
                 validatorName = "isRequired";
                 validatorExpression = '$viewValue != ""';
-                validatorMessage = "This field is required";
                 break;
             case "minLength":
                 validatorName = "minLength";
-                validatorExpression = expressionForValidator("^.{"+fsValidator['expression']+",}$");
-                validatorMessage = "The min length was exceeded";
+                validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$");
                 break;
             case "maxLength":
                 validatorName = "maxLength";
-                validatorExpression = expressionForValidator("^.{0,"+fsValidator['expression']+"}$");
-                validatorMessage = "The max length was exceeded";
+                validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$");
                 break;
             case "minDate":
                 validatorName = "minDate";
-                validatorExpression = expressionForValidator("([^\s]*)");
-                validatorMessage = "The min date was exceeded";
+                validatorExpression = expressionForDateValidator(fsValidator['expression'], true);
                 break;
             case "maxDate":
                 validatorName = "maxDate";
-                validatorExpression = expressionForValidator("([^\s]*)");
-                validatorMessage = "The max date was exceeded";
+                validatorExpression = expressionForDateValidator(fsValidator['expression'], false);
                 break;
             default:
                 // custom
                 validatorName = fsValidator['validator_name'];
-                validatorExpression = expressionForValidator(fsValidator['expression']);
-                validatorMessage = "The custom validation failed";
+                validatorExpression = expressionForRegExValidator(fsValidator['expression']);
                 break;
         }
 
@@ -208,7 +202,27 @@
         return afValidator;
     }
 
-    var expressionForValidator = function(fsValidatorExpression) {
+    var expressionForDateValidator = function(fsDate, inputShouldBeGreater) {
+        var expressionFunction = function($viewValue, $viewModel, scope) {
+            var value = $viewValue || $viewModel;
+            if (value) {
+                var dateDiff = moment(value).diff(moment(fsDate))
+                
+                if (dateDiff !== NaN) {
+                    if (inputShouldBeGreater) {
+                        return dateDiff >= 0;
+                    } else {
+                        return dateDiff <= 0;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        };
+        return expressionFunction;
+    }
+
+    var expressionForRegExValidator = function(fsValidatorExpression) {
         var expressionFunction = function($viewValue, $viewModel, scope) {
             var regExp = new RegExp(fsValidatorExpression);
             var value = $viewValue || $viewModel;
