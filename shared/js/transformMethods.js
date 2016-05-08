@@ -21,7 +21,7 @@
         var afJsonArray = [];
 
         if (fsJson['element_type'] === "container") {
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForContainer(fsJson));
+            afJsonArray.push(angularFormlyJsonForContainer(fsJson));
         } else if(fsJson['element_type'] === "description") {
             afJsonArray.push(angularFormlyJsonForDescription(fsJson));
         } else if(fsJson['element_type'] === "interactive") {
@@ -30,17 +30,24 @@
 
         return afJsonArray;
     };
+    
+    var angularFormlyJsonForContainer = function(fsContainerJson) {
+        var afJsonContainer = {};
 
-    var angularFormlyJsonArrayForContainer = function(fsContainerJson) {
+        afJsonContainer.wrapper = "panel";
+        afJsonContainer.key = fsContainerJson.element_id;
+        afJsonContainer.templateOptions = { "label": fsContainerJson.label };
+
         var afJsonArray = [];
-
         var fsContainerChildrenArray = fsContainerJson['children'];
-
+        
         for (var i in fsContainerChildrenArray) {
             afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForFsJson(fsContainerChildrenArray[i]));
         };
 
-        return afJsonArray;
+        afJsonContainer.fieldGroup = afJsonArray
+
+        return afJsonContainer;
     };
 
     var angularFormlyJsonForDescription = function(fsDescriptionJson) {
@@ -207,7 +214,7 @@
             var value = $viewValue || $viewModel;
             if (value) {
                 var dateDiff = moment(value).diff(moment(fsDate))
-                
+
                 if (dateDiff !== NaN) {
                     if (inputShouldBeGreater) {
                         return dateDiff >= 0;

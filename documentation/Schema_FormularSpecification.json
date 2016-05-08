@@ -119,15 +119,16 @@
                 "properties": {
                     "element_id": { "$ref": "#/definitions/element_id" },
                     "element_type": "container",
+                    "label": { "$ref": "#/definitions/text" },
                     "repeatable": { "$ref": "#/definitions/repeatable" },
                     "children": { "$ref": "#/definitions/children"}
                 },
-                "required": ["element_id", "element_type", "children"]
+                "required": ["element_id", "element_type", "label", "children"]
             },
             "metadata": {
                 "type": "object",
                 "properties": {
-                    "title": { "$ref": "#/definitions/text" },
+                    "label": { "$ref": "#/definitions/text" },
                     "version": { "$ref": "#/definitions/label" },
                     "creation_date": { "type": "date" },
                     "last_modified_date": { "type": "date" },
@@ -135,7 +136,7 @@
                     "category": { "$ref": "#/definitions/text" },
                     "creator": { "$ref": "#/definitions/text" }
                 },
-                "required": ["title", "version", "creation_date", "last_modified_date", "is_template"]
+                "required": ["label", "version", "creation_date", "last_modified_date", "is_template"]
             }
         },
         "type": "object",

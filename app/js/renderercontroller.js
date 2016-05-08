@@ -15,7 +15,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     $scope.notAllRequiredFieldsAreFilledOut = false;
     $scope.isFormularActive = false;
-    $scope.formularTitle = "";
+    $scope.formularLabel = "";
 
     $scope.$on('$routeChangeSuccess', function() {
         //clear models
@@ -161,7 +161,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             
             var arrayWithJSONs = [];
 
-            $scope.formularTitle = formularSpecification.label
+            $scope.formularLabel = formularSpecification.label
             arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
 
             RE.formularFields = arrayWithJSONs;

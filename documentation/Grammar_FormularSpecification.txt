@@ -21,8 +21,9 @@ DESCRIPTION = {
 
 CONTAINER = { 
               element_id: ID, 
-              element_type: "container", 
-              children:[CHILD +], 
+              element_type: "container",
+              label: "STRING",
+              children:[CHILD +],
               repeatable : BOOL 
             } 
 

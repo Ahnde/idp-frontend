@@ -3,7 +3,7 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
   	
 	var BC = {};
 
-	var printLogs = true;
+	var printLogs = false;
 
 	BC.getAllFormularSpecifications = function (callback) {
 		$http({
