@@ -1,8 +1,43 @@
 [
     {
-        "templateOptions": {
-            "label": "End of recursion"
-        },
-        "type": "textlabel"
+        "fieldGroup": [
+            {
+                "fieldGroup": [
+                    {
+                        "fieldGroup": [
+                            {
+                                "fieldGroup": [
+                                    {
+                                        "fieldGroup": [
+                                            {
+                                                "templateOptions": {
+                                                    "label": "End of recursion"
+                                                },
+                                                "type": "textlabel"
+                                            }
+                                        ],
+                                        "key": "111111",
+                                        "templateOptions": {},
+                                        "wrapper": "panel"
+                                    }
+                                ],
+                                "key": "11111",
+                                "templateOptions": {},
+                                "wrapper": "panel"
+                            }
+                        ],
+                        "key": "1111",
+                        "templateOptions": {},
+                        "wrapper": "panel"
+                    }
+                ],
+                "key": "111",
+                "templateOptions": {},
+                "wrapper": "panel"
+            }
+        ],
+        "key": "11",
+        "templateOptions": {},
+        "wrapper": "panel"
     }
 ]

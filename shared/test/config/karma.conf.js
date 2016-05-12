@@ -25,17 +25,14 @@ module.exports = function(config) {
         'node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js',
         'node_modules/requirejs/require.js',
     	'app/js/formulargenerator.js',
-//      'app/js/backendconnector.js',
         'shared/js/jsontransformer.js',
         'shared/js/transformMethods.js',
         
         //tests
         'shared/test/testspectoangtransform.js',
-        'shared/test/testangtospectransform.js',
 
         // fixtures
-        {pattern: 'shared/test/testcases/idp_spec_to_af/*.json', watched: true, served: true, included: false},
-        {pattern: 'shared/test/testcases/af_to_idp_spec/*.json', watched: true, served: true, included: false}
+        {pattern: 'shared/test/testcases/idp_spec_to_af/*.json', watched: true, served: true, included: false}
     ],
 
 
@@ -53,7 +50,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['clear-screen', 'progress'],
+    reporters: ['clear-screen', 'dots'],
 
 
     // web server port
