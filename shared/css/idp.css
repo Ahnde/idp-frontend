@@ -22,13 +22,13 @@
 }
 .form-label {
     padding-right: 10px;
-    vertical-align: center;
+    vertical-align: top;
 }
 .form-postlabel {
     padding-left: 10px;
-    vertical-align: center;
+    vertical-align: top;
 }
-.form-postcheckbox {
+.form-mui {
     padding-left: 10px;
-    vertical-align: center;
+    vertical-align: top;
 }
