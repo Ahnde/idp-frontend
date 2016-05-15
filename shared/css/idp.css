@@ -2,10 +2,6 @@
 {
     display: inline-block;
 }
-.idp .form-control
-{
-    /*display: inline-block;*/
-}
 .menu
 {
     display: inline-block;
@@ -26,9 +22,13 @@
 }
 .form-label {
     padding-right: 10px;
-    vertical-align: top;
+    vertical-align: center;
 }
 .form-postlabel {
     padding-left: 10px;
-    vertical-align: top;
+    vertical-align: center;
+}
+.form-postcheckbox {
+    padding-left: 10px;
+    vertical-align: center;
 }

@@ -88,6 +88,7 @@
                 afJson.expressionProperties = callbackExpressionProperties;
             });
         }
+
         return afJson;
     };
 
@@ -279,7 +280,6 @@
         //input and textarea
         if (fsInteractiveDetailsJson['placeholder']) {
             templateOptions.placeholder = fsInteractiveDetailsJson['placeholder'];
-            // templateOptions.required = true;
         };
 
         //input
@@ -301,6 +301,18 @@
                 //TODO: template does not support this feature, yet
             };
         };
+
+        //MUI
+
+        if (fsInteractiveDetailsJson['missing']) {
+            templateOptions.missing = fsInteractiveDetailsJson['missing'];
+        }
+        if (fsInteractiveDetailsJson['unobtainable']) {
+            templateOptions.unobtainable = fsInteractiveDetailsJson['unobtainable'];
+        }
+        if (fsInteractiveDetailsJson['something_with_i']) {
+            templateOptions.something_with_i = fsInteractiveDetailsJson['something_with_i'];
+        }
 
         return templateOptions;
     };
