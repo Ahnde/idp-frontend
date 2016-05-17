@@ -69,7 +69,8 @@ VALIDATOR = {
               element_id: ID,
               validator_name: STRING,
               validator_type: VALIDATOR_TYPE,
-              expression: VALIDATOR_EXPRESSION
+              expression: VALIDATOR_EXPRESSION,
+              test:"",
             }
 
 VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "custom"

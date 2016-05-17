@@ -32,7 +32,7 @@ module.exports = function(config) {
         'shared/test/testspectoangtransform.js',
 
         // fixtures
-        {pattern: 'shared/test/testcases/idp_spec_to_af/*.json', watched: true, served: true, included: false}
+        {pattern: '../idp-frontend/shared/test/testcases/idp_spec_to_af/*.json', watched: true, served: true, included: false}
     ],
 
 

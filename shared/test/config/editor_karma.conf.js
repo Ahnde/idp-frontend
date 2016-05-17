@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '../../../../idp-editor',
+    basePath: '../../../../',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -15,45 +15,44 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       
-    "app/js/dependencies/jquery.min.js",
-    "app/js/dependencies/bootstrap.min.js",
-    "app/js/dependencies/angular.js",
-    '../idp-frontend/node_modules/angular-mocks/angular-mocks.js',
-//    '../idp-frontend/node_modules/diff/dist/diff.js',
-//    '../idp-frontend/node_modules/requirejs/require.js',
+      "idp-editor/app/js/dependencies/jquery.min.js",
+      'idp-frontend/node_modules/jasmine-jquery/lib/jasmine-jquery.js',
+      "idp-editor/app/js/dependencies/bootstrap.min.js",
+      "idp-editor/app/js/dependencies/angular.js",
+      'idp-frontend/node_modules/angular-mocks/angular-mocks.js',
+      //    '../idp-frontend/node_modules/diff/dist/diff.js',
+      //    '../idp-frontend/node_modules/requirejs/require.js',
 
 
+      "idp-editor/app/js/dependencies/angular-route.js",
+      "idp-frontend/shared/js/transformMethods.js",
+      "idp-editor/app/js/services/formSpecificationMapper.js",
+      "idp-editor/app/js/dependencies/AngularFormbuilder/angular-form-builder.js",
+      "idp-editor/app/js/dependencies/AngularFormbuilder/angular-form-builder-components.js",
+      "idp-editor/app/js/dependencies/angular-validator.min.js",
+      "idp-editor/app/js/dependencies/angular-validator-rules.min.js",
+      "idp-editor/app/js/dependencies/jquery-ui.js",
+      "idp-editor/app/js/dependencies/placeholders.min.js",
+    "idp-editor/app/js/dependencies/apiCheck.min.js",
+    "idp-editor/app/js/dependencies/formly.js",
+    "idp-editor/app/js/dependencies/angular-formly-templates-bootstrap.js",
+    "idp-editor/app/js/dependencies/angular-file-upload-shim.js",
+    "idp-editor/app/js/dependencies/angular-file-upload.js",
+    "idp-editor/app/js/formEditorApp.js",
+    "idp-editor/app/js/formlyCustomTypes.js",
+    "idp-editor/app/js/dependencies/AngularFormbuilder/angular-form-customComponents.js",
+    "idp-editor/app/js/FormConstant.js",
+    "idp-editor/app/js/services/Factory.js",
+    "idp-editor/app/js/services/CommonService.js",
+    "idp-editor/app/js/Directive.js",
 
-
-    "app/js/dependencies/angular-route.js",
-    "../idp-frontend/shared/js/transformMethods.js",
-    "app/js/services/formSpecificationMapper.js",
-    "app/js/dependencies/AngularFormbuilder/angular-form-builder.js",
-    "app/js/dependencies/AngularFormbuilder/angular-form-builder-components.js",
-    "app/js/dependencies/angular-validator.min.js",
-    "app/js/dependencies/angular-validator-rules.min.js",
-    "app/js/dependencies/jquery-ui.js",
-    "app/js/dependencies/placeholders.min.js",
-    "app/js/dependencies/apiCheck.min.js",
-    "app/js/dependencies/formly.js",
-    "app/js/dependencies/angular-formly-templates-bootstrap.js",
-    "app/js/dependencies/angular-file-upload-shim.js",
-    "app/js/dependencies/angular-file-upload.js",
-    "app/js/formEditorApp.js",
-    "app/js/formlyCustomTypes.js",
-    "app/js/dependencies/AngularFormbuilder/angular-form-customComponents.js",
-    "app/js/FormConstant.js",
-    "app/js/services/Factory.js",
-    "app/js/services/CommonService.js",
-    "app/js/Directive.js",
-
-    "app/js/Controller/FormCtrl.js",
-      "app/js/formEditorApp.js",      
+      "idp-editor/app/js/Controller/FormCtrl.js",
+      "idp-editor/app/js/formEditorApp.js",      
         //tests
-     '../idp-frontend/shared/test/editortests.js',
+     'idp-frontend/shared/test/editortests.js',
 //      '../idp-frontend/node_modules/karma-jasmine-diff-reporter/src/jasmine-diff.js',
         // fixtures
-      {pattern: '../idp-frontend/shared/test/testcases/editor/*.json', watched: true, served: true, included: false},
+      {pattern: 'idp-frontend/shared/test/testcases/editor/*.json', watched: true, served: true, included: false},
     ],
 
     // list of files to exclude

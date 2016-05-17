@@ -24,13 +24,18 @@ function getMissing(obj1, obj2) {
             delete acc[k];
           } else {
             mis = true
-          };
-        };
+          }
+        } else {
+          if(o2[k] != o1[k]) {
+            acc[k] = "is: ->" + o2[k] + "<- should be: ->" + o1[k]+"<-";
+            mis = true;
+          }
+        }
       } else {
-        acc[k] = "--missing--";
+        acc[k] = "key ->" + k + "<- is missing, value should be: ->" + o1[k]+"<-";
         mis = true;
       }
-    };
+    }
     return {a:acc,m:mis};
   };
   return rec(obj1, obj2,{}, false).a;
@@ -38,7 +43,30 @@ function getMissing(obj1, obj2) {
 
 
 
+function logMissing(ob1,ob2)
+{
+  console.log("full objects:");
+  console.log(JSON.stringify(ob1));
+  console.log(JSON.stringify(ob2));
+  console.log("\ndifference:");
+  console.log(JSON.stringify(getMissing(ob1,ob2),null, '\t'));
+  console.log(JSON.stringify(getMissing(ob2,ob1),null, '\t'));
+
+};
+
 describe('IDP and angular from IM', function () {
+  var inputFsJson, outputJson, expectedOutputJson, jsonTransformer;
+
+  function testJsonMapping(result, expectedpath, log = false)
+  {
+    var expected = getJSONFixture(expectedpath);
+
+    if(angular.equals(expected, result) == false)
+    {
+      logMissing(result, expected);
+    };
+    expect(result).toEqual(expected);
+  }
 
   beforeEach(module("formlyExample"));
   var OIMConfigMapper;
@@ -46,90 +74,51 @@ describe('IDP and angular from IM', function () {
     OIMConfigMapper = _getOIMConfig_;
   }));
 
+  beforeEach(function () {
+    jasmine.getJSONFixtures().fixturesPath='base/idp-frontend/shared/test/testcases/editor';
+    inputFsJson = {};
+    expectedOutputJson = {};
+    outputJson = {};
+  });
 
-  it("maps empty form ",function(){
+
+  it("maps empty form from IM to IDP",function(){
     var resultIM = OIMConfigMapper.getOIMConfig([], {default:[]});
-    //angular
-    var resAnSpec = resultIM.anSpec;
-    var expectedAnSpec = [];
-
-    //idp
     var resIdpSpec = resultIM.idpSpec;
     var expectedIdpSpec = {"element_id":"0","element_type":"form","metadata":[],"children":[]};
-
-    expect(resAnSpec).toEqual(expectedAnSpec);
     expect(resIdpSpec).toEqual(expectedIdpSpec);
   });
 
+  function resultIDPSpec(imPath, idpPatch)
+  {
+    var optionsOriginal = getJSONFixture(imPath)
+    var builderForms = {"default":[optionsOriginal[0]]};
+    var resultOIM = OIMConfigMapper.getOIMConfig(optionsOriginal, builderForms);
+
+    var resIdpSpec = resultOIM.idpSpec;
+    return resIdpSpec;
+  };
 
   it("maps one textfield",function(){
-
-      var optionsOriginal = [{"component":"textInput",
-                              "editable":true,
-                              "index":0,
-                              "label":"Text Input",
-                              "postLabel":"Post Label",
-                              "description":"description",
-                              "placeholder":"placeholder",
-                              "options":[],
-                              "required":false,
-                              "validation":"/.*/",
-                              "id":"default-textInput-1188",
-                              "isContainer":false,
-                              "templateOptions":{},
-                              "expressionProperties":"",
-                              "noFormControl":true,
-                              "customModel":{},
-                              "$$hashKey":"object:50"}];
-      var builderForms = {"default":[optionsOriginal[0]]};
-      var resultOIM = OIMConfigMapper.getOIMConfig(optionsOriginal, builderForms);
-
-      //angular
-      var resAnSpec = resultOIM.anSpec;
-      var expectedAnSpec = [
-        {
-          "type":"input",
-          "key":"mappingKey-1",
-          "templateOptions": {
-            "label":"Text Input",
-            "postLabel":"Post Label",
-            "placeholder":"placeholder"
-          },
-          "validators":{
-
-          },
-          "expressionProperties":{}
-        }];
-
-      //idp
-      // var resIdpSpec = resultOIM.idpSpec;
-      // var expectedIdpSpec = {"element_id":"0",
-      //                        "element_type":"form",
-      //                        "metadata":[],
-      //                        "children":[
-      //                          {
-      //                            "element_id":"2",
-      //                            "mapping_key":"mappingKey-1",
-      //                            "element_type":"interactive",
-      //                            "validators":["/.*/"],
-      //                            "interactive_details": {
-      //                              "label":"Text Input",
-      //                              "placeholder":"placeholder"
-      //                            },
-      //                            "interactive_type":"input"
-      //                          }]
-      //                       };
-    console.log("----");
-    console.log(JSON.stringify(resAnSpec));
-    console.log(JSON.stringify(expectedAnSpec));
-    console.log("----");
-    console.log(JSON.stringify(getMissing(resAnSpec,expectedAnSpec)));
-    console.log(JSON.stringify(getMissing(expectedAnSpec,resAnSpec)));
-
-    expect(resAnSpec).toEqual(expectedAnSpec);
-//    expect(resIdpSpec).toEqual(expectedIdpSpec);
-
+    var resIdpSpec = resultIDPSpec('im-one_textfield.json');
+    testJsonMapping(resIdpSpec, "idp-one_textfield.json");
   });
+
+  it("maps two textfields", function(){
+    var resIdpSpec = resultIDPSpec('im-two_textfields.json');
+    testJsonMapping(resIdpSpec, "idp-two_textfields.json");
+  });
+
+  it("maps one radio with two options",function(){
+    var resIdpSpec = resultIDPSpec('im-one_radio.json');
+    testJsonMapping(resIdpSpec, "idp-one_radio.json");
+  });
+
+  it("maps two radios with two options",function(){
+    var resIdpSpec = resultIDPSpec('im-two_radios.json');
+    testJsonMapping(resIdpSpec, "idp-two_radios.json");
+  });
+
 
 });
 
