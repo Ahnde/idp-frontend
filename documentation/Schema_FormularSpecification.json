@@ -103,16 +103,16 @@
                 },
                 "required": ["element_id", "element_type", "description_type"]
             },
-            "children": {
-                "type": "array",
-                "items": { 
-                    "anyOf": [
-                        { "$ref": "#/definitions/container" },
-                        { "$ref": "#/definitions/description" },
-                        { "$ref": "#/definitions/interactive" },
-                    ]
+            "separator": {
+                "type": "object",
+                "properties": {
+                    "element_id": { "$ref": "#/definitions/element_id" },
+                    "element_type": "separator",
+                    "description_type": {
+                        "enum": [ "horizontal", "vertical" ]
+                    }
                 },
-                "minItems": 1
+                "required": ["element_id", "element_type", "description_type"]
             },
             "container": {
                 "type": "object",
@@ -123,7 +123,19 @@
                     "repeatable": { "$ref": "#/definitions/repeatable" },
                     "children": { "$ref": "#/definitions/children"}
                 },
-                "required": ["element_id", "element_type", "label", "children"]
+                "required": ["element_id", "element_type", "children"]
+            },
+            "children": {
+                "type": "array",
+                "items": { 
+                    "anyOf": [
+                        { "$ref": "#/definitions/container" },
+                        { "$ref": "#/definitions/separator" },
+                        { "$ref": "#/definitions/description" },
+                        { "$ref": "#/definitions/interactive" },
+                    ]
+                },
+                "minItems": 1
             },
             "metadata": {
                 "type": "object",

@@ -22,6 +22,14 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
       template: '<p></p>{{to.label}}',
       wrapper: ['bootstrapHasError']
     });
+    formlyConfigProvider.setType({
+      name: 'horizontalseparator',
+      template: '<hr/><formly-transclude></formly-transclude>'
+    });
+    // formlyConfigProvider.setType({
+    //   name: 'verticalseparator',
+    //   template: '<vr/><formly-transclude></formly-transclude>'
+    // });
     formlyConfigProvider.setWrapper({
       name: 'panel',
       template: '<div class=\'panel panel-default\'>\
