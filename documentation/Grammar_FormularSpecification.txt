@@ -70,7 +70,8 @@ VALIDATOR = {
               validator_name: STRING,
               validator_type: VALIDATOR_TYPE,
               message: STRING,
-              expression: VALIDATOR_EXPRESSION
+              expression: VALIDATOR_EXPRESSION,
+              test: "function" | "regex"
             }
 
 VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "custom"

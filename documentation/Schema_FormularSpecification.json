@@ -48,7 +48,10 @@
                         "enum": [ "isRequired", "minLength", "maxLength", "minDate", "maxDate", "custom" ]
                     },
                     "message": { "$ref": "#/definitions/text" },
-                    "expression": { "$ref": "#/definitions/expression" }
+                    "expression": { "$ref": "#/definitions/expression" },
+                    "test": {
+                        "enum": [ "regex", "function" ]
+                    }
                 },
                 "required": ["element_id", "validator_type"]
             },
