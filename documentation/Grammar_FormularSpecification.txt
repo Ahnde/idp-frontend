@@ -69,6 +69,7 @@ VALIDATOR = {
               element_id: ID,
               validator_name: STRING,
               validator_type: VALIDATOR_TYPE,
+              message: STRING,
               expression: VALIDATOR_EXPRESSION
             }
 

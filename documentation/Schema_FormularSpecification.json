@@ -47,6 +47,7 @@
                     "validator_type" : { 
                         "enum": [ "isRequired", "minLength", "maxLength", "minDate", "maxDate", "custom" ]
                     },
+                    "message": { "$ref": "#/definitions/text" },
                     "expression": { "$ref": "#/definitions/expression" }
                 },
                 "required": ["element_id", "validator_type"]
