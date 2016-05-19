@@ -198,11 +198,12 @@
                 validatorName = "maxDate";
                 validatorExpression = expressionForDateValidator(fsValidator['expression'], false);
                 break;
-            default:
-                // custom
+            case "regex":
                 validatorName = fsValidator['validator_name'];
                 validatorExpression = expressionForRegExValidator(fsValidator['expression']);
                 break;
+            default:
+                return;
         }
 
         validatorMessage = fsValidator['message'];
