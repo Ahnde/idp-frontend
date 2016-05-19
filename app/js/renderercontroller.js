@@ -15,7 +15,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     $scope.notAllRequiredFieldsAreFilledOut = false;
     $scope.isFormularActive = false;
-    $scope.formularLabel = "";
+    $scope.formularTitle = "";
 
     $scope.$on('$routeChangeSuccess', function() {
         //clear models
@@ -31,8 +31,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         removeIsNewDataAfterRouteChange = false;
 
         //load form list if not yet done
-        if ($scope.formList === undefined) {
-            loadFormList();
+        if ($scope.formLabelList === undefined) {
+            loadformList();
         }
 
         var isNewFormular = false;
@@ -148,9 +148,9 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     // Backend calls
 
-    var loadFormList = function() {
+    var loadformList = function() {
         backendConnector.getAllFormularSpecifications(function(response) {
-            $scope.formList = response.formList;
+            $scope.formLabelList = formLabelListFromFromList(response.formList);
         });   
     }
 
@@ -161,7 +161,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             
             var arrayWithJSONs = [];
 
-            $scope.formularLabel = formularSpecification.label
+            $scope.formularTitle = formularSpecification.metadata['title']
             arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
 
             RE.formularFields = arrayWithJSONs;
@@ -214,6 +214,28 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             didLoadFormularData = true;
         });
     }
+
+    // get formList for form-dropdown from backend response
+
+    var formLabelListFromFromList = function(formList) {
+        var formLabelList = [];
+
+        var i, 
+            oneForm;
+        for (i in formList) {
+            oneForm = formList[i];
+            if (!oneForm.metadata['is_template']) {
+                var oneFormLabel = {};
+                oneFormLabel.id = oneForm.id;
+                oneFormLabel.title = oneForm.metadata['title'];
+
+                formLabelList.push(oneFormLabel);
+            }
+        }
+
+        return formLabelList;
+    }
+
 
     // setter
 

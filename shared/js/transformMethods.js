@@ -23,14 +23,12 @@
 
         if (fsJson['element_type'] === "container") {
             afJsonArray.push(angularFormlyJsonForContainer(fsJson));
-        } else if(fsJson['element_type'] === "separator") {
-            afJsonArray.push(angularFormlyJsonForSeparator(fsJson));
         } else if(fsJson['element_type'] === "description") {
             afJsonArray.push(angularFormlyJsonForDescription(fsJson));
         } else if(fsJson['element_type'] === "interactive") {
             afJsonArray.push(angularFormlyJsonForInteractive(fsJson));
         };
-        
+
         return afJsonArray;
     };
     
@@ -53,20 +51,6 @@
 
         return afJsonContainer;
     };
-
-    // SEPARATOR
-    var angularFormlyJsonForSeparator = function(fsSeparatorJson) {
-        var afJson = {};
-
-        if (fsSeparatorJson['separator_type'] === 'horizontal') {
-            afJson.type = 'horizontalseparator';
-        } else if (fsSeparatorJson['separator_type'] === 'vertical') {
-            //TODO not yet implemented
-            //afJson.type = 'verticalseparator';
-        }
-
-        return afJson;
-    }
 
     // DESCRIPTION
     var angularFormlyJsonForDescription = function(fsDescriptionJson) {

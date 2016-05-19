@@ -107,17 +107,6 @@
                 },
                 "required": ["element_id", "element_type", "description_type"]
             },
-            "separator": {
-                "type": "object",
-                "properties": {
-                    "element_id": { "$ref": "#/definitions/element_id" },
-                    "element_type": "separator",
-                    "description_type": {
-                        "enum": [ "horizontal", "vertical" ]
-                    }
-                },
-                "required": ["element_id", "element_type", "description_type"]
-            },
             "container": {
                 "type": "object",
                 "properties": {
@@ -134,7 +123,6 @@
                 "items": { 
                     "anyOf": [
                         { "$ref": "#/definitions/container" },
-                        { "$ref": "#/definitions/separator" },
                         { "$ref": "#/definitions/description" },
                         { "$ref": "#/definitions/interactive" },
                     ]
@@ -144,6 +132,7 @@
             "metadata": {
                 "type": "object",
                 "properties": {
+                    "form_id": { "$ref": "#/definitions/element_id" },
                     "label": { "$ref": "#/definitions/text" },
                     "version": { "$ref": "#/definitions/label" },
                     "creation_date": { "type": "date" },
@@ -157,14 +146,13 @@
         },
         "type": "object",
         "properties": {
-            "element_id": { "$ref": "#/definitions/element_id" },
-            "element_type": { "$ref": "#/definitions/element_type" },
+            "element_type": "form",
             "metadata": { "$ref": "#/definitions/metadata" },
             "children": { "$ref": "#/definitions/children" }
         },
         "required": [
-            "element_id",
             "element_type",
+            "metadata",
             "children"
         ]
     }

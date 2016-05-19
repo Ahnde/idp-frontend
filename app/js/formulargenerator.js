@@ -22,25 +22,15 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
       template: '<p></p>{{to.label}}',
       wrapper: ['bootstrapHasError']
     });
-    formlyConfigProvider.setType({
-      name: 'horizontalseparator',
-      template: '<hr/><formly-transclude></formly-transclude>'
-    });
-    // formlyConfigProvider.setType({
-    //   name: 'verticalseparator',
-    //   template: '<vr/><formly-transclude></formly-transclude>'
-    // });
     formlyConfigProvider.setWrapper({
       name: 'panel',
-      template: '<div class=\'panel panel-default\'>\
-                  <div class=\"panel-heading px-nested-panel-heading clearfix">\
-                    <strong class="control-label" ng-if="options.templateOptions.label">\
+      template: '<div id="container-div" class="panel-idp">\
+                  <div class="panel-heading-background" ng-if="options.templateOptions.label">\
+                    <strong class="panel-heading">\
                       {{options.templateOptions.label}}\
                     </strong>\
                   </div>\
-                  <div class="panel-body px-nested-panel-body">\
-                    <formly-transclude></formly-transclude>\
-                  </div>\
+                  <formly-transclude></formly-transclude>\
                 </div>'
     });
 }])

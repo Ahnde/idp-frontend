@@ -33,7 +33,7 @@
             <div>
                 <div class="menu">
                     <label class="control-label">Formulars:</label>
-                    <select id="form-select" class="form-select-control" ng-change="formChanged()" ng-options="item as item.label for item in formList track by item.id" ng-model="selectedForm"></select>
+                    <select id="form-select" class="form-select-control" ng-change="formChanged()" ng-options="item as item.title for item in formLabelList track by item.id" ng-model="selectedForm"></select>
                 </div>
                 <div class="menu">
                     <label class="control-label" ng-show="isFormularActive">Formular Datas:</label>
@@ -48,7 +48,7 @@
             <div class="box idp" ng-show="isFormularActive">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <label>{{formularLabel}}</label>
+                        <label>{{formularTitle}}</label>
                     </div>
                     <div class="form-fields">
                         <form name="idpForm" ng-submit="onSubmit()">

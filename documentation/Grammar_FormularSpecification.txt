@@ -2,7 +2,6 @@ BNF - Grammar for FormSpecification
 
 
 FORM =  { 
-          element_id: ID, 
           element_type: "form",
           label: STRING,
           metadata : FORM_METADATA,
@@ -84,13 +83,14 @@ DATE_FORMAT = {
               }
 
 FORM_METADATA = {
+                  form_id: ID,
                   title: STRING,
                   version: VERSION,
                   creation_date: DATE,
+                  (creator: STRING, )?
                   last_modified_date: DATE,
-                  is_template: BOOL,
                   (category: STRING, )?
-                  (creator: STRING )?
+                  is_template: BOOL
                 }
 
 VERSION = {
