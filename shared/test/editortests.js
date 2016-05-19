@@ -119,6 +119,16 @@ describe('IDP and angular from IM', function () {
     testJsonMapping(resIdpSpec, "idp-two_radios.json");
   });
 
+  it("maps single dropdown with three options",function(){
+    var resIdpSpec = resultIDPSpec('im-one_select.json');
+    testJsonMapping(resIdpSpec, "idp-one_select.json");
+  });
+
+  it("maps two dropdowns with one post_label",function(){
+    var resIdpSpec = resultIDPSpec('im-two_selects.json');
+    testJsonMapping(resIdpSpec, "idp-two_selects.json");
+  });
+
 
 });
 
