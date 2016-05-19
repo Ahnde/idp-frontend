@@ -27,12 +27,13 @@ module.exports = function(config) {
     	'app/js/formulargenerator.js',
         'shared/js/jsontransformer.js',
         'shared/js/transformMethods.js',
+        'shared/test/jsonDiff.js',
         
         //tests
-        'shared/test/testspectoangtransform.js',
+        'shared/test/frontendtests.js',
 
         // fixtures
-        {pattern: '../idp-frontend/shared/test/testcases/idp_spec_to_af/*.json', watched: true, served: true, included: false}
+        {pattern: '../idp-frontend/shared/test/testcases/frontend/*.json', watched: true, served: true, included: false}
     ],
 
 

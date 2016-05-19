@@ -10,7 +10,7 @@ describe('jsonTransformer', function () {
     }));
 
     beforeEach(function () {
-        jasmine.getJSONFixtures().fixturesPath='base/shared/test/testcases/idp_spec_to_af';
+        jasmine.getJSONFixtures().fixturesPath='base/shared/test/testcases/frontend';
         inputFsJson = {};
         expectedOutputJson = {};
         outputJson = {};
@@ -22,6 +22,12 @@ describe('jsonTransformer', function () {
         var expected = getJSONFixture(expectedpath);
 
         var resultIsEqualToExpected = angular.equals(result, expected);
+
+        if(resultIsEqualToExpected == false)
+        {
+            logMissing(result, expected);
+        };
+
         expect(resultIsEqualToExpected).toBeTruthy();
     } 
 
