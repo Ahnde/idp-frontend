@@ -7,31 +7,26 @@
         "element_id":"11",
         "element_type":"container",
         "repeatable":false,
-        "descriptions": [],
         "children":[
         {
             "element_id":"111",
             "element_type":"container",
             "repeatable":false,
-            "descriptions": [],
             "children":[
             {
                 "element_id":"1111",
                 "element_type":"container",
                 "repeatable":false,
-                "descriptions": [],
                 "children":[
                 {
                     "element_id":"11111",
                     "element_type":"container",
                     "repeatable":false,
-                    "descriptions": [],
                     "children":[
                     {
                         "element_id":"111111",
                         "element_type":"container",
                         "repeatable":false,
-                        "descriptions": [],
                         "children":[
                         {
                             "element_id":"1111111",
