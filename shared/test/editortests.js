@@ -38,6 +38,7 @@ function getMissing(obj1, obj2) {
     }
     return {a:acc,m:mis};
   };
+
   return rec(obj1, obj2,{}, false).a;
 };
 
@@ -99,6 +100,7 @@ describe('IDP and angular from IM', function () {
     return resIdpSpec;
   };
 
+
   it("maps one textfield",function(){
     var resIdpSpec = resultIDPSpec('im-one_textfield.json');
     testJsonMapping(resIdpSpec, "idp-one_textfield.json");
@@ -129,6 +131,10 @@ describe('IDP and angular from IM', function () {
     testJsonMapping(resIdpSpec, "idp-two_selects.json");
   });
 
+  it("maps a textfield inside a container", function(){
+    var resIdpSpec = resultIDPSpec('im-one_input_in_container.json');
+    testJsonMapping(resIdpSpec, "idp-one_input_in_container.json");
+  });
 
 });
 

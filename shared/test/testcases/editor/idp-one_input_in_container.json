@@ -1,0 +1,32 @@
+{
+  "element_id":"1",
+  "element_type":"form",
+  "metadata":[],
+  "children":[
+    {
+        "element_id":"2",
+        "element_type":"container",
+        "repeatable":false,
+        "descriptions": [],
+        "children":[
+          {
+            "element_id":"3",
+            "mapping_key":"mappingKey-3",
+            "element_type":"interactive",
+            "validators":[
+              {
+
+              }
+              "/.*/"
+            ],
+            "interactive_details": {
+              "label":"Text Input",
+              "placeholder":"placeholder"
+            },
+            "interactive_type":"input"
+          }
+        ]
+    }
+  ]
+}
+
