@@ -24,13 +24,15 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
     });
     formlyConfigProvider.setWrapper({
       name: 'panel',
-      template: '<div id="container-div" class="panel-idp">\
-                  <div class="panel-heading-background" ng-if="options.templateOptions.label">\
-                    <strong class="panel-heading">\
+      template: '<div class=\'panel panel-default\'>\
+                  <div class=\"panel-heading px-nested-panel-heading clearfix">\
+                    <strong class="control-label" ng-if="options.templateOptions.label">\
                       {{options.templateOptions.label}}\
                     </strong>\
                   </div>\
-                  <formly-transclude></formly-transclude>\
+                  <div class="panel-body px-nested-panel-body">\
+                    <formly-transclude></formly-transclude>\
+                  </div>\
                 </div>'
     });
 }])
