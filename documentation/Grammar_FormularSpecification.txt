@@ -69,13 +69,10 @@ VALIDATOR = {
               validator_name: STRING,
               validator_type: VALIDATOR_TYPE,
               message: STRING,
-              expression: VALIDATOR_EXPRESSION,
-              test: "function" | "regex"
+              expression: REGEX
             }
 
-VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "custom"
-
-VALIDATOR_EXPRESSION = REGEX | FUNCTION
+VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "regex"
 
 DATE_FORMAT = {
                 format: "..." //iso standard,
