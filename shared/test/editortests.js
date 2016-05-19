@@ -46,13 +46,8 @@ function getMissing(obj1, obj2) {
 
 function logMissing(ob1,ob2)
 {
-  console.log("full objects:");
-  console.log(JSON.stringify(ob1));
-  console.log(JSON.stringify(ob2));
-  console.log("\ndifference:");
   console.log(JSON.stringify(getMissing(ob1,ob2),null, '\t'));
   console.log(JSON.stringify(getMissing(ob2,ob1),null, '\t'));
-
 };
 
 describe('IDP and angular from IM', function () {
@@ -90,7 +85,17 @@ describe('IDP and angular from IM', function () {
     expect(resIdpSpec).toEqual(expectedIdpSpec);
   });
 
-  function resultIDPSpec(imPath, idpPatch)
+  function resultIDPSpecFromBuilderForm(imPath, idpPatch)
+  {
+    var builderForms = getJSONFixture(imPath)
+    var defaultElements = builderForms["default"];
+    var resultOIM = OIMConfigMapper.getOIMConfig(defaultElements, builderForms);
+
+    var resIdpSpec = resultOIM.idpSpec;
+    return resIdpSpec;
+  }
+
+  function resultIDPSpec(imPath)
   {
     var optionsOriginal = getJSONFixture(imPath)
     var builderForms = {"default":[optionsOriginal[0]]};
@@ -132,9 +137,16 @@ describe('IDP and angular from IM', function () {
   });
 
   it("maps a textfield inside a container", function(){
-    var resIdpSpec = resultIDPSpec('im-one_input_in_container.json');
+    var resIdpSpec = resultIDPSpecFromBuilderForm('im-one_input_in_container.json');
     testJsonMapping(resIdpSpec, "idp-one_input_in_container.json");
   });
+
+  it("maps a textfields in a container inside a container", function(){
+    var resIdpSpec = resultIDPSpecFromBuilderForm('im-textfield_in_container_in_container.json');
+    testJsonMapping(resIdpSpec, "idp-textfield_in_container_in_container.json");
+  });
+
+
 
 });
 

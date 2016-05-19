@@ -7,7 +7,15 @@
       "element_id":"1",
       "mapping_key":"mappingKey-1",
       "element_type":"interactive",
-      "validators":["/.*/"],
+      "validators":[
+        {
+          "element_id": "2",
+          "validator_name": "2",
+          "validator_type": "regex",
+          "message": "",
+          "expression": "/.*/"
+        }
+      ],
       "interactive_details": {
         "label":"Text Input",
         "placeholder":"placeholder"
