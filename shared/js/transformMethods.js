@@ -78,7 +78,7 @@
         var afJson = {};
 
         afJson.type = angularFormlyTypeStringForInteractiveFsTypeString(fsJsonTypeString);
-        afJson.key = fsInteractiveJson['mapping_key'];
+        afJson.key = "value";
 
         fsInteractiveDetailsJson = fsInteractiveJson['interactive_details'];
         templateOptions = templateOptionsForInteractiveFsJson(fsInteractiveDetailsJson);
@@ -93,7 +93,12 @@
             });
         }
 
-        return afJson;
+        var fieldGroupJson = {};
+        fieldGroupJson.fieldGroup = [];
+        fieldGroupJson.fieldGroup.push(afJson);
+        fieldGroupJson.key = fsInteractiveJson['mapping_key'];
+        
+        return fieldGroupJson;
     };
 
     var angularFormlyTypeStringForDescriptionFsTypeString = function(fsTypeString) {
