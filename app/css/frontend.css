@@ -44,3 +44,14 @@ body {
 .form-inline {
     display: inline-block;
 }
+.formly-field {
+    display: inline-block;
+}
+.formly-field-group {
+    display: block;
+}
+.formly-field-mui {
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: top;
+}

@@ -5,11 +5,8 @@
 		<title>Formular Frontend</title>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        
-        <link type="text/css" rel="stylesheet" href="css/frontend.css" />
-        <link type="text/css" rel="stylesheet" href="../shared/css/bootstrap.css" />
-        <link type="text/css" rel="stylesheet" href="../shared/css/idp.css" />
 		
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
         <script src="../node_modules/api-check/dist/api-check.js"></script> <!-- must appear before formly.js dist/-->
 		<script src="../node_modules/angular/angular.js"></script>
 		<script src="../node_modules/angular-route/angular-route.js"></script>
@@ -17,13 +14,19 @@
 		
 		<script src="../node_modules/angular-formly/dist/formly.js"></script>
 		<script src="../node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
-        <!-- <script src="../shared/dependencies/angular-formly-templates-bootstrap.js"></script> -->
 
 		<script src="js/formulargenerator.js" ></script>
 		<script src="js/backendconnector.js" ></script>
         <script src="../shared/js/transformMethods.js" ></script>
-		<script src="../shared/js/jsontransformer.js" ></script>                
+		<script src="../shared/js/jsontransformer.js" ></script>
 		<script src="js/renderercontroller.js" ></script>
+
+        <!-- CSS -->
+        <link type="text/css" rel="stylesheet" href="css/frontend.css" />
+        <link type="text/css" rel="stylesheet" href="../shared/css/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="../shared/css/idp.css" />
+
+        <!-- <script src="js/csscontroller.js" ></script> -->
 	</head>
 
 	<body ng-app="formularGenerator">
@@ -36,7 +39,7 @@
                     <select id="form-select" class="form-select-control" ng-change="formChanged()" ng-options="item as item.title for item in formLabelList track by item.id" ng-model="selectedForm"></select>
                 </div>
                 <div class="menu">
-                    <label class="control-label" ng-show="isFormularActive">Formular Datas:</label>
+                    <label class="control-label" ng-show="isFormularActive">Datasets:</label>
                     <select id="data-select" class="form-select-control" ng-change="dataChanged()" ng-options="item as item.label for item in dataList track by item.id" ng-model="selectedData" ng-show="isFormularActive" ng-disabled="isNewFormData"></select>
                 </div>
                 <div class="menu" ng-show="isFormularActive">
@@ -77,7 +80,7 @@
             <pre>{{formularSpecification | json}}</pre>
 		</div>
 
-        <script type="text/ng-template" id="panel.html">
+        <!-- <script type="text/ng-template" id="panel.html"> -->
         
     </script>
 	</body>

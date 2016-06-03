@@ -1858,10 +1858,14 @@ input[type=search] {
     margin-bottom: 15px;
 }
 .checkbox, .radio {
-    position: relative;
+    /*position: relative;
     display: block;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px;*/
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
 }
 .checkbox label, .radio label {
     min-height: 20px;
@@ -2105,10 +2109,11 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
     width: auto;
 }
 .form-inline .input-group>.form-control {
-    width: 100%}
+    width: 100%
+}
 .form-inline .control-label {
-    margin-bottom: 0;
-    vertical-align: middle;
+    /*margin-bottom: 0;*/
+    /*vertical-align: middle;*/
 }
 .form-inline .checkbox, .form-inline .radio {
     display: inline-block;

@@ -93,13 +93,46 @@
             });
         }
 
+        //get mui stff
+        var muiFields = muiFieldsForFsInteractiveJson(fsInteractiveJson);
+
+        //interactive JSON is being wrapped in a fieldgroup so that the saved data structure contains objects 
         var fieldGroupJson = {};
         fieldGroupJson.fieldGroup = [];
         fieldGroupJson.fieldGroup.push(afJson);
+        fieldGroupJson.fieldGroup.push(muiFields);
         fieldGroupJson.key = fsInteractiveJson['mapping_key'];
-        
+
         return fieldGroupJson;
     };
+
+    var muiFieldsForFsInteractiveJson = function(fsInteractiveJson) {
+        var muiFields = {};
+
+        muiFields.type = "mui";
+        muiFields.key = "mui";
+        muiFields.templateOptions = {};
+
+        muiFields.templateOptions.options = [];
+
+        var missingOption = {}, 
+            unobtainableOption = {}, 
+            ignoreOption = {};
+
+        missingOption.name = "M";
+        missingOption.value = "missing";
+        muiFields.templateOptions.options.push(missingOption);
+
+        unobtainableOption.name = "U";
+        unobtainableOption.value = "unobtainable";
+        muiFields.templateOptions.options.push(unobtainableOption);
+
+        ignoreOption.name = "I";
+        ignoreOption.value = "ignore";
+        muiFields.templateOptions.options.push(ignoreOption);
+        
+        return muiFields;
+    }
 
     var angularFormlyTypeStringForDescriptionFsTypeString = function(fsTypeString) {
         var afTypeString;
@@ -303,7 +336,7 @@
             templateOptions.datepickerPopup = fsInteractiveDetailsJson['dateFormat'];
         };
 
-        //dropdown
+        //dropdown and radio
         if (fsInteractiveDetailsJson['options']) {
             templateOptions.options = angularFormlyArrayForOptions(fsInteractiveDetailsJson['options']);
 
@@ -340,7 +373,6 @@
 
         return afOptionsArray;
     };
-
 
 
 //not in use anymore...

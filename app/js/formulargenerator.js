@@ -22,6 +22,25 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
       template: '<p></p>{{to.label}}',
       wrapper: ['bootstrapHasError']
     });
+    formlyConfigProvider.setType({
+      name: 'emptydiv',
+      template: '<div class=\"form-block\" />',
+      wrapper: ['bootstrapHasError']
+    });
+    formlyConfigProvider.setType({
+      name: 'mui',
+      template: '<div class=\"form-inline\">\
+                  <div ng-repeat=\"(key, option) in to.options\" class=\"form-inline form-mui\">\
+                      <label>\
+                          <input type=\"radio\" id=\"{{id + \'_\'+ $index}}\" tabindex=\"0\" ng-value=\"option[to.valueProp || \'value\']\" ng-model=\"model[options.key]\">\
+                            {{option[to.labelProp || \'name\']}}\
+                          </input>\
+                      </label>\
+                  </div>\
+                </div>\
+                <div class=\"form-block\"></div>',
+      wrapper: ['bootstrapHasError']
+    });
     formlyConfigProvider.setWrapper({
       name: 'panel',
       template: '<div class=\'panel panel-default\'>\
