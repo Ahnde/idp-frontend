@@ -77,6 +77,7 @@
 
         var afJson = {};
 
+        afJson.id = "value_"+fsInteractiveJson['element_id'];;
         afJson.type = angularFormlyTypeStringForInteractiveFsTypeString(fsJsonTypeString);
         afJson.key = "value";
 
@@ -109,6 +110,8 @@
     var muiFieldsForFsInteractiveJson = function(fsInteractiveJson) {
         var muiFields = {};
 
+        console.log(fsInteractiveJson);
+        muiFields.id = "mui_"+fsInteractiveJson['element_id'];
         muiFields.type = "mui";
         muiFields.key = "mui";
         muiFields.templateOptions = {};
