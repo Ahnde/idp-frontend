@@ -4,8 +4,8 @@
         metadata['data_id'] = "###REPLACE_DATA_ID###";
         metadata['form_id'] = formId;
         metadata['title'] = title;
-        metadata['created_date'] = "01.01.2016";
-        metadata['modified_date'] = "05.06.2016";
+        metadata['created_date'] = moment().format('llll');
+        metadata['modified_date'] = moment().format('llll');
 
         var formularData = {};
 
