@@ -77,7 +77,6 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 		}).then(function (response, status) {
 			if (printLogs) {
 				console.log("Formular-Data from backend successfully fechted: ");
-				console.log(response);
 				console.log(response.data);
 				console.log("");
 			}
@@ -92,13 +91,12 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 		});
 	}
 
-	BC.postFormularData = function (formId, label, formularData, callback) {
-		console.log(formId);
-		console.log(label);
+	BC.postFormularData = function (formularData, callback) {
+		console.log("post formularData");
 		console.log(formularData);
 		$http({
 		 	method: 'POST',
-            url: 'http://'+backendURL+':8080/IDPBackend/rest/data/' + formId + '/label/' + label,
+            url: 'http://'+backendURL+':8080/IDPBackend/rest/data',
     		data: formularData
 		}).then(function (response, status) {
 			if (printLogs) {
@@ -117,10 +115,10 @@ formularGenerator.factory("backendConnector", ["$http", function ($http) {
 		});
 	}
 
-	BC.updateFormularData = function (dataId, label, formularData, callback) {
+	BC.updateFormularData = function (formularData, callback) {
 		$http({
 		 	method: 'PUT',
-            url: 'http://'+backendURL+':8080/IDPBackend/rest/data/' + dataId + '/label/' + label,
+            url: 'http://'+backendURL+':8080/IDPBackend/rest/data',
             data: formularData
 		}).then(function (response, status) {
 			if (printLogs) {

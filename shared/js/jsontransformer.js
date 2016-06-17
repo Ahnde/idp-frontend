@@ -3,9 +3,9 @@ formularGenerator.factory("jsonTransformer", [function () {
     "use strict";
     var JT = {};
 
-    JT.createResponseForLabelAndData = function(dataLabel, formularData) {
+    JT.createFormDataFromFormContent = function(formId, title, formularContent) {
 
-      return jsonFromLabelAndData(dataLabel, formularData);
+      return formularDataFromMetadataAndContent(formId, title, formularContent);
     };
 
     JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecification) {

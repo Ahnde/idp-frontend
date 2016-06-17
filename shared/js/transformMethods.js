@@ -1,6 +1,19 @@
     // FORMULAR DATA
-    var jsonFromLabelAndData = function(dataLabel, formularData) {
-        return{"label": dataLabel, "data":formularData};
+    var formularDataFromMetadataAndContent = function(formId, title, formularContent) {
+        var metadata = {};
+        metadata['data_id'] = "###REPLACE_DATA_ID###";
+        metadata['form_id'] = formId;
+        metadata['title'] = title;
+        metadata['created_date'] = "01.01.2016";
+        metadata['modified_date'] = "05.06.2016";
+
+        var formularData = {};
+
+        formularData['element_type'] = "data";
+        formularData['metadata'] = metadata;
+        formularData['content'] = formularContent;
+      
+        return formularData;
     };
 
     // FORMULAR FORM
@@ -110,7 +123,6 @@
     var muiFieldsForFsInteractiveJson = function(fsInteractiveJson) {
         var muiFields = {};
 
-        console.log(fsInteractiveJson);
         muiFields.id = "mui_"+fsInteractiveJson['element_id'];
         muiFields.type = "mui";
         muiFields.key = "mui";

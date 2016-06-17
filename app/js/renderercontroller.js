@@ -36,7 +36,6 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         }
 
         var isNewFormular = false;
-
         // load specific formular and data-list, only if new formular is selected
         if ($routeParams.id) {
             isNewFormular = formId !== $routeParams.id;
@@ -66,13 +65,13 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     //user triggered a formular change
     $scope.formChanged = function() {
-        setSelectedForm($scope.selectedForm.id);
+        setSelectedForm($scope.selectedForm['form_id']);
 
         if($route.current.$$route === undefined) {
-            $route.current = createRoute($route.current, $scope.selectedForm.id);
+            $route.current = createRoute($route.current, $scope.selectedForm['form_id']);
         }
         
-        $routeParams.id = $scope.selectedForm['id'].toString();
+        $routeParams.id = $scope.selectedForm['form_id'];
         delete $routeParams.dataId;
 
         $route.current = removeDataFromUrl($route.current);
@@ -82,9 +81,9 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     //user triggered a formular-data change
     $scope.dataChanged = function() {
-        setSelectedData($scope.selectedData.id);
+        setSelectedData($scope.selectedData['data_id']);
 
-        $routeParams.dataId = $scope.selectedData['id'].toString();
+        $routeParams.dataId = $scope.selectedData['data_id'];
 
         if (!didLoadFormularData) {
             $route.current = addDataToUrl($route.current);
@@ -109,13 +108,12 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     RE.onSubmit = onSubmit;
     function onSubmit() {
         modifyAllInvalidRequiredFieldsAsIsTouched(true);
-        
         if (didLoadFormularData) {
             var dataSelectElement = document.getElementById('data-select');
-            var label = dataSelectElement.options[dataSelectElement.selectedIndex].innerHTML;
-            var data = jsonTransformer.createResponseForLabelAndData(label, RE.formular);
+            var title = dataSelectElement.options[dataSelectElement.selectedIndex].innerHTML;
+            var data = jsonTransformer.createFormDataFromFormContent(formId, title, RE.formular);
 
-            backendConnector.updateFormularData(dataId,label,data,function(success, error) {
+            backendConnector.updateFormularData(data,function(success, error) {
                 if (success) { 
                     $scope.savingSuccess = true;
                     $scope.savingError = false;
@@ -126,9 +124,9 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             });
         } else {
             var label = $scope.newDataLabel;
-            var data = jsonTransformer.createResponseForLabelAndData(label, RE.formular);
+            var data = jsonTransformer.createFormDataFromFormContent(formId, label, RE.formular);
 
-            backendConnector.postFormularData(formId,label,data,function(success, error) {
+            backendConnector.postFormularData(data,function(success, error) {
                 if (success) {
                     $scope.isNewFormData = "";
                     $scope.newDataLabel = "";
@@ -170,7 +168,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
 
     var loadDataList = function(formId) {
         backendConnector.getAllFormularDatas(formId, function(response) {
-            $scope.dataList = response.dataList;
+            $scope.dataList = formLabelListFromDataList(response.dataList);
         });
     }
 
@@ -178,7 +176,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         RE.formular = {};
 
         backendConnector.getFormularData(dataId, function(formularData) {
-            RE.formularData = formularData.data;
+            RE.formularData = formularData.content;
 
             var inputs = document.getElementsByTagName("input");
             var datePickerIds = [];
@@ -188,7 +186,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
                     datePickerIds.push(inputs[key].id);
                 }
             }
-
+            
             var isDate;
             for(var key in RE.formularData)
             {
@@ -226,7 +224,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             oneForm = formList[i];
             if (!oneForm.metadata['is_template']) {
                 var oneFormLabel = {};
-                oneFormLabel.id = oneForm.id;
+                oneFormLabel.form_id = oneForm.metadata['form_id'];
                 oneFormLabel.title = oneForm.metadata['title'];
 
                 formLabelList.push(oneFormLabel);
@@ -236,15 +234,32 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         return formLabelList;
     }
 
+    var formLabelListFromDataList = function(dataList) {
+        var dataLabelList = [];
+
+        var i, 
+            oneData;
+        for (i in dataList) {
+            oneData = dataList[i];
+            var oneDataLabel = {};
+            oneDataLabel.data_id = oneData.metadata['data_id'];
+            oneDataLabel.title = oneData.metadata['title'];
+
+            dataLabelList.push(oneDataLabel);
+        }
+
+        return dataLabelList;
+    }
+
 
     // setter
 
     var setSelectedForm = function(formId) {
-        $scope.selectedForm = { "id": formId };
+        $scope.selectedForm = { "form_id": formId };
     }
 
     var setSelectedData = function(dataId) {
-        $scope.selectedData = { "id": dataId };
+        $scope.selectedData = { "data_id": dataId };
     }
 
     // helper for required fields

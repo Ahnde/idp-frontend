@@ -36,11 +36,11 @@
             <div>
                 <div class="menu">
                     <label class="control-label">Formulars:</label>
-                    <select id="form-select" class="form-select-control" ng-change="formChanged()" ng-options="item as item.title for item in formLabelList track by item.id" ng-model="selectedForm"></select>
+                    <select id="form-select" class="form-select-control" ng-change="formChanged()" ng-options="item as item.title for item in formLabelList track by item.form_id" ng-model="selectedForm"></select>
                 </div>
                 <div class="menu">
                     <label class="control-label" ng-show="isFormularActive">Datasets:</label>
-                    <select id="data-select" class="form-select-control" ng-change="dataChanged()" ng-options="item as item.label for item in dataList track by item.id" ng-model="selectedData" ng-show="isFormularActive" ng-disabled="isNewFormData"></select>
+                    <select id="data-select" class="form-select-control" ng-change="dataChanged()" ng-options="item as item.title for item in dataList track by item.data_id" ng-model="selectedData" ng-show="isFormularActive" ng-disabled="isNewFormData"></select>
                 </div>
                 <div class="menu" ng-show="isFormularActive">
                     <button type="button" ng-click="newFormData()" >+</button>
