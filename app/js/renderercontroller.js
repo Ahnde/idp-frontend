@@ -12,6 +12,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     RE.formularFields = [];
     RE.formularSpecification = {};
     RE.formularData = {};
+    RE.formularDataComplete = {}
 
     $scope.notAllRequiredFieldsAreFilledOut = false;
     $scope.isFormularActive = false;
@@ -109,11 +110,9 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     function onSubmit() {
         modifyAllInvalidRequiredFieldsAsIsTouched(true);
         if (didLoadFormularData) {
-            var dataSelectElement = document.getElementById('data-select');
-            var title = dataSelectElement.options[dataSelectElement.selectedIndex].innerHTML;
-            var data = jsonTransformer.createFormDataFromFormContent(formId, title, RE.formular);
+            RE.formularDataComplete = jsonTransformer.updateMetadataInFormData(RE.formularDataComplete, RE.formular);
 
-            backendConnector.updateFormularData(data,function(success, error) {
+            backendConnector.updateFormularData(RE.formularDataComplete, function(success, error) {
                 if (success) { 
                     $scope.savingSuccess = true;
                     $scope.savingError = false;
@@ -123,13 +122,13 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
                 }
             });
         } else {
-            var label = $scope.newDataLabel;
-            var data = jsonTransformer.createFormDataFromFormContent(formId, label, RE.formular);
+            var title = $scope.newDataTitle;
+            RE.formularDataComplete = jsonTransformer.createFormDataFromFormContent(formId, title, RE.formular);
 
-            backendConnector.postFormularData(data,function(success, error) {
+            backendConnector.postFormularData(RE.formularDataComplete, function(success, error) {
                 if (success) {
                     $scope.isNewFormData = "";
-                    $scope.newDataLabel = "";
+                    $scope.newDataTitle = "";
                     $scope.savingSuccess = true;
                     $scope.savingError = false;
                 } else {
@@ -176,7 +175,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         RE.formular = {};
 
         backendConnector.getFormularData(dataId, function(formularData) {
-            RE.formularData = formularData.content;
+            RE.formularDataComplete = formularData;
+            RE.formularData = RE.formularDataComplete.content;
 
             var inputs = document.getElementsByTagName("input");
             var datePickerIds = [];

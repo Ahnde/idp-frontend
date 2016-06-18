@@ -8,6 +8,11 @@ formularGenerator.factory("jsonTransformer", [function () {
       return formularDataFromMetadataAndContent(formId, title, formularContent);
     };
 
+    JT.updateMetadataInFormData = function(formularData, formularContent) {
+
+      return formularDataWithUpdatedMetadata(formularData, formularContent);
+    };
+
     JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecification) {
 
       return angularFromIDPSpec(formularSpecification);

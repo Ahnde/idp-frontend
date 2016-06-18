@@ -16,6 +16,12 @@
         return formularData;
     };
 
+    var formularDataWithUpdatedMetadata = function(formularData, formularContent){
+        formularData.metadata['modified_date'] = moment().format('llll');
+        formularData.content = formularContent;
+        return formularData;
+    }
+
     // FORMULAR FORM
     var angularFromIDPSpec = function(formularSpecification) {
         var formularSpecificationArray = formularSpecification['children'];
