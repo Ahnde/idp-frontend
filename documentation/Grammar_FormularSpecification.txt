@@ -19,12 +19,6 @@ CONTAINER = {
               repeatable : BOOL
             }
 
-SEPARATOR = {
-              element_id: ID,
-              element_type: "SEPARATOR"
-              separator_type: "horizontal" | "vertical"
-            }
-
 DESCRIPTION = {
                 element_id: ID,
                 element_type: "description"
