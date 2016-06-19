@@ -132,6 +132,7 @@
         muiFields.id = "mui_"+fsInteractiveJson['element_id'];
         muiFields.type = "mui";
         muiFields.key = "mui";
+        muiFields.defaultValue = "not_applicable";
         muiFields.templateOptions = {};
 
         muiFields.templateOptions.options = [];
