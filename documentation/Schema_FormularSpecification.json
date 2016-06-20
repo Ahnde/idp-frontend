@@ -5,7 +5,6 @@
         "definitions": {
             "element_id": { "type": "string" },
             "mapping_key": { "type": "string" },
-            "repeatable": { "type": "boolean" },
             "expression": { "type": "string" },
             "length": { "type": "integer" },
             "label": { "type": "string" },
@@ -112,8 +111,10 @@
                 "properties": {
                     "element_id": { "$ref": "#/definitions/element_id" },
                     "element_type": "container",
+                    "container_type": { 
+                        "enum": [ "normal", "repeat", "tab" ]
+                    },
                     "label": { "$ref": "#/definitions/text" },
-                    "repeatable": { "$ref": "#/definitions/repeatable" },
                     "children": { "$ref": "#/definitions/children"}
                 },
                 "required": ["element_id", "element_type", "children"]
@@ -133,7 +134,7 @@
                 "type": "object",
                 "properties": {
                     "form_id": { "$ref": "#/definitions/element_id" },
-                    "label": { "$ref": "#/definitions/text" },
+                    "title": { "$ref": "#/definitions/text" },
                     "version": { "$ref": "#/definitions/label" },
                     "creation_date": { "type": "date" },
                     "last_modified_date": { "type": "date" },
