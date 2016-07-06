@@ -54,19 +54,32 @@
     // CONTAINER
     var angularFormlyJsonForContainer = function(fsContainerJson) {
         var afJsonContainer = {};
-
-        afJsonContainer.wrapper = "panel";
+        
         afJsonContainer.key = fsContainerJson.element_id;
-        afJsonContainer.templateOptions = { "label": fsContainerJson.label };
+        
+        switch (fsContainerJson.container_type) {
+                case "normal":
+                    afJsonContainer.type = "panel";
+                    break;
+                case "tab":
+                    afJsonContainer.type = "tabPanel";
+                    break;
+                case "repeating":
+                    afJsonContainer.type = "repeatingPanel";
+                    break;
+        }
 
         var afJsonArray = [];
         var fsContainerChildrenArray = fsContainerJson['children'];
-        
+
         for (var i in fsContainerChildrenArray) {
-            afJsonArray = afJsonArray.concat(angularFormlyJsonArrayForFsJson(fsContainerChildrenArray[i]));
+            var oneElement = angularFormlyJsonArrayForFsJson(fsContainerChildrenArray[i]);
+            afJsonArray = afJsonArray.concat(oneElement);
         };
 
-        afJsonContainer.fieldGroup = afJsonArray
+        afJsonContainer.templateOptions = {};
+        afJsonContainer.templateOptions['label'] = fsContainerJson.label;
+        afJsonContainer.templateOptions['fields'] = afJsonArray;
 
         return afJsonContainer;
     };

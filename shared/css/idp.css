@@ -35,3 +35,39 @@
 .form-inline .radio {
     display: block;
 }
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Float the list items side by side */
+ul.tab li {
+    float: left;
+    border-radius: 5px 5px 0px 0px;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li:hover {background-color: #ddd;}
+
+/* Create an active/current tablink class */
+ul.tab li:focus, .active {background-color: #ccc;}
+
+/* Style the tab content */
+.tabcontent {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0px 5px 5px 5px;
+    border: 1px solid #ccc;
+}
