@@ -64,15 +64,21 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
       template: '<div class=\'\'>\
                     <ul class="tab">\
                       <li class="tablinks" ng-repeat="field in to.fields" ng-bind-html-unsafe="field.key" ng-click="openTab(event, field)" >\
-                        {{ field.key }}\
+                        <div class="panel-heading px-nested-panel-heading clearfix">\
+                          <strong class="control-label" ng-if="field.key">\
+                            {{ field.templateOptions.label }}\
+                          </strong>\
+                        </div>\
                       </li>\
                     </ul>\
                     <div class="tabcontent" ng-if="showTab != undefined">\
                       <div class="" ng-repeat="field in to.fields" id="field.key" ng-if="showTab == field.key">\
-                        <formly-form fields="[field]"\
-                                      model="model"\
-                                       form="form">\
-                        </formly-form>\
+                        <div class="" ng-repeat="contentField in field.templateOptions.fields">\
+                          <formly-form fields="[contentField]"\
+                                        model="model"\
+                                         form="form">\
+                          </formly-form>\
+                        </div>\
                       </div>\
                     </div>\
                 </div>',

@@ -56,18 +56,9 @@
         var afJsonContainer = {};
         
         afJsonContainer.key = fsContainerJson.element_id;
-        
-        switch (fsContainerJson.container_type) {
-                case "normal":
-                    afJsonContainer.type = "panel";
-                    break;
-                case "tab":
-                    afJsonContainer.type = "tabPanel";
-                    break;
-                case "repeating":
-                    afJsonContainer.type = "repeatingPanel";
-                    break;
-        }
+        afJsonContainer.templateOptions = {};
+        afJsonContainer.templateOptions['label'] = fsContainerJson.label;
+        afJsonContainer.templateOptions['fields'] = [];
 
         var afJsonArray = [];
         var fsContainerChildrenArray = fsContainerJson['children'];
@@ -77,9 +68,19 @@
             afJsonArray = afJsonArray.concat(oneElement);
         };
 
-        afJsonContainer.templateOptions = {};
-        afJsonContainer.templateOptions['label'] = fsContainerJson.label;
         afJsonContainer.templateOptions['fields'] = afJsonArray;
+
+        switch (fsContainerJson.container_type) {
+                case "normal":
+                    afJsonContainer.type = "panel";
+                    break;
+                case "repeating":
+                    afJsonContainer.type = "repeatingPanel";
+                    break;
+                case "tab":
+                    afJsonContainer.type = "tabPanel";
+                    break;
+        }
 
         return afJsonContainer;
     };

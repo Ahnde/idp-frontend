@@ -46,8 +46,8 @@ ul.tab {
 ul.tab li {
     float: left;
     border-radius: 5px 5px 0px 0px;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
     display: inline-block;
     color: black;
     text-align: center;
@@ -58,7 +58,9 @@ ul.tab li {
 }
 
 /* Change background color of links on hover */
-ul.tab li:hover {background-color: #ddd;}
+ul.tab li:hover {
+    background-color: #ddd;
+}
 
 /* Create an active/current tablink class */
 ul.tab li:focus, .active {background-color: #ccc;}

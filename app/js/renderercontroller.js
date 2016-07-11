@@ -139,52 +139,6 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         }
     }
 
-    // $scope.formOptions = {formState: $scope.formState};
-    
-    // RE.copyFields = copyFields;
-    // function copyFields(fields) {
-    //   console.log("fields");
-    //   console.log(fields);
-    //   fields = angular.copy(fields);
-    //   addRandomIds(fields);
-    //   console.log(fields);
-    //   return fields;
-    // }
-    
-    // RE.addNew = addNew;
-    // function addNew() {
-    //   $scope.formular[$scope.options.key] = $scope.formular[$scope.options.key] || [];
-    //   var repeatsection = $scope.formular[$scope.options.key];
-    //   var lastSection = repeatsection[repeatsection.length - 1];
-    //   var newsection = {};
-    //   if (lastSection) {
-    //     newsection = angular.copy(lastSection);
-    //   }
-    //   repeatsection.push(newsection);
-    // }
-    
-    // var unique = 0;
-    // var addRandomIds = function(fields) {
-    //   unique++;
-    //   angular.forEach(fields, function(field, index) {
-    //     if (field.fieldGroup) {
-    //       addRandomIds(field.fieldGroup);
-    //       return; // fieldGroups don't need an ID
-    //     }
-        
-    //     if (field.templateOptions && field.templateOptions.fields) {
-    //       addRandomIds(field.templateOptions.fields);
-    //     }
-        
-    //     field.id = field.id || (field.key + '_' + index + '_' + unique + getRandomInt(0, 9999));
-    //   });
-    // }
-    
-    // var getRandomInt = function(min, max) {
-    //   return Math.floor(Math.random() * (max - min)) + min;
-    // }
-
-
     //
     // HELPER
     //
