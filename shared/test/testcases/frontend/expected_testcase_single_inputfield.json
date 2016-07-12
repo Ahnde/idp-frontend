@@ -1,10 +1,38 @@
 [
     {
-        "key": "k_input",
-        "templateOptions": {
-            "label": "Input Test",
-            "placeholder": "Placeholder"
-        },
-        "type": "input"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Input Test",
+                    "placeholder": "Placeholder"
+                },
+                "type": "input"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_input"
     }
 ]

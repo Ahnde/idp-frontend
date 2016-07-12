@@ -1,0 +1,51 @@
+{
+    "element_type": "form",
+    "metadata": {},
+    "children": [
+        {
+            "element_id": "11",
+            "element_type": "container",
+            "container_type": "tab",
+            "label": "Tabs Container",
+            "children": [
+            {
+                "element_id": "111",
+                "element_type": "container",
+                "container_type": "normal",
+                "label": "First tab Container",
+                "children": [
+                {
+                    "element_id":"1111",
+                    "element_type": "description",
+                    "text": "Description 1 in Tab 1",
+                    "description_type":"text"
+                },
+                {
+                    "element_id":"1112",
+                    "element_type": "description",
+                    "text": "Description 2 in Tab 1",
+                    "description_type":"text"
+                }]
+            },
+            {
+                "element_id": "112",
+                "element_type": "container",
+                "container_type": "normal",
+                "label": "Second tab Container",
+                "children": [
+                {
+                    "element_id":"1121",
+                    "element_type": "description",
+                    "text": "Description 1 in Tab 2",
+                    "description_type":"text"
+                },
+                {
+                    "element_id":"1122",
+                    "element_type": "description",
+                    "text": "Description 2 in Tab 2",
+                    "description_type":"text"
+                }]
+            }]
+        }
+    ]
+}

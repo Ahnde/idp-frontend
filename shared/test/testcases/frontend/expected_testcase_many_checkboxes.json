@@ -1,39 +1,179 @@
 [
     {
-        "key": "k_checkbox1",
-        "templateOptions": {
-            "label": "Checkbox Test 1"
-        },
-        "type": "checkbox"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Checkbox Test 1"
+                },
+                "type": "checkbox"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_checkbox1"
     },
     {
-        "key": "k_checkbox2",
-        "templateOptions": {
-            "label": "Checkbox Test 2",
-            "postLabel": "Post Checkbox Test 2"
-        },
-        "type": "checkbox"
+        "fieldGroup": [
+            {
+                "id": "value_12",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Checkbox Test 2",
+                    "postLabel": "Post Checkbox Test 2"
+                },
+                "type": "checkbox"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_12",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_checkbox2"
     },
     {
-        "key": "k_checkbox3",
-        "templateOptions": {
-            "label": "Checkbox Test 3"
-        },
-        "type": "checkbox"
+        "fieldGroup": [
+            {
+                "id": "value_13",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Checkbox Test 3"
+                },
+                "type": "checkbox"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_13",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_checkbox3"
     },
     {
-        "key": "k_checkbox4",
-        "templateOptions": {
-            "label": "Checkbox Test 4",
-            "postLabel": "Post Checkbox Test 4"
-        },
-        "type": "checkbox"
+        "fieldGroup": [
+            {
+                "id": "value_14",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Checkbox Test 4",
+                    "postLabel": "Post Checkbox Test 4"
+                },
+                "type": "checkbox"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_14",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_checkbox4"
     },
     {
-        "key": "k_checkbox5",
-        "templateOptions": {
-            "label": "Checkbox Test 5"
-        },
-        "type": "checkbox"
+        "fieldGroup": [
+            {
+                "id": "value_15",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Checkbox Test 5"
+                },
+                "type": "checkbox"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_15",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_checkbox5"
     }
 ]

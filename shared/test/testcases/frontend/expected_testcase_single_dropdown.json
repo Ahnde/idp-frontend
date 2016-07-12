@@ -1,23 +1,51 @@
 [
     {
-        "key": "k_dropdown",
-        "templateOptions": {
-            "label": "Dropdown Test",
-            "options": [
-                {
-                    "name": "First option",
-                    "value": "111"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Dropdown Test",
+                    "options": [
+                        {
+                            "name": "First option",
+                            "value": "111"
+                        },
+                        {
+                            "name": "Second option",
+                            "value": "112"
+                        },
+                        {
+                            "name": "Third option",
+                            "value": "113"
+                        }
+                    ]
                 },
-                {
-                    "name": "Second option",
-                    "value": "112"
+                "type": "select"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
                 },
-                {
-                    "name": "Third option",
-                    "value": "113"
-                }
-            ]
-        },
-        "type": "select"
+                "type": "mui"
+            }
+        ],
+        "key": "k_dropdown"
     }
 ]

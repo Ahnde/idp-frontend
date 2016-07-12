@@ -1,52 +1,192 @@
 [
     {
-        "key": "k_textarea1",
-        "templateOptions": {
-            "cols": 1,
-            "label": "Textarea Test 1",
-            "placeholder": "Placeholder 1",
-            "rows": 1
-        },
-        "type": "textarea"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "cols": 1,
+                    "label": "Textarea Test 1",
+                    "placeholder": "Placeholder 1",
+                    "rows": 1
+                },
+                "type": "textarea"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_textarea1"
     },
     {
-        "key": "k_textarea2",
-        "templateOptions": {
-            "cols": 2,
-            "label": "Textarea Test 2",
-            "placeholder": "Placeholder 2",
-            "rows": 2
-        },
-        "type": "textarea"
+        "fieldGroup": [
+            {
+                "id": "value_12",
+                "key": "value",
+                "templateOptions": {
+                    "cols": 2,
+                    "label": "Textarea Test 2",
+                    "placeholder": "Placeholder 2",
+                    "rows": 2
+                },
+                "type": "textarea"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_12",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_textarea2"
     },
     {
-        "key": "k_textarea3",
-        "templateOptions": {
-            "cols": 3,
-            "label": "Textarea Test 3",
-            "placeholder": "Placeholder 3",
-            "rows": 3
-        },
-        "type": "textarea"
+        "fieldGroup": [
+            {
+                "id": "value_13",
+                "key": "value",
+                "templateOptions": {
+                    "cols": 3,
+                    "label": "Textarea Test 3",
+                    "placeholder": "Placeholder 3",
+                    "rows": 3
+                },
+                "type": "textarea"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_13",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_textarea3"
     },
     {
-        "key": "k_textarea4",
-        "templateOptions": {
-            "cols": 7,
-            "label": "Textarea Test 4",
-            "placeholder": "Placeholder 4",
-            "rows": 3
-        },
-        "type": "textarea"
+        "fieldGroup": [
+            {
+                "id": "value_14",
+                "key": "value",
+                "templateOptions": {
+                    "cols": 7,
+                    "label": "Textarea Test 4",
+                    "placeholder": "Placeholder 4",
+                    "rows": 3
+                },
+                "type": "textarea"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_14",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_textarea4"
     },
     {
-        "key": "k_textarea5",
-        "templateOptions": {
-            "cols": 3,
-            "label": "Textarea Test 5",
-            "placeholder": "Placeholder 5",
-            "rows": 7
-        },
-        "type": "textarea"
+        "fieldGroup": [
+            {
+                "id": "value_15",
+                "key": "value",
+                "templateOptions": {
+                    "cols": 3,
+                    "label": "Textarea Test 5",
+                    "placeholder": "Placeholder 5",
+                    "rows": 7
+                },
+                "type": "textarea"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_15",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_textarea5"
     }
 ]

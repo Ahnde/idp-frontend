@@ -39,6 +39,30 @@ describe('jsonTransformer', function () {
         testJsonMapping(result, 'expected_testcase_empty_form.json')
     });
 
+    // normal container
+    it('should map a normal container to the appropriate af-json-array', function () {
+        var testcase = getJSONFixture('testcase_container_normal.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+        
+        testJsonMapping(result, 'expected_testcase_container_normal.json')
+    });
+
+    // repeating container
+    it('should map a repeating container to the appropriate af-json-array', function () {
+        var testcase = getJSONFixture('testcase_container_repeating.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+        
+        testJsonMapping(result, 'expected_testcase_container_repeating.json')
+    });
+
+    // tabs container
+    it('should map a tabs container to the appropriate af-json-array', function () {
+        var testcase = getJSONFixture('testcase_container_tabs.json');
+        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
+        
+        testJsonMapping(result, 'expected_testcase_container_tabs.json')
+    });
+
     // recursive container
     it('should map recursive container to the appropriate af-json-array', function () {
         var testcase = getJSONFixture('testcase_container_recursion.json');
@@ -189,14 +213,6 @@ describe('jsonTransformer', function () {
         var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
         
         testJsonMapping(result, 'expected_testcase_many_dates.json')
-    });
-
-    // various interactives
-    it('should map many different interactive elements to the appropriate af-json', function () {
-        var testcase = getJSONFixture('testcase_many_interactives.json');
-        var result = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(testcase);
-        
-        testJsonMapping(result, 'expected_testcase_many_interactives.json')
     });
 
 });

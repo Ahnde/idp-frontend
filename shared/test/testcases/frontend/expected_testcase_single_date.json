@@ -1,11 +1,39 @@
 [
     {
-        "key": "k_date",
-        "templateOptions": {
-            "datepickerPopup": "dd/mm/yyyy",
-            "label": "Date Test",
-            "type": "text"
-        },
-        "type": "datepicker"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "datepickerPopup": "dd/mm/yyyy",
+                    "label": "Date Test",
+                    "type": "text"
+                },
+                "type": "datepicker"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_date"
     }
 ]

@@ -1,44 +1,184 @@
 [
     {
-        "key": "k_input1",
-        "templateOptions": {
-            "label": "Input Test 1",
-            "placeholder": "Placeholder 1"
-        },
-        "type": "input"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Input Test 1",
+                    "placeholder": "Placeholder 1"
+                },
+                "type": "input"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_input1"
     },
     {
-        "key": "k_input2",
-        "templateOptions": {
-            "label": "Input Test 2",
-            "placeholder": "Placeholder 2",
-            "postLabel": "Post Input Test 2"
-        },
-        "type": "input"
+        "fieldGroup": [
+            {
+                "id": "value_12",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Input Test 2",
+                    "placeholder": "Placeholder 2",
+                    "postLabel": "Post Input Test 2"
+                },
+                "type": "input"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_12",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_input2"
     },
     {
-        "key": "k_input3",
-        "templateOptions": {
-            "label": "Input Test 3",
-            "placeholder": "Placeholder 3"
-        },
-        "type": "input"
+        "fieldGroup": [
+            {
+                "id": "value_13",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Input Test 3",
+                    "placeholder": "Placeholder 3"
+                },
+                "type": "input"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_13",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_input3"
     },
     {
-        "key": "k_input4",
-        "templateOptions": {
-            "label": "Input Test 4",
-            "placeholder": "Placeholder 4",
-            "postLabel": "Post Input Test 4"
-        },
-        "type": "input"
+        "fieldGroup": [
+            {
+                "id": "value_14",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Input Test 4",
+                    "placeholder": "Placeholder 4",
+                    "postLabel": "Post Input Test 4"
+                },
+                "type": "input"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_14",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_input4"
     },
     {
-        "key": "k_input5",
-        "templateOptions": {
-            "label": "Input Test 5",
-            "placeholder": "Placeholder 5"
-        },
-        "type": "input"
+        "fieldGroup": [
+            {
+                "id": "value_15",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Input Test 5",
+                    "placeholder": "Placeholder 5"
+                },
+                "type": "input"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_15",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_input5"
     }
 ]

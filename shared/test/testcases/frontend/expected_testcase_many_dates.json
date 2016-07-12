@@ -1,49 +1,189 @@
 [
     {
-        "key": "k_date1",
-        "templateOptions": {
-            "datepickerPopup": "dd/mm/yyyy",
-            "label": "Date Test 1",
-            "type": "text"
-        },
-        "type": "datepicker"
+        "fieldGroup": [
+            {
+                "id": "value_12",
+                "key": "value",
+                "templateOptions": {
+                    "datepickerPopup": "dd/mm/yyyy",
+                    "label": "Date Test 1",
+                    "type": "text"
+                },
+                "type": "datepicker"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_12",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_date1"
     },
     {
-        "key": "k_date2",
-        "templateOptions": {
-            "datepickerPopup": "dd/mm/yyyy",
-            "label": "Date Test 2",
-            "postLabel": "Post Date Test 2",
-            "type": "text"
-        },
-        "type": "datepicker"
+        "fieldGroup": [
+            {
+                "id": "value_13",
+                "key": "value",
+                "templateOptions": {
+                    "datepickerPopup": "dd/mm/yyyy",
+                    "label": "Date Test 2",
+                    "postLabel": "Post Date Test 2",
+                    "type": "text"
+                },
+                "type": "datepicker"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_13",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_date2"
     },
     {
-        "key": "k_date3",
-        "templateOptions": {
-            "datepickerPopup": "dd/mm/yyyy",
-            "label": "Date Test 3",
-            "type": "text"
-        },
-        "type": "datepicker"
+        "fieldGroup": [
+            {
+                "id": "value_14",
+                "key": "value",
+                "templateOptions": {
+                    "datepickerPopup": "dd/mm/yyyy",
+                    "label": "Date Test 3",
+                    "type": "text"
+                },
+                "type": "datepicker"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_14",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_date3"
     },
     {
-        "key": "k_date4",
-        "templateOptions": {
-            "datepickerPopup": "dd/mm/yyyy",
-            "label": "Date Test 4",
-            "postLabel": "Post Date Test 4",
-            "type": "text"
-        },
-        "type": "datepicker"
+        "fieldGroup": [
+            {
+                "id": "value_15",
+                "key": "value",
+                "templateOptions": {
+                    "datepickerPopup": "dd/mm/yyyy",
+                    "label": "Date Test 4",
+                    "postLabel": "Post Date Test 4",
+                    "type": "text"
+                },
+                "type": "datepicker"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_15",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_date4"
     },
     {
-        "key": "k_date5",
-        "templateOptions": {
-            "datepickerPopup": "dd/mm/yyyy",
-            "label": "Date Test 5",
-            "type": "text"
-        },
-        "type": "datepicker"
+        "fieldGroup": [
+            {
+                "id": "value_16",
+                "key": "value",
+                "templateOptions": {
+                    "datepickerPopup": "dd/mm/yyyy",
+                    "label": "Date Test 5",
+                    "type": "text"
+                },
+                "type": "datepicker"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_16",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_date5"
     }
 ]

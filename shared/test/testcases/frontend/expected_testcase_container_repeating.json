@@ -1,0 +1,16 @@
+[
+    {
+        "key": "11",
+        "templateOptions": {
+            "fields": [
+                {
+                    "templateOptions": {
+                        "label": "Description in Container"
+                    },
+                    "type": "textlabel"
+                }
+            ]
+        },
+        "type": "repeatingPanel"
+    }
+]

@@ -1,109 +1,249 @@
 [
     {
-        "key": "k_radio1",
-        "templateOptions": {
-            "label": "Radio Test 1",
-            "options": [
-                {
-                    "name": "1/1",
-                    "value": "111"
-                }
-            ]
-        },
-        "type": "radio"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Radio Test 1",
+                    "options": [
+                        {
+                            "name": "1/1",
+                            "value": "111"
+                        }
+                    ]
+                },
+                "type": "radio"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_radio1"
     },
     {
-        "key": "k_radio2",
-        "templateOptions": {
-            "label": "Radio Test 2",
-            "options": [
-                {
-                    "name": "1/2",
-                    "value": "121"
+        "fieldGroup": [
+            {
+                "id": "value_12",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Radio Test 2",
+                    "options": [
+                        {
+                            "name": "1/2",
+                            "value": "121"
+                        },
+                        {
+                            "name": "2/2",
+                            "value": "122"
+                        }
+                    ],
+                    "postLabel": "Post Radio Test 2"
                 },
-                {
-                    "name": "2/2",
-                    "value": "122"
-                }
-            ],
-            "postLabel": "Post Radio Test 2"
-        },
-        "type": "radio"
+                "type": "radio"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_12",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_radio2"
     },
     {
-        "key": "k_radio3",
-        "templateOptions": {
-            "label": "Radio Test 3",
-            "options": [
-                {
-                    "name": "1/3",
-                    "value": "131"
+        "fieldGroup": [
+            {
+                "id": "value_13",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Radio Test 3",
+                    "options": [
+                        {
+                            "name": "1/3",
+                            "value": "131"
+                        },
+                        {
+                            "name": "2/3",
+                            "value": "132"
+                        },
+                        {
+                            "name": "3/3",
+                            "value": "133"
+                        }
+                    ]
                 },
-                {
-                    "name": "2/3",
-                    "value": "132"
+                "type": "radio"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_13",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
                 },
-                {
-                    "name": "3/3",
-                    "value": "133"
-                }
-            ]
-        },
-        "type": "radio"
+                "type": "mui"
+            }
+        ],
+        "key": "k_radio3"
     },
     {
-        "key": "k_radio4",
-        "templateOptions": {
-            "label": "Radio Test 4",
-            "options": [
-                {
-                    "name": "1/4",
-                    "value": "141"
+        "fieldGroup": [
+            {
+                "id": "value_14",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Radio Test 4",
+                    "options": [
+                        {
+                            "name": "1/4",
+                            "value": "141"
+                        },
+                        {
+                            "name": "2/4",
+                            "value": "142"
+                        },
+                        {
+                            "name": "3/4",
+                            "value": "143"
+                        },
+                        {
+                            "name": "4/4",
+                            "value": "144"
+                        }
+                    ],
+                    "postLabel": "Post Radio Test 4"
                 },
-                {
-                    "name": "2/4",
-                    "value": "142"
+                "type": "radio"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_14",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
                 },
-                {
-                    "name": "3/4",
-                    "value": "143"
-                },
-                {
-                    "name": "4/4",
-                    "value": "144"
-                }
-            ],
-            "postLabel": "Post Radio Test 4"
-        },
-        "type": "radio"
+                "type": "mui"
+            }
+        ],
+        "key": "k_radio4"
     },
     {
-        "key": "k_radio5",
-        "templateOptions": {
-            "label": "Radio Test 5",
-            "options": [
-                {
-                    "name": "1/5",
-                    "value": "151"
+        "fieldGroup": [
+            {
+                "id": "value_15",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Radio Test 5",
+                    "options": [
+                        {
+                            "name": "1/5",
+                            "value": "151"
+                        },
+                        {
+                            "name": "2/5",
+                            "value": "152"
+                        },
+                        {
+                            "name": "3/5",
+                            "value": "153"
+                        },
+                        {
+                            "name": "4/5",
+                            "value": "154"
+                        },
+                        {
+                            "name": "5/5",
+                            "value": "155"
+                        }
+                    ]
                 },
-                {
-                    "name": "2/5",
-                    "value": "152"
+                "type": "radio"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_15",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
                 },
-                {
-                    "name": "3/5",
-                    "value": "153"
-                },
-                {
-                    "name": "4/5",
-                    "value": "154"
-                },
-                {
-                    "name": "5/5",
-                    "value": "155"
-                }
-            ]
-        },
-        "type": "radio"
+                "type": "mui"
+            }
+        ],
+        "key": "k_radio5"
     }
 ]

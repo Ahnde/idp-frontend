@@ -1,12 +1,40 @@
 [
     {
-        "key": "k_textarea",
-        "templateOptions": {
-            "cols": 1,
-            "label": "Textarea Test",
-            "placeholder": "Placeholder",
-            "rows": 1
-        },
-        "type": "textarea"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "cols": 1,
+                    "label": "Textarea Test",
+                    "placeholder": "Placeholder",
+                    "rows": 1
+                },
+                "type": "textarea"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_textarea"
     }
 ]

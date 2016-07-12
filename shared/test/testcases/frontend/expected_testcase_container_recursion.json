@@ -1,43 +1,48 @@
 [
     {
-        "fieldGroup": [
-            {
-                "fieldGroup": [
-                    {
-                        "fieldGroup": [
-                            {
-                                "fieldGroup": [
-                                    {
-                                        "fieldGroup": [
-                                            {
-                                                "templateOptions": {
-                                                    "label": "End of recursion"
-                                                },
-                                                "type": "textlabel"
-                                            }
-                                        ],
-                                        "key": "111111",
-                                        "templateOptions": {},
-                                        "wrapper": "panel"
-                                    }
-                                ],
-                                "key": "11111",
-                                "templateOptions": {},
-                                "wrapper": "panel"
-                            }
-                        ],
-                        "key": "1111",
-                        "templateOptions": {},
-                        "wrapper": "panel"
-                    }
-                ],
-                "key": "111",
-                "templateOptions": {},
-                "wrapper": "panel"
-            }
-        ],
         "key": "11",
-        "templateOptions": {},
-        "wrapper": "panel"
+        "templateOptions": {
+            "fields": [
+                {
+                    "key": "111",
+                    "templateOptions": {
+                        "fields": [
+                            {
+                                "key": "1111",
+                                "templateOptions": {
+                                    "fields": [
+                                        {
+                                            "key": "11111",
+                                            "templateOptions": {
+                                                "fields": [
+                                                    {
+                                                        "key": "111111",
+                                                        "templateOptions": {
+                                                            "fields": [
+                                                                {
+                                                                    "templateOptions": {
+                                                                        "label": "End of recursion"
+                                                                    },
+                                                                    "type": "textlabel"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "type": "panel"
+                                                    }
+                                                ]
+                                            },
+                                            "type": "panel"
+                                        }
+                                    ]
+                                },
+                                "type": "panel"
+                            }
+                        ]
+                    },
+                    "type": "panel"
+                }
+            ]
+        },
+        "type": "panel"
     }
 ]

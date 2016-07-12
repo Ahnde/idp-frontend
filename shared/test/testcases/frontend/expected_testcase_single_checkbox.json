@@ -1,9 +1,37 @@
 [
     {
-        "key": "k_checkbox",
-        "templateOptions": {
-            "label": "Checkbox Test"
-        },
-        "type": "checkbox"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Checkbox Test"
+                },
+                "type": "checkbox"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_checkbox"
     }
 ]

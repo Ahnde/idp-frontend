@@ -1,19 +1,47 @@
 [
     {
-        "key": "k_radio",
-        "templateOptions": {
-            "label": "Radio Test",
-            "options": [
-                {
-                    "name": "Option one",
-                    "value": "111"
+        "fieldGroup": [
+            {
+                "id": "value_11",
+                "key": "value",
+                "templateOptions": {
+                    "label": "Radio Test",
+                    "options": [
+                        {
+                            "name": "Option one",
+                            "value": "111"
+                        },
+                        {
+                            "name": "Option two",
+                            "value": "112"
+                        }
+                    ]
                 },
-                {
-                    "name": "Option two",
-                    "value": "112"
-                }
-            ]
-        },
-        "type": "radio"
+                "type": "radio"
+            },
+            {
+                "defaultValue": "not_applicable",
+                "id": "mui_11",
+                "key": "mui",
+                "templateOptions": {
+                    "options": [
+                        {
+                            "name": "M",
+                            "value": "missing"
+                        },
+                        {
+                            "name": "U",
+                            "value": "unobtainable"
+                        },
+                        {
+                            "name": "I",
+                            "value": "ignore"
+                        }
+                    ]
+                },
+                "type": "mui"
+            }
+        ],
+        "key": "k_radio"
     }
 ]
