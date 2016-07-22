@@ -276,6 +276,10 @@
                 validatorName = fsValidator['validator_name'];
                 validatorExpression = expressionForRegExValidator(fsValidator['expression']);
                 break;
+            case "cross":
+                validatorName = fsValidator['validator_name'];
+                validatorExpression = expressionForRegExValidator(fsValidator['expression']);
+                break;
             default:
                 return;
         }
@@ -310,9 +314,24 @@
     }
 
     var expressionForRegExValidator = function(fsValidatorExpression) {
+        console.log("hello");
+        console.log(fsValidatorExpression);
         var expressionFunction = function($viewValue, $viewModel, scope) {
             var regExp = new RegExp(fsValidatorExpression);
             var value = $viewValue || $viewModel;
+            console.log('');
+            console.log('viewValue');
+            console.log($viewValue);
+            console.log('viewModel');
+            console.log($viewModel);
+            console.log('');
+            console.log('');
+            console.log('another viewModel');
+            console.log(scope);
+            console.log('');
+            console.log('');
+            console.log('');
+            console.log('');
             if (value) {
                 return regExp.test(value);
             }

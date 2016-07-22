@@ -64,10 +64,11 @@ VALIDATOR = {
               validator_name: STRING,
               validator_type: VALIDATOR_TYPE,
               message: STRING,
-              expression: REGEX
+              expression: REGEX,
+              cross_key: MAPPING_KEY
             }
 
-VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "regex"
+VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "regex" | "cross"
 
 DATE_FORMAT = {
                 format: "..." //iso standard,

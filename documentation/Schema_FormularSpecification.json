@@ -44,15 +44,13 @@
                     "element_id": { "$ref": "#/definitions/element_id" },
                     "validator_name": { "$ref": "#/definitions/label" },
                     "validator_type" : { 
-                        "enum": [ "isRequired", "minLength", "maxLength", "minDate", "maxDate", "custom" ]
+                        "enum": [ "isRequired", "minLength", "maxLength", "minDate", "maxDate", "regex", "cross" ]
                     },
                     "message": { "$ref": "#/definitions/text" },
                     "expression": { "$ref": "#/definitions/expression" },
-                    "test": {
-                        "enum": [ "regex", "function" ]
-                    }
+                    "cross_key": { "$ref": "#/definitions/mapping_key" }
                 },
-                "required": ["element_id", "validator_type"]
+                "required": ["element_id", "validator_name", "validator_type"]
             },
             "validators": {
                 "type": "array",
