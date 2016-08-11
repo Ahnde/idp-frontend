@@ -44,7 +44,7 @@
                     "element_id": { "$ref": "#/definitions/element_id" },
                     "validator_name": { "$ref": "#/definitions/label" },
                     "validator_type" : { 
-                        "enum": [ "isRequired", "minLength", "maxLength", "minDate", "maxDate", "regex", "cross" ]
+                        "enum": [ "isRequired", "minLength", "maxLength", "minDate", "maxDate", "regex" ]
                     },
                     "message": { "$ref": "#/definitions/text" },
                     "expression": { "$ref": "#/definitions/expression" },

@@ -1,3 +1,5 @@
+    var formScope;
+
     // FORMULAR DATA
     var formularDataFromMetadataAndContent = function(formId, title, formularContent) {
         var metadata = {};
@@ -23,9 +25,11 @@
     }
 
     // FORMULAR FORM
-    var angularFromIDPSpec = function(formularSpecification) {
+    var angularFromIDPSpec = function(formularSpecification, scope) {
         var formularSpecificationArray = formularSpecification['children'];
         var angularFormlyJsonArray = [];
+
+        formScope = scope;
 
         for (var objectNumber in formularSpecificationArray) {
             var currentFsJson = formularSpecificationArray[objectNumber];
@@ -248,37 +252,40 @@
     var validatorForFsJson = function(fsValidator) {
         var afValidator = {};
 
+        var crossKey = "";
+        if (fsValidator['cross_key']) {
+            crossKey = fsValidator['cross_key'];
+        }
+
         var validatorName,
             validatorExpression,
             validatorMessage;
+
         switch (fsValidator['validator_type']) {
-            case "isRequired":
-                validatorName = "isRequired";
-                validatorExpression = '$viewValue != ""';
-                break;
-            case "minLength":
-                validatorName = "minLength";
-                validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$");
-                break;
-            case "maxLength":
-                validatorName = "maxLength";
-                validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$");
-                break;
             case "minDate":
                 validatorName = "minDate";
-                validatorExpression = expressionForDateValidator(fsValidator['expression'], true);
+                validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey);
                 break;
             case "maxDate":
                 validatorName = "maxDate";
-                validatorExpression = expressionForDateValidator(fsValidator['expression'], false);
+                validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey);
+                break;
+            case "isRequired":
+                validatorName = "isRequired";
+                validatorExpression = expressionForRegExValidator("true", crossKey);
+                break;
+            case "minLength":
+                validatorName = "minLength";
+                validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey);
+                break;
+            case "maxLength":
+                validatorName = "maxLength";
+                validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey);
                 break;
             case "regex":
-                validatorName = fsValidator['validator_name'];
-                validatorExpression = expressionForRegExValidator(fsValidator['expression']);
-                break;
             case "cross":
                 validatorName = fsValidator['validator_name'];
-                validatorExpression = expressionForRegExValidator(fsValidator['expression']);
+                validatorExpression = expressionForRegExValidator(fsValidator['expression'], crossKey);
                 break;
             default:
                 return;
@@ -289,13 +296,18 @@
         afValidator['validatorName'] = validatorName;
         afValidator['validatorExpression'] = validatorExpression;
         afValidator['validatorMessage'] = '"'+validatorMessage+'"';
-        
+
         return afValidator;
     }
 
-    var expressionForDateValidator = function(fsDate, inputShouldBeGreater) {
+    var expressionForDateValidator = function(fsDate, inputShouldBeGreater, crossKey) {
         var expressionFunction = function($viewValue, $viewModel, scope) {
-            var value = $viewValue || $viewModel;
+            if (crossKey === "") {
+                value = $viewValue || $viewModel;
+            } else {
+                value = formScope.formular[crossKey].value;
+            }
+
             if (value) {
                 var dateDiff = moment(value).diff(moment(fsDate))
 
@@ -313,28 +325,31 @@
         return expressionFunction;
     }
 
-    var expressionForRegExValidator = function(fsValidatorExpression) {
-        console.log("hello");
-        console.log(fsValidatorExpression);
+    var expressionForRegExValidator = function(fsValidatorExpression, crossKey) {
         var expressionFunction = function($viewValue, $viewModel, scope) {
+            console.log('')
+            console.log("fsValidatorExpression: "+fsValidatorExpression)
+            console.log("crossKey: "+crossKey)
+
             var regExp = new RegExp(fsValidatorExpression);
-            var value = $viewValue || $viewModel;
-            console.log('');
-            console.log('viewValue');
-            console.log($viewValue);
-            console.log('viewModel');
-            console.log($viewModel);
-            console.log('');
-            console.log('');
-            console.log('another viewModel');
-            console.log(scope);
-            console.log('');
-            console.log('');
-            console.log('');
-            console.log('');
-            if (value) {
-                return regExp.test(value);
+
+            if (crossKey === "") {
+                value = $viewValue || $viewModel;
+            } else {
+                value = formScope.formular[crossKey].value;
             }
+
+            console.log(value)
+
+            if (value) {
+                console.log(value === true)
+                console.log(regExp.test(value))
+                if (regExp.test(value) || value === true) {
+                    return true;
+                }
+            }
+
+            return false;
         };
         return expressionFunction;
     }

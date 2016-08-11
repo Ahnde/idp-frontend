@@ -68,7 +68,7 @@ VALIDATOR = {
               cross_key: MAPPING_KEY
             }
 
-VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "regex" | "cross"
+VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "regex"
 
 DATE_FORMAT = {
                 format: "..." //iso standard,

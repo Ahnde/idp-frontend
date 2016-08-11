@@ -13,9 +13,9 @@ formularGenerator.factory("jsonTransformer", [function () {
       return formularDataWithUpdatedMetadata(formularData, formularContent);
     };
 
-    JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecification) {
+    JT.transformFormularSpecificationToAngularFormlyJson = function(formularSpecification, scope) {
 
-      return angularFromIDPSpec(formularSpecification);
+      return angularFromIDPSpec(formularSpecification, scope);
     };
 
     JT.transformAngularFormlyJsonToFormularSpecification = function(angularSpecification) {

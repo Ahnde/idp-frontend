@@ -159,7 +159,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             var arrayWithJSONs = [];
 
             $scope.formularTitle = formularSpecification.metadata['title']
-            arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification);
+            arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification, $scope);
 
             RE.formularFields = arrayWithJSONs;
         });
