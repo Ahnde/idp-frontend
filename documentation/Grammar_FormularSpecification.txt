@@ -16,6 +16,7 @@ CONTAINER = {
               element_type: "container",
               container_type: "normal" | "tab" | "repeating"
               label: "STRING",
+              display_inline: true | false,
               children:[CHILD +]
             }
 
