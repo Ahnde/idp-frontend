@@ -59,6 +59,8 @@
         afJsonContainer.templateOptions = {};
         afJsonContainer.templateOptions['label'] = fsContainerJson.label;
         afJsonContainer.templateOptions['fields'] = [];
+        afJsonContainer.templateOptions['inline'] = fsContainerJson.display_inline?true:false;
+        
 
         var afJsonArray = [];
         var fsContainerChildrenArray = fsContainerJson['children'];

@@ -41,17 +41,30 @@ body {
     height:auto;
     overflow:auto;
 }
-.form-inline {
-    display: inline-block;
-}
-.formly-field {
-    display: inline-block;
-}
-.formly-field-group {
-    display: block;
-}
 .formly-field-mui {
     margin-left: 10px;
     display: inline-block;
     vertical-align: top;
+}
+
+.form-inline {
+    display: inline-block;
+
+}
+.formly-field {
+
+}
+
+.px-nested-panel-body > div {
+    display:inline-block;
+}
+
+.formly-field-group
+{
+    display: block;
+}
+
+.childrenInline .formly-field-group
+{
+    display: inline-block !important;
 }

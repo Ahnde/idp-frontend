@@ -51,7 +51,7 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
                       {{options.templateOptions.label}}\
                     </strong>\
                   </div>\
-                  <div class="panel-body px-nested-panel-body">\
+            <div class="panel-body px-nested-panel-body" ng-class="{ childrenInline : options.templateOptions.inline}">\
                     <formly-form fields="to.fields"\
                                   model="model"\
                                    form="form">\
