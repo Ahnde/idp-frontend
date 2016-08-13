@@ -15,7 +15,9 @@ TEMPLATEOPTIONS = { label: LABEL,
 
 OPTION = { name: LABEL }
 
-ELEMENTTYPE = "container" | "separator" | "input" | "textarea" | "checkbox" | "select" | "radio" | "datepicker" | "textlabel" | "image" | "video"
+ELEMENTTYPE = "container" | "separator" | "input" | "textarea"   | 
+              "checkbox"  | "select"    | "radio" | "datepicker" | 
+              "textlabel" | "image"     | "video"
 
 TOTYPE = "text" | ...
 

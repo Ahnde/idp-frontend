@@ -272,7 +272,7 @@
                 break;
             case "isRequired":
                 validatorName = "isRequired";
-                validatorExpression = expressionForRegExValidator("true", crossKey);
+                validatorExpression = expressionForRegExValidator("isRequired", crossKey);
                 break;
             case "minLength":
                 validatorName = "minLength";
@@ -331,21 +331,29 @@
             console.log("fsValidatorExpression: "+fsValidatorExpression)
             console.log("crossKey: "+crossKey)
 
-            var regExp = new RegExp(fsValidatorExpression);
-
             if (crossKey === "") {
                 value = $viewValue || $viewModel;
             } else {
                 value = formScope.formular[crossKey].value;
             }
 
-            console.log(value)
+            console.log(value);
 
-            if (value) {
-                console.log(value === true)
-                console.log(regExp.test(value))
-                if (regExp.test(value) || value === true) {
+            if (value === undefined) {
+                return false;
+            }            
+
+            if (fsValidatorExpression === 'isRequired') {
+                if (value != '' || value === true) {
+                    console.log(value === true);
                     return true;
+                }
+            } else {
+                var regExp = new RegExp(fsValidatorExpression);
+                if (value) {
+                    if (regExp.test(value)) {
+                        return true;
+                    }
                 }
             }
 

@@ -54,7 +54,8 @@ OPTION = {
          }
 
 
-INTERACTIVE_TYPE = "textarea" | "input" | "date" | "number" | "radio" | "dropdown" | "checkbox"
+INTERACTIVE_TYPE = "textarea" | "input"    | "date"     | "number" | 
+                   "radio"    | "dropdown" | "checkbox"
 
 
 INPUT_TYPE = "text"
@@ -69,7 +70,8 @@ VALIDATOR = {
               cross_key: MAPPING_KEY
             }
 
-VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | "maxDate" | "regex"
+VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | 
+                 "maxDate"    | "regex"
 
 DATE_FORMAT = {
                 format: "..." //iso standard,

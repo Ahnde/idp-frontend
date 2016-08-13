@@ -44,7 +44,8 @@
                     "element_id": { "$ref": "#/definitions/element_id" },
                     "validator_name": { "$ref": "#/definitions/label" },
                     "validator_type" : { 
-                        "enum": [ "isRequired", "minLength", "maxLength", "minDate", "maxDate", "regex" ]
+                        "enum": [ "isRequired", "minLength", "maxLength", 
+                                  "minDate", "maxDate", "regex" ]
                     },
                     "message": { "$ref": "#/definitions/text" },
                     "expression": { "$ref": "#/definitions/expression" },
@@ -79,13 +80,15 @@
                     "element_id": { "$ref": "#/definitions/element_id" },
                     "element_type": "interactive",
                     "interactive_type": {
-                        "enum": [ "textarea", "input", "date", "number", "radio", "dropdown", "checkbox" ]
+                        "enum": [ "textarea", "input", "date", "number", 
+                                  "radio", "dropdown", "checkbox" ]
                     },
                     "mapping_key": { "$ref": "#/definitions/mapping_key" },
                     "validators": { "$ref": "#/definitions/validators" },
                     "interactive_details" : { "$ref": "#/definitions/interactive_details" }
                 },
-                "required": ["element_id", "element_type", "mapping_key", "validators"]
+                "required": ["element_id", "element_type", 
+                             "mapping_key", "validators"]
             },
             "urls": {
                 "type": "array",
@@ -140,7 +143,8 @@
                     "category": { "$ref": "#/definitions/text" },
                     "creator": { "$ref": "#/definitions/text" }
                 },
-                "required": ["label", "version", "creation_date", "last_modified_date", "is_template"]
+                "required": [ "label", "version", "creation_date", 
+                              "last_modified_date", "is_template" ]
             }
         },
         "type": "object",
