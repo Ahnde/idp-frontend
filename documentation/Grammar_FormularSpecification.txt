@@ -71,7 +71,7 @@ VALIDATOR = {
               validator_action: VALIDATOR_ACTION
             }
             
-VALIDATOR_ACTION = "activate" | "hide" | "display_message"
+VALIDATOR_ACTION = "disable" | "hide" | "message"
 
 VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | 
                  "maxDate"    | "regex"

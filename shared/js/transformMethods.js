@@ -259,6 +259,8 @@
             crossKey = fsValidator['cross_key'];
         }
 
+        var action = fsValidator['validator_action'];
+
         var validatorName,
             validatorExpression,
             validatorMessage;
@@ -266,23 +268,23 @@
         switch (fsValidator['validator_type']) {
             case "minDate":
                 validatorName = "minDate";
-                validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey);
+                validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey, action);
                 break;
             case "maxDate":
                 validatorName = "maxDate";
-                validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey);
+                validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey, action);
                 break;
             case "isRequired":
                 validatorName = "isRequired";
-                validatorExpression = expressionForRegExValidator("isRequired", crossKey);
+                validatorExpression = expressionForRegExValidator("isRequired", crossKey, action);
                 break;
             case "minLength":
                 validatorName = "minLength";
-                validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey);
+                validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey, action);
                 break;
             case "maxLength":
                 validatorName = "maxLength";
-                validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey);
+                validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey, action);
                 break;
             case "regex":
             case "cross":
@@ -302,7 +304,7 @@
         return afValidator;
     }
 
-    var expressionForDateValidator = function(fsDate, inputShouldBeGreater, crossKey) {
+    var expressionForDateValidator = function(fsDate, inputShouldBeGreater, crossKey, action) {
         var expressionFunction = function($viewValue, $viewModel, scope) {
             if (crossKey === "") {
                 value = $viewValue || $viewModel;
@@ -327,7 +329,7 @@
         return expressionFunction;
     }
 
-    var expressionForRegExValidator = function(fsValidatorExpression, crossKey) {
+    var expressionForRegExValidator = function(fsValidatorExpression, crossKey, action) {
         var expressionFunction = function($viewValue, $viewModel, scope) {
             if (crossKey === "") {
                 value = $viewValue || $viewModel;
