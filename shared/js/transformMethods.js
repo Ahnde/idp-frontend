@@ -327,17 +327,11 @@
 
     var expressionForRegExValidator = function(fsValidatorExpression, crossKey) {
         var expressionFunction = function($viewValue, $viewModel, scope) {
-            console.log('')
-            console.log("fsValidatorExpression: "+fsValidatorExpression)
-            console.log("crossKey: "+crossKey)
-
             if (crossKey === "") {
                 value = $viewValue || $viewModel;
             } else {
                 value = formScope.formular[crossKey].value;
             }
-
-            console.log(value);
 
             if (value === undefined) {
                 return false;
@@ -345,7 +339,6 @@
 
             if (fsValidatorExpression === 'isRequired') {
                 if (value != '' || value === true) {
-                    console.log(value === true);
                     return true;
                 }
             } else {
@@ -422,18 +415,6 @@
                 //TODO: template does not support this feature, yet
             };
         };
-
-        //MUI
-
-        if (fsInteractiveDetailsJson['missing']) {
-            templateOptions.missing = fsInteractiveDetailsJson['missing'];
-        }
-        if (fsInteractiveDetailsJson['unobtainable']) {
-            templateOptions.unobtainable = fsInteractiveDetailsJson['unobtainable'];
-        }
-        if (fsInteractiveDetailsJson['something_with_i']) {
-            templateOptions.something_with_i = fsInteractiveDetailsJson['something_with_i'];
-        }
 
         return templateOptions;
     };
