@@ -67,8 +67,11 @@ VALIDATOR = {
               validator_type: VALIDATOR_TYPE,
               message: STRING,
               expression: REGEX,
-              cross_key: MAPPING_KEY
+              cross_key: MAPPING_KEY,
+              validator_action: VALIDATOR_ACTION
             }
+            
+VALIDATOR_ACTION = "activate" | "hide" | "display_message"
 
 VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | 
                  "maxDate"    | "regex"
