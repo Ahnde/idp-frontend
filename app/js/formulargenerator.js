@@ -16,8 +16,14 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
     });
     formlyConfigProvider.setType({
       name: 'video',
-      template: '<video controls width="400"><source src="{{to.urls[0]}}" /></video>',
-      wrapper: ['bootstrapHasError']
+      template: '<video controls width="400"><source ng-src="{{trustSrc(to.urls[0])}}" /></video>',
+      wrapper: ['bootstrapHasError'],
+      controller: function($scope, $sce) {
+      	$scope.trustSrc = function(src) {
+      		console.log('lol2');
+    	    return $sce.trustAsResourceUrl(src);
+   		}
+      }
     });
     formlyConfigProvider.setType({
       name: 'textlabel',
