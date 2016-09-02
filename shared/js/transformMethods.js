@@ -266,22 +266,106 @@
     		    });
     		    break;
 			case "hide":
-    			
+    			hideValidatorForFSValidator(fsValidator, expressionProperties, function(newExpressionProperties) {
+    				expressionProperties = newExpressionProperties;
+    			});
 			    break;
     		case "disable":
-    		    
+    		    disableValidatorForFSValidator(fsValidator, templateOptions, function(newTemplateOptions) {
+    		    	templateOptions = newTemplateOptions;
+    		    });
     		    break;    		    
     		default:
-    		    return;
+    			//just send the old objects back
     	}
         
         callback(templateOptions, validators, expressionProperties);
     }
 
 	//hide
-
+	var hideValidatorForFSValidator = function(fsValidator, oldExpressionProperties, callback) {
+		var expressionProperties = oldExpressionProperties;
+		
+		var afValidator = {};
+		
+		var crossKey = "";
+		if (fsValidator['cross_key']) {
+			crossKey = fsValidator['cross_key'];
+		}
+		
+		var validatorExpression;
+		
+		switch (fsValidator['validator_type']) {
+		    case "minDate":
+		        validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey);
+		        break;
+		    case "maxDate":
+		        validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey);
+		        break;
+		    case "isRequired":
+		        validatorExpression = expressionForRegExValidator("isRequired", crossKey);
+		        break;
+		    case "minLength":
+		        validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey);
+		        break;
+		    case "maxLength":
+		        validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey);
+		        break;
+		    case "regex":
+		        validatorExpression = expressionForRegExValidator(fsValidator['expression'], crossKey);
+		        break;
+		    default:
+		        return;
+		}
+		
+		expressionProperties.hide = {};
+		expressionProperties.hide = validatorExpression;
+		
+		callback(expressionProperties);
+	}
+	
 	//disable
-
+	var disableValidatorForFSValidator = function(fsValidator, oldTemplateOptions, callback) {
+		var templateOptions = oldTemplateOptions;
+		
+		var afValidator = {};
+		
+		var crossKey = "";
+		if (fsValidator['cross_key']) {
+			crossKey = fsValidator['cross_key'];
+		}
+		
+		var validatorExpression;
+		
+		switch (fsValidator['validator_type']) {
+		    case "minDate":
+		        validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey);
+		        break;
+		    case "maxDate":
+		        validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey);
+		        break;
+		    case "isRequired":
+		        validatorExpression = expressionForRegExValidator("isRequired", crossKey);
+		        break;
+		    case "minLength":
+		        validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey);
+		        break;
+		    case "maxLength":
+		        validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey);
+		        break;
+		    case "regex":
+		        validatorExpression = expressionForRegExValidator(fsValidator['expression'], crossKey);
+		        break;
+		    default:
+		        return;
+		}
+		
+		templateOptions.disabled = {};
+		templateOptions.disabled = validatorExpression;
+		
+		callback(templateOptions);
+	}
+		
 	//message
 	var messageValidatorForFSValidator = function(fsValidator, oldValidators, callback) {
 		var validators = oldValidators;
@@ -323,6 +407,7 @@
 		        validatorExpression = expressionForRegExValidator(fsValidator['expression'], crossKey);
 		        break;
 		    default:
+		    	callback(validators);
 		        return;
 		}
 		
