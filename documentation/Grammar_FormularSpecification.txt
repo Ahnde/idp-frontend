@@ -4,7 +4,6 @@ BNF - Grammar for FormSpecification
 FORM =  { 
           element_id: ID, 
           element_type: "form",
-          title: STRING,
           metadata : FORM_METADATA,
           children:[CHILD *] 
         }
@@ -98,14 +97,12 @@ VERSION = {
             default: 1.0
           }
 
+REGEX = /STRING/
+DATE = ISO 8601
+URL = STRING
 MAPPING_KEY = STRING
 ID = STRING
 
-FUNCTION = "..."
-REGEX = "..."
-DATE = "..."
-
-URL = STRING
 STRING = [a-zA-Z0-9]*
 DOUBLE = INTEGER,INTEGER
 INTEGER = [1-9][0-9]*
