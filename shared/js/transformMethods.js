@@ -36,8 +36,11 @@
             var currentAfArray = angularFormlyJsonArrayForFsJson(currentFsJson);
             angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
         };
-	
-        return angularFormlyJsonArray;
+		
+		console.log('Angular Formly JSON')
+		console.log(angularFormlyJsonArray)
+		console.log('')
+		return angularFormlyJsonArray;
     };
 
     // CHECK FOR NODE-TYPE
@@ -135,6 +138,9 @@
 
         //get mui stff
         var muiFields = muiFieldsForFsInteractiveJson(fsInteractiveJson);
+        muiFields.validators = afJson.validators;
+        muiFields.hideExpression = afJson.hideExpression;
+        muiFields.expressionProperties = afJson.expressionProperties;
 
         //interactive JSON is being wrapped in a fieldgroup so that the saved data structure contains objects 
         var fieldGroupJson = {};
