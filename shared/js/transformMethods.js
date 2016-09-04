@@ -36,7 +36,7 @@
             var currentAfArray = angularFormlyJsonArrayForFsJson(currentFsJson);
             angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
         };
-
+	
         return angularFormlyJsonArray;
     };
 
@@ -126,9 +126,9 @@
 
         if (fsInteractiveJson['validators'].length > 0) {
             fsValidatorsJsonArray = fsInteractiveJson['validators'];
-            validatorsForFsJsonArray(fsValidatorsJsonArray, templateOptions, function(callbackTemplateOptions, callbackValidators, callbackExpressionProperties) {
-                afJson.templateOptions = callbackTemplateOptions;
-                afJson.validators = callbackValidators;
+            validatorsForFsJsonArray(fsValidatorsJsonArray, function(callbackValidators, callbackHideExpression, callbackExpressionProperties) {
+                afJson.validators = callbackValidators;   
+                afJson.hideExpression = callbackHideExpression;
                 afJson.expressionProperties = callbackExpressionProperties;
             });
         }
@@ -142,10 +142,11 @@
         fieldGroupJson.fieldGroup.push(afJson);
         fieldGroupJson.fieldGroup.push(muiFields);
         fieldGroupJson.key = fsInteractiveJson['mapping_key'];
-
+		
         return fieldGroupJson;
     };
-
+	
+	// MUI
     var muiFieldsForFsInteractiveJson = function(fsInteractiveJson) {
         var muiFields = {};
 
@@ -226,10 +227,11 @@
 
         return afTypeString;
     };
-
-    var validatorsForFsJsonArray = function(fsValidatorsArray, oldTemplateOptions, callback) {
+	
+	// VALIDATORS
+    var validatorsForFsJsonArray = function(fsValidatorsArray, callback) {
         var validators = {};
-        var templateOptions = oldTemplateOptions;
+        var hideExpression;
         var expressionProperties = {};
 
         var oneValidator,
@@ -238,25 +240,25 @@
         for (var validatorIndex in fsValidatorsArray) {
             fsValidator = fsValidatorsArray[validatorIndex];
             
-            validatorForFsJson(fsValidator, validators, templateOptions, expressionProperties, 
-            					function(callbackTemplateOptions, callbackValidators, callbackExpressionProperties) {
+            validatorForFsJson(fsValidator, validators, hideExpression, expressionProperties, 
+            					function(callbackValidators, callbackHideExpression, callbackExpressionProperties) {
                 					validators = {};
                 					templateOptions = {};
                 					expressionProperties = {};
                 					
                 					validators = callbackValidators;
-                					templateOptions = callbackTemplateOptions;
+                					hideExpression = callbackHideExpression;
 					                expressionProperties = callbackExpressionProperties;
 					            }
 			);
         }
-
-        callback(templateOptions, validators, expressionProperties);
+		
+        callback(validators, hideExpression, expressionProperties);
     };
 
-    var validatorForFsJson = function(fsValidator, oldValidators, oldTemplateOptions, oldExpressionProperties, callback) {
+    var validatorForFsJson = function(fsValidator, oldValidators, oldHideExpression, oldExpressionProperties, callback) {
     	var validators = oldValidators;
-    	var templateOptions = oldTemplateOptions;
+    	var hideExpression = oldHideExpression;
     	var expressionProperties = oldExpressionProperties;
     	
     	switch (fsValidator['validator_action']) {
@@ -266,24 +268,64 @@
     		    });
     		    break;
 			case "hide":
-    			hideValidatorForFSValidator(fsValidator, expressionProperties, function(newExpressionProperties) {
-    				expressionProperties = newExpressionProperties;
+    			hideValidatorForFSValidator(fsValidator, hideExpression, function(newHideExpression) {
+    				hideExpression = newHideExpression;
     			});
 			    break;
     		case "disable":
-    		    disableValidatorForFSValidator(fsValidator, templateOptions, function(newTemplateOptions) {
-    		    	templateOptions = newTemplateOptions;
+    		    disableValidatorForFSValidator(fsValidator, expressionProperties, function(newExpressionProperties) {
+    		    	expressionProperties = newExpressionProperties;
     		    });
     		    break;    		    
     		default:
     			//just send the old objects back
     	}
         
-        callback(templateOptions, validators, expressionProperties);
+        callback(validators, hideExpression, expressionProperties);
     }
 
 	//hide
-	var hideValidatorForFSValidator = function(fsValidator, oldExpressionProperties, callback) {
+	var hideValidatorForFSValidator = function(fsValidator, oldHideExpression, callback) {
+		var hideExpression = oldHideExpression;
+		
+		var afValidator = {};
+		
+		var crossKey = "";
+		if (fsValidator['cross_key']) {
+			crossKey = fsValidator['cross_key'];
+		}
+		
+		var validatorExpression;
+		
+		switch (fsValidator['validator_type']) {
+		    case "minDate":
+		        validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey);
+		        break;
+		    case "maxDate":
+		        validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey);
+		        break;
+		    case "isRequired":
+		        validatorExpression = expressionForRegExValidator("isRequired", crossKey);
+		        break;
+		    case "minLength":
+		        validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey);
+		        break;
+		    case "maxLength":
+		        validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey);
+		        break;
+		    case "regex":
+		        validatorExpression = expressionForRegExValidator(fsValidator['expression'], crossKey);
+		        break;
+		    default:
+		        return;
+		}
+		
+		hideExpression = validatorExpression;
+		callback(hideExpression);
+	}
+	
+	//disable
+	var disableValidatorForFSValidator = function(fsValidator, oldExpressionProperties, callback) {
 		var expressionProperties = oldExpressionProperties;
 		
 		var afValidator = {};
@@ -318,52 +360,8 @@
 		        return;
 		}
 		
-		expressionProperties.hide = {};
-		expressionProperties.hide = validatorExpression;
-		
+		expressionProperties['templateOptions.disabled'] = validatorExpression;
 		callback(expressionProperties);
-	}
-	
-	//disable
-	var disableValidatorForFSValidator = function(fsValidator, oldTemplateOptions, callback) {
-		var templateOptions = oldTemplateOptions;
-		
-		var afValidator = {};
-		
-		var crossKey = "";
-		if (fsValidator['cross_key']) {
-			crossKey = fsValidator['cross_key'];
-		}
-		
-		var validatorExpression;
-		
-		switch (fsValidator['validator_type']) {
-		    case "minDate":
-		        validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey);
-		        break;
-		    case "maxDate":
-		        validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey);
-		        break;
-		    case "isRequired":
-		        validatorExpression = expressionForRegExValidator("isRequired", crossKey);
-		        break;
-		    case "minLength":
-		        validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey);
-		        break;
-		    case "maxLength":
-		        validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey);
-		        break;
-		    case "regex":
-		        validatorExpression = expressionForRegExValidator(fsValidator['expression'], crossKey);
-		        break;
-		    default:
-		        return;
-		}
-		
-		templateOptions.disabled = {};
-		templateOptions.disabled = validatorExpression;
-		
-		callback(templateOptions);
 	}
 		
 	//message
@@ -463,7 +461,7 @@
         
             if (value === undefined) {
                 return false;
-            }            
+            }
         
             if (fsValidatorExpression === 'isRequired') {
                 if (value != '' || value === true) {
@@ -477,12 +475,9 @@
                     }
                 }
             }
-        
+        	
             return false;
         };
-
-        console.log('test2')
-        console.log(expression);
 
         return expression;
     }
