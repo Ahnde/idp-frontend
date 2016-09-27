@@ -1,5 +1,5 @@
     {
-        "id": "http://awesome.idp.de/entry-schema#",
+        "id": "form_specification_v01",
         "$schema": "http://json-schema.org/draft-04/schema#",
         "description": "schema for the FormularSpecification",
         "definitions": {
@@ -85,7 +85,8 @@
                     },
                     "mapping_key": { "$ref": "#/definitions/mapping_key" },
                     "validators": { "$ref": "#/definitions/validators" },
-                    "interactive_details" : { "$ref": "#/definitions/interactive_details" }
+                    "interactive_details" : 
+                        { "$ref": "#/definitions/interactive_details" }
                 },
                 "required": ["element_id", "element_type", 
                              "mapping_key", "validators"]
