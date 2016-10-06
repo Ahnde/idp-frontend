@@ -129,10 +129,15 @@
 
         if (fsInteractiveJson['validators'].length > 0) {
             fsValidatorsJsonArray = fsInteractiveJson['validators'];
-            validatorsForFsJsonArray(fsValidatorsJsonArray, function(callbackValidators, callbackHideExpression, callbackExpressionProperties) {
+            validatorsForFsJsonArray(fsValidatorsJsonArray, function(callbackValidators, callbackHideExpression, callbackExpressionProperties, callbackCrossKeys) {
                 afJson.validators = callbackValidators;   
                 afJson.hideExpression = callbackHideExpression;
                 afJson.expressionProperties = callbackExpressionProperties;
+                if (afJson.data === undefined)
+                {
+                	afJson.data = {};
+                }
+                afJson.data.crossKeys = callbackCrossKeys;
             });
         }
 
@@ -239,13 +244,14 @@
         var validators = {};
         var hideExpression;
         var expressionProperties = {};
+        var crossKeys = [];
 
         var oneValidator,
             afValidator,
             theValidator;
         for (var validatorIndex in fsValidatorsArray) {
             fsValidator = fsValidatorsArray[validatorIndex];
-            
+            crossKeys.push(fsValidator['cross_key']);
             validatorForFsJson(fsValidator, validators, hideExpression, expressionProperties, 
             					function(callbackValidators, callbackHideExpression, callbackExpressionProperties) {
                 					validators = {};
@@ -259,7 +265,7 @@
 			);
         }
 		
-        callback(validators, hideExpression, expressionProperties);
+        callback(validators, hideExpression, expressionProperties, crossKeys);
     };
 
     var validatorForFsJson = function(fsValidator, oldValidators, oldHideExpression, oldExpressionProperties, callback) {

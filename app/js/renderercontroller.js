@@ -162,6 +162,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             arrayWithJSONs = jsonTransformer.transformFormularSpecificationToAngularFormlyJson(formularSpecification, $scope);
 
             RE.formularFields = arrayWithJSONs;
+
+            addCrossValidationWatchers(RE.formularFields);
         });
     }
 
@@ -280,6 +282,68 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
                 }
             }
         }
+    }
+
+    // helper for cross validation
+    
+    var addCrossValidationWatchers = function(fields) {
+        var interactiveFields = getInteractiveFieldsFromFields(fields);
+
+        for (var i in interactiveFields) {
+            field = interactiveFields[i];                
+            if (field.fieldGroup[0].data && field.fieldGroup[0].data.crossKeys.length > 0) {
+                //crossKeys exist
+                crossKeys = field.fieldGroup[0].data.crossKeys
+                
+                for (var j in crossKeys) {
+                    crossKey = crossKeys[j];
+                    //add actual watcher
+                    addWatcherForCrossKey(field, crossKey);
+                }
+            }
+        }
+    }
+
+    var addWatcherForCrossKey = function(fieldToBeUpdated, crossKey) {
+        $scope.$watch(
+            function (scope) {
+                var value;
+                if ($scope.formular != undefined && $scope.formular != {} && $scope.formular[crossKey]) {
+                    value = $scope.formular[crossKey].value;
+                }
+                return value;
+            },
+            function (oldval, newval) {
+                if (oldval === undefined && newval === undefined) {
+                    return;
+                }
+                fieldToBeUpdated.fieldGroup[0].runExpressions(); //interactive field
+                fieldToBeUpdated.fieldGroup[0].formControl.$validate(); //interactive field
+                fieldToBeUpdated.fieldGroup[1].runExpressions(); //mui
+
+                return;
+            }
+        );
+    }
+
+    var getInteractiveFieldsFromFields = function(fields) {
+        var interactiveFields = [];
+        for (var i in fields) {
+            var field = fields[i];
+            
+            if (field.type === 'panel' ||
+                field.type === 'tabPanel' || 
+                field.type === 'repeatingPanel') {
+                //since field is a container add watchersrecursively 
+                interactiveFields = interactiveFields.concat(getInteractiveFieldsFromFields(field.templateOptions.fields));
+            }
+
+            if (field.fieldGroup != undefined) {
+                //since a fieldGroup exists, this is an interactive field
+                interactiveFields.push(field);
+            }
+        }
+        return interactiveFields;
     }
 
     // make formularfield "touched" so that its error can be shown
