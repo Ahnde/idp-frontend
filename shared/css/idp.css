@@ -73,3 +73,19 @@ ul.tab li:focus, .active {background-color: #ccc;}
     border-radius: 0px 5px 5px 5px;
     border: 1px solid #ccc;
 }
+
+.popupValidatorGroup {
+     background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    padding: 6px 0 8px 7px;
+    margin-bottom: 7px;
+    background-color: #f5f5f5;
+}
+
+.popupValidatorGroupButton {
+    margin-top: 7px;
+}
+

@@ -1858,15 +1858,19 @@ input[type=search] {
     margin-bottom: 15px;
 }
 .checkbox, .radio {
-    /*position: relative;
+    position: relative;
     display: block;
     margin-top: 10px;
-    margin-bottom: 10px;*/
-    display: inline-block;
+    margin-bottom: 10px;
+
+}
+.inline-checkbox, .inline-radio {
+display: inline-block;
     margin-top: 0;
     margin-bottom: 0;
     vertical-align: middle;
 }
+
 .checkbox label, .radio label {
     min-height: 20px;
     padding-left: 20px;
