@@ -132,14 +132,15 @@
             fsValidatorsJsonArray = fsInteractiveJson['validators'];
             validatorsForFsJsonArray(fsValidatorsJsonArray, function(callbackValidators, callbackHideExpression, callbackExpressionProperties, callbackCrossKeys) {
                 if (callbackValidators) {
-                afJson.validators = callbackValidators;   
-                afJson.hideExpression = callbackHideExpression;
-                afJson.expressionProperties = callbackExpressionProperties;
-                if (afJson.data === undefined)
-                {
-                	afJson.data = {};
-                }
-                afJson.data.crossKeys = callbackCrossKeys;
+                    afJson.validators = callbackValidators;   
+                    afJson.hideExpression = callbackHideExpression;
+                    afJson.expressionProperties = callbackExpressionProperties;
+                    if (afJson.data === undefined)
+                    {
+                	   afJson.data = {};
+                    }
+                    afJson.data.crossKeys = callbackCrossKeys;
+                };
             });
         }
 
