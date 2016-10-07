@@ -11,18 +11,17 @@ formularGenerator.config(['formlyConfigProvider', function(formlyConfigProvider)
     });
     formlyConfigProvider.setType({
       name: 'image',
-      template: '<img ng-src="{{to.urls[0]}}" alt="{{to.urls[0]}}" width="200" />',
+      template: '<img ng-src="{{to.url}}" alt="{{to.url}}" width="200" />',
       wrapper: ['bootstrapHasError']
     });
     formlyConfigProvider.setType({
       name: 'video',
-      template: '<video controls width="400"><source ng-src="{{trustSrc(to.urls[0])}}" /></video>',
+      template: '<video controls width="400"><source ng-repeat="oneUrl in to.urls track by $index" ng-src="{{trustSrc(oneUrl)}}" /></video>',
       wrapper: ['bootstrapHasError'],
       controller: function($scope, $sce) {
-      	$scope.trustSrc = function(src) {
-      		console.log('lol2');
+        $scope.trustSrc = function(src) {
     	    return $sce.trustAsResourceUrl(src);
-   		}
+   		  }
       }
     });
     formlyConfigProvider.setType({
