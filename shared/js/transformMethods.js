@@ -40,7 +40,7 @@
 		console.log('Angular Formly JSON')
 		console.log(angularFormlyJsonArray)
 		console.log('')
-                 */
+        */
 		return angularFormlyJsonArray;
     };
 
@@ -120,7 +120,7 @@
 
         var afJson = {};
 
-        afJson.id = "value_"+fsInteractiveJson['element_id'];;
+        afJson.id = "value_"+fsInteractiveJson['element_id'];
         afJson.type = angularFormlyTypeStringForInteractiveFsTypeString(fsJsonTypeString);
         afJson.key = "value";
 
@@ -256,7 +256,7 @@
                 case "message":
                     var oneValidator = {};
                     oneValidator.message = '"'+fsValidator['message']+'"';
-                    oneValidator.expression = expressionForFsValidators([fsValidator]);
+                    oneValidator.expression = expressionForFsValidators([fsValidator], false);
                     validators[fsValidator['element_id']] = oneValidator;
                     break;
                 case "hide":
@@ -274,13 +274,13 @@
         // var hideExpression = expressionForFsValidators(hideValidators);
         var expressionProperties = {};
         var hideExpression;
-        expressionProperties.hide = expressionForFsValidators(hideValidators);
-        expressionProperties['templateOptions.disabled'] = expressionForFsValidators(disableValidators);
+        expressionProperties.hide = expressionForFsValidators(hideValidators, true);
+        expressionProperties['templateOptions.disabled'] = expressionForFsValidators(disableValidators, true);
 
         callback(validators, hideExpression, expressionProperties, crossKeys);
     };
 
-    var expressionForFsValidators = function(fsValidatorsArray) {
+    var expressionForFsValidators = function(fsValidatorsArray, triggerIfTrue) {
         var expression = function($viewValue, $viewModel, scope) {
             var result = false;
 
@@ -291,12 +291,16 @@
                 if (validator['cross_key'] === undefined || validator['cross_key'] === "") {
                     value = $viewValue || $viewModel;
                 } else {
-                    value = formScope.formular[validator['cross_key']].value;
+                    if (formScope.formular != undefined && formScope.formular[validator['cross_key']] != undefined) {
+                        value = formScope.formular[validator['cross_key']].value;
+                    } else {
+                        value = "";
+                    }
                 }
 
                 if (value != undefined) {
                     if (validator['validator_type'] === 'notEmpty') {
-                        if (value === '' || value === false) {
+                        if (value != '' || value != false) {
                             result = true;
                         }
                     } else if (validator['validator_type'] === 'minDate' || validator['validator_type'] === 'maxDate') {
@@ -331,6 +335,10 @@
                     }
                 } 
         	}
+
+            if (triggerIfTrue) {
+                result != result;
+            }
 
             return result;
         };
