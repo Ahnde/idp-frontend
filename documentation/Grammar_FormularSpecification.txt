@@ -72,8 +72,8 @@ VALIDATOR = {
             
 VALIDATOR_ACTION = "disable" | "hide" | "message"
 
-VALIDATOR_TYPE = "isRequired" | "minLength" | "maxLength" | "minDate" | 
-                 "maxDate"    | "regex"
+VALIDATOR_TYPE = "notEmpty" | "minLength" | "maxLength" | "minDate" | 
+                 "maxDate"  | "regex"
 
 DATE_FORMAT = {
                 format: "..." //iso standard,
