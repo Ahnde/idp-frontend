@@ -36,10 +36,11 @@
             var currentAfArray = angularFormlyJsonArrayForFsJson(currentFsJson);
             angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
         };
-		
+		/*
 		console.log('Angular Formly JSON')
 		console.log(angularFormlyJsonArray)
 		console.log('')
+                 */
 		return angularFormlyJsonArray;
     };
 
