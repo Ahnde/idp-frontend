@@ -264,26 +264,6 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         $scope.selectedData = { "data_id": dataId };
     }
 
-    // helper for required fields
-
-    var modifyAllInvalidRequiredFieldsAsIsTouched = function(isTouched) {
-        $scope.notAllRequiredFieldsAreFilledOut = false;
-
-        for (var key in RE.formularFields) {
-            var oneFormField = RE.formularFields[key];
-            if (oneFormField.validators && oneFormField.validators.isRequired) {
-                if (!RE.formular[oneFormField.key]) {
-                    if (isTouched) {
-                        touchField(oneFormField);    
-                        $scope.notAllRequiredFieldsAreFilledOut = true;
-                    } else {
-                        untouchField(oneFormField);    
-                    }
-                }
-            }
-        }
-    }
-
     // helper for cross validation
     
     var addCrossValidationWatchers = function(fields) {
@@ -298,6 +278,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
                 for (var j in crossKeys) {
                     crossKey = crossKeys[j];
                     //add actual watcher
+                    console.log('add watcher for key: '+crossKey)
                     addWatcherForCrossKey(field, crossKey);
                 }
             }
@@ -320,7 +301,6 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
                 fieldToBeUpdated.fieldGroup[0].runExpressions(); //interactive field
                 fieldToBeUpdated.fieldGroup[0].formControl.$validate(); //interactive field
                 fieldToBeUpdated.fieldGroup[1].runExpressions(); //mui
-
                 return;
             }
         );
@@ -344,6 +324,26 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
             }
         }
         return interactiveFields;
+    }
+
+    // helper for required fields
+
+    var modifyAllInvalidRequiredFieldsAsIsTouched = function(isTouched) {
+        $scope.notAllRequiredFieldsAreFilledOut = false;
+
+        for (var key in RE.formularFields) {
+            var oneFormField = RE.formularFields[key];
+            if (oneFormField.validators && oneFormField.validators.isRequired) {
+                if (!RE.formular[oneFormField.key]) {
+                    if (isTouched) {
+                        touchField(oneFormField);    
+                        $scope.notAllRequiredFieldsAreFilledOut = true;
+                    } else {
+                        untouchField(oneFormField);    
+                    }
+                }
+            }
+        }
     }
 
     // make formularfield "touched" so that its error can be shown

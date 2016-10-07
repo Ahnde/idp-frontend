@@ -51,9 +51,7 @@ body {
     display: inline-block;
 
 }
-.formly-field {
-
-}
+.formly-field {display: inline-block;}
 
 .px-nested-panel-body > div {
     display:inline-block;

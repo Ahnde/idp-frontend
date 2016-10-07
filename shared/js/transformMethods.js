@@ -22,7 +22,7 @@
         formularData.metadata['modified_date'] = moment().format('llll');
         formularData.content = formularContent;
         return formularData;
-    }
+    };
 
     // FORMULAR FORM
     var angularFromIDPSpec = function(formularSpecification, scope) {
@@ -103,7 +103,7 @@
         afJson.templateOptions = templateOptionsForDescriptionFsJson(fsDescriptionJson);;
 
         return afJson;
-    }
+    };
 
     // INTERACTIVE
     var angularFormlyJsonForInteractive = function(fsInteractiveJson) {
@@ -131,14 +131,16 @@
         if (fsInteractiveJson['validators'].length > 0) {
             fsValidatorsJsonArray = fsInteractiveJson['validators'];
             validatorsForFsJsonArray(fsValidatorsJsonArray, function(callbackValidators, callbackHideExpression, callbackExpressionProperties, callbackCrossKeys) {
-                afJson.validators = callbackValidators;   
-                afJson.hideExpression = callbackHideExpression;
-                afJson.expressionProperties = callbackExpressionProperties;
-                if (afJson.data === undefined)
-                {
-                	afJson.data = {};
-                }
-                afJson.data.crossKeys = callbackCrossKeys;
+                if (callbackValidators) {
+                    afJson.validators = callbackValidators;   
+                    // afJson.hideExpression = callbackHideExpression;
+                    afJson.expressionProperties = callbackExpressionProperties;
+                    if (afJson.data === undefined)
+                    {
+                	   afJson.data = {};
+                    }
+                    afJson.data.crossKeys = callbackCrossKeys;
+                };
             });
         }
 
@@ -187,7 +189,7 @@
         muiFields.templateOptions.options.push(ignoreOption);
         
         return muiFields;
-    }
+    };
 
     var angularFormlyTypeStringForDescriptionFsTypeString = function(fsTypeString) {
         var afTypeString;
@@ -243,263 +245,108 @@
 	// VALIDATORS
     var validatorsForFsJsonArray = function(fsValidatorsArray, callback) {
         var validators = {};
-        var hideExpression;
-        var expressionProperties = {};
+        var hideValidators = [];
+        var disableValidators = [];
         var crossKeys = [];
 
-        var oneValidator,
-            afValidator,
-            theValidator;
         for (var validatorIndex in fsValidatorsArray) {
             fsValidator = fsValidatorsArray[validatorIndex];
+            
+            switch (fsValidator['validator_action']) {
+                case "message":
+                    var oneValidator = {};
+                    oneValidator.message = '"'+fsValidator['message']+'"';
+                    oneValidator.expression = expressionForFsValidators([fsValidator]);
+                    validators[fsValidator['element_id']] = oneValidator;
+                    break;
+                case "hide":
+                    hideValidators.push(fsValidator);
+                    break;
+                case "disable":
+                    disableValidators.push(fsValidator);
+                    break;              
+                default:
+                    break;
+            }
+
             crossKeys.push(fsValidator['cross_key']);
-            validatorForFsJson(fsValidator, validators, hideExpression, expressionProperties, 
-            					function(callbackValidators, callbackHideExpression, callbackExpressionProperties) {
-                					validators = {};
-                					templateOptions = {};
-                					expressionProperties = {};
-                					
-                					validators = callbackValidators;
-                					hideExpression = callbackHideExpression;
-					                expressionProperties = callbackExpressionProperties;
-					            }
-			);
         }
-		
+        // var hideExpression = expressionForFsValidators(hideValidators);
+        var expressionProperties = {};
+        var hideExpression;
+        expressionProperties.hide = expressionForFsValidators(hideValidators);
+        expressionProperties['templateOptions.disabled'] = expressionForFsValidators(disableValidators);
+
         callback(validators, hideExpression, expressionProperties, crossKeys);
     };
 
-    var validatorForFsJson = function(fsValidator, oldValidators, oldHideExpression, oldExpressionProperties, callback) {
-    	var validators = oldValidators;
-    	var hideExpression = oldHideExpression;
-    	var expressionProperties = oldExpressionProperties;
-    	
-    	switch (fsValidator['validator_action']) {
-    		case "message":
-    		    messageValidatorForFSValidator(fsValidator, validators, function(newValidators) {
-    		    	validators = newValidators;
-    		    });
-    		    break;
-			case "hide":
-    			hideValidatorForFSValidator(fsValidator, hideExpression, function(newHideExpression) {
-    				hideExpression = newHideExpression;
-    			});
-			    break;
-    		case "disable":
-    		    disableValidatorForFSValidator(fsValidator, expressionProperties, function(newExpressionProperties) {
-    		    	expressionProperties = newExpressionProperties;
-    		    });
-    		    break;    		    
-    		default:
-    			//just send the old objects back
-    	}
-        
-        callback(validators, hideExpression, expressionProperties);
-    }
-
-	//hide
-	var hideValidatorForFSValidator = function(fsValidator, oldHideExpression, callback) {
-		var hideExpression = oldHideExpression;
-		
-		var afValidator = {};
-		
-		var crossKey = "";
-		if (fsValidator['cross_key']) {
-			crossKey = fsValidator['cross_key'];
-		}
-		
-		var validatorExpression;
-		
-		switch (fsValidator['validator_type']) {
-		    case "minDate":
-		        validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey);
-		        break;
-		    case "maxDate":
-		        validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey);
-		        break;
-		    case "isRequired":
-		        validatorExpression = expressionForRegExValidator("isRequired", crossKey);
-		        break;
-		    case "minLength":
-		        validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey);
-		        break;
-		    case "maxLength":
-		        validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey);
-		        break;
-		    case "regex":
-		        validatorExpression = expressionForRegExValidator(fsValidator['expression'], crossKey);
-		        break;
-		    default:
-		        return;
-		}
-		
-		hideExpression = validatorExpression;
-		callback(hideExpression);
-	}
-	
-	//disable
-	var disableValidatorForFSValidator = function(fsValidator, oldExpressionProperties, callback) {
-		var expressionProperties = oldExpressionProperties;
-		
-		var afValidator = {};
-		
-		var crossKey = "";
-		if (fsValidator['cross_key']) {
-			crossKey = fsValidator['cross_key'];
-		}
-		
-		var validatorExpression;
-		
-		switch (fsValidator['validator_type']) {
-		    case "minDate":
-		        validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey);
-		        break;
-		    case "maxDate":
-		        validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey);
-		        break;
-		    case "isRequired":
-		        validatorExpression = expressionForRegExValidator("isRequired", crossKey);
-		        break;
-		    case "minLength":
-		        validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey);
-		        break;
-		    case "maxLength":
-		        validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey);
-		        break;
-		    case "regex":
-		        validatorExpression = expressionForRegExValidator(fsValidator['expression'], crossKey);
-		        break;
-		    default:
-		        return;
-		}
-		
-		expressionProperties['templateOptions.disabled'] = validatorExpression;
-		callback(expressionProperties);
-	}
-		
-	//message
-	var messageValidatorForFSValidator = function(fsValidator, oldValidators, callback) {
-		var validators = oldValidators;
-		
-		var afValidator = {};
-		
-		var crossKey = "";
-		if (fsValidator['cross_key']) {
-			crossKey = fsValidator['cross_key'];
-		}
-		
-		var validatorName,
-		    validatorExpression,
-		    validatorMessage;
-		
-		switch (fsValidator['validator_type']) {
-		    case "minDate":
-		        validatorName = "minDate";
-		        validatorExpression = expressionForDateValidator(fsValidator['expression'], true, crossKey);
-		        break;
-		    case "maxDate":
-		        validatorName = "maxDate";
-		        validatorExpression = expressionForDateValidator(fsValidator['expression'], false, crossKey);
-		        break;
-		    case "isRequired":
-		        validatorName = "isRequired";
-		        validatorExpression = expressionForRegExValidator("isRequired", crossKey);
-		        break;
-		    case "minLength":
-		        validatorName = "minLength";
-		        validatorExpression = expressionForRegExValidator("^.{"+fsValidator['expression']+",}$", crossKey);
-		        break;
-		    case "maxLength":
-		        validatorName = "maxLength";
-		        validatorExpression = expressionForRegExValidator("^.{0,"+fsValidator['expression']+"}$", crossKey);
-		        break;
-		    case "regex":
-		        validatorName = fsValidator['validator_name'];
-		        validatorExpression = expressionForRegExValidator(fsValidator['expression'], crossKey);
-		        break;
-		    default:
-		    	callback(validators);
-		        return;
-		}
-		
-		validatorMessage = fsValidator['message'];
-		
-		afValidator['validatorName'] = validatorName;
-		afValidator['validatorExpression'] = validatorExpression;
-		afValidator['validatorMessage'] = '"'+validatorMessage+'"';
-		
-		toValidator = {};
-		toValidator.expression = afValidator['validatorExpression'];
-		toValidator.message = afValidator['validatorMessage'];
-		
-		validators[afValidator['validatorName']] = toValidator;
-		callback(validators);
-	}
-
-    var expressionForDateValidator = function(fsDate, inputShouldBeGreater, crossKey) {
-
+    var expressionForFsValidators = function(fsValidatorsArray) {
         var expression = function($viewValue, $viewModel, scope) {
-            if (crossKey === "") {
-                value = $viewValue || $viewModel;
-            } else {
-                value = formScope.formular[crossKey].value;
-            }
-        
-            if (value) {
-                var dateDiff = moment(value).diff(moment(fsDate))
-        
-                if (dateDiff !== NaN) {
-                    if (inputShouldBeGreater) {
-                        return dateDiff >= 0;
-                    } else {
-                        return dateDiff <= 0;
-                    }
+            var result = false;
+
+            for (var i in fsValidatorsArray) {
+                var validator = fsValidatorsArray[i];
+
+                var value;
+                if (validator['cross_key'] === undefined || validator['cross_key'] === "") {
+                    value = $viewValue || $viewModel;
                 } else {
-                    return false;
+                    value = formScope.formular[validator['cross_key']].value;
                 }
-            }
-        };
-		
-        return expression;
-    }
 
-    var expressionForRegExValidator = function(fsValidatorExpression, crossKey) {
-
-        var expression = function($viewValue, $viewModel, scope) {
-            if (crossKey === "") {
-                value = $viewValue || $viewModel;
-            } else {
-                value = formScope.formular[crossKey].value;
-            }
-        
-            if (value === undefined) {
-                return false;
-            }
-        
-            if (fsValidatorExpression === 'isRequired') {
-                if (value != '' || value === true) {
-                    return true;
-                }
-            } else {
-                var regExp = new RegExp(fsValidatorExpression);
-                if (value) {
-                    if (regExp.test(value)) {
-                        return true;
+                if (value != undefined) {
+                    if (validator['validator_type'] === 'notEmpty') {
+                        if (value === '' || value === false) {
+                            result = true;
+                        }
+                    } else if (validator['validator_type'] === 'minDate' || validator['validator_type'] === 'maxDate') {
+                        var dateDiff = moment(value).diff(moment(validator['expression']))
+                    
+                        if (dateDiff !== NaN) {
+                            if (validator['validator_type'] === 'minDate') {
+                                if (dateDiff >= 0) {
+                                    result = true;
+                                }
+                            } else {
+                                if (dateDiff <= 0) {
+                                    result = true;
+                                }
+                            }
+                        } 
+                    } else {
+                        var fsExpression;
+                        if (validator['validator_type'] === 'minLength') {
+                            fsExpression = "^.{"+validator['expression']+",}$";
+                        } else if (validator['validator_type'] === 'maxLength') {
+                            fsExpression = "^.{0,"+validator['expression']+"}$";
+                        } else {
+                            fsExpression = validator['expression'];
+                        }
+                        var regExp = new RegExp(fsExpression);
+                        if (value) {
+                            if (regExp.test(value)) {
+                                result = true;
+                            }
+                        }
                     }
-                }
-            }
-        	
-            return false;
+                } 
+        	}
+
+            return result;
         };
 
         return expression;
-    }
+    };
 
     var templateOptionsForDescriptionFsJson = function(fsDescriptionJson) {
         var templateOptions = {};
 
         if (fsDescriptionJson['text']) {
             templateOptions.label = fsDescriptionJson['text'];
+        }
+
+        if (fsDescriptionJson['url']) {
+            templateOptions.url = fsDescriptionJson['url'];
         }
 
         if (fsDescriptionJson['urls']) {

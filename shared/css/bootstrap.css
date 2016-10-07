@@ -1856,6 +1856,7 @@ input[type=search] {
 }
 }.form-group {
     margin-bottom: 15px;
+    display: inline-block;
 }
 .checkbox, .radio {
     position: relative;
