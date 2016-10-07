@@ -133,7 +133,7 @@
             validatorsForFsJsonArray(fsValidatorsJsonArray, function(callbackValidators, callbackHideExpression, callbackExpressionProperties, callbackCrossKeys) {
                 if (callbackValidators) {
                     afJson.validators = callbackValidators;   
-                    afJson.hideExpression = callbackHideExpression;
+                    // afJson.hideExpression = callbackHideExpression;
                     afJson.expressionProperties = callbackExpressionProperties;
                     if (afJson.data === undefined)
                     {
@@ -271,10 +271,12 @@
 
             crossKeys.push(fsValidator['cross_key']);
         }
-        var hideExpression = expressionForFsValidators(hideValidators);
+        // var hideExpression = expressionForFsValidators(hideValidators);
         var expressionProperties = {};
+        var hideExpression;
+        expressionProperties.hide = expressionForFsValidators(hideValidators);
         expressionProperties['templateOptions.disabled'] = expressionForFsValidators(disableValidators);
-		
+
         callback(validators, hideExpression, expressionProperties, crossKeys);
     };
 
@@ -294,7 +296,7 @@
 
                 if (value != undefined) {
                     if (validator['validator_type'] === 'notEmpty') {
-                        if (value != '' || value === true) {
+                        if (value === '' || value === false) {
                             result = true;
                         }
                     } else if (validator['validator_type'] === 'minDate' || validator['validator_type'] === 'maxDate') {
