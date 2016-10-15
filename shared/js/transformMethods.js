@@ -142,6 +142,13 @@
                     afJson.data.crossKeys = callbackCrossKeys;
                 };
             });
+            //add * if field is required
+            for (var i in fsValidatorsJsonArray) {
+                var oneValidator = fsValidatorsJsonArray[i];
+                if (oneValidator['validator_type'] === 'notEmpty') {
+                    afJson.data.isRequired = true;
+                }
+            }
         }
 
         //get mui stff
