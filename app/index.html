@@ -60,7 +60,7 @@
                                     <div ng-show="isFormularActive">
                                         <button type="submit" ng-disabled="vm.formularFields.$invalid">Submit</button>
                                         <label class="error-label" ng-if="savingError">Content could not be saved.</label>
-                                        <label class="warning-label" ng-if="notAllRequiredFieldsAreFilledOut">Warning: Not all required fields are filled out.</label>
+                                        <label class="warning-label" ng-if="notAllRequiredFieldsAreFilledOut">Warning: Not all fields meet the given requirements.</label>
                                         <label class="success-label" ng-if="savingSuccess">Content has been saved.</label>
                                     </div>
                                 </p>

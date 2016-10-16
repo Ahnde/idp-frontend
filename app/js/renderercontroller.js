@@ -24,7 +24,7 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         didLoadFormularData = false;
         $scope.savingError = false;
         $scope.savingSuccess = false;
-        modifyAllInvalidRequiredFieldsAsIsTouched(false);
+        modifyAllInteractiveFieldsAsIsTouched(false);
 
         if (!removeIsNewDataAfterRouteChange) {
             $scope.isNewFormData = false;
@@ -108,7 +108,8 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
     //user triggered a formular-data submit
     RE.onSubmit = onSubmit;
     function onSubmit() {
-        modifyAllInvalidRequiredFieldsAsIsTouched(true);
+        modifyAllInteractiveFieldsAsIsTouched(true);
+        validateAllInteractiveFields();
         if (didLoadFormularData) {
             RE.formularDataComplete = jsonTransformer.updateMetadataInFormData(RE.formularDataComplete, RE.formular);
 
@@ -326,23 +327,41 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
         return interactiveFields;
     }
 
+    var validateAllInteractiveFields = function() {
+        var interactiveFields = getInteractiveFieldsFromFields(RE.formularFields);
+
+        for (var i in interactiveFields) {
+            var field = interactiveFields[i];                
+            if (field.fieldGroup[0].validators) {
+                //field is required
+                console.log('validate:')
+                console.log(field.fieldGroup[0])
+                field.fieldGroup[0].formControl.$validate()
+            }
+        }
+    }
+
     // helper for required fields
 
-    var modifyAllInvalidRequiredFieldsAsIsTouched = function(isTouched) {
+    var modifyAllInteractiveFieldsAsIsTouched = function(isTouched) {
         $scope.notAllRequiredFieldsAreFilledOut = false;
 
-        for (var key in RE.formularFields) {
-            var oneFormField = RE.formularFields[key];
-            if (oneFormField.validators && oneFormField.validators.isRequired) {
-                if (!RE.formular[oneFormField.key]) {
+        var interactiveFields = getInteractiveFieldsFromFields(RE.formularFields);
+
+        for (var i in interactiveFields) {
+            var field = interactiveFields[i];
+            if (field.fieldGroup[0].validators) {
                     if (isTouched) {
-                        touchField(oneFormField);    
+                        // touchField(field);
+                        touchField(field.fieldGroup[0]);
+                        touchField(field.fieldGroup[1]);
                         $scope.notAllRequiredFieldsAreFilledOut = true;
                     } else {
-                        untouchField(oneFormField);    
+                        // untouchField(field);
+                        untouchField(field.fieldGroup[0]);
+                        untouchField(field.fieldGroup[1]);
                     }
                 }
-            }
         }
     }
 
