@@ -52,16 +52,13 @@ body {
 
 }
 .formly-field {display: inline-block;}
-
 .px-nested-panel-body > div {
     display:inline-block;
 }
-
 .formly-field-group
 {
     display: block;
 }
-
 .childrenInline .formly-field-group
 {
     display: inline-block !important;

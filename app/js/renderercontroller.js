@@ -1,5 +1,5 @@
 formularGenerator.controller("rendererController",
-function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
+function ($route, $routeParams, $scope, $timeout, backendConnector, jsonTransformer) {
 
     var formId,
         dataId,
@@ -117,9 +117,15 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
                 if (success) { 
                     $scope.savingSuccess = true;
                     $scope.savingError = false;
+                    $timeout(function () { 
+                        $scope.savingSuccess = false; 
+                    }, 3000);
                 } else { 
                     $scope.savingSuccess = false;
                     $scope.savingError = true;
+                    $timeout(function () { 
+                        $scope.savingError = false; 
+                    }, 3000);
                 }
             });
         } else {
@@ -132,9 +138,15 @@ function ($route, $routeParams, $scope, backendConnector, jsonTransformer) {
                     $scope.newDataTitle = "";
                     $scope.savingSuccess = true;
                     $scope.savingError = false;
+                    $timeout(function () { 
+                        $scope.savingSuccess = false; 
+                    }, 3000);
                 } else {
                     $scope.savingSuccess = false;
                     $scope.savingError = true;
+                    $timeout(function () { 
+                        $scope.savingError = false; 
+                    }, 3000);
                 }
             });
         }
