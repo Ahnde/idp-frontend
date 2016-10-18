@@ -70,14 +70,25 @@
                 </div>
 			</div>
 
-            <!-- <h2>Formly Model</h2>
-            <pre>{{formular | json}}</pre>
-            <h2>IDP Model</h2>
-            <pre>{{formularData | json}}</pre>
-            <h2>Formly Specification</h2>
-            <pre>{{formularFields | json}}</pre>
-            <h2> IDP Specification</h2>
-            <pre>{{formularSpecification | json}}</pre>-->
+            <div>
+                <label>
+                    <input type="checkbox" ng-model="showMapping" class="ng-pristine ng-untouched ng-valid ng-empty">
+                    Show Models and Mapping
+                </label>
+            </div>
+
+            <div ng-if="showMapping">
+                <h2>Formly Model</h2>
+                <pre>{{formular | json}}</pre>
+                <h2>IDP Model</h2>
+                <pre>{{formularData | json}}</pre>
+                <h2>Formly Specification</h2>
+                <pre>{{formularFields | json}}</pre>
+                <h2> IDP Specification</h2>
+                <pre>{{formularSpecification | json}}</pre>
+            </div>
+
+            
 		</div> 
 
         <!-- <script type="text/ng-template" id="panel.html"> -->
