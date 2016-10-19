@@ -290,7 +290,7 @@
     var expressionForFsValidators = function(fsValidatorsArray, triggerIfTrue) {
         var expression = function($viewValue, $viewModel, scope) {
             if (fsValidatorsArray.length < 1) {
-                return false;
+                return !triggerIfTrue;
             }
 
             var result = false;
