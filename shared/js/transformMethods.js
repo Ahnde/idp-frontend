@@ -36,11 +36,11 @@
             var currentAfArray = angularFormlyJsonArrayForFsJson(currentFsJson);
             angularFormlyJsonArray = angularFormlyJsonArray.concat(currentAfArray);
         };
-		/*
-		console.log('Angular Formly JSON')
-		console.log(angularFormlyJsonArray)
-		console.log('')
-        */
+		
+		// console.log('Angular Formly JSON')
+		// console.log(angularFormlyJsonArray)
+		// console.log('')
+        
 		return angularFormlyJsonArray;
     };
 
@@ -278,7 +278,7 @@
 
             crossKeys.push(fsValidator['cross_key']);
         }
-        // var hideExpression = expressionForFsValidators(hideValidators);
+        
         var expressionProperties = {};
         var hideExpression;
         expressionProperties.hide = expressionForFsValidators(hideValidators, true);
@@ -289,6 +289,10 @@
 
     var expressionForFsValidators = function(fsValidatorsArray, triggerIfTrue) {
         var expression = function($viewValue, $viewModel, scope) {
+            if (fsValidatorsArray.length < 1) {
+                return false;
+            }
+
             var result = false;
 
             for (var i in fsValidatorsArray) {
@@ -344,7 +348,7 @@
         	}
 
             if (triggerIfTrue) {
-                result != result;
+                result = !result;
             }
 
             return result;
