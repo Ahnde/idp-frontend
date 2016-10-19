@@ -162,7 +162,7 @@
         fieldGroupJson.fieldGroup = [];
         fieldGroupJson.fieldGroup.push(afJson);
         fieldGroupJson.fieldGroup.push(muiFields);
-        fieldGroupJson.key = fsInteractiveJson['mapping_key'];
+        fieldGroupJson.key = fsInteractiveJson['element_id'];
 		
         return fieldGroupJson;
     };
