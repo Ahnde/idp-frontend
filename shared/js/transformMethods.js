@@ -145,7 +145,7 @@
             //add * if field is required
             for (var i in fsValidatorsJsonArray) {
                 var oneValidator = fsValidatorsJsonArray[i];
-                if (oneValidator['validator_type'] === 'notEmpty' && oneValidator['cross_key'] === undefined) {
+                if (oneValidator['validator_type'] === 'notEmpty' && (oneValidator['cross_key'] === undefined || oneValidator['cross_key'] === "")) {
                     afJson.data.isRequired = true;
                 }
             }
